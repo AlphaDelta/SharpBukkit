@@ -2,6 +2,8 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace net.minecraft.src
 {
@@ -14,9 +16,9 @@ namespace net.minecraft.src
 			//            MapDataBase, NBTTagCompound, MapInfo, EntityPlayer, 
 			//            InventoryPlayer, MapCoord, ItemStack, World
 			field_28160_f = new byte[16384];
-			field_28158_h = new System.Collections.ArrayList();
-			field_28156_j = new System.Collections.Hashtable();
-			field_28157_i = new System.Collections.ArrayList();
+			field_28158_h = new List<MapInfo>();
+			field_28156_j = new SharpBukkitLive.NullSafeDictionary<EntityPlayer, MapInfo>();
+			field_28157_i = new List<MapCoord>();
 		}
 
 		public override void Func_28148_a(net.minecraft.src.NBTTagCompound nbttagcompound
@@ -80,7 +82,7 @@ namespace net.minecraft.src
 		public virtual void Func_28155_a(net.minecraft.src.EntityPlayer entityplayer, net.minecraft.src.ItemStack
 			 itemstack)
 		{
-			if (!field_28156_j.Contains(entityplayer))
+			if (!field_28156_j.ContainsKey(entityplayer))
 			{
 				net.minecraft.src.MapInfo mapinfo = new net.minecraft.src.MapInfo(this, entityplayer
 					);
@@ -91,16 +93,16 @@ namespace net.minecraft.src
 			for (int i = 0; i < field_28158_h.Count; i++)
 			{
 				net.minecraft.src.MapInfo mapinfo1 = (net.minecraft.src.MapInfo)field_28158_h[i];
-				if (mapinfo1.field_28120_a.isDead || !mapinfo1.field_28120_a.inventory.Func_28010_c
+				if (mapinfo1.player.isDead || !mapinfo1.player.inventory.Func_28010_c
 					(itemstack))
 				{
-					field_28156_j.Remove(mapinfo1.field_28120_a);
+					field_28156_j.Remove(mapinfo1.player);
 					field_28158_h.Remove(mapinfo1);
 					continue;
 				}
-				float f = (float)(mapinfo1.field_28120_a.posX - (double)field_28164_b) / (float)(
+				float f = (float)(mapinfo1.player.posX - (double)field_28164_b) / (float)(
 					1 << field_28161_e);
-				float f1 = (float)(mapinfo1.field_28120_a.posZ - (double)field_28163_c) / (float)
+				float f1 = (float)(mapinfo1.player.posZ - (double)field_28163_c) / (float)
 					(1 << field_28161_e);
 				int j = 64;
 				int k = 64;
@@ -119,7 +121,7 @@ namespace net.minecraft.src
 					byte3 = unchecked((byte)(l * l * unchecked((int)(0x209a771)) + l * 121 >> 15 & unchecked(
 						(int)(0xf))));
 				}
-				if (mapinfo1.field_28120_a.dimension == field_28162_d)
+				if (mapinfo1.player.dimension == field_28162_d)
 				{
 					field_28157_i.Add(new net.minecraft.src.MapCoord(this, byte0, byte1, byte2, byte3
 						));
@@ -172,10 +174,10 @@ namespace net.minecraft.src
 
 		public int field_28159_g;
 
-		public System.Collections.IList field_28158_h;
+		public List<MapInfo> field_28158_h;
 
-		private System.Collections.IDictionary field_28156_j;
+		private Dictionary<EntityPlayer, MapInfo> field_28156_j;
 
-		public System.Collections.IList field_28157_i;
+		public List<MapCoord> field_28157_i;
 	}
 }

@@ -33,12 +33,12 @@ namespace net.minecraft.src
         internal static void AddIdClassMapping(int i, bool flag, bool flag1, System.Type
              class1)
         {
-            if (packetIdToClassMap.Contains(i))
+            if (packetIdToClassMap.ContainsKey(i))
             {
                 throw new System.ArgumentException((new java.lang.StringBuilder()).Append("Duplicate packet id:"
                     ).Append(i).ToString());
             }
-            if (packetClassToIdMap.Contains(class1))
+            if (packetClassToIdMap.ContainsKey(class1))
             {
                 throw new System.ArgumentException((new java.lang.StringBuilder()).Append("Duplicate packet class:"
                     ).Append(class1).ToString());
@@ -195,12 +195,10 @@ namespace net.minecraft.src
         //    }
         //}
 
-        private static System.Collections.IDictionary packetIdToClassMap = new Dictionary<int, Type>();
-
-        private static System.Collections.IDictionary packetClassToIdMap = new Dictionary<Type, int>();
+        private static Dictionary<int, Type> packetIdToClassMap = new SharpBukkitLive.NullSafeDictionary<int, Type>();
+        private static Dictionary<Type, int> packetClassToIdMap = new Dictionary<Type, int>();
 
         private static HashSet<int> clientPacketIdList = new HashSet<int>();
-
         private static HashSet<int> serverPacketIdList = new HashSet<int>();
 
         public readonly long creationTimeMillis = Sharpen.Runtime.CurrentTimeMillis();
@@ -213,120 +211,63 @@ namespace net.minecraft.src
 
         static Packet()
         {
-            AddIdClassMapping(0, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet0KeepAlive
-                )));
-            AddIdClassMapping(1, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet1Login
-                )));
-            AddIdClassMapping(2, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet2Handshake
-                )));
-            AddIdClassMapping(3, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet3Chat
-                )));
-            AddIdClassMapping(4, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet4UpdateTime
-                )));
-            AddIdClassMapping(5, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet5PlayerInventory
-                )));
-            AddIdClassMapping(6, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet6SpawnPosition
-                )));
-            AddIdClassMapping(7, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet7UseEntity
-                )));
-            AddIdClassMapping(8, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet8UpdateHealth
-                )));
-            AddIdClassMapping(9, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet9Respawn
-                )));
-            AddIdClassMapping(10, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet10Flying
-                )));
-            AddIdClassMapping(11, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet11PlayerPosition
-                )));
-            AddIdClassMapping(12, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet12PlayerLook
-                )));
-            AddIdClassMapping(13, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet13PlayerLookMove
-                )));
-            AddIdClassMapping(14, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet14BlockDig
-                )));
-            AddIdClassMapping(15, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet15Place
-                )));
-            AddIdClassMapping(16, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet16BlockItemSwitch
-                )));
-            AddIdClassMapping(17, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet17Sleep
-                )));
-            AddIdClassMapping(18, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet18Animation
-                )));
-            AddIdClassMapping(19, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet19EntityAction
-                )));
-            AddIdClassMapping(20, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet20NamedEntitySpawn
-                )));
-            AddIdClassMapping(21, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet21PickupSpawn
-                )));
-            AddIdClassMapping(22, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet22Collect
-                )));
-            AddIdClassMapping(23, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet23VehicleSpawn
-                )));
-            AddIdClassMapping(24, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet24MobSpawn
-                )));
-            AddIdClassMapping(25, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet25EntityPainting
-                )));
-            AddIdClassMapping(27, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet27Position
-                )));
-            AddIdClassMapping(28, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet28EntityVelocity
-                )));
-            AddIdClassMapping(29, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet29DestroyEntity
-                )));
-            AddIdClassMapping(30, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet30Entity
-                )));
-            AddIdClassMapping(31, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet31RelEntityMove
-                )));
-            AddIdClassMapping(32, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet32EntityLook
-                )));
-            AddIdClassMapping(33, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet33RelEntityMoveLook
-                )));
-            AddIdClassMapping(34, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet34EntityTeleport
-                )));
-            AddIdClassMapping(38, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet38EntityStatus
-                )));
-            AddIdClassMapping(39, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet39AttachEntity
-                )));
-            AddIdClassMapping(40, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet40EntityMetadata
-                )));
-            AddIdClassMapping(50, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet50PreChunk
-                )));
-            AddIdClassMapping(51, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet51MapChunk
-                )));
-            AddIdClassMapping(52, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet52MultiBlockChange
-                )));
-            AddIdClassMapping(53, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet53BlockChange
-                )));
-            AddIdClassMapping(54, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet54PlayNoteBlock
-                )));
-            AddIdClassMapping(60, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet60Explosion
-                )));
-            AddIdClassMapping(61, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet61DoorChange
-                )));
-            AddIdClassMapping(70, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet70Bed
-                )));
-            AddIdClassMapping(71, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet71Weather
-                )));
-            AddIdClassMapping(100, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet100OpenWindow
-                )));
-            AddIdClassMapping(101, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet101CloseWindow
-                )));
-            AddIdClassMapping(102, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet102WindowClick
-                )));
-            AddIdClassMapping(103, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet103SetSlot
-                )));
-            AddIdClassMapping(104, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet104WindowItems
-                )));
-            AddIdClassMapping(105, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet105UpdateProgressbar
-                )));
-            AddIdClassMapping(106, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet106Transaction
-                )));
-            AddIdClassMapping(130, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet130UpdateSign
-                )));
-            AddIdClassMapping(131, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet131MapData
-                )));
-            AddIdClassMapping(200, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet200Statistic
-                )));
-            AddIdClassMapping(255, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet255KickDisconnect
-                )));
+            AddIdClassMapping(0, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet0KeepAlive)));
+            AddIdClassMapping(1, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet1Login)));
+            AddIdClassMapping(2, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet2Handshake)));
+            AddIdClassMapping(3, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet3Chat)));
+            AddIdClassMapping(4, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet4UpdateTime)));
+            AddIdClassMapping(5, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet5PlayerInventory)));
+            AddIdClassMapping(6, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet6SpawnPosition)));
+            AddIdClassMapping(7, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet7UseEntity)));
+            AddIdClassMapping(8, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet8UpdateHealth)));
+            AddIdClassMapping(9, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet9Respawn)));
+            AddIdClassMapping(10, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet10Flying)));
+            AddIdClassMapping(11, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet11PlayerPosition)));
+            AddIdClassMapping(12, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet12PlayerLook)));
+            AddIdClassMapping(13, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet13PlayerLookMove)));
+            AddIdClassMapping(14, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet14BlockDig)));
+            AddIdClassMapping(15, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet15Place)));
+            AddIdClassMapping(16, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet16BlockItemSwitch)));
+            AddIdClassMapping(17, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet17Sleep)));
+            AddIdClassMapping(18, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet18Animation)));
+            AddIdClassMapping(19, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet19EntityAction)));
+            AddIdClassMapping(20, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet20NamedEntitySpawn)));
+            AddIdClassMapping(21, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet21PickupSpawn)));
+            AddIdClassMapping(22, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet22Collect)));
+            AddIdClassMapping(23, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet23VehicleSpawn)));
+            AddIdClassMapping(24, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet24MobSpawn)));
+            AddIdClassMapping(25, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet25EntityPainting)));
+            AddIdClassMapping(27, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet27Position)));
+            AddIdClassMapping(28, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet28EntityVelocity)));
+            AddIdClassMapping(29, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet29DestroyEntity)));
+            AddIdClassMapping(30, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet30Entity)));
+            AddIdClassMapping(31, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet31RelEntityMove)));
+            AddIdClassMapping(32, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet32EntityLook)));
+            AddIdClassMapping(33, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet33RelEntityMoveLook)));
+            AddIdClassMapping(34, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet34EntityTeleport)));
+            AddIdClassMapping(38, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet38EntityStatus)));
+            AddIdClassMapping(39, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet39AttachEntity)));
+            AddIdClassMapping(40, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet40EntityMetadata)));
+            AddIdClassMapping(50, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet50PreChunk)));
+            AddIdClassMapping(51, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet51MapChunk)));
+            AddIdClassMapping(52, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet52MultiBlockChange)));
+            AddIdClassMapping(53, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet53BlockChange)));
+            AddIdClassMapping(54, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet54PlayNoteBlock)));
+            AddIdClassMapping(60, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet60Explosion)));
+            AddIdClassMapping(61, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet61DoorChange)));
+            AddIdClassMapping(70, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet70Bed)));
+            AddIdClassMapping(71, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet71Weather)));
+            AddIdClassMapping(100, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet100OpenWindow)));
+            AddIdClassMapping(101, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet101CloseWindow)));
+            AddIdClassMapping(102, false, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet102WindowClick)));
+            AddIdClassMapping(103, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet103SetSlot)));
+            AddIdClassMapping(104, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet104WindowItems)));
+            AddIdClassMapping(105, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet105UpdateProgressbar)));
+            AddIdClassMapping(106, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet106Transaction)));
+            AddIdClassMapping(130, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet130UpdateSign)));
+            AddIdClassMapping(131, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet131MapData)));
+            AddIdClassMapping(200, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet200Statistic)));
+            AddIdClassMapping(255, true, true, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet255KickDisconnect)));
         }
     }
 }

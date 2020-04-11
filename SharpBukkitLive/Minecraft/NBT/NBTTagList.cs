@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -11,7 +12,7 @@ namespace net.minecraft.src
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            NBTBase
-			tagList = new System.Collections.ArrayList();
+			tagList = new List<NBTBase>();
 		}
 
 		/// <exception cref="System.IO.IOException"/>
@@ -38,7 +39,7 @@ namespace net.minecraft.src
 		{
 			tagType = datainput.ReadByte();
 			int i = datainput.ReadInt();
-			tagList = new System.Collections.ArrayList();
+			tagList = new List<NBTBase>();
 			for (int j = 0; j < i; j++)
 			{
 				net.minecraft.src.NBTBase nbtbase = net.minecraft.src.NBTBase.CreateTagOfType(tagType
@@ -76,7 +77,7 @@ namespace net.minecraft.src
 			return tagList.Count;
 		}
 
-		private System.Collections.IList tagList;
+		private List<NBTBase> tagList;
 
 		private byte tagType;
 	}

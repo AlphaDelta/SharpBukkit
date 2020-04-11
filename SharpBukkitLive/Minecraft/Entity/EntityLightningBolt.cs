@@ -88,7 +88,7 @@ namespace net.minecraft.src
 			if (field_27018_b >= 0)
 			{
 				double d = 3D;
-				System.Collections.IList list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
+				System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
 					, net.minecraft.src.AxisAlignedBB.GetBoundingBoxFromPool(posX - d, posY - d, posZ
 					 - d, posX + d, posY + 6D + d, posZ + d));
 				for (int l = 0; l < list.Count; l++)

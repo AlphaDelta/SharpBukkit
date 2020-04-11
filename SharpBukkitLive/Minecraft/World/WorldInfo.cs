@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -64,8 +65,7 @@ namespace net.minecraft.src
 			return nbttagcompound;
 		}
 
-		public virtual net.minecraft.src.NBTTagCompound Func_22183_a(System.Collections.IList
-			 list)
+		public virtual net.minecraft.src.NBTTagCompound Func_22183_a(List<EntityPlayer> list)
 		{
 			net.minecraft.src.NBTTagCompound nbttagcompound = new net.minecraft.src.NBTTagCompound
 				();

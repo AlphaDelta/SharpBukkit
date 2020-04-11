@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -32,8 +33,7 @@ namespace net.minecraft.src
 			}
 		}
 
-		public override void Func_22095_a(net.minecraft.src.WorldInfo worldinfo, System.Collections.IList
-			 list)
+		public override void Func_22095_a(net.minecraft.src.WorldInfo worldinfo, List<EntityPlayer> list)
 		{
 			worldinfo.SetVersion(19132);
 			base.Func_22095_a(worldinfo, list);

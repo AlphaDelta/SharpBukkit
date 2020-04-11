@@ -18,7 +18,7 @@ namespace net.minecraft.src
 			field_28125_c = new int[128];
 			field_28123_e = 0;
 			field_28122_f = 0;
-			field_28120_a = entityplayer;
+			player = entityplayer;
 			for (int i = 0; i < field_28119_b.Length; i++)
 			{
 				field_28119_b[i] = 0;
@@ -95,7 +95,7 @@ namespace net.minecraft.src
 			return null;
 		}
 
-		public readonly net.minecraft.src.EntityPlayer field_28120_a;
+		public readonly net.minecraft.src.EntityPlayer player;
 
 		public int[] field_28119_b;
 

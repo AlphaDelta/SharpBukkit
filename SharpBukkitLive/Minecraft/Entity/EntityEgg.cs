@@ -153,7 +153,7 @@ namespace net.minecraft.src
 			if (!worldObj.singleplayerWorld)
 			{
 				net.minecraft.src.Entity entity = null;
-				System.Collections.IList list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
+				System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
 					, boundingBox.AddCoord(motionX, motionY, motionZ).Expand(1.0D, 1.0D, 1.0D));
 				double d = 0.0D;
 				for (int i1 = 0; i1 < list.Count; i1++)

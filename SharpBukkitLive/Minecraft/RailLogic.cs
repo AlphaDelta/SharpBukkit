@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -14,7 +15,7 @@ namespace net.minecraft.src
 			//            World, Block, BlockRail, ChunkPosition
 			//        super();
 			minecartTrack = blockrail;
-			connectedTracks = new System.Collections.ArrayList();
+			connectedTracks = new List<ChunkPosition>();
 			worldObj = world;
 			trackX = i;
 			trackY = j;
@@ -144,7 +145,7 @@ namespace net.minecraft.src
 					)connectedTracks[i]);
 				if (raillogic == null || !raillogic.IsConnectedTo(this))
 				{
-					connectedTracks.Remove(i--);
+					connectedTracks.RemoveAt(i--);
 				}
 				else
 				{
@@ -508,7 +509,7 @@ namespace net.minecraft.src
 
 		private readonly bool field_27084_f;
 
-		private System.Collections.IList connectedTracks;
+		private List<ChunkPosition> connectedTracks;
 
 		internal readonly net.minecraft.src.BlockRail minecartTrack;
  /* synthetic field */

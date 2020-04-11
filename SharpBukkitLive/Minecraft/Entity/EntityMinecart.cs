@@ -544,7 +544,7 @@ namespace net.minecraft.src
                 field_469_aj = !field_469_aj;
             }
             SetRotation(rotationYaw, rotationPitch);
-            System.Collections.IList list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
+            System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
                 , boundingBox.Expand(0.20000000298023224D, 0.0D, 0.20000000298023224D));
             if (list != null && list.Count > 0)
             {

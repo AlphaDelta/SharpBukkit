@@ -2,13 +2,13 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
 	public class ShapelessRecipes : net.minecraft.src.IRecipe
 	{
-		public ShapelessRecipes(net.minecraft.src.ItemStack itemstack, System.Collections.IList
-			 list)
+		public ShapelessRecipes(net.minecraft.src.ItemStack itemstack, List<ItemStack> list)
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            IRecipe, InventoryCrafting, ItemStack
@@ -83,6 +83,6 @@ namespace net.minecraft.src
 
 		private readonly net.minecraft.src.ItemStack field_21138_a;
 
-		private readonly System.Collections.IList field_21137_b;
+		private readonly List<ItemStack> field_21137_b;
 	}
 }

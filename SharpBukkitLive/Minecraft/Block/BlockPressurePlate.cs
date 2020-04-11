@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -110,7 +111,7 @@ namespace net.minecraft.src
 			bool flag = world.GetBlockMetadata(i, j, k) == 1;
 			bool flag1 = false;
 			float f = 0.125F;
-			System.Collections.IList list = null;
+			List<Entity> list = null;
 			if (triggerMobType == net.minecraft.src.EnumMobType.everything)
 			{
 				list = world.GetEntitiesWithinAABBExcludingEntity(null, net.minecraft.src.AxisAlignedBB

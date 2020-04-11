@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -13,11 +14,9 @@ namespace net.minecraft.src
 
 		void Func_22091_b();
 
-		net.minecraft.src.IChunkLoader Func_22092_a(net.minecraft.src.WorldProvider worldprovider
-			);
+		net.minecraft.src.IChunkLoader Func_22092_a(net.minecraft.src.WorldProvider worldprovider);
 
-		void Func_22095_a(net.minecraft.src.WorldInfo worldinfo, System.Collections.IList
-			 list);
+		void Func_22095_a(net.minecraft.src.WorldInfo worldinfo, List<EntityPlayer> list);
 
 		void Func_22094_a(net.minecraft.src.WorldInfo worldinfo);
 

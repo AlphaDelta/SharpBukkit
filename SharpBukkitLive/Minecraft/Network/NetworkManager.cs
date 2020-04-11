@@ -12,8 +12,7 @@ namespace net.minecraft.src
     public class NetworkManager
     {
         /// <exception cref="System.IO.IOException"/>
-        public NetworkManager(Socket socket, string s, net.minecraft.src.NetHandler
-             nethandler)
+        public NetworkManager(Socket socket, string s, net.minecraft.src.NetHandler nethandler)
         {
             // Referenced classes of package net.minecraft.src:
             //            NetworkReaderThread, NetworkWriterThread, Packet, NetHandler, 
@@ -37,8 +36,8 @@ namespace net.minecraft.src
             {
                 //socket.SetSoTimeout(30000);
                 //socket.SetTrafficClass(24);
-                socket.ReceiveTimeout = 3000;
-                socket.SendTimeout = 3000;
+                socket.ReceiveTimeout = 30000;
+                socket.SendTimeout = 30000;
             }
             catch (System.Net.Sockets.SocketException socketexception)
             {
@@ -82,9 +81,9 @@ namespace net.minecraft.src
             bool flag = false;
             try
             {
-                bool t;
                 Packet ppeek;
                 bool peek;
+                bool t = false;
                 peek = dataPackets.TryPeek(out ppeek);
                 if (dataPackets.Count > 0 && peek
                     && (chunkDataSendCounter == 0 || Sharpen.Runtime.CurrentTimeMillis() - ((net.minecraft.src.Packet)ppeek).creationTimeMillis >= (long)chunkDataSendCounter))
@@ -235,10 +234,10 @@ namespace net.minecraft.src
                 timeSinceLastRead = 0;
             }
             net.minecraft.src.Packet packet;
-            for (int i = 100; readPackets.Count > 0 && i-- >= 0; packet.ProcessPacket(netHandler
-                ))
+            for (int i = 100; readPackets.Count > 0 && i >= 0; i--)
             {
-                readPackets.TryDequeue(out packet);
+                if(readPackets.TryDequeue(out packet))
+                    packet.ProcessPacket(netHandler);
                 //packet = (net.minecraft.src.Packet)readPackets.Remove(0);
             }
             Func_28138_a();
@@ -339,9 +338,9 @@ namespace net.minecraft.src
 
         private bool isRunning;
 
-        private new ConcurrentQueue<Packet> readPackets;
+        private ConcurrentQueue<Packet> readPackets;
 
-        private new ConcurrentQueue<Packet> dataPackets;
+        private ConcurrentQueue<Packet> dataPackets;
 
         private ConcurrentQueue<Packet> chunkDataPackets;
 

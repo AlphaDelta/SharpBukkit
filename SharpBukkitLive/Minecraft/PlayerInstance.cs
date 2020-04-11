@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -17,7 +18,7 @@ namespace net.minecraft.src
 			//            Packet52MultiBlockChange, Packet
 			//        super();
 			playerManager = playermanager;
-			players = new System.Collections.ArrayList();
+			players = new List<EntityPlayerMP>();
 			blocksToUpdate = new short[10];
 			numBlocksToUpdate = 0;
 			chunkX = i;
@@ -167,7 +168,7 @@ namespace net.minecraft.src
 					int i3 = (maxZ - minZ) + 1;
 					SendPacketToPlayersInInstance(new net.minecraft.src.Packet51MapChunk(j, i1, l1, j2
 						, l2, i3, worldserver));
-					System.Collections.IList list = worldserver.GetTileEntityList(j, i1, l1, j + j2, 
+					List<TileEntity> list = worldserver.GetTileEntityList(j, i1, l1, j + j2, 
 						i1 + l2, l1 + i3);
 					for (int j3 = 0; j3 < list.Count; j3++)
 					{
@@ -206,7 +207,7 @@ namespace net.minecraft.src
 			}
 		}
 
-		private System.Collections.IList players;
+		private List<EntityPlayerMP> players;
 
 		private int chunkX;
 

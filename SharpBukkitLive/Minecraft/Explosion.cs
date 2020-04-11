@@ -82,22 +82,14 @@ label0_break: ;
 				}
 			}
 			explosionSize *= 2.0F;
-			int k = net.minecraft.src.MathHelper.Floor_double(explosionX - (double)explosionSize
-				 - 1.0D);
-			int i1 = net.minecraft.src.MathHelper.Floor_double(explosionX + (double)explosionSize
-				 + 1.0D);
-			int k1 = net.minecraft.src.MathHelper.Floor_double(explosionY - (double)explosionSize
-				 - 1.0D);
-			int l1 = net.minecraft.src.MathHelper.Floor_double(explosionY + (double)explosionSize
-				 + 1.0D);
-			int i2 = net.minecraft.src.MathHelper.Floor_double(explosionZ - (double)explosionSize
-				 - 1.0D);
-			int j2 = net.minecraft.src.MathHelper.Floor_double(explosionZ + (double)explosionSize
-				 + 1.0D);
-			System.Collections.IList list = worldObj.GetEntitiesWithinAABBExcludingEntity(exploder
-				, net.minecraft.src.AxisAlignedBB.GetBoundingBoxFromPool(k, k1, i2, i1, l1, j2));
-			net.minecraft.src.Vec3D vec3d = net.minecraft.src.Vec3D.CreateVector(explosionX, 
-				explosionY, explosionZ);
+			int k = net.minecraft.src.MathHelper.Floor_double(explosionX - (double)explosionSize - 1.0D);
+			int i1 = net.minecraft.src.MathHelper.Floor_double(explosionX + (double)explosionSize + 1.0D);
+			int k1 = net.minecraft.src.MathHelper.Floor_double(explosionY - (double)explosionSize - 1.0D);
+			int l1 = net.minecraft.src.MathHelper.Floor_double(explosionY + (double)explosionSize + 1.0D);
+			int i2 = net.minecraft.src.MathHelper.Floor_double(explosionZ - (double)explosionSize - 1.0D);
+			int j2 = net.minecraft.src.MathHelper.Floor_double(explosionZ + (double)explosionSize + 1.0D);
+			List<Entity> list = worldObj.GetEntitiesWithinAABBExcludingEntity(exploder, net.minecraft.src.AxisAlignedBB.GetBoundingBoxFromPool(k, k1, i2, i1, l1, j2));
+			net.minecraft.src.Vec3D vec3d = net.minecraft.src.Vec3D.CreateVector(explosionX, explosionY, explosionZ);
 			for (int k2 = 0; k2 < list.Count; k2++)
 			{
 				net.minecraft.src.Entity entity = (net.minecraft.src.Entity)list[k2];

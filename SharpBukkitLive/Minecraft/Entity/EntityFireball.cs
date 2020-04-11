@@ -103,7 +103,7 @@ namespace net.minecraft.src
 					movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
 			}
 			net.minecraft.src.Entity entity = null;
-			System.Collections.IList list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
+			System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
 				, boundingBox.AddCoord(motionX, motionY, motionZ).Expand(1.0D, 1.0D, 1.0D));
 			double d = 0.0D;
 			for (int j = 0; j < list.Count; j++)

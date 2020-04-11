@@ -15,8 +15,8 @@ namespace net.minecraft.src
 			//            IChunkProvider, EmptyChunk, ChunkCoordIntPair, Chunk, 
 			//            IChunkLoader, World, IProgressUpdate
 			field_28062_a = new SharpBukkitLive.NullSafeDictionary<int, Chunk>();
-			field_28065_e = new System.Collections.Hashtable();
-			field_28064_f = new System.Collections.ArrayList();
+			field_28065_e = new SharpBukkitLive.NullSafeDictionary<int, Chunk>();
+			field_28064_f = new List<Chunk>();
 			field_28061_b = new net.minecraft.src.EmptyChunk(world, new byte[32768], 0, 0);
 			worldObj = world;
 			field_28066_d = ichunkloader;
@@ -25,8 +25,7 @@ namespace net.minecraft.src
 
 		public virtual bool ChunkExists(int i, int j)
 		{
-			return field_28065_e.Contains(net.minecraft.src.ChunkCoordIntPair.ChunkXZ2Int
-				(i, j));
+			return field_28065_e.ContainsKey(net.minecraft.src.ChunkCoordIntPair.ChunkXZ2Int(i, j));
 		}
 
 		public virtual net.minecraft.src.Chunk LoadChunk(int i, int j)
@@ -208,7 +207,7 @@ namespace net.minecraft.src
 					Func_28059_b(chunk);
 					Func_28060_a(chunk);
 					field_28062_a.Remove(integer);
-					field_28065_e.Remove(field_28065_e);//Sharpen.Collections.Remove(field_28065_e, integer);
+					field_28065_e.Remove(integer);//Sharpen.Collections.Remove(field_28065_e, integer);
 					field_28064_f.Remove(chunk);
 				}
 			}
@@ -232,9 +231,9 @@ namespace net.minecraft.src
 
 		private net.minecraft.src.IChunkLoader field_28066_d;
 
-		private System.Collections.IDictionary field_28065_e;
+		private Dictionary<int, Chunk> field_28065_e;
 
-		private System.Collections.IList field_28064_f;
+		private List<Chunk> field_28064_f;
 
 		private net.minecraft.src.World worldObj;
 	}

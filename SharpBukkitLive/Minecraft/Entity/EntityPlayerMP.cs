@@ -25,7 +25,7 @@ namespace net.minecraft.src
 			//            ContainerDispenser, SlotCrafting, Packet103SetSlot, Packet104WindowItems, 
 			//            Packet105UpdateProgressbar, Packet101CloseWindow, StatBase, Packet200Statistic, 
 			//            StringTranslate, Packet3Chat
-			loadedChunks = new System.Collections.ArrayList();
+			loadedChunks = new List<ChunkCoordIntPair>();
 			field_420_ah = new HashSet<ChunkCoordIntPair>();
 			lastHealth = unchecked((int)(0xfa0a1f01));
 			ticksOfInvuln = 60;
@@ -180,7 +180,7 @@ namespace net.minecraft.src
 						loadedChunks.Remove(chunkcoordintpair);
 						playerNetServerHandler.SendPacket(new net.minecraft.src.Packet51MapChunk(chunkcoordintpair
 							.chunkXPos * 16, 0, chunkcoordintpair.chunkZPos * 16, 16, 128, 16, worldserver));
-						System.Collections.IList list = worldserver.GetTileEntityList(chunkcoordintpair.chunkXPos
+						System.Collections.Generic.List<TileEntity> list = worldserver.GetTileEntityList(chunkcoordintpair.chunkXPos
 							 * 16, 0, chunkcoordintpair.chunkZPos * 16, chunkcoordintpair.chunkXPos * 16 + 16
 							, 128, chunkcoordintpair.chunkZPos * 16 + 16);
 						for (int j = 0; j < list.Count; j++)
@@ -414,7 +414,7 @@ namespace net.minecraft.src
 
 		public virtual void Func_28017_a(net.minecraft.src.Container container)
 		{
-			UpdateCraftingInventory(container, container.Func_28127_b());
+			UpdateCraftingInventory(container, container.GetItemStacks());
 		}
 
 		public virtual void UpdateCraftingInventory(net.minecraft.src.Container container
@@ -532,7 +532,7 @@ namespace net.minecraft.src
 
 		public double field_9154_e;
 
-		public System.Collections.IList loadedChunks;
+		public System.Collections.Generic.List<ChunkCoordIntPair> loadedChunks;
 
 		public HashSet<ChunkCoordIntPair> field_420_ah;
 

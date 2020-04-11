@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -177,8 +178,7 @@ namespace net.minecraft.src
 				(yCoord).Append(", ").Append(zCoord).Append(")").ToString();
 		}
 
-		private static System.Collections.IList vectorList = new System.Collections.ArrayList
-			();
+		private static List<Vec3D> vectorList = new List<Vec3D>();
 
 		private static int nextVector = 0;
 

@@ -20,7 +20,7 @@ namespace net.minecraft.src
             //            EntityPlayer, ChunkCoordinates, Packet70Bed, Packet9Respawn, 
             //            Teleporter, Packet3Chat, Packet4UpdateTime, Packet, 
             //            TileEntity
-            playerEntities = new System.Collections.ArrayList();
+            playerEntities = new List<EntityPlayerMP>();
             bannedPlayers = new HashSet<string>();
             bannedIPs = new HashSet<string>();
             ops = new HashSet<string>();
@@ -704,7 +704,7 @@ namespace net.minecraft.src
         public static Logger logger = Logger.GetLogger();
         //public static java.util.logging.Logger logger = java.util.logging.Logger.GetLogger("Minecraft");
 
-        public System.Collections.IList playerEntities;
+        public List<EntityPlayerMP> playerEntities;
 
         private net.minecraft.server.MinecraftServer mcServer;
 

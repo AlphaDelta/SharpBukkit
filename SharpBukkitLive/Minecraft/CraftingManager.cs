@@ -242,10 +242,9 @@ namespace net.minecraft.src
 			recipes.Add(new net.minecraft.src.ShapedRecipes(j, k, aitemstack, itemstack));
 		}
 
-		internal virtual void AddShapelessRecipe(net.minecraft.src.ItemStack itemstack, object
-			[] aobj)
+		internal virtual void AddShapelessRecipe(net.minecraft.src.ItemStack itemstack, object[] aobj)
 		{
-			System.Collections.ArrayList arraylist = new System.Collections.ArrayList();
+			List<ItemStack> arraylist = new List<ItemStack>();
 			object[] aobj1 = aobj;
 			int i = aobj1.Length;
 			for (int j = 0; j < i; j++)
@@ -287,7 +286,7 @@ namespace net.minecraft.src
 			return null;
 		}
 
-		public virtual System.Collections.IList GetRecipeList()
+		public virtual List<IRecipe> GetRecipeList()
 		{
 			return recipes;
 		}

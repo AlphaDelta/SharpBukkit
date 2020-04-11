@@ -141,7 +141,7 @@ namespace net.minecraft.src
 				if (playerToAttack == null && !GetGotPath() && !Func_25030_y() && worldObj.rand.NextInt
 					(100) == 0)
 				{
-					System.Collections.IList list = worldObj.GetEntitiesWithinAABB(Sharpen.Runtime.GetClassForType
+					System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABB(Sharpen.Runtime.GetClassForType
 						(typeof(net.minecraft.src.EntitySheep)), net.minecraft.src.AxisAlignedBB.GetBoundingBoxFromPool
 						(posX, posY, posZ, posX + 1.0D, posY + 1.0D, posZ + 1.0D).Expand(16D, 4D, 16D));
 					if (list.Count > 0)
@@ -333,7 +333,7 @@ namespace net.minecraft.src
 					}
 					if (entity is net.minecraft.src.EntityLiving)
 					{
-						System.Collections.IList list = worldObj.GetEntitiesWithinAABB(Sharpen.Runtime.GetClassForType
+						System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABB(Sharpen.Runtime.GetClassForType
 							(typeof(net.minecraft.src.EntityWolf)), net.minecraft.src.AxisAlignedBB.GetBoundingBoxFromPool
 							(posX, posY, posZ, posX + 1.0D, posY + 1.0D, posZ + 1.0D).Expand(16D, 4D, 16D));
 						System.Collections.IEnumerator iterator = list.GetEnumerator();

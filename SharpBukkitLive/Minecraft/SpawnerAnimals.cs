@@ -207,8 +207,7 @@ namespace net.minecraft.src
             }
         }
 
-        public static bool PerformSleepSpawning(net.minecraft.src.World world, System.Collections.IList
-             list)
+        public static bool PerformSleepSpawning(net.minecraft.src.World world, List<EntityPlayer> list)
         {
             bool flag = false;
             net.minecraft.src.Pathfinder pathfinder = new net.minecraft.src.Pathfinder(world);

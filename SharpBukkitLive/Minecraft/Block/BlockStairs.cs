@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -43,9 +44,7 @@ namespace net.minecraft.src
 			return false;
 		}
 
-		public override void GetCollidingBoundingBoxes(net.minecraft.src.World world, int
-			 i, int j, int k, net.minecraft.src.AxisAlignedBB axisalignedbb, System.Collections.ArrayList
-			 arraylist)
+		public override void GetCollidingBoundingBoxes(net.minecraft.src.World world, int i, int j, int k, net.minecraft.src.AxisAlignedBB axisalignedbb, List<AxisAlignedBB> arraylist)
 		{
 			int l = world.GetBlockMetadata(i, j, k);
 			if (l == 0)

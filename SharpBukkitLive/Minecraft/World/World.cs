@@ -29,15 +29,15 @@ namespace net.minecraft.src
              worldprovider)
         {
             scheduledUpdatesAreImmediate = false;
-            field_821_y = new System.Collections.ArrayList();
+            field_821_y = new List<MetadataChunkBlock>();
             loadedEntityList = new List<Entity>();
             unloadedEntityList = new List<Entity>();
             scheduledTickTreeSet = new SortedSet<NextTickListEntry>();
             scheduledTickSet = new HashSet<NextTickListEntry>();
             loadedTileEntityList = new List<TileEntity>();
             field_20912_E = new List<TileEntity>();
-            playerEntities = new System.Collections.ArrayList();
-            lightningEntities = new System.Collections.ArrayList();
+            playerEntities = new List<EntityPlayer>();
+            lightningEntities = new List<Entity>();
             field_6159_E = unchecked((long)(0xffffffL));
             skylightSubtracted = 0;
             distHashCounter = (new SharpBukkitLive.SharpBukkit.SharpRandom()).NextInt();
@@ -48,8 +48,8 @@ namespace net.minecraft.src
             autosavePeriod = 40;
             rand = new SharpBukkitLive.SharpBukkit.SharpRandom();
             isNewWorld = false;
-            worldAccesses = new System.Collections.ArrayList();
-            field_9207_I = new System.Collections.ArrayList();
+            worldAccesses = new List<IWorldAccess>();
+            field_9207_I = new List<AxisAlignedBB>();
             field_4265_J = 0;
             spawnHostileMobs = true;
             spawnPeacefulMobs = true;
@@ -1023,8 +1023,7 @@ namespace net.minecraft.src
             worldAccesses.Add(iworldaccess);
         }
 
-        public virtual System.Collections.IList GetCollidingBoundingBoxes(net.minecraft.src.Entity
-             entity, net.minecraft.src.AxisAlignedBB axisalignedbb)
+        public virtual List<AxisAlignedBB> GetCollidingBoundingBoxes(net.minecraft.src.Entity entity, net.minecraft.src.AxisAlignedBB axisalignedbb)
         {
             field_9207_I.Clear();
             int i = net.minecraft.src.MathHelper.Floor_double(axisalignedbb.minX);
@@ -1053,8 +1052,7 @@ namespace net.minecraft.src
                 }
             }
             double d = 0.25D;
-            System.Collections.IList list = GetEntitiesWithinAABBExcludingEntity(entity, axisalignedbb
-                .Expand(d, d, d));
+            List<Entity> list = GetEntitiesWithinAABBExcludingEntity(entity, axisalignedbb.Expand(d, d, d));
             for (int j2 = 0; j2 < list.Count; j2++)
             {
                 net.minecraft.src.AxisAlignedBB axisalignedbb1 = ((net.minecraft.src.Entity)list[
@@ -1185,7 +1183,7 @@ namespace net.minecraft.src
                 entity.OnUpdate();
                 if (entity.isDead)
                 {
-                    lightningEntities.Remove(i--);
+                    lightningEntities.RemoveAt(i--);
                 }
             }
             loadedEntityList.RemoveAll(unloadedEntityList);
@@ -1398,8 +1396,7 @@ namespace net.minecraft.src
         public virtual bool CheckIfAABBIsClear(net.minecraft.src.AxisAlignedBB axisalignedbb
             )
         {
-            System.Collections.IList list = GetEntitiesWithinAABBExcludingEntity(null, axisalignedbb
-                );
+            List<Entity> list = GetEntitiesWithinAABBExcludingEntity(null, axisalignedbb);
             for (int i = 0; i < list.Count; i++)
             {
                 net.minecraft.src.Entity entity = (net.minecraft.src.Entity)list[i];
@@ -2238,7 +2235,7 @@ namespace net.minecraft.src
             return field_778_L;
         }
 
-        public virtual System.Collections.IList GetEntitiesWithinAABB(System.Type class1
+        public virtual List<Entity> GetEntitiesWithinAABB(System.Type class1
             , net.minecraft.src.AxisAlignedBB axisalignedbb)
         {
             int i = net.minecraft.src.MathHelper.Floor_double((axisalignedbb.minX - 2D) / 16D
@@ -2249,7 +2246,7 @@ namespace net.minecraft.src
                 );
             int l = net.minecraft.src.MathHelper.Floor_double((axisalignedbb.maxZ + 2D) / 16D
                 );
-            System.Collections.ArrayList arraylist = new System.Collections.ArrayList();
+            List<Entity> arraylist = new List<Entity>();
             for (int i1 = i; i1 <= j; i1++)
             {
                 for (int j1 = k; j1 <= l; j1++)
@@ -2756,7 +2753,7 @@ namespace net.minecraft.src
 
         public bool scheduledUpdatesAreImmediate;
 
-        private System.Collections.IList field_821_y;
+        private List<MetadataChunkBlock> field_821_y;
 
         public List<Entity> loadedEntityList;
 
@@ -2770,9 +2767,9 @@ namespace net.minecraft.src
 
         private List<TileEntity> field_20912_E;
 
-        public System.Collections.IList playerEntities;
+        public List<EntityPlayer> playerEntities;
 
-        public System.Collections.IList lightningEntities;
+        public List<Entity> lightningEntities;
 
         private long field_6159_E;
 
@@ -2808,7 +2805,7 @@ namespace net.minecraft.src
 
         public readonly net.minecraft.src.WorldProvider worldProvider;
 
-        protected internal System.Collections.IList worldAccesses;
+        protected internal List<IWorldAccess> worldAccesses;
 
         protected internal net.minecraft.src.IChunkProvider chunkProvider;
 
@@ -2822,7 +2819,7 @@ namespace net.minecraft.src
 
         public net.minecraft.src.MapStorage field_28105_z;
 
-        private System.Collections.ArrayList field_9207_I;
+        private List<AxisAlignedBB> field_9207_I;
 
         private bool field_31048_L;
 

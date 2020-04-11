@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -170,7 +171,7 @@ namespace net.minecraft.src
 					movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
 			}
 			net.minecraft.src.Entity entity = null;
-			System.Collections.IList list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
+			List<Entity> list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
 				, boundingBox.AddCoord(motionX, motionY, motionZ).Expand(1.0D, 1.0D, 1.0D));
 			double d = 0.0D;
 			for (int l = 0; l < list.Count; l++)

@@ -4,6 +4,7 @@
 using SharpBukkitLive.SharpBukkit;
 using Sharpen;
 using System;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -161,9 +162,7 @@ namespace net.minecraft.src
             return blockIndexInTexture;
         }
 
-        public virtual void GetCollidingBoundingBoxes(net.minecraft.src.World world, int
-            i, int j, int k, net.minecraft.src.AxisAlignedBB axisalignedbb, System.Collections.ArrayList
-             arraylist)
+        public virtual void GetCollidingBoundingBoxes(net.minecraft.src.World world, int i, int j, int k, net.minecraft.src.AxisAlignedBB axisalignedbb, List<AxisAlignedBB> arraylist)
         {
             net.minecraft.src.AxisAlignedBB axisalignedbb1 = GetCollisionBoundingBoxFromPool(
                 world, i, j, k);

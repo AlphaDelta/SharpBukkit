@@ -633,7 +633,7 @@ namespace net.minecraft.src
 				field_9140_bf--;
 				SetPosition(d, d1, d2);
 				SetRotation(rotationYaw, rotationPitch);
-				System.Collections.IList list1 = worldObj.GetCollidingBoundingBoxes(this, boundingBox
+				System.Collections.Generic.List<AxisAlignedBB> list1 = worldObj.GetCollidingBoundingBoxes(this, boundingBox
 					.GetInsetBoundingBox(0.03125D, 0.0D, 0.03125D));
 				if (list1.Count > 0)
 				{
@@ -692,7 +692,7 @@ namespace net.minecraft.src
 			moveForward *= 0.98F;
 			randomYawVelocity *= 0.9F;
 			MoveEntityWithHeading(moveStrafing, moveForward);
-			System.Collections.IList list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
+			System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
 				, boundingBox.Expand(0.20000000298023224D, 0.0D, 0.20000000298023224D));
 			if (list != null && list.Count > 0)
 			{

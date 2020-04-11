@@ -9,13 +9,10 @@ namespace net.minecraft.src
 	{
 		// Referenced classes of package net.minecraft.src:
 		//            Container, ItemStack
-		void UpdateCraftingInventory(net.minecraft.src.Container container, System.Collections.IList
-			 list);
+		void UpdateCraftingInventory(net.minecraft.src.Container container, System.Collections.IList list);
 
-		void UpdateCraftingInventorySlot(net.minecraft.src.Container container, int i, net.minecraft.src.ItemStack
-			 itemstack);
+		void UpdateCraftingInventorySlot(net.minecraft.src.Container container, int i, net.minecraft.src.ItemStack itemstack);
 
-		void UpdateCraftingInventoryInfo(net.minecraft.src.Container container, int i, int
-			 j);
+		void UpdateCraftingInventoryInfo(net.minecraft.src.Container container, int i, int j);
 	}
 }

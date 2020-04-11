@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -12,9 +13,9 @@ namespace net.minecraft.src
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            PlayerHash, PlayerInstance, EntityPlayerMP, WorldServer
-			players = new System.Collections.ArrayList();
+			players = new List<EntityPlayerMP>();
 			playerInstances = new net.minecraft.src.PlayerHash();
-			playerInstancesToUpdate = new System.Collections.ArrayList();
+			playerInstancesToUpdate = new List<PlayerInstance>();
 			if (j > 15)
 			{
 				throw new System.ArgumentException("Too big view radius!");
@@ -190,17 +191,16 @@ namespace net.minecraft.src
 			return playermanager.playerInstances;
 		}
 
-		internal static System.Collections.IList GetPlayerInstancesToUpdate(net.minecraft.src.PlayerManager
-			 playermanager)
+		internal static System.Collections.IList GetPlayerInstancesToUpdate(net.minecraft.src.PlayerManager playermanager)
 		{
 			return playermanager.playerInstancesToUpdate;
 		}
 
-		public System.Collections.IList players;
+		public List<EntityPlayerMP> players;
 
 		private net.minecraft.src.PlayerHash playerInstances;
 
-		private System.Collections.IList playerInstancesToUpdate;
+		private List<PlayerInstance> playerInstancesToUpdate;
 
 		private net.minecraft.server.MinecraftServer mcServer;
 

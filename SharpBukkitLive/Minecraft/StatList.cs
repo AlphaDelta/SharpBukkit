@@ -192,20 +192,11 @@ namespace net.minecraft.src
 			}
 		}
 
-		protected internal static System.Collections.IDictionary field_25104_C = new System.Collections.Hashtable
-			();
-
-		public static System.Collections.IList field_25123_a = new System.Collections.ArrayList
-			();
-
-		public static System.Collections.IList field_25122_b = new System.Collections.ArrayList
-			();
-
-		public static System.Collections.IList field_25121_c = new System.Collections.ArrayList
-			();
-
-		public static System.Collections.IList field_25120_d = new System.Collections.ArrayList
-			();
+		protected internal static System.Collections.IDictionary field_25104_C = new System.Collections.Hashtable();
+		public static List<StatBase> field_25123_a = new List<StatBase>();
+		public static List<StatBase> field_25122_b = new List<StatBase>();
+		public static List<StatBase> field_25121_c = new List<StatBase>();
+		public static List<StatBase> field_25120_d = new List<StatBase>();
 
 		public static net.minecraft.src.StatBase field_25119_e = (new net.minecraft.src.StatBasic
 			(1000, net.minecraft.src.StatCollector.TranslateToLocal("stat.startGame"))).Func_27052_e
@@ -228,23 +219,14 @@ namespace net.minecraft.src
 			().Func_27053_d();
 
 		public static net.minecraft.src.StatBase field_25114_j;
-
 		public static net.minecraft.src.StatBase field_25113_k;
-
 		public static net.minecraft.src.StatBase field_25112_l;
-
 		public static net.minecraft.src.StatBase field_25111_m;
-
 		public static net.minecraft.src.StatBase field_25110_n;
-
 		public static net.minecraft.src.StatBase field_25109_o;
-
 		public static net.minecraft.src.StatBase field_25108_p;
-
 		public static net.minecraft.src.StatBase field_27095_r;
-
 		public static net.minecraft.src.StatBase field_27094_s;
-
 		public static net.minecraft.src.StatBase field_27093_t;
 
 		public static net.minecraft.src.StatBase field_25106_q = (new net.minecraft.src.StatBasic

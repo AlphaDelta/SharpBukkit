@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -77,8 +78,7 @@ namespace net.minecraft.src
         }
 
         /// <exception cref="System.IO.IOException"/>
-        public static void WriteObjectsInListToStream(System.Collections.IList list, java.io.DataOutputStream
-             dataoutputstream)
+        public static void WriteObjectsInListToStream(List<WatchableObject> list, java.io.DataOutputStream dataoutputstream)
         {
             if (list != null)
             {
@@ -92,9 +92,9 @@ namespace net.minecraft.src
             dataoutputstream.WriteByte(127);
         }
 
-        public virtual System.Collections.ArrayList GetChangedObjects()
+        public virtual List<WatchableObject> GetChangedObjects()
         {
-            System.Collections.ArrayList arraylist = null;
+            List<WatchableObject> arraylist = null;
             if (objectChanged)
             {
                 System.Collections.IEnumerator iterator = watchedObjects.Values.GetEnumerator();
@@ -111,7 +111,7 @@ namespace net.minecraft.src
                         watchableobject.SetWatching(false);
                         if (arraylist == null)
                         {
-                            arraylist = new System.Collections.ArrayList();
+                            arraylist = new List<WatchableObject>();
                         }
                         arraylist.Add(watchableobject);
                     }
@@ -136,8 +136,7 @@ namespace net.minecraft.src
         }
 
         /// <exception cref="System.IO.IOException"/>
-        private static void WriteWatchableObject(java.io.DataOutputStream dataoutputstream
-            , net.minecraft.src.WatchableObject watchableobject)
+        private static void WriteWatchableObject(java.io.DataOutputStream dataoutputstream, net.minecraft.src.WatchableObject watchableobject)
         {
             int i = (watchableobject.GetObjectType() << 5 | watchableobject.GetDataValueId()
                 & unchecked((int)(0x1f))) & unchecked((int)(0xff));
@@ -205,16 +204,16 @@ namespace net.minecraft.src
         }
 
         /// <exception cref="System.IO.IOException"/>
-        public static System.Collections.IList ReadWatchableObjects(java.io.DataInputStream
+        public static List<WatchableObject> ReadWatchableObjects(java.io.DataInputStream
              datainputstream)
         {
-            System.Collections.ArrayList arraylist = null;
+            List<WatchableObject> arraylist = null;
             for (byte byte0 = datainputstream.ReadByte(); byte0 != 127; byte0 = datainputstream
                 .ReadByte())
             {
                 if (arraylist == null)
                 {
-                    arraylist = new System.Collections.ArrayList();
+                    arraylist = new List<WatchableObject>();
                 }
                 int i = (byte0 & unchecked((int)(0xe0))) >> 5;
                 int j = byte0 & unchecked((int)(0x1f));

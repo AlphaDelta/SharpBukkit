@@ -1,6 +1,7 @@
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
+using SharpBukkitLive;
 using Sharpen;
 using System.Collections.Generic;
 
@@ -16,8 +17,8 @@ namespace net.minecraft.src
 			//            ChunkCoordinates, Chunk, IChunkLoader, IProgressUpdate
 			field_725_a = new HashSet<int>();
 			chunkLoadOverride = false;
-			id2ChunkMap = new System.Collections.Hashtable();
-			field_727_f = new System.Collections.ArrayList();
+			id2ChunkMap = new NullSafeDictionary<int, Chunk>();
+			field_727_f = new List<Chunk>();
 			dummyChunk = new net.minecraft.src.EmptyChunk(worldserver, new byte[32768], 0, 0);
 			world = worldserver;
 			field_729_d = ichunkloader;
@@ -26,7 +27,7 @@ namespace net.minecraft.src
 
 		public virtual bool ChunkExists(int i, int j)
 		{
-			return id2ChunkMap.Contains(net.minecraft.src.ChunkCoordIntPair.ChunkXZ2Int(i, j));
+			return id2ChunkMap.ContainsKey(net.minecraft.src.ChunkCoordIntPair.ChunkXZ2Int(i, j));
 		}
 
 		public virtual void Func_374_c(int i, int j)
@@ -256,9 +257,9 @@ namespace net.minecraft.src
 
 		public bool chunkLoadOverride;
 
-		private System.Collections.IDictionary id2ChunkMap;
+		private NullSafeDictionary<int, Chunk> id2ChunkMap;
 
-		private System.Collections.IList field_727_f;
+		private List<Chunk> field_727_f;
 
 		private net.minecraft.src.WorldServer world;
 	}

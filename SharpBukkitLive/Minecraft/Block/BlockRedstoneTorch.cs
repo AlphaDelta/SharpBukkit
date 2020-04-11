@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -144,7 +145,7 @@ namespace net.minecraft.src
 		{
 			bool flag = Func_30003_g(world, i, j, k);
 			for (; torchUpdates.Count > 0 && world.GetWorldTime() - ((net.minecraft.src.RedstoneUpdateInfo
-				)torchUpdates[0]).updateTime > 100L; torchUpdates.Remove(0))
+				)torchUpdates[0]).updateTime > 100L; torchUpdates.RemoveAt(0))
 			{
 			}
 			if (torchActive)
@@ -209,7 +210,6 @@ namespace net.minecraft.src
 
 		private bool torchActive;
 
-		private static System.Collections.IList torchUpdates = new System.Collections.ArrayList
-			();
+		private static List<RedstoneUpdateInfo> torchUpdates = new List<RedstoneUpdateInfo>();
 	}
 }

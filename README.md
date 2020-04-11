@@ -8,4 +8,3 @@ SharpBukkit is currently **broken**:
 
 * Socket & threading issues
   * Cannot complete Packet2Handshake with client
-  * Socket closing spams console with exception messages

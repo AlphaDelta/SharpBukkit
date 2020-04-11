@@ -3,6 +3,7 @@
 // Decompiler options: packimports(3) braces deadcode 
 using SharpBukkitLive.SharpBukkit;
 using Sharpen;
+using System.Collections.Generic;
 using System.IO;
 
 namespace net.minecraft.src
@@ -145,8 +146,7 @@ namespace net.minecraft.src
             return null;
         }
 
-        public virtual void Func_22095_a(net.minecraft.src.WorldInfo worldinfo, System.Collections.IList
-             list)
+        public virtual void Func_22095_a(net.minecraft.src.WorldInfo worldinfo, List<EntityPlayer> list)
         {
             net.minecraft.src.NBTTagCompound nbttagcompound = worldinfo.Func_22183_a(list);
             net.minecraft.src.NBTTagCompound nbttagcompound1 = new net.minecraft.src.NBTTagCompound

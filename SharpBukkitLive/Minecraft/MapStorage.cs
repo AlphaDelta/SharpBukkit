@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 using System.IO;
 
 namespace net.minecraft.src
@@ -13,9 +14,9 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            MapDataBase, ISaveHandler, CompressedStreamTools, NBTTagCompound, 
 			//            NBTBase, NBTTagShort
-			field_28179_b = new System.Collections.Hashtable();
-			field_28182_c = new System.Collections.ArrayList();
-			field_28181_d = new System.Collections.Hashtable();
+			field_28179_b = new SharpBukkitLive.NullSafeDictionary<string, MapDataBase>();
+			field_28182_c = new List<MapDataBase>();
+			field_28181_d = new Dictionary<string, short>();
 			field_28180_a = isavehandler;
 			Func_28174_b();
 		}
@@ -74,10 +75,10 @@ namespace net.minecraft.src
 			{
 				throw new System.Exception("Can't set null data");
 			}
-			if (field_28179_b.Contains(s))
+			if (field_28179_b.ContainsKey(s))
 			{
 				var x = field_28179_b[s];
-				field_28179_b.Remove(x);
+				field_28179_b.Remove(s);
 				field_28182_c.Remove(x);
 			}
 			field_28179_b[s] = mapdatabase;
@@ -215,10 +216,10 @@ namespace net.minecraft.src
 
 		private net.minecraft.src.ISaveHandler field_28180_a;
 
-		private System.Collections.IDictionary field_28179_b;
+		private Dictionary<string, MapDataBase> field_28179_b;
 
-		private System.Collections.IList field_28182_c;
+		private List<MapDataBase> field_28182_c;
 
-		private System.Collections.IDictionary field_28181_d;
+		private Dictionary<string, short> field_28181_d;
 	}
 }

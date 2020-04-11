@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -406,8 +407,7 @@ namespace net.minecraft.src
 				(maxY).Append(", ").Append(maxZ).Append("]").ToString();
 		}
 
-		private static System.Collections.IList boundingBoxes = new System.Collections.ArrayList
-			();
+		private static List<AxisAlignedBB> boundingBoxes = new List<AxisAlignedBB>();
 
 		private static int numBoundingBoxesInUse = 0;
 

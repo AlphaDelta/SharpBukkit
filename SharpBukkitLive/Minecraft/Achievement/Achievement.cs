@@ -64,7 +64,7 @@ namespace net.minecraft.src
         public virtual net.minecraft.src.Achievement Func_27061_c()
         {
             base.Func_27053_d();
-            net.minecraft.src.AchievementList.field_25129_a.Add(this);
+            net.minecraft.src.AchievementList.AllAchievements.Add(this);
             return this;
         }
 

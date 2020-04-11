@@ -57,7 +57,7 @@ namespace net.minecraft.src
 			return trackedEntity.entityId;
 		}
 
-		public virtual void UpdatePlayerList(System.Collections.IList list)
+		public virtual void UpdatePlayerList(List<EntityPlayer> list)
 		{
 			playerEntitiesUpdated = false;
 			if (!firstUpdateDone || trackedEntity.GetDistanceSq(lastTrackedEntityPosX, lastTrackedEntityPosY
@@ -262,7 +262,7 @@ namespace net.minecraft.src
 			}
 		}
 
-		public virtual void UpdatePlayerEntities(System.Collections.IList list)
+		public virtual void UpdatePlayerEntities(List<EntityPlayer> list)
 		{
 			for (int i = 0; i < list.Count; i++)
 			{

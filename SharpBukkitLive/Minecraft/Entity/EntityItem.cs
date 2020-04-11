@@ -155,11 +155,11 @@ namespace net.minecraft.src
 			{
 				if (item.itemID == net.minecraft.src.Block.wood.blockID)
 				{
-					entityplayer.Func_27017_a(net.minecraft.src.AchievementList.field_25131_c);
+					entityplayer.Func_27017_a(net.minecraft.src.AchievementList.aCollectWood);
 				}
 				if (item.itemID == net.minecraft.src.Item.leather.shiftedIndex)
 				{
-					entityplayer.Func_27017_a(net.minecraft.src.AchievementList.field_27099_t);
+					entityplayer.Func_27017_a(net.minecraft.src.AchievementList.aKillCow);
 				}
 				worldObj.PlaySoundAtEntity(this, "random.pop", 0.2F, ((rand.NextFloat() - rand.NextFloat
 					()) * 0.7F + 1.0F) * 2.0F);

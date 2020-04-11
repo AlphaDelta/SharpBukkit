@@ -74,7 +74,7 @@ namespace net.minecraft.src
 		{
 			if (entity is net.minecraft.src.EntityPlayer)
 			{
-				System.Collections.IList list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
+				System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
 					, boundingBox.Expand(32D, 32D, 32D));
 				for (int j = 0; j < list.Count; j++)
 				{

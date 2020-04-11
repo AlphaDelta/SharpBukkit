@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -26,7 +27,7 @@ namespace net.minecraft.src
 			xPosition = i;
 			yPosition = j;
 			zPosition = k;
-			System.Collections.ArrayList arraylist = new System.Collections.ArrayList();
+			List<EnumArt> arraylist = new List<EnumArt>();
 			net.minecraft.src.EnumArt[] aenumart = net.minecraft.src.EnumArt.Values();
 			int i1 = aenumart.Length;
 			for (int j1 = 0; j1 < i1; j1++)
@@ -186,7 +187,7 @@ namespace net.minecraft.src
 					}
 				}
 			}
-			System.Collections.IList list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
+			System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
 				, boundingBox);
 			for (int l1 = 0; l1 < list.Count; l1++)
 			{

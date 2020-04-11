@@ -3,6 +3,7 @@
 // Decompiler options: packimports(3) braces deadcode 
 using SharpBukkitLive.SharpBukkit;
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -677,7 +678,7 @@ namespace net.minecraft.src
 					playerEntity.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet106Transaction
 						(packet102windowclick.window_Id, packet102windowclick.action, false));
 					playerEntity.currentCraftingInventory.SetCanCraft(playerEntity, false);
-					System.Collections.ArrayList arraylist = new System.Collections.ArrayList();
+					List<ItemStack> arraylist = new List<ItemStack>();
 					for (int i = 0; i < playerEntity.currentCraftingInventory.inventorySlots.Count; i
 						++)
 					{

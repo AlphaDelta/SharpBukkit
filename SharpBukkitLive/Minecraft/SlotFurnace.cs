@@ -27,11 +27,11 @@ namespace net.minecraft.src
 			itemstack.Func_28142_b(field_27007_d.worldObj, field_27007_d);
 			if (itemstack.itemID == net.minecraft.src.Item.ingotIron.shiftedIndex)
 			{
-				field_27007_d.AddStat(net.minecraft.src.AchievementList.field_27108_k, 1);
+				field_27007_d.AddStat(net.minecraft.src.AchievementList.aAcquireIron, 1);
 			}
 			if (itemstack.itemID == net.minecraft.src.Item.fishCooked.shiftedIndex)
 			{
-				field_27007_d.AddStat(net.minecraft.src.AchievementList.field_27103_p, 1);
+				field_27007_d.AddStat(net.minecraft.src.AchievementList.aCookFish, 1);
 			}
 			base.OnPickupFromSlot(itemstack);
 		}

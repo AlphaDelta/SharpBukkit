@@ -162,8 +162,7 @@ namespace net.minecraft.src
 					(entity, i, j, flag);
 				trackedEntitySet.Add(entitytrackerentry);
 				trackedEntityHashTable.AddKey(entity.entityId, entitytrackerentry);
-				entitytrackerentry.UpdatePlayerEntities(mcServer.GetWorldManager(field_28113_e).playerEntities
-					);
+				entitytrackerentry.UpdatePlayerEntities(mcServer.GetWorldManager(field_28113_e).playerEntities);
 				return;
 			}
 		}
@@ -193,7 +192,7 @@ namespace net.minecraft.src
 
 		public virtual void UpdateTrackedEntities()
 		{
-			System.Collections.ArrayList arraylist = new System.Collections.ArrayList();
+			List<EntityPlayerMP> arraylist = new List<EntityPlayerMP>();
 			System.Collections.IEnumerator iterator = trackedEntitySet.GetEnumerator();
 			do
 			{

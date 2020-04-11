@@ -201,7 +201,7 @@ namespace net.minecraft.src
 			field_9101_aY += (f1 - field_9101_aY) * 0.8F;
 			if (health > 0)
 			{
-				System.Collections.IList list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
+				System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABBExcludingEntity(this
 					, boundingBox.Expand(1.0D, 0.0D, 1.0D));
 				if (list != null)
 				{
@@ -470,7 +470,7 @@ namespace net.minecraft.src
 			{
 				return;
 			}
-			System.Collections.IList list = worldObj.GetEntitiesWithinAABB(Sharpen.Runtime.GetClassForType
+			System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABB(Sharpen.Runtime.GetClassForType
 				(typeof(net.minecraft.src.EntityWolf)), net.minecraft.src.AxisAlignedBB.GetBoundingBoxFromPool
 				(posX, posY, posZ, posX + 1.0D, posY + 1.0D, posZ + 1.0D).Expand(16D, 4D, 16D));
 			System.Collections.IEnumerator iterator = list.GetEnumerator();
@@ -929,7 +929,7 @@ namespace net.minecraft.src
 								, net.minecraft.src.MathHelper.Floor_double(posY), net.minecraft.src.MathHelper.
 								Floor_double(posZ)) >= 1000D)
 							{
-								AddStat(net.minecraft.src.AchievementList.field_27102_q, 1);
+								AddStat(net.minecraft.src.AchievementList.aOnARail, 1);
 							}
 						}
 					}
@@ -965,7 +965,7 @@ namespace net.minecraft.src
 		{
 			if (entityliving is net.minecraft.src.EntityMob)
 			{
-				Func_27017_a(net.minecraft.src.AchievementList.field_27100_s);
+				Func_27017_a(net.minecraft.src.AchievementList.aKillEnemy);
 			}
 		}
 

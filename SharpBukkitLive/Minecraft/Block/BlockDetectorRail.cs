@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -89,7 +90,7 @@ namespace net.minecraft.src
 			bool flag = (l & 8) != 0;
 			bool flag1 = false;
 			float f = 0.125F;
-			System.Collections.IList list = world.GetEntitiesWithinAABB(Sharpen.Runtime.GetClassForType
+			List<Entity> list = world.GetEntitiesWithinAABB(Sharpen.Runtime.GetClassForType
 				(typeof(net.minecraft.src.EntityMinecart)), net.minecraft.src.AxisAlignedBB.GetBoundingBoxFromPool
 				((float)i + f, j, (float)k + f, (float)(i + 1) - f, (double)j + 0.25D, (float)(k
 				 + 1) - f));

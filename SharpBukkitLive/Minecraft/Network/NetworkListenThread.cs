@@ -3,6 +3,7 @@
 // Decompiler options: packimports(3) braces deadcode 
 using SharpBukkitLive.SharpBukkit;
 using Sharpen;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -18,8 +19,8 @@ namespace net.minecraft.src
 			//            NetworkAcceptThread, NetLoginHandler, NetworkManager, NetServerHandler
 			field_973_b = false;
 			field_977_f = 0;
-			pendingConnections = new System.Collections.ArrayList();
-			playerList = new System.Collections.ArrayList();
+			pendingConnections = new List<NetHandler>();
+			playerList = new List<NetHandler>();
 			mcServer = minecraftserver;
 			if(inetaddress != null)
 				serverSocket = new TcpListener(inetaddress, i);//new java.net.ServerSocket(i, 0, inetaddress);
@@ -73,7 +74,7 @@ namespace net.minecraft.src
 				}
 				if (netloginhandler.finishedProcessing)
 				{
-					pendingConnections.Remove(i--);
+					pendingConnections.RemoveAt(i--);
 				}
 				netloginhandler.netManager.Func_28138_a();
 			}
@@ -93,7 +94,7 @@ namespace net.minecraft.src
 				}
 				if (netserverhandler.connectionClosed)
 				{
-					playerList.Remove(j--);
+					playerList.RemoveAt(j--);
 				}
 				netserverhandler.netManager.Func_28138_a();
 			}
@@ -126,9 +127,9 @@ namespace net.minecraft.src
 
 		private int field_977_f;
 
-		private System.Collections.ArrayList pendingConnections;
+		private List<NetHandler> pendingConnections;
 
-		private System.Collections.ArrayList playerList;
+		private List<NetHandler> playerList;
 
 		public net.minecraft.server.MinecraftServer mcServer;
 	}

@@ -546,8 +546,7 @@ namespace net.minecraft.src
 			isModified = true;
 		}
 
-		public virtual void GetEntitiesWithinAABBForEntity(net.minecraft.src.Entity entity
-			, net.minecraft.src.AxisAlignedBB axisalignedbb, System.Collections.IList list)
+		public virtual void GetEntitiesWithinAABBForEntity(net.minecraft.src.Entity entity, net.minecraft.src.AxisAlignedBB axisalignedbb, List<Entity> list)
 		{
 			int i = net.minecraft.src.MathHelper.Floor_double((axisalignedbb.minY - 2D) / 16D
 				);
@@ -563,7 +562,7 @@ namespace net.minecraft.src
 			}
 			for (int k = i; k <= j; k++)
 			{
-				System.Collections.IList list1 = entities[k];
+				List<Entity> list1 = entities[k];
 				for (int l = 0; l < list1.Count; l++)
 				{
 					net.minecraft.src.Entity entity1 = (net.minecraft.src.Entity)list1[l];
@@ -575,8 +574,7 @@ namespace net.minecraft.src
 			}
 		}
 
-		public virtual void GetEntitiesOfTypeWithinAAAB(Type class1, net.minecraft.src.AxisAlignedBB
-			 axisalignedbb, System.Collections.IList list)
+		public virtual void GetEntitiesOfTypeWithinAAAB(Type class1, net.minecraft.src.AxisAlignedBB axisalignedbb, List<Entity> list)
 		{
 			int i = net.minecraft.src.MathHelper.Floor_double((axisalignedbb.minY - 2D) / 16D
 				);
@@ -592,7 +590,7 @@ namespace net.minecraft.src
 			}
 			for (int k = i; k <= j; k++)
 			{
-				System.Collections.IList list1 = entities[k];
+				List<Entity> list1 = entities[k];
 				for (int l = 0; l < list1.Count; l++)
 				{
 					net.minecraft.src.Entity entity = (net.minecraft.src.Entity)list1[l];

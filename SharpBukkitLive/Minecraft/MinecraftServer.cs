@@ -1,4 +1,5 @@
-﻿using SharpBukkitLive.SharpBukkit;
+﻿using net.minecraft.src;
+using SharpBukkitLive.SharpBukkit;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace net.minecraft.server
 			serverRunning = true;
 			serverStopped = false;
 			deathTime = 0;
-			field_9010_p = new System.Collections.ArrayList();
+			field_9010_p = new List<IUpdatePlayerListBox>();
 			commands = ArrayList.Synchronized(new System.Collections.ArrayList());
 			entityTracker = new net.minecraft.src.EntityTracker[2];
 			//new net.minecraft.src.ThreadSleepForever(this);
@@ -511,7 +512,7 @@ namespace net.minecraft.server
 
 		public int percentDone;
 
-		private System.Collections.IList field_9010_p;
+		private List<IUpdatePlayerListBox> field_9010_p;
 
 		private IList commands;//List<net.minecraft.src.ServerCommand> commands;
 

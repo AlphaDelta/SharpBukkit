@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -23,16 +24,14 @@ namespace net.minecraft.src
 		public override void ReadPacketData(java.io.DataInputStream datainputstream)
 		{
 			entityId = datainputstream.ReadInt();
-			field_21018_b = net.minecraft.src.DataWatcher.ReadWatchableObjects(datainputstream
-				);
+			field_21018_b = net.minecraft.src.DataWatcher.ReadWatchableObjects(datainputstream);
 		}
 
 		/// <exception cref="System.IO.IOException"/>
 		public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
 		{
 			dataoutputstream.WriteInt(entityId);
-			net.minecraft.src.DataWatcher.WriteObjectsInListToStream(field_21018_b, dataoutputstream
-				);
+			net.minecraft.src.DataWatcher.WriteObjectsInListToStream(field_21018_b, dataoutputstream);
 		}
 
 		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
@@ -47,6 +46,6 @@ namespace net.minecraft.src
 
 		public int entityId;
 
-		private System.Collections.IList field_21018_b;
+		private List<WatchableObject> field_21018_b;
 	}
 }

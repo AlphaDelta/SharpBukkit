@@ -13,11 +13,11 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            Slot, ICrafting, ItemStack, EntityPlayer, 
 			//            InventoryPlayer, IInventory
-			inventoryItemStacks = new System.Collections.ArrayList();
-			inventorySlots = new System.Collections.ArrayList();
+			inventoryItemStacks = new List<ItemStack>();
+			inventorySlots = new List<Slot>();
 			windowId = 0;
 			field_20132_a = 0;
-			crafters = new System.Collections.ArrayList();
+			crafters = new List<ICrafting>();
 			field_20131_b = new HashSet<EntityPlayer>();
 		}
 
@@ -37,15 +37,15 @@ namespace net.minecraft.src
 			else
 			{
 				crafters.Add(icrafting);
-				icrafting.UpdateCraftingInventory(this, Func_28127_b());
+				icrafting.UpdateCraftingInventory(this, GetItemStacks());
 				UpdateCraftingMatrix();
 				return;
 			}
 		}
 
-		public virtual System.Collections.IList Func_28127_b()
+		public virtual List<ItemStack> GetItemStacks()
 		{
-			System.Collections.ArrayList arraylist = new System.Collections.ArrayList();
+			List<ItemStack> arraylist = new List<ItemStack>();
 			for (int i = 0; i < inventorySlots.Count; i++)
 			{
 				arraylist.Add(((net.minecraft.src.Slot)inventorySlots[i]).GetStack());
@@ -373,15 +373,15 @@ namespace net.minecraft.src
 			}
 		}
 
-		public System.Collections.IList inventoryItemStacks;
+		public List<ItemStack> inventoryItemStacks;
 
-		public System.Collections.IList inventorySlots;
+		public List<Slot> inventorySlots;
 
 		public int windowId;
 
 		private short field_20132_a;
 
-		protected internal System.Collections.IList crafters;
+		protected internal List<ICrafting> crafters;
 
 		private HashSet<EntityPlayer> field_20131_b;
 	}

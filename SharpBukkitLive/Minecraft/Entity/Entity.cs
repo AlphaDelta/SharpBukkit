@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -218,10 +219,8 @@ namespace net.minecraft.src
 
 		public virtual bool IsOffsetPositionInLiquid(double d, double d1, double d2)
 		{
-			net.minecraft.src.AxisAlignedBB axisalignedbb = boundingBox.GetOffsetBoundingBox(
-				d, d1, d2);
-			System.Collections.IList list = worldObj.GetCollidingBoundingBoxes(this, axisalignedbb
-				);
+			net.minecraft.src.AxisAlignedBB axisalignedbb = boundingBox.GetOffsetBoundingBox(d, d1, d2);
+			List<AxisAlignedBB> list = worldObj.GetCollidingBoundingBoxes(this, axisalignedbb);
 			if (list.Count > 0)
 			{
 				return false;
@@ -295,7 +294,7 @@ namespace net.minecraft.src
 					}
 				}
 			}
-			System.Collections.IList list = worldObj.GetCollidingBoundingBoxes(this, boundingBox
+			List<AxisAlignedBB> list = worldObj.GetCollidingBoundingBoxes(this, boundingBox
 				.AddCoord(d, d1, d2));
 			for (int i = 0; i < list.Count; i++)
 			{
@@ -336,7 +335,7 @@ namespace net.minecraft.src
 				d2 = d7;
 				net.minecraft.src.AxisAlignedBB axisalignedbb1 = boundingBox.Copy();
 				boundingBox.SetBB(axisalignedbb);
-				System.Collections.IList list1 = worldObj.GetCollidingBoundingBoxes(this, boundingBox
+				List<AxisAlignedBB> list1 = worldObj.GetCollidingBoundingBoxes(this, boundingBox
 					.AddCoord(d, d1, d2));
 				for (int j2 = 0; j2 < list1.Count; j2++)
 				{

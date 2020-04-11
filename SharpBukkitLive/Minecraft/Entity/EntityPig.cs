@@ -120,7 +120,7 @@ namespace net.minecraft.src
 			if (f > 5F && (riddenByEntity is net.minecraft.src.EntityPlayer))
 			{
 				((net.minecraft.src.EntityPlayer)riddenByEntity).Func_27017_a(net.minecraft.src.AchievementList
-					.field_27098_u);
+					.aFlyPig);
 			}
 		}
 	}

@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
@@ -53,10 +54,10 @@ namespace net.minecraft.src
 			return chunkProviderServer;
 		}
 
-		public virtual System.Collections.IList GetTileEntityList(int i, int j, int k, int
+		public virtual List<TileEntity> GetTileEntityList(int i, int j, int k, int
 			 l, int i1, int j1)
 		{
-			System.Collections.ArrayList arraylist = new System.Collections.ArrayList();
+			List<TileEntity> arraylist = new List<TileEntity>();
 			for (int k1 = 0; k1 < loadedTileEntityList.Count; k1++)
 			{
 				net.minecraft.src.TileEntity tileentity = (net.minecraft.src.TileEntity)loadedTileEntityList
