@@ -413,27 +413,27 @@ namespace net.minecraft.server
 		/// <summary>
 		/// ENTRY POINT
 		/// </summary>
-		public static void Main(string[] args)
-		{
-			net.minecraft.src.StatList.Func_27092_a();
-			try
-			{
-				net.minecraft.server.MinecraftServer minecraftserver = new net.minecraft.server.MinecraftServer
-					();
-				//if (!java.awt.GraphicsEnvironment.IsHeadless() && (args.Length <= 0 || !args[0].Equals("nogui")))
-				//{
-				//	net.minecraft.src.ServerGUI.InitGui(minecraftserver);
-				//}
-				Thread t = new Thread(() => { (new net.minecraft.src.ThreadServerApplication("Server thread", minecraftserver)).Run(); });
-				t.Start();
-			}
-			catch (System.Exception exception)
-			{
-				logger.Severe("Failed to start the minecraft server");
-				logger.Log(exception.ToString());
-				//logger.Log(java.util.logging.Level.SEVERE, "Failed to start the minecraft server", exception);
-			}
-		}
+		//public static void Main(string[] args)
+		//{
+		//	net.minecraft.src.StatList.Func_27092_a();
+		//	try
+		//	{
+		//		net.minecraft.server.MinecraftServer minecraftserver = new net.minecraft.server.MinecraftServer
+		//			();
+		//		//if (!java.awt.GraphicsEnvironment.IsHeadless() && (args.Length <= 0 || !args[0].Equals("nogui")))
+		//		//{
+		//		//	net.minecraft.src.ServerGUI.InitGui(minecraftserver);
+		//		//}
+		//		Thread t = new Thread(() => { (new net.minecraft.src.ThreadServerApplication("Server thread", minecraftserver)).Run(); });
+		//		t.Start();
+		//	}
+		//	catch (System.Exception exception)
+		//	{
+		//		logger.Severe("Failed to start the minecraft server");
+		//		logger.Log(exception.ToString());
+		//		//logger.Log(java.util.logging.Level.SEVERE, "Failed to start the minecraft server", exception);
+		//	}
+		//}
 
 		public virtual string GetFile(string s)
 		{
