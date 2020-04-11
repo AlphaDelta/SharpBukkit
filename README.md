@@ -6,5 +6,5 @@ SharpBukkit is a server software for Minecraft b1.7.3 translated to C# from the 
 
 SharpBukkit is currently **broken**:
 
-* Socket & threading issues
-  * Cannot complete Packet2Handshake with client
+* ThreadInterruptionException
+* Corrupted world when playing
