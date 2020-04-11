@@ -289,24 +289,26 @@ namespace net.minecraft.server
 				}
 			}
 			//TODO: Uncomment
-			//catch (System.Exception throwable1)
-			//{
-			//	Sharpen.Runtime.PrintStackTrace(throwable1);
-			//	logger.Severe("Unexpected exception");
-			//	//logger.Log(java.util.logging.Level.SEVERE, "Unexpected exception", throwable1);
-			//	while (serverRunning)
-			//	{
-			//		CommandLineParser();
-			//		try
-			//		{
-			//			Thread.Sleep(10);
-			//		}
-			//		catch (System.Exception interruptedexception1)
-			//		{
-			//			Sharpen.Runtime.PrintStackTrace(interruptedexception1);
-			//		}
-			//	}
-			//}
+#if !DEBUG
+			catch (System.Exception throwable1)
+			{
+				Sharpen.Runtime.PrintStackTrace(throwable1);
+				logger.Severe("Unexpected exception");
+				//logger.Log(java.util.logging.Level.SEVERE, "Unexpected exception", throwable1);
+				while (serverRunning)
+				{
+					CommandLineParser();
+					try
+					{
+						Thread.Sleep(10);
+					}
+					catch (System.Exception interruptedexception1)
+					{
+						Sharpen.Runtime.PrintStackTrace(interruptedexception1);
+					}
+				}
+			}
+#endif
 			finally
 			{
 				try

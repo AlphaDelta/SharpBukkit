@@ -216,8 +216,8 @@ namespace net.minecraft.src
 
         public virtual void WritePlayerData(net.minecraft.src.EntityPlayer entityplayer)
         {
-            //try
-            //{
+            try
+            {
                 net.minecraft.src.NBTTagCompound nbttagcompound = new net.minecraft.src.NBTTagCompound
                     ();
                 entityplayer.WriteToNBT(nbttagcompound);
@@ -230,12 +230,16 @@ namespace net.minecraft.src
                     File.Delete(file1);
                 }
                 File.Move(file, file1);
-            //}
-            //catch (System.Exception)
-            //{
-            //    logger.Warning((new java.lang.StringBuilder()).Append("Failed to save player data for "
-            //        ).Append(entityplayer.username).ToString());
-            //}
+            }
+#if !DEBUG
+            catch (System.Exception)
+            {
+                logger.Warning((new java.lang.StringBuilder()).Append("Failed to save player data for "
+                    ).Append(entityplayer.username).ToString());
+            }
+#else
+            finally { }
+#endif
         }
 
         public virtual void ReadPlayerData(net.minecraft.src.EntityPlayer entityplayer)
