@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System;
 
 namespace net.minecraft.src
 {
@@ -33,19 +34,22 @@ namespace net.minecraft.src
 
 		public static int Floor_float(float f)
 		{
-			int i = (int)f;
-			return f >= (float)i ? i : i - 1;
+			return (int)Math.Floor(f);
+			//int i = (int)f;
+			//return f >= (float)i ? i : i - 1;
 		}
 
 		public static int Floor_double(double d)
 		{
-			int i = (int)d;
-			return d >= (double)i ? i : i - 1;
+			return (int)Math.Floor(d);
+			//int i = (int)d;
+			//return d >= (double)i ? i : i - 1;
 		}
 
 		public static float Abs(float f)
 		{
-			return f < 0.0F ? -f : f;
+			return Math.Abs(f);
+			//return f < 0.0F ? -f : f;
 		}
 
 		public static double Abs_max(double d, double d1)

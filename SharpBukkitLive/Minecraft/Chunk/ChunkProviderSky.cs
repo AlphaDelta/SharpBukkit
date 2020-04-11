@@ -577,7 +577,7 @@ namespace net.minecraft.src
 			return false;
 		}
 
-		public virtual bool Func_364_b()
+		public virtual bool CanSave()
 		{
 			return true;
 		}

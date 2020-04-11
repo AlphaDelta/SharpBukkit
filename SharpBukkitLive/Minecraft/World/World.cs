@@ -128,10 +128,9 @@ namespace net.minecraft.src
             return GetBlockId(i, k, j);
         }
 
-        public virtual void SaveWorld(bool flag, net.minecraft.src.IProgressUpdate iprogressupdate
-            )
+        public virtual void SaveWorld(bool flag, net.minecraft.src.IProgressUpdate iprogressupdate)
         {
-            if (!chunkProvider.Func_364_b())
+            if (!chunkProvider.CanSave())
             {
                 return;
             }
@@ -1803,7 +1802,7 @@ namespace net.minecraft.src
             }
         }
 
-        public virtual bool Func_6156_d()
+        public virtual bool DoLighting()
         {
             if (field_4265_J >= 50)
             {

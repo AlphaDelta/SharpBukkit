@@ -144,12 +144,15 @@ namespace net.minecraft.server
 				net.minecraft.src.WorldServer worldserver = worldMngr[j];
 				net.minecraft.src.ChunkCoordinates chunkcoordinates = worldserver.GetSpawnPoint();
 				int k = -c;
-				do
+				//do
+				for(; k <= c && serverRunning; k += 16)
 				{
-					if (k > c || !serverRunning)
-					{
-						goto label0_continue;
-					}
+					//if (k > c || !serverRunning)
+					//{
+					//	break;
+					//	//goto label0_continue;
+					//}
+
 					for (int i1 = -c; i1 <= c && serverRunning; i1 += 16)
 					{
 						long l2 = Sharpen.Runtime.CurrentTimeMillis();
@@ -166,16 +169,16 @@ namespace net.minecraft.server
 						}
 						worldserver.chunkProviderServer.LoadChunk(chunkcoordinates.posX + k >> 4, chunkcoordinates
 							.posZ + i1 >> 4);
-						while (worldserver.Func_6156_d() && serverRunning)
+						while (worldserver.DoLighting() && serverRunning)
 						{
 						}
 					}
-					k += 16;
+					//k += 16;
 				}
-				while (true);
-				label0_continue:;
+				//while (true);
+				//label0_continue:;
 			}
-			label0_break:;
+			//label0_break:;
 			ClearCurrentTask();
 		}
 
@@ -261,6 +264,7 @@ namespace net.minecraft.server
 							while (l1 > 50L)
 							{
 								l1 -= 50L;
+								//Console.WriteLine("Tick");
 								DoTick();
 							}
 						}
@@ -283,6 +287,7 @@ namespace net.minecraft.server
 					}
 				}
 			}
+			//TODO: Uncomment
 			//catch (System.Exception throwable1)
 			//{
 			//	Sharpen.Runtime.PrintStackTrace(throwable1);
@@ -356,7 +361,7 @@ namespace net.minecraft.server
 						(worldserver.GetWorldTime()), worldserver.worldProvider.worldType);
 				}
 				worldserver.Tick();
-				while (worldserver.Func_6156_d())
+				while (worldserver.DoLighting())
 				{
 				}
 				worldserver.UpdateEntities();

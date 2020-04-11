@@ -210,14 +210,14 @@ namespace net.minecraft.src
 			}
 			byte byte1 = field_760_a[j];
 			byte byte2 = field_760_a[j + 3];
-			byte byte3;
+			sbyte byte3;
 			if (ai2[j] > 0)
 			{
 				byte3 = 1;
 			}
 			else
 			{
-				byte3 = unchecked((byte)(-1));
+				byte3 = -1;//unchecked((byte)(-1));
 			}
 			double d = (double)ai2[byte1] / (double)ai2[j];
 			double d1 = (double)ai2[byte2] / (double)ai2[j];
@@ -311,14 +311,14 @@ namespace net.minecraft.src
 			}
 			byte byte1 = field_760_a[i];
 			byte byte2 = field_760_a[i + 3];
-			byte byte3;
+			sbyte byte3;
 			if (ai2[i] > 0)
 			{
 				byte3 = 1;
 			}
 			else
 			{
-				byte3 = unchecked((byte)(-1));
+				byte3 = -1;// unchecked((byte)(-1));
 			}
 			double d = (double)ai2[byte1] / (double)ai2[i];
 			double d1 = (double)ai2[byte2] / (double)ai2[i];
@@ -326,6 +326,18 @@ namespace net.minecraft.src
 			int j = 0;
 			int k = ai2[i] + byte3;
 			//TODO: FIX
+			for(; j != k;)
+			{
+				ai3[i] = ai[i] + j;
+				ai3[byte1] = net.minecraft.src.MathHelper.Floor_double((double)ai[byte1] + (double)j * d);
+				ai3[byte2] = net.minecraft.src.MathHelper.Floor_double((double)ai[byte2] + (double)j * d1);
+				int l = worldObj.GetBlockId(ai3[0], ai3[1], ai3[2]);
+				if (l != 0 && l != 18)
+				{
+					break;
+				}
+				j += byte3;
+			}
 			//do
 			//{
 			//	if (j == k)

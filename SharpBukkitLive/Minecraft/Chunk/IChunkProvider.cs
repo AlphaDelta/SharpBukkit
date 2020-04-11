@@ -21,6 +21,6 @@ namespace net.minecraft.src
 
 		bool Func_361_a();
 
-		bool Func_364_b();
+		bool CanSave();
 	}
 }

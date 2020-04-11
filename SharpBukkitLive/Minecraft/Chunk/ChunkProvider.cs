@@ -219,7 +219,7 @@ namespace net.minecraft.src
 			return chunkGenerator.Func_361_a();
 		}
 
-		public virtual bool Func_364_b()
+		public virtual bool CanSave()
 		{
 			return true;
 		}
