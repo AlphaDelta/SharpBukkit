@@ -1,6 +1,7 @@
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
+using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 using Sharpen;
 using System.IO;
 using System.IO.Compression;
@@ -41,9 +42,10 @@ namespace net.minecraft.src
 			//}
 			using (MemoryStream ms = new MemoryStream(abyte0))
 			using (MemoryStream output = new MemoryStream())
-			using (DeflateStream ds = new DeflateStream(output, CompressionLevel.Fastest))
+			using (DeflaterOutputStream ds = new DeflaterOutputStream(output))
 			{
 				ms.CopyTo(ds);
+				ds.Flush();
 				chunk = output.ToArray();
 				chunkSize = chunk.Length;
 			}
@@ -64,9 +66,10 @@ namespace net.minecraft.src
 
 			using (MemoryStream ms = new MemoryStream(abyte0))
 			using (MemoryStream output = new MemoryStream())
-			using (DeflateStream ds = new DeflateStream(ms, CompressionMode.Decompress))
+			using (InflaterInputStream ds = new InflaterInputStream(ms))
 			{
 				ds.CopyTo(output);
+				ds.Flush();
 				chunk = output.ToArray();
 			}
 			//chunk = new byte[(xSize * ySize * zSize * 5) / 2];
