@@ -91,7 +91,7 @@ namespace net.minecraft.src
                     net.minecraft.src.Packet packet;
                     lock (sendQueueLock)
                     {
-                        t = chunkDataPackets.TryDequeue(out packet);
+                        t = dataPackets.TryDequeue(out packet);
                         //packet = (net.minecraft.src.Packet)dataPackets.(0);
                         if (t)
                             sendQueueByteLength -= packet.GetPacketSize() + 1;

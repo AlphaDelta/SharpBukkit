@@ -41,7 +41,7 @@ namespace SharpBukkitLive.SharpBukkit
 
         public long NextLong()
         {
-            return ((long)rng.Next() << 32) & (long)rng.Next();//(long)(long.MaxValue * rng.NextDouble());
+            return ((long)rng.Next() << 32) | (long)rng.Next();//(long)(long.MaxValue * rng.NextDouble());
         }
 
         public bool NextBoolean()
