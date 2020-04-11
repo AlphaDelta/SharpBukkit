@@ -41,9 +41,9 @@ namespace net.minecraft.src
 			//}
 			using (MemoryStream ms = new MemoryStream(abyte0))
 			using (MemoryStream output = new MemoryStream())
-			using (DeflateStream ds = new DeflateStream(ms, CompressionLevel.Fastest))
+			using (DeflateStream ds = new DeflateStream(output, CompressionLevel.Fastest))
 			{
-				ds.CopyTo(output);
+				ms.CopyTo(ds);
 				chunk = output.ToArray();
 				chunkSize = chunk.Length;
 			}

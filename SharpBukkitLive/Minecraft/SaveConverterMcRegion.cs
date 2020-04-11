@@ -53,7 +53,7 @@ namespace net.minecraft.src
             Func_22107_a(file1, arraylist2, arraylist.Count, i, iprogressupdate);
             net.minecraft.src.WorldInfo worldinfo = GetWorldInfo(s);
             worldinfo.SetVersion(19132);
-            net.minecraft.src.ISaveHandler isavehandler = Func_22105_a(s, false);
+            net.minecraft.src.ISaveHandler isavehandler = Func_22105_a(s, true);
             isavehandler.Func_22094_a(worldinfo);
             Func_22109_a(arraylist1, arraylist.Count + arraylist2.Count, i, iprogressupdate);
             if (File.Exists(file1))

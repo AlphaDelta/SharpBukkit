@@ -22,11 +22,11 @@ namespace net.minecraft.src
             worldFile = System.IO.Path.Combine(worldDir, "players");
             field_28112_d = System.IO.Path.Combine(worldDir, "data");
             //field_28112_d.Mkdirs();
-            Directory.CreateDirectory(System.IO.Path.GetDirectoryName(field_28112_d));
+            Directory.CreateDirectory(field_28112_d);
             if (flag)
             {
                 //worldFile.Mkdirs();
-                Directory.CreateDirectory(System.IO.Path.GetDirectoryName(worldFile));
+                Directory.CreateDirectory(worldFile);
             }
             Func_22098_f();
         }
@@ -216,26 +216,26 @@ namespace net.minecraft.src
 
         public virtual void WritePlayerData(net.minecraft.src.EntityPlayer entityplayer)
         {
-            try
-            {
+            //try
+            //{
                 net.minecraft.src.NBTTagCompound nbttagcompound = new net.minecraft.src.NBTTagCompound
                     ();
                 entityplayer.WriteToNBT(nbttagcompound);
                 string file = System.IO.Path.Combine(worldFile, "_tmp_.dat");
                 string file1 = System.IO.Path.Combine(worldFile, (new java.lang.StringBuilder()).Append(entityplayer.username).Append(".dat").ToString());
-                using (FileStream fs = File.OpenRead(file))
+                using (FileStream fs = File.Open(file, FileMode.OpenOrCreate))
                     net.minecraft.src.CompressedStreamTools.WriteGzippedCompoundToOutputStream(nbttagcompound, fs);
                 if (File.Exists(file1))
                 {
                     File.Delete(file1);
                 }
                 File.Move(file, file1);
-            }
-            catch (System.Exception)
-            {
-                logger.Warning((new java.lang.StringBuilder()).Append("Failed to save player data for "
-                    ).Append(entityplayer.username).ToString());
-            }
+            //}
+            //catch (System.Exception)
+            //{
+            //    logger.Warning((new java.lang.StringBuilder()).Append("Failed to save player data for "
+            //        ).Append(entityplayer.username).ToString());
+            //}
         }
 
         public virtual void ReadPlayerData(net.minecraft.src.EntityPlayer entityplayer)
