@@ -71,7 +71,7 @@ namespace net.minecraft.src
 			bool flag = GetItem().OnItemUse(this, entityplayer, world, i, j, k, l);
 			if (flag)
 			{
-				entityplayer.AddStat(net.minecraft.src.StatList.field_25107_A[itemID], 1);
+				entityplayer.AddStat(net.minecraft.src.StatList.StatUseItem[itemID], 1);
 			}
 			return flag;
 		}
@@ -159,7 +159,7 @@ namespace net.minecraft.src
 			{
 				if (entity is net.minecraft.src.EntityPlayer)
 				{
-					((net.minecraft.src.EntityPlayer)entity).AddStat(net.minecraft.src.StatList.field_25105_B
+					((net.minecraft.src.EntityPlayer)entity).AddStat(net.minecraft.src.StatList.StatBreakItem
 						[itemID], 1);
 				}
 				stackSize--;
@@ -178,7 +178,7 @@ namespace net.minecraft.src
 				, entityplayer);
 			if (flag)
 			{
-				entityplayer.AddStat(net.minecraft.src.StatList.field_25107_A[itemID], 1);
+				entityplayer.AddStat(net.minecraft.src.StatList.StatUseItem[itemID], 1);
 			}
 		}
 
@@ -189,7 +189,7 @@ namespace net.minecraft.src
 				l, entityplayer);
 			if (flag)
 			{
-				entityplayer.AddStat(net.minecraft.src.StatList.field_25107_A[itemID], 1);
+				entityplayer.AddStat(net.minecraft.src.StatList.StatUseItem[itemID], 1);
 			}
 		}
 
@@ -278,7 +278,7 @@ namespace net.minecraft.src
 		public void Func_28142_b(net.minecraft.src.World world, net.minecraft.src.EntityPlayer
 			 entityplayer)
 		{
-			entityplayer.AddStat(net.minecraft.src.StatList.field_25093_z[itemID], stackSize);
+			entityplayer.AddStat(net.minecraft.src.StatList.StatisticCraftItem[itemID], stackSize);
 			net.minecraft.src.Item.itemsList[itemID].Func_28020_c(this, world, entityplayer);
 		}
 

@@ -84,12 +84,9 @@ namespace net.minecraft.src
 			{
 				abiomegenbase = new net.minecraft.src.BiomeGenBase[k * l];
 			}
-			temperature = field_4255_e.Func_4101_a(temperature, i, j, k, k, 0.02500000037252903D
-				, 0.02500000037252903D, 0.25D);
-			humidity = field_4254_f.Func_4101_a(humidity, i, j, k, k, 0.05000000074505806D, 0.05000000074505806D
-				, 0.33333333333333331D);
-			field_4257_c = field_4253_g.Func_4101_a(field_4257_c, i, j, k, k, 0.25D, 0.25D, 0.58823529411764708D
-				);
+			temperature = field_4255_e.Func_4101_a(temperature, i, j, k, k, 0.02500000037252903D, 0.02500000037252903D, 0.25D);
+			humidity = field_4254_f.Func_4101_a(humidity, i, j, k, k, 0.05000000074505806D, 0.05000000074505806D, 0.33333333333333331D);
+			field_4257_c = field_4253_g.Func_4101_a(field_4257_c, i, j, k, k, 0.25D, 0.25D, 0.58823529411764708D);
 			int i1 = 0;
 			for (int j1 = 0; j1 < k; j1++)
 			{

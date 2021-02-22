@@ -19,9 +19,9 @@ namespace net.minecraft.src
 
 		// Referenced classes of package net.minecraft.src:
 		//            StatBase, StatList, IStatType
-		public override net.minecraft.src.StatBase Func_27053_d()
+		public override net.minecraft.src.StatBase CheckDuplicate()
 		{
-			base.Func_27053_d();
+			base.CheckDuplicate();
 			net.minecraft.src.StatList.field_25122_b.Add(this);
 			return this;
 		}

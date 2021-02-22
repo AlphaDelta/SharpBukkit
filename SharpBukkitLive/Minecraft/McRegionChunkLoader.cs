@@ -23,7 +23,7 @@ namespace net.minecraft.src
 			net.minecraft.src.NBTTagCompound nbttagcompound;
 			if (datainputstream != null)
 			{
-				nbttagcompound = net.minecraft.src.CompressedStreamTools.Func_774_a(datainputstream
+				nbttagcompound = net.minecraft.src.CompressedStreamTools.GetCompound(datainputstream
 					);
 			}
 			else

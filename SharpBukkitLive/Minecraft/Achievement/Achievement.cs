@@ -51,7 +51,7 @@ namespace net.minecraft.src
 
         public virtual net.minecraft.src.Achievement Func_27059_a()
         {
-            field_27058_g = true;
+            ServerStatistic = true;
             return this;
         }
 
@@ -63,17 +63,17 @@ namespace net.minecraft.src
 
         public virtual net.minecraft.src.Achievement Func_27061_c()
         {
-            base.Func_27053_d();
+            base.CheckDuplicate();
             net.minecraft.src.AchievementList.AllAchievements.Add(this);
             return this;
         }
 
-        public override net.minecraft.src.StatBase Func_27053_d()
+        public override net.minecraft.src.StatBase CheckDuplicate()
         {
             return Func_27061_c();
         }
 
-        public override net.minecraft.src.StatBase Func_27052_e()
+        public override net.minecraft.src.StatBase SetServerStatistic()
         {
             return Func_27059_a();
         }

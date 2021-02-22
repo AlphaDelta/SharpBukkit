@@ -226,10 +226,8 @@ namespace net.minecraft.src
 			rand.SetSeed((long)i * unchecked((long)(0x4f9939f508L)) + (long)j * unchecked((long
 				)(0x1ef1565bd5L)));
 			byte[] abyte0 = new byte[32768];
-			net.minecraft.src.Chunk chunk = new net.minecraft.src.Chunk(worldObj, abyte0, i, 
-				j);
-			biomesForGeneration = worldObj.GetWorldChunkManager().LoadBlockGeneratorData(biomesForGeneration
-				, i * 16, j * 16, 16, 16);
+			net.minecraft.src.Chunk chunk = new net.minecraft.src.Chunk(worldObj, abyte0, i, j);
+			biomesForGeneration = worldObj.GetWorldChunkManager().LoadBlockGeneratorData(biomesForGeneration, i * 16, j * 16, 16, 16);
 			double[] ad = worldObj.GetWorldChunkManager().temperature;
 			GenerateTerrain(i, j, abyte0, biomesForGeneration, ad);
 			ReplaceBlocksForBiome(i, j, abyte0, biomesForGeneration);

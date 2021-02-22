@@ -383,7 +383,7 @@ namespace net.minecraft.src
 						) * 0.080000000000000002D;
 					entityitem.motionZ = d5 * d9;
 					worldObj.EntityJoinedWorld(entityitem);
-					angler.AddStat(net.minecraft.src.StatList.fishCaughtStat, 1);
+					angler.AddStat(net.minecraft.src.StatList.StatFishCaught, 1);
 					byte0 = 1;
 				}
 			}

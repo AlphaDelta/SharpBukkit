@@ -525,7 +525,7 @@ namespace net.minecraft.src
         public virtual void HarvestBlock(net.minecraft.src.World world, net.minecraft.src.EntityPlayer
              entityplayer, int i, int j, int k, int l)
         {
-            entityplayer.AddStat(net.minecraft.src.StatList.mineBlockStatArray[blockID], 1);
+            entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[blockID], 1);
             DropBlockAsItem(world, i, j, k, l);
         }
 

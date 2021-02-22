@@ -37,7 +37,7 @@ namespace net.minecraft.src
                 {
                     using (FileStream stream = File.OpenRead(file1))
                     {
-                        net.minecraft.src.NBTTagCompound nbttagcompound = net.minecraft.src.CompressedStreamTools.Func_770_a(stream);
+                        net.minecraft.src.NBTTagCompound nbttagcompound = net.minecraft.src.CompressedStreamTools.ReadCompoundFromStream(stream);
                         net.minecraft.src.NBTTagCompound nbttagcompound2 = nbttagcompound.GetCompoundTag("Data");
                         return new net.minecraft.src.WorldInfo(nbttagcompound2);
                     }
@@ -54,7 +54,7 @@ namespace net.minecraft.src
                 {
                     using (FileStream stream = File.OpenRead(file1))
                     {
-                        net.minecraft.src.NBTTagCompound nbttagcompound1 = net.minecraft.src.CompressedStreamTools.Func_770_a(stream);
+                        net.minecraft.src.NBTTagCompound nbttagcompound1 = net.minecraft.src.CompressedStreamTools.ReadCompoundFromStream(stream);
                         net.minecraft.src.NBTTagCompound nbttagcompound3 = nbttagcompound1.GetCompoundTag("Data");
                         return new net.minecraft.src.WorldInfo(nbttagcompound3);
                     }

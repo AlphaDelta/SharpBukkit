@@ -166,7 +166,7 @@ namespace net.minecraft.src
 				entityplayer.GetCurrentEquippedItem().itemID == net.minecraft.src.Item.field_31022_bc
 				.shiftedIndex)
 			{
-				entityplayer.AddStat(net.minecraft.src.StatList.mineBlockStatArray[blockID], 1);
+				entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[blockID], 1);
 				DropBlockAsItem_do(world, i, j, k, new net.minecraft.src.ItemStack(net.minecraft.src.Block
 					.leaves.blockID, 1, l & 3));
 			}

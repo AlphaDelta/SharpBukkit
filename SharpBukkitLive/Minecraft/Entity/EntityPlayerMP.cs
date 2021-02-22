@@ -481,15 +481,13 @@ namespace net.minecraft.src
 			{
 				return;
 			}
-			if (!statbase.field_27058_g)
+			if (!statbase.ServerStatistic)
 			{
 				for (; i > 100; i -= 100)
 				{
-					playerNetServerHandler.SendPacket(new net.minecraft.src.Packet200Statistic(statbase
-						.statId, 100));
+					playerNetServerHandler.SendPacket(new net.minecraft.src.Packet200Statistic(statbase.statId, 100));
 				}
-				playerNetServerHandler.SendPacket(new net.minecraft.src.Packet200Statistic(statbase
-					.statId, i));
+				playerNetServerHandler.SendPacket(new net.minecraft.src.Packet200Statistic(statbase.statId, i));
 			}
 		}
 

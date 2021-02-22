@@ -50,8 +50,7 @@ namespace net.minecraft.src
 						//java.io.FileInputStream fileinputstream = new java.io.FileInputStream(file);
 						net.minecraft.src.NBTTagCompound nbttagcompound;
 						using (FileStream fileinputstream = File.OpenRead(file))
-							nbttagcompound = net.minecraft.src.CompressedStreamTools
-								.Func_770_a(fileinputstream);
+							nbttagcompound = net.minecraft.src.CompressedStreamTools.ReadCompoundFromStream(fileinputstream);
 						mapdatabase.Func_28148_a(nbttagcompound.GetCompoundTag("data"));
 					}
 				}
@@ -141,7 +140,7 @@ namespace net.minecraft.src
 				{
 					java.io.DataInputStream datainputstream = new java.io.DataInputStream(File.OpenRead(file));
 					net.minecraft.src.NBTTagCompound nbttagcompound = net.minecraft.src.CompressedStreamTools
-						.Func_774_a(datainputstream);
+						.GetCompound(datainputstream);
 					datainputstream.Close();
 					System.Collections.IEnumerator iterator = nbttagcompound.Func_28107_c().GetEnumerator
 						();

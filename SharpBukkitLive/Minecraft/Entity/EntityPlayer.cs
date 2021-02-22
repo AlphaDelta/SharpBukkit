@@ -126,7 +126,7 @@ namespace net.minecraft.src
 			field_20050_aB += d * 0.25D;
 			field_20048_aD += d2 * 0.25D;
 			field_20049_aC += d1 * 0.25D;
-			AddStat(net.minecraft.src.StatList.field_25114_j, 1);
+			AddStat(net.minecraft.src.StatList.StatPlayOneMinute, 1);
 			if (ridingEntity == null)
 			{
 				field_27995_d = null;
@@ -246,7 +246,7 @@ namespace net.minecraft.src
 				motionX = motionZ = 0.0D;
 			}
 			yOffset = 0.1F;
-			AddStat(net.minecraft.src.StatList.field_25098_u, 1);
+			AddStat(net.minecraft.src.StatList.StatDeaths, 1);
 		}
 
 		public override void AddToPlayerScore(net.minecraft.src.Entity entity, int i)
@@ -254,11 +254,11 @@ namespace net.minecraft.src
 			score += i;
 			if (entity is net.minecraft.src.EntityPlayer)
 			{
-				AddStat(net.minecraft.src.StatList.field_25096_w, 1);
+				AddStat(net.minecraft.src.StatList.StatPlayerKills, 1);
 			}
 			else
 			{
-				AddStat(net.minecraft.src.StatList.field_25097_v, 1);
+				AddStat(net.minecraft.src.StatList.StatMobKills, 1);
 			}
 		}
 
@@ -309,7 +309,7 @@ namespace net.minecraft.src
 				entityitem.motionZ += System.Math.Sin(f3) * (double)f1;
 			}
 			JoinEntityItemWithWorld(entityitem);
-			AddStat(net.minecraft.src.StatList.field_25103_r, 1);
+			AddStat(net.minecraft.src.StatList.StatDrop, 1);
 		}
 
 		protected internal virtual void JoinEntityItemWithWorld(net.minecraft.src.EntityItem
@@ -441,7 +441,7 @@ namespace net.minecraft.src
 			{
 				Func_25047_a((net.minecraft.src.EntityLiving)obj, false);
 			}
-			AddStat(net.minecraft.src.StatList.field_25100_t, i);
+			AddStat(net.minecraft.src.StatList.StatDamageTaken, i);
 			return base.AttackEntityFrom(entity, i);
 		}
 
@@ -583,7 +583,7 @@ namespace net.minecraft.src
 					{
 						Func_25047_a((net.minecraft.src.EntityLiving)entity, true);
 					}
-					AddStat(net.minecraft.src.StatList.field_25102_s, i);
+					AddStat(net.minecraft.src.StatList.StatDamageDealt, i);
 				}
 			}
 		}
@@ -838,7 +838,7 @@ namespace net.minecraft.src
 		protected internal override void Jump()
 		{
 			base.Jump();
-			AddStat(net.minecraft.src.StatList.field_25106_q, 1);
+			AddStat(net.minecraft.src.StatList.StatJump, 1);
 		}
 
 		public override void MoveEntityWithHeading(float f, float f1)
@@ -861,7 +861,7 @@ namespace net.minecraft.src
 				int i = (int)System.Math.Round(net.minecraft.src.MathHelper.Sqrt_double(d * d + d1 * d1 + d2 * d2) * 100F);
 				if (i > 0)
 				{
-					AddStat(net.minecraft.src.StatList.field_25108_p, i);
+					AddStat(net.minecraft.src.StatList.StatDiveOneCm, i);
 				}
 			}
 			else
@@ -871,7 +871,7 @@ namespace net.minecraft.src
 					int j = (int)System.Math.Round(net.minecraft.src.MathHelper.Sqrt_double(d * d + d2 * d2) * 100F);
 					if (j > 0)
 					{
-						AddStat(net.minecraft.src.StatList.field_25112_l, j);
+						AddStat(net.minecraft.src.StatList.StatSwimOneCm, j);
 					}
 				}
 				else
@@ -880,7 +880,7 @@ namespace net.minecraft.src
 					{
 						if (d1 > 0.0D)
 						{
-							AddStat(net.minecraft.src.StatList.field_25110_n, (int)System.Math.Round(d1 * 100D
+							AddStat(net.minecraft.src.StatList.StatClimbOneCm, (int)System.Math.Round(d1 * 100D
 								));
 						}
 					}
@@ -891,7 +891,7 @@ namespace net.minecraft.src
 							int k = (int)System.Math.Round(net.minecraft.src.MathHelper.Sqrt_double(d * d + d2 * d2) * 100F);
 							if (k > 0)
 							{
-								AddStat(net.minecraft.src.StatList.field_25113_k, k);
+								AddStat(net.minecraft.src.StatList.StatWalkOneCm, k);
 							}
 						}
 						else
@@ -899,7 +899,7 @@ namespace net.minecraft.src
 							int l = (int)System.Math.Round(net.minecraft.src.MathHelper.Sqrt_double(d * d + d2 * d2) * 100F);
 							if (l > 25)
 							{
-								AddStat(net.minecraft.src.StatList.field_25109_o, l);
+								AddStat(net.minecraft.src.StatList.StatFlyOneCm, l);
 							}
 						}
 					}
@@ -916,7 +916,7 @@ namespace net.minecraft.src
 				{
 					if (ridingEntity is net.minecraft.src.EntityMinecart)
 					{
-						AddStat(net.minecraft.src.StatList.field_27095_r, i);
+						AddStat(net.minecraft.src.StatList.StatMinecartOneCm, i);
 						if (field_27995_d == null)
 						{
 							field_27995_d = new net.minecraft.src.ChunkCoordinates(net.minecraft.src.MathHelper
@@ -937,13 +937,13 @@ namespace net.minecraft.src
 					{
 						if (ridingEntity is net.minecraft.src.EntityBoat)
 						{
-							AddStat(net.minecraft.src.StatList.field_27094_s, i);
+							AddStat(net.minecraft.src.StatList.StatBoatOneCm, i);
 						}
 						else
 						{
 							if (ridingEntity is net.minecraft.src.EntityPig)
 							{
-								AddStat(net.minecraft.src.StatList.field_27093_t, i);
+								AddStat(net.minecraft.src.StatList.StatPigOneCm, i);
 							}
 						}
 					}
@@ -955,7 +955,7 @@ namespace net.minecraft.src
 		{
 			if (f >= 2.0F)
 			{
-				AddStat(net.minecraft.src.StatList.field_25111_m, (int)System.Math.Round((double)
+				AddStat(net.minecraft.src.StatList.StatFallOneCm, (int)System.Math.Round((double)
 					f * 100D));
 			}
 			base.Fall(f);

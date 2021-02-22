@@ -116,7 +116,7 @@ namespace net.minecraft.src
                 {
                     using (FileStream fs = File.OpenRead(file))
                     {
-                        net.minecraft.src.NBTTagCompound nbttagcompound = net.minecraft.src.CompressedStreamTools.Func_770_a(fs);
+                        net.minecraft.src.NBTTagCompound nbttagcompound = net.minecraft.src.CompressedStreamTools.ReadCompoundFromStream(fs);
                         net.minecraft.src.NBTTagCompound nbttagcompound2 = nbttagcompound.GetCompoundTag("Data");
                         return new net.minecraft.src.WorldInfo(nbttagcompound2);
                     }
@@ -133,7 +133,7 @@ namespace net.minecraft.src
                 {
                     using (FileStream fs = File.OpenRead(file))
                     {
-                        net.minecraft.src.NBTTagCompound nbttagcompound1 = net.minecraft.src.CompressedStreamTools.Func_770_a(fs);
+                        net.minecraft.src.NBTTagCompound nbttagcompound1 = net.minecraft.src.CompressedStreamTools.ReadCompoundFromStream(fs);
                         net.minecraft.src.NBTTagCompound nbttagcompound3 = nbttagcompound1.GetCompoundTag("Data");
                         return new net.minecraft.src.WorldInfo(nbttagcompound3);
                     }
@@ -260,7 +260,7 @@ namespace net.minecraft.src
                 if (File.Exists(file))
                 {
                     using (FileStream fs = File.OpenRead(file))
-                        return net.minecraft.src.CompressedStreamTools.Func_770_a(fs);
+                        return net.minecraft.src.CompressedStreamTools.ReadCompoundFromStream(fs);
                 }
             }
             catch (System.Exception)

@@ -47,10 +47,8 @@ namespace net.minecraft.src
 		protected internal override net.minecraft.src.IChunkProvider CreateChunkProvider(
 			)
 		{
-			net.minecraft.src.IChunkLoader ichunkloader = worldFile.Func_22092_a(worldProvider
-				);
-			chunkProviderServer = new net.minecraft.src.ChunkProviderServer(this, ichunkloader
-				, worldProvider.GetChunkProvider());
+			net.minecraft.src.IChunkLoader ichunkloader = worldFile.Func_22092_a(worldProvider);
+			chunkProviderServer = new net.minecraft.src.ChunkProviderServer(this, ichunkloader, worldProvider.GetChunkProvider());
 			return chunkProviderServer;
 		}
 

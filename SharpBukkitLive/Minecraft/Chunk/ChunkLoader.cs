@@ -72,7 +72,7 @@ namespace net.minecraft.src
                     net.minecraft.src.NBTTagCompound nbttagcompound = null;
                     //java.io.FileInputStream fileinputstream = new java.io.FileInputStream(file);
                     using (System.IO.FileStream fileinputstream = System.IO.File.OpenRead(file))
-                        nbttagcompound = net.minecraft.src.CompressedStreamTools.Func_770_a(fileinputstream);
+                        nbttagcompound = net.minecraft.src.CompressedStreamTools.ReadCompoundFromStream(fileinputstream);
 
                     if (!nbttagcompound.HasKey("Level"))
                     {

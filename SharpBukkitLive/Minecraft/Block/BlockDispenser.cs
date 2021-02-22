@@ -107,8 +107,7 @@ namespace net.minecraft.src
 			}
 		}
 
-		private void DispenseItem(net.minecraft.src.World world, int i, int j, int k, SharpBukkitLive.SharpBukkit.SharpRandom
-			 random)
+		public void DispenseItem(net.minecraft.src.World world, int i, int j, int k, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
 			int l = world.GetBlockMetadata(i, j, k);
 			int i1 = 0;
@@ -135,10 +134,8 @@ namespace net.minecraft.src
 					}
 				}
 			}
-			net.minecraft.src.TileEntityDispenser tileentitydispenser = (net.minecraft.src.TileEntityDispenser
-				)world.GetBlockTileEntity(i, j, k);
-			net.minecraft.src.ItemStack itemstack = tileentitydispenser.GetRandomStackFromInventory
-				();
+			net.minecraft.src.TileEntityDispenser tileentitydispenser = (net.minecraft.src.TileEntityDispenser)world.GetBlockTileEntity(i, j, k);
+			net.minecraft.src.ItemStack itemstack = tileentitydispenser.GetRandomStackFromInventory();
 			double d = (double)i + (double)i1 * 0.59999999999999998D + 0.5D;
 			double d1 = (double)j + 0.5D;
 			double d2 = (double)k + (double)j1 * 0.59999999999999998D + 0.5D;

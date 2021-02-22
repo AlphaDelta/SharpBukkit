@@ -100,7 +100,7 @@ namespace net.minecraft.src
 			entityitem.delayBeforeCanPickup = 10;
 			world.EntityJoinedWorld(entityitem);
 			world.SetBlockWithNotify(i, j, k, 0);
-			entityplayer.AddStat(net.minecraft.src.StatList.mineBlockStatArray[blockID], 1);
+			entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[blockID], 1);
 		}
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)

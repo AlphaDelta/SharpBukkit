@@ -16,14 +16,14 @@ namespace net.minecraft.src
         // Referenced classes of package net.minecraft.src:
         //            NBTBase, NBTTagCompound
         /// <exception cref="System.IO.IOException"/>
-        public static net.minecraft.src.NBTTagCompound Func_770_a(Stream inputstream)
+        public static net.minecraft.src.NBTTagCompound ReadCompoundFromStream(Stream inputstream)
         {
             using (Stream s = new GZipStream(inputstream, CompressionMode.Decompress))
             {
                 java.io.DataInputStream datainputstream = new java.io.DataInputStream(s);
                 try
                 {
-                    net.minecraft.src.NBTTagCompound nbttagcompound = Func_774_a(datainputstream);
+                    net.minecraft.src.NBTTagCompound nbttagcompound = GetCompound(datainputstream);
                     return nbttagcompound;
                 }
                 finally
@@ -52,7 +52,7 @@ namespace net.minecraft.src
         }
 
         /// <exception cref="System.IO.IOException"/>
-        public static net.minecraft.src.NBTTagCompound Func_774_a(java.io.DataInput datainput)
+        public static net.minecraft.src.NBTTagCompound GetCompound(java.io.DataInput datainput)
         {
             net.minecraft.src.NBTBase nbtbase = net.minecraft.src.NBTBase.ReadTag(datainput);
             if (nbtbase is net.minecraft.src.NBTTagCompound)

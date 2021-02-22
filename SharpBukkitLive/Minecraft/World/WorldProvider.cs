@@ -44,8 +44,7 @@ namespace net.minecraft.src
 
 		public virtual net.minecraft.src.IChunkProvider GetChunkProvider()
 		{
-			return new net.minecraft.src.ChunkProviderGenerate(worldObj, worldObj.GetRandomSeed
-				());
+			return new net.minecraft.src.ChunkProviderGenerate(worldObj, worldObj.GetRandomSeed());
 		}
 
 		public virtual bool CanCoordinateBeSpawn(int i, int j)
