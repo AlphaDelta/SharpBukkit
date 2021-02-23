@@ -91,8 +91,7 @@ namespace net.minecraft.src
             {
                 if (s.ToLower().StartsWith("list"))
                 {
-                    icommandlistener.Log((new java.lang.StringBuilder()).Append("Connected players: "
-                        ).Append(serverconfigurationmanager.GetPlayerList()).ToString());
+                    icommandlistener.Log((new java.lang.StringBuilder()).Append("Connected players: ").Append(serverconfigurationmanager.GetPlayerList()).ToString());
                 }
                 else
                 {
@@ -147,7 +146,7 @@ namespace net.minecraft.src
                                         serverconfigurationmanager.OpPlayer(s2);
                                         SendNoticeToOps(s1, (new java.lang.StringBuilder()).Append("Opping ").Append(s2).
                                             ToString());
-                                        serverconfigurationmanager.SendChatMessageToPlayer(s2, "\xf7eYou are now op!");
+                                        serverconfigurationmanager.SendChatMessageToPlayer(s2, "§eYou are now op!");
                                     }
                                     else
                                     {
@@ -155,7 +154,7 @@ namespace net.minecraft.src
                                         {
                                             string s3 = s.Substring(s.IndexOf(" ")).Trim();
                                             serverconfigurationmanager.DeopPlayer(s3);
-                                            serverconfigurationmanager.SendChatMessageToPlayer(s3, "\xf7eYou are no longer op!"
+                                            serverconfigurationmanager.SendChatMessageToPlayer(s3, "§eYou are no longer op!"
                                                 );
                                             SendNoticeToOps(s1, (new java.lang.StringBuilder()).Append("De-opping ").Append(s3
                                                 ).ToString());
@@ -382,7 +381,7 @@ namespace net.minecraft.src
                                                                                 minecraftLogger.Info((new java.lang.StringBuilder()).Append("[").Append(s1).Append("] ").Append(s).ToString());
                                                                                 //Console.WriteLine((new java.lang.StringBuilder()).Append("[").Append(s1).Append("] ").Append(s).ToString());
                                                                                 serverconfigurationmanager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat
-                                                                                    ((new java.lang.StringBuilder()).Append("\xf7d[Server] ").Append(s).ToString()));
+                                                                                    ((new java.lang.StringBuilder()).Append("§d[Server] ").Append(s).ToString()));
                                                                             }
                                                                             else
                                                                             {
@@ -395,7 +394,7 @@ namespace net.minecraft.src
                                                                                         s = s.Substring(s.IndexOf(" ")).Trim();
                                                                                         minecraftLogger.Info((new java.lang.StringBuilder()).Append("[").Append(s1).Append("->").Append(as3[1]).Append("] ").Append(s).ToString());
                                                                                         Console.WriteLine((new java.lang.StringBuilder()).Append("[").Append(s1).Append("->").Append(as3[1]).Append("] ").Append(s).ToString());
-                                                                                        s = (new java.lang.StringBuilder()).Append("\x9ad").Append(s1).Append(" whispers "
+                                                                                        s = (new java.lang.StringBuilder()).Append("§7").Append(s1).Append(" whispers "
                                                                                             ).Append(s).ToString();
                                                                                         minecraftLogger.Info(s);
                                                                                         //Console.WriteLine(s);
@@ -548,7 +547,7 @@ namespace net.minecraft.src
         {
             string s2 = (new java.lang.StringBuilder()).Append(s).Append(": ").Append(s1).ToString
                 ();
-            minecraftServer.configManager.SendChatMessageToAllOps((new java.lang.StringBuilder()).Append("\x9ad(").Append(s2).Append(")").ToString());
+            minecraftServer.configManager.SendChatMessageToAllOps((new java.lang.StringBuilder()).Append("§7(").Append(s2).Append(")").ToString());
             minecraftLogger.Info(s2);
             //Console.WriteLine(s2);
         }

@@ -12,6 +12,14 @@ namespace SharpBukkitLive
         {
             Respond($"Page = {page}");
         }
+
+        [SharpBukkitCommand("Prints the available formatting codes")]
+        public void FormattingCodes(int page = 0)
+        {
+            Respond("Color: §00§11§22§33§44§55§66§77§88§99§aa§bb§cc§dd§ee§ff§r");
+            Respond("Reset: §rr");
+        }
+
         [SharpBukkitCommand("Initiates a shutdown of the server", OPOnly = true)]
         public void Stop()
         {
