@@ -10,127 +10,123 @@ using System.Threading;
 
 namespace net.minecraft.src
 {
-	public class NetworkListenThread
-	{
-		/// <exception cref="System.IO.IOException"/>
-		public NetworkListenThread(net.minecraft.server.MinecraftServer minecraftserver, IPAddress inetaddress, int i)
-		{
-			// Referenced classes of package net.minecraft.src:
-			//            NetworkAcceptThread, NetLoginHandler, NetworkManager, NetServerHandler
-			field_973_b = false;
-			field_977_f = 0;
-			pendingConnections = new List<NetHandler>();
-			playerList = new List<NetHandler>();
-			mcServer = minecraftserver;
-			if(inetaddress != null)
-				serverSocket = new TcpListener(inetaddress, i);//new java.net.ServerSocket(i, 0, inetaddress);
-			else
-				serverSocket = new TcpListener(IPAddress.Any, i);
+    public class NetworkListenThread
+    {
+        /// <exception cref="System.IO.IOException"/>
+        public NetworkListenThread(net.minecraft.server.MinecraftServer minecraftserver, IPAddress inetaddress, int i)
+        {
+            // Referenced classes of package net.minecraft.src:
+            //            NetworkAcceptThread, NetLoginHandler, NetworkManager, NetServerHandler
+            Listening = false;
+            ConnectionCount = 0;
+            pendingConnections = new List<NetHandler>();
+            playerList = new List<NetHandler>();
+            mcServer = minecraftserver;
+            if (inetaddress != null)
+                serverSocket = new TcpListener(inetaddress, i);//new java.net.ServerSocket(i, 0, inetaddress);
+            else
+                serverSocket = new TcpListener(IPAddress.Any, i);
 
-			serverSocket.Start();
-			//serverSocket.SetPerformancePreferences(0, 2, 1);
-			field_973_b = true;
-			networkAcceptThread = new Thread(() => {
-				(new net.minecraft.src.NetworkAcceptThread(this, "Listen thread", minecraftserver)).Run();
-			});
-			networkAcceptThread.Start();
-		}
+            serverSocket.Start();
+            //serverSocket.SetPerformancePreferences(0, 2, 1);
+            Listening = true;
+            networkAcceptThread = new Thread(() =>
+            {
+                _ = (new net.minecraft.src.NetworkAcceptThread(this, "Listen thread", minecraftserver)).Run(); //SHARP: There really is no reason to await a task that will never realistically finish, so we just ignore the await warning by discarding the task with the '_' discard variable
+            });
+            networkAcceptThread.Start();
+        }
 
-		public virtual void AddPlayer(net.minecraft.src.NetServerHandler netserverhandler
-			)
-		{
-			playerList.Add(netserverhandler);
-		}
+        public virtual void AddPlayer(net.minecraft.src.NetServerHandler netserverhandler)
+        {
+            playerList.Add(netserverhandler);
+        }
 
-		private void AddPendingConnection(net.minecraft.src.NetLoginHandler netloginhandler
-			)
-		{
-			if (netloginhandler == null)
-			{
-				throw new System.ArgumentException("Got null pendingconnection!");
-			}
-			else
-			{
-				pendingConnections.Add(netloginhandler);
-				return;
-			}
-		}
+        private void AddPendingConnection(net.minecraft.src.NetLoginHandler netloginhandler)
+        {
+            if (netloginhandler == null)
+            {
+                throw new System.ArgumentException("Got null pendingconnection!");
+            }
+            else
+            {
+                pendingConnections.Add(netloginhandler);
+                return;
+            }
+        }
 
-		public virtual void HandleNetworkListenThread()
-		{
-			for (int i = 0; i < pendingConnections.Count; i++)
-			{
-				net.minecraft.src.NetLoginHandler netloginhandler = (net.minecraft.src.NetLoginHandler
-					)pendingConnections[i];
-				try
-				{
-					netloginhandler.TryLogin();
-				}
-				catch (System.Exception exception)
-				{
-					netloginhandler.KickUser("Internal server error");
-					logger.Warning((new java.lang.StringBuilder()).Append("Failed to handle packet: ").Append(exception).ToString());
-					logger.Log(exception.ToString());
-				}
-				if (netloginhandler.finishedProcessing)
-				{
-					pendingConnections.RemoveAt(i--);
-				}
-				netloginhandler.netManager.Func_28138_a();
-			}
-			for (int j = 0; j < playerList.Count; j++)
-			{
-				net.minecraft.src.NetServerHandler netserverhandler = (net.minecraft.src.NetServerHandler
-					)playerList[j];
-				try
-				{
-					netserverhandler.HandlePackets();
-				}
-				catch (System.Exception exception1)
-				{
-					logger.Warning((new java.lang.StringBuilder()).Append("Failed to handle packet: ").Append(exception1).ToString());
-					logger.Log(exception1.ToString());
-					netserverhandler.KickPlayer("Internal server error");
-				}
-				if (netserverhandler.connectionClosed)
-				{
-					playerList.RemoveAt(j--);
-				}
-				netserverhandler.netManager.Func_28138_a();
-			}
-		}
+        public virtual void HandleNetworkListenThread()
+        {
+            for (int i = 0; i < pendingConnections.Count; i++)
+            {
+                net.minecraft.src.NetLoginHandler netloginhandler = (net.minecraft.src.NetLoginHandler)pendingConnections[i];
+                try
+                {
+                    netloginhandler.TryLogin();
+                }
+                catch (System.Exception exception)
+                {
+                    netloginhandler.KickUser("Internal server error");
+                    logger.Warning((new java.lang.StringBuilder()).Append("Failed to handle packet: ").Append(exception).ToString());
+                    logger.Log(exception.ToString());
+                }
+                if (netloginhandler.finishedProcessing)
+                {
+                    pendingConnections.RemoveAt(i--);
+                }
+                netloginhandler.netManager.InterruptThreads();
+            }
+            for (int j = 0; j < playerList.Count; j++)
+            {
+                net.minecraft.src.NetServerHandler netserverhandler = (net.minecraft.src.NetServerHandler)playerList[j];
+                try
+                {
+                    netserverhandler.HandlePackets();
+                }
+                catch (System.Exception exception1)
+                {
+                    logger.Warning((new java.lang.StringBuilder()).Append("Failed to handle packet: ").Append(exception1).ToString());
+                    logger.Log(exception1.ToString());
+                    netserverhandler.KickPlayer("Internal server error");
+                }
+                if (netserverhandler.connectionClosed)
+                {
+                    playerList.RemoveAt(j--);
+                }
+                netserverhandler.netManager.InterruptThreads();
+            }
+        }
 
-		internal static TcpListener Func_713_a(net.minecraft.src.NetworkListenThread networklistenthread)
-		{
-			return networklistenthread.serverSocket;
-		}
+        internal static TcpListener GetListener(net.minecraft.src.NetworkListenThread networklistenthread)
+        {
+            return networklistenthread.serverSocket;
+        }
 
-		internal static int Func_712_b(net.minecraft.src.NetworkListenThread networklistenthread
-			)
-		{
-			return networklistenthread.field_977_f++;
-		}
+        internal static int IncrementConnectionCount(net.minecraft.src.NetworkListenThread networklistenthread
+            )
+        {
+            return networklistenthread.ConnectionCount++;
+        }
 
-		internal static void Func_716_a(net.minecraft.src.NetworkListenThread networklistenthread
-			, net.minecraft.src.NetLoginHandler netloginhandler)
-		{
-			networklistenthread.AddPendingConnection(netloginhandler);
-		}
+        internal static void AddPendingConnectionToListenThread(net.minecraft.src.NetworkListenThread networklistenthread, net.minecraft.src.NetLoginHandler netloginhandler)
+        {
+            networklistenthread.AddPendingConnection(netloginhandler);
+        }
 
-		public static Logger logger = Logger.GetLogger();
+        public static Logger logger = Logger.GetLogger();
 
-		private TcpListener serverSocket;
+        private TcpListener serverSocket;
 
-		private Thread networkAcceptThread;
+        private Thread networkAcceptThread;
 
-		public volatile bool field_973_b;
+        public volatile bool Listening;
 
-		private int field_977_f;
+        private int ConnectionCount;
 
-		private List<NetHandler> pendingConnections;
+        private List<NetHandler> pendingConnections;
 
-		private List<NetHandler> playerList;
+        private List<NetHandler> playerList;
 
-		public net.minecraft.server.MinecraftServer mcServer;
-	}
+        public net.minecraft.server.MinecraftServer mcServer;
+    }
 }

@@ -84,8 +84,7 @@ namespace net.minecraft.src
         }
 
         /// <exception cref="System.IO.IOException"/>
-        public static net.minecraft.src.Packet ReadPacket(java.io.DataInputStream datainputstream
-            , bool flag)
+        public static net.minecraft.src.Packet ReadPacket(java.io.DataInputStream datainputstream, bool flag)
         {
             int i = 0;
             net.minecraft.src.Packet packet = null;

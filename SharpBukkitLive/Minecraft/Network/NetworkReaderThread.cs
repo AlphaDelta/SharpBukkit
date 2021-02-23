@@ -6,49 +6,46 @@ using System.Threading;
 
 namespace net.minecraft.src
 {
-	internal class NetworkReaderThread// : java.lang.Thread
-	{
-		internal NetworkReaderThread(net.minecraft.src.NetworkManager networkmanager, string
-			 s)
-			//: base(s)
-		{
-			// Referenced classes of package net.minecraft.src:
-			//            NetworkManager
-			netManager = networkmanager;
-		}
+    internal class NetworkReaderThread// : java.lang.Thread
+    {
+        internal NetworkReaderThread(net.minecraft.src.NetworkManager networkmanager, string s)
+        //: base(s)
+        {
+            // Referenced classes of package net.minecraft.src:
+            //            NetworkManager
+            netManager = networkmanager;
+        }
 
-		public void Run()
-		{
-			lock (net.minecraft.src.NetworkManager.threadSyncObject)
-			{
-				net.minecraft.src.NetworkManager.numReadThreads++;
-			}
-			try
-			{
-				while (net.minecraft.src.NetworkManager.IsRunning(netManager) && !net.minecraft.src.NetworkManager.IsServerTerminating(netManager))
-				{
-					while (net.minecraft.src.NetworkManager.ReadNetworkPacket(netManager))
-					{
-					}
-					try
-					{
-						Thread.Sleep(100);
-					}
-					catch (System.Exception)
-					{
-					}
-				}
-			}
-			finally
-			{
-				lock (net.minecraft.src.NetworkManager.threadSyncObject)
-				{
-					net.minecraft.src.NetworkManager.numReadThreads--;
-				}
-			}
-		}
+        public void Run()
+        {
+            lock (net.minecraft.src.NetworkManager.threadSyncObject)
+            {
+                net.minecraft.src.NetworkManager.numReadThreads++;
+            }
+            try
+            {
+                while (net.minecraft.src.NetworkManager.IsRunning(netManager) && !net.minecraft.src.NetworkManager.IsServerTerminating(netManager))
+                {
+                    try
+                    {
+                        while (net.minecraft.src.NetworkManager.ReadNetworkPacket(netManager))
+                        {
+                        }
+                        Thread.Sleep(100);
+                    }
+                    catch (ThreadInterruptedException) { }
+                }
+            }
+            finally
+            {
+                lock (net.minecraft.src.NetworkManager.threadSyncObject)
+                {
+                    net.minecraft.src.NetworkManager.numReadThreads--;
+                }
+            }
+        }
 
-		internal readonly net.minecraft.src.NetworkManager netManager;
- /* synthetic field */
-	}
+        internal readonly net.minecraft.src.NetworkManager netManager;
+        /* synthetic field */
+    }
 }

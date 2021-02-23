@@ -126,6 +126,8 @@ namespace net.minecraft.src
             }
             catch (System.Exception exception)
             {
+                if (exception is ThreadInterruptedException) throw exception; //SHARP: Not sure if this 'fixes' ThreadInterruptionExceptions, just allows it to be ignored by the thread (as it's being caught in NetworkWriterThread).
+
                 if (!isTerminating)
                 {
                     OnNetworkError(exception);
@@ -135,7 +137,7 @@ namespace net.minecraft.src
             return flag;
         }
 
-        public virtual void Func_28138_a()
+        public virtual void InterruptThreads()
         {
             readThread.Interrupt();
             writeThread.Interrupt();
@@ -146,8 +148,7 @@ namespace net.minecraft.src
             bool flag = false;
             try
             {
-                net.minecraft.src.Packet packet = net.minecraft.src.Packet.ReadPacket(socketInputStream
-                    , netHandler.IsServerHandler());
+                net.minecraft.src.Packet packet = net.minecraft.src.Packet.ReadPacket(socketInputStream, netHandler.IsServerHandler());
                 if (packet != null)
                 {
                     field_28141_d[packet.GetPacketId()] += packet.GetPacketSize() + 1;
@@ -173,8 +174,7 @@ namespace net.minecraft.src
         private void OnNetworkError(System.Exception exception)
         {
             Sharpen.Runtime.PrintStackTrace(exception);
-            NetworkShutdown("disconnect.genericReason", new object[] { (new java.lang.StringBuilder
-                ()).Append("Internal exception: ").Append(exception.ToString()).ToString() });
+            NetworkShutdown("disconnect.genericReason", new object[] { (new java.lang.StringBuilder()).Append("Internal exception: ").Append(exception.ToString()).ToString() });
         }
 
         public virtual void NetworkShutdown(string s, object[] aobj)
@@ -236,11 +236,11 @@ namespace net.minecraft.src
             net.minecraft.src.Packet packet;
             for (int i = 100; readPackets.Count > 0 && i >= 0; i--)
             {
-                if(readPackets.TryDequeue(out packet))
+                if (readPackets.TryDequeue(out packet))
                     packet.ProcessPacket(netHandler);
                 //packet = (net.minecraft.src.Packet)readPackets.Remove(0);
             }
-            Func_28138_a();
+            InterruptThreads();
             if (isTerminating && readPackets.Count < 1)
             {
                 netHandler.HandleErrorMessage(terminationReason, field_20176_t);
@@ -254,7 +254,7 @@ namespace net.minecraft.src
 
         public virtual void ServerShutdown()
         {
-            Func_28138_a();
+            InterruptThreads();
             isServerTerminating = true;
             readThread.Interrupt();
             Thread t = new Thread(() => { new net.minecraft.src.ThreadMonitorConnection(this).Run(); });
@@ -278,8 +278,7 @@ namespace net.minecraft.src
             return networkmanager.isServerTerminating;
         }
 
-        internal static bool ReadNetworkPacket(net.minecraft.src.NetworkManager networkmanager
-            )
+        internal static bool ReadNetworkPacket(net.minecraft.src.NetworkManager networkmanager)
         {
             return networkmanager.ReadPacket();
         }
