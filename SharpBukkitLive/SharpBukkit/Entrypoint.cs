@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharpBukkitLive.Interface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
@@ -10,6 +11,9 @@ namespace SharpBukkitLive.SharpBukkit
 		public static Logger logger = Logger.GetLogger();
 		public static void Main(string[] args)
 		{
+			PluginManager.LoadAllFromDisk();
+			PluginManager.LoadCommands();
+
 			net.minecraft.src.StatList.Func_27092_a();
 			try
 			{

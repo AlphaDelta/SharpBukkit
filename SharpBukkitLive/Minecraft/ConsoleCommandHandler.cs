@@ -1,10 +1,13 @@
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
+using SharpBukkitLive.Interface;
+using SharpBukkitLive.Interface.Command;
 using SharpBukkitLive.SharpBukkit;
 using Sharpen;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace net.minecraft.src
 {
@@ -22,6 +25,59 @@ namespace net.minecraft.src
 
         public virtual void HandleCommand(net.minecraft.src.ServerCommand servercommand)
         {
+            //TODO: Put this somewhere else, and also allow any player to invoke a command
+            /* SharpBukkit command handler */
+            {
+                PluginManager.ParseInvocation(servercommand.command, out string command, out string[] oargs);
+
+                IEnumerable<(ReflSharpBukkitCommand, string)> cmds = PluginManager.Commands.Where(p => p.Name == command/* && p.Attr.OPOnly == cuddlebang*/).Select(p => (p, p.HasInvocationProblem(oargs)));
+
+                if (cmds.Count() > 0)
+                {
+                    var vcmds = cmds.Where(p => p.Item2 == null);
+
+                    (ReflSharpBukkitCommand nearestcommand, string invokeprob) = PluginManager.NearestSignature(oargs.Length, vcmds);
+
+
+                    if (nearestcommand != null)
+                    {
+                        object[] args = nearestcommand.PrepareArgs(oargs);
+
+
+                        SharpBukkitCommandController controller = null;
+                        try
+                        {
+                            controller = (SharpBukkitCommandController)Activator.CreateInstance(nearestcommand.Method.DeclaringType);
+                            controller.Server = minecraftServer;
+                            controller.User = servercommand.commandListener;
+                            controller.FullMessage = servercommand.command;
+                            controller.CurrentCommand = nearestcommand;
+                            if (controller.PreExecution())
+                                try
+                                {
+                                    nearestcommand.Method.Invoke(controller, args);
+                                }
+                                finally
+                                {
+                                    if (controller != null)
+                                        controller.AlwaysAfterExecute();
+                                }
+                        }
+                        finally
+                        {
+                            if (controller != null)
+                                controller.Always();
+                        }
+                    }
+                    else
+                        servercommand.commandListener.Log(PluginManager.NearestSignature(oargs.Length, cmds).Item2);
+                }
+                else
+                    servercommand.commandListener.Log("Command not found");
+            }
+            /* ============================== */
+
+            return; //TODO: comment all code after this
             string s = servercommand.command;
             net.minecraft.src.ICommandListener icommandlistener = servercommand.commandListener;
             string s1 = icommandlistener.GetUsername();

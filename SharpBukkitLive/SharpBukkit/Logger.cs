@@ -19,6 +19,7 @@ namespace SharpBukkitLive.SharpBukkit
         public void Log(string s, ConsoleColor c = ConsoleColor.Gray) {
             Console.ForegroundColor = c;
             Console.WriteLine(s);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         public void Finest(string s)  { Log("[FINEST] " + s); }
