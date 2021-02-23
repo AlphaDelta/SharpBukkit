@@ -11,13 +11,13 @@ namespace net.minecraft.src
 		{
 		}
 
-		public Packet6SpawnPosition(int i, int j, int k)
+		public Packet6SpawnPosition(int x, int y, int z)
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            Packet, NetHandler
-			xPosition = i;
-			yPosition = j;
-			zPosition = k;
+			xPosition = x;
+			yPosition = y;
+			zPosition = z;
 		}
 
 		/// <exception cref="System.IO.IOException"/>

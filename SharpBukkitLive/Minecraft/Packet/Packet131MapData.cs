@@ -42,7 +42,7 @@ namespace net.minecraft.src
 
 		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
 		{
-			nethandler.Func_28001_a(this);
+			nethandler.HandleMapData(this);
 		}
 
 		public override int GetPacketSize()

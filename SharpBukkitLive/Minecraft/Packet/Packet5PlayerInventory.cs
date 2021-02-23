@@ -11,13 +11,12 @@ namespace net.minecraft.src
 		{
 		}
 
-		public Packet5PlayerInventory(int i, int j, net.minecraft.src.ItemStack itemstack
-			)
+		public Packet5PlayerInventory(int id, int slot, net.minecraft.src.ItemStack itemstack)
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            Packet, ItemStack, NetHandler
-			entityID = i;
-			slot = j;
+			entityID = id;
+			this.slot = slot;
 			if (itemstack == null)
 			{
 				itemID = -1;

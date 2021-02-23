@@ -5,61 +5,61 @@ using Sharpen;
 
 namespace net.minecraft.src
 {
-	public class Packet17Sleep : net.minecraft.src.Packet
-	{
-		public Packet17Sleep()
-		{
-		}
+    public class Packet17Sleep : net.minecraft.src.Packet
+    {
+        public Packet17Sleep()
+        {
+        }
 
-		public Packet17Sleep(net.minecraft.src.Entity entity, int i, int j, int k, int l)
-		{
-			// Referenced classes of package net.minecraft.src:
-			//            Packet, Entity, NetHandler
-			field_22042_e = i;
-			field_22040_b = j;
-			field_22044_c = k;
-			field_22043_d = l;
-			field_22041_a = entity.entityId;
-		}
+        public Packet17Sleep(net.minecraft.src.Entity entity, int i, int x, int y, int z)
+        {
+            // Referenced classes of package net.minecraft.src:
+            //            Packet, Entity, NetHandler
+            UnknownByte = i;
+            EntityX = x;
+            EntityY = y;
+            EntityZ = z;
+            EntityID = entity.entityId;
+        }
 
-		/// <exception cref="System.IO.IOException"/>
-		public override void ReadPacketData(java.io.DataInputStream datainputstream)
-		{
-			field_22041_a = datainputstream.ReadInt();
-			field_22042_e = datainputstream.ReadByte();
-			field_22040_b = datainputstream.ReadInt();
-			field_22044_c = datainputstream.ReadByte();
-			field_22043_d = datainputstream.ReadInt();
-		}
+        /// <exception cref="System.IO.IOException"/>
+        public override void ReadPacketData(java.io.DataInputStream datainputstream)
+        {
+            EntityID = datainputstream.ReadInt();
+            UnknownByte = datainputstream.ReadByte();
+            EntityX = datainputstream.ReadInt();
+            EntityY = datainputstream.ReadByte();
+            EntityZ = datainputstream.ReadInt();
+        }
 
-		/// <exception cref="System.IO.IOException"/>
-		public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
-		{
-			dataoutputstream.WriteInt(field_22041_a);
-			dataoutputstream.WriteByte(field_22042_e);
-			dataoutputstream.WriteInt(field_22040_b);
-			dataoutputstream.WriteByte(field_22044_c);
-			dataoutputstream.WriteInt(field_22043_d);
-		}
+        /// <exception cref="System.IO.IOException"/>
+        public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
+        {
+            dataoutputstream.WriteInt(EntityID);
+            dataoutputstream.WriteByte(UnknownByte);
+            dataoutputstream.WriteInt(EntityX);
+            dataoutputstream.WriteByte(EntityY);
+            dataoutputstream.WriteInt(EntityZ);
+        }
 
-		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
-		{
-			nethandler.Func_22002_a(this);
-		}
+        public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
+        {
+            nethandler.HandleSleep(this);
+        }
 
-		public override int GetPacketSize()
-		{
-			return 14;
-		}
+        public override int GetPacketSize()
+        {
+            return 14;
+        }
 
-		public int field_22041_a;
+        public int EntityID;
 
-		public int field_22040_b;
+        public int EntityX;
 
-		public int field_22044_c;
+        public int EntityY;
 
-		public int field_22043_d;
+        public int EntityZ;
 
-		public int field_22042_e;
-	}
+        public int UnknownByte;
+    }
 }

@@ -14,10 +14,10 @@ namespace net.minecraft.src
 			rotating = false;
 		}
 
-		public Packet30Entity(int i)
+		public Packet30Entity(int id)
 		{
 			rotating = false;
-			entityId = i;
+			entityId = id;
 		}
 
 		/// <exception cref="System.IO.IOException"/>

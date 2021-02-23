@@ -23,7 +23,7 @@ namespace net.minecraft.src
 
 		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
 		{
-			nethandler.Func_20004_a(this);
+			nethandler.HandleOpenWindow(this);
 		}
 
 		/// <exception cref="System.IO.IOException"/>

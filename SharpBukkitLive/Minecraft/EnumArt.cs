@@ -100,7 +100,7 @@ namespace net.minecraft.src
             offsetY = i1;
         }
 
-        public static readonly int field_27096_z = "SkullAndRoses".Length;
+        public static readonly int LongestNameLength = "SkullAndRoses".Length;
 
         public readonly string title;
 

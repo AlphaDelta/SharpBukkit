@@ -22,7 +22,7 @@ namespace net.minecraft.src
 
 		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
 		{
-			nethandler.Func_20003_a(this);
+			nethandler.HandleSetSlot(this);
 		}
 
 		/// <exception cref="System.IO.IOException"/>

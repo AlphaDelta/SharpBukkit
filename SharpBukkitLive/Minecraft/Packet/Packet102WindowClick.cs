@@ -15,7 +15,7 @@ namespace net.minecraft.src
 		//            Packet, NetHandler, ItemStack
 		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
 		{
-			nethandler.Func_20007_a(this);
+			nethandler.HandleWindowClick(this);
 		}
 
 		/// <exception cref="System.IO.IOException"/>

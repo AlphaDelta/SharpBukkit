@@ -5,41 +5,41 @@ using Sharpen;
 
 namespace net.minecraft.src
 {
-	public class Packet4UpdateTime : net.minecraft.src.Packet
-	{
-		public Packet4UpdateTime()
-		{
-		}
+    public class Packet4UpdateTime : net.minecraft.src.Packet
+    {
+        public Packet4UpdateTime()
+        {
+        }
 
-		public Packet4UpdateTime(long l)
-		{
-			// Referenced classes of package net.minecraft.src:
-			//            Packet, NetHandler
-			time = l;
-		}
+        public Packet4UpdateTime(long time)
+        {
+            // Referenced classes of package net.minecraft.src:
+            //            Packet, NetHandler
+            this.time = time;
+        }
 
-		/// <exception cref="System.IO.IOException"/>
-		public override void ReadPacketData(java.io.DataInputStream datainputstream)
-		{
-			time = datainputstream.ReadLong();
-		}
+        /// <exception cref="System.IO.IOException"/>
+        public override void ReadPacketData(java.io.DataInputStream datainputstream)
+        {
+            time = datainputstream.ReadLong();
+        }
 
-		/// <exception cref="System.IO.IOException"/>
-		public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
-		{
-			dataoutputstream.WriteLong(time);
-		}
+        /// <exception cref="System.IO.IOException"/>
+        public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
+        {
+            dataoutputstream.WriteLong(time);
+        }
 
-		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
-		{
-			nethandler.HandleUpdateTime(this);
-		}
+        public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
+        {
+            nethandler.HandleUpdateTime(this);
+        }
 
-		public override int GetPacketSize()
-		{
-			return 8;
-		}
+        public override int GetPacketSize()
+        {
+            return 8;
+        }
 
-		public long time;
-	}
+        public long time;
+    }
 }

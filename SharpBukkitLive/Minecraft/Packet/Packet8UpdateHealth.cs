@@ -11,11 +11,11 @@ namespace net.minecraft.src
 		{
 		}
 
-		public Packet8UpdateHealth(int i)
+		public Packet8UpdateHealth(int health)
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            Packet, NetHandler
-			healthMP = i;
+			healthMP = health;
 		}
 
 		/// <exception cref="System.IO.IOException"/>

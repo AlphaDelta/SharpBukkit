@@ -5,61 +5,61 @@ using Sharpen;
 
 namespace net.minecraft.src
 {
-	public class Packet61DoorChange : net.minecraft.src.Packet
-	{
-		public Packet61DoorChange()
-		{
-		}
+    public class Packet61DoorChange : net.minecraft.src.Packet
+    {
+        public Packet61DoorChange()
+        {
+        }
 
-		public Packet61DoorChange(int i, int j, int k, int l, int i1)
-		{
-			// Referenced classes of package net.minecraft.src:
-			//            Packet, NetHandler
-			field_28047_a = i;
-			field_28050_c = j;
-			field_28049_d = k;
-			field_28048_e = l;
-			field_28046_b = i1;
-		}
+        public Packet61DoorChange(int i, int blockX, int blockY, int blockZ, int blockShiftedIndex)
+        {
+            // Referenced classes of package net.minecraft.src:
+            //            Packet, NetHandler
+            field_28047_a = i;
+            BlockX = blockX;
+            BlockY = blockY;
+            BlockZ = blockZ;
+            BlockShiftedIndex = blockShiftedIndex;
+        }
 
-		/// <exception cref="System.IO.IOException"/>
-		public override void ReadPacketData(java.io.DataInputStream datainputstream)
-		{
-			field_28047_a = datainputstream.ReadInt();
-			field_28050_c = datainputstream.ReadInt();
-			field_28049_d = datainputstream.ReadByte();
-			field_28048_e = datainputstream.ReadInt();
-			field_28046_b = datainputstream.ReadInt();
-		}
+        /// <exception cref="System.IO.IOException"/>
+        public override void ReadPacketData(java.io.DataInputStream datainputstream)
+        {
+            field_28047_a = datainputstream.ReadInt();
+            BlockX = datainputstream.ReadInt();
+            BlockY = datainputstream.ReadByte();
+            BlockZ = datainputstream.ReadInt();
+            BlockShiftedIndex = datainputstream.ReadInt();
+        }
 
-		/// <exception cref="System.IO.IOException"/>
-		public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
-		{
-			dataoutputstream.WriteInt(field_28047_a);
-			dataoutputstream.WriteInt(field_28050_c);
-			dataoutputstream.WriteByte(field_28049_d);
-			dataoutputstream.WriteInt(field_28048_e);
-			dataoutputstream.WriteInt(field_28046_b);
-		}
+        /// <exception cref="System.IO.IOException"/>
+        public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
+        {
+            dataoutputstream.WriteInt(field_28047_a);
+            dataoutputstream.WriteInt(BlockX);
+            dataoutputstream.WriteByte(BlockY);
+            dataoutputstream.WriteInt(BlockZ);
+            dataoutputstream.WriteInt(BlockShiftedIndex);
+        }
 
-		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
-		{
-			nethandler.Func_28002_a(this);
-		}
+        public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
+        {
+            nethandler.HandleDoorChange(this);
+        }
 
-		public override int GetPacketSize()
-		{
-			return 20;
-		}
+        public override int GetPacketSize()
+        {
+            return 20;
+        }
 
-		public int field_28047_a;
+        public int field_28047_a;
 
-		public int field_28046_b;
+        public int BlockShiftedIndex;
 
-		public int field_28050_c;
+        public int BlockX;
 
-		public int field_28049_d;
+        public int BlockY;
 
-		public int field_28048_e;
-	}
+        public int BlockZ;
+    }
 }

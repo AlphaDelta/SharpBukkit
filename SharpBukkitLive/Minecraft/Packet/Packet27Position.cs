@@ -5,86 +5,86 @@ using Sharpen;
 
 namespace net.minecraft.src
 {
-	public class Packet27Position : net.minecraft.src.Packet
-	{
-		public Packet27Position()
-		{
-		}
+    public class Packet27Position : net.minecraft.src.Packet
+    {
+        public Packet27Position()
+        {
+        }
 
-		// Referenced classes of package net.minecraft.src:
-		//            Packet, NetHandler
-		/// <exception cref="System.IO.IOException"/>
-		public override void ReadPacketData(java.io.DataInputStream datainputstream)
-		{
-			strafeMovement = datainputstream.ReadFloat();
-			fowardMovement = datainputstream.ReadFloat();
-			pitchRotation = datainputstream.ReadFloat();
-			yawRotation = datainputstream.ReadFloat();
-			field_22039_c = datainputstream.ReadBoolean();
-			isInJump = datainputstream.ReadBoolean();
-		}
+        // Referenced classes of package net.minecraft.src:
+        //            Packet, NetHandler
+        /// <exception cref="System.IO.IOException"/>
+        public override void ReadPacketData(java.io.DataInputStream datainputstream)
+        {
+            strafeMovement = datainputstream.ReadFloat();
+            fowardMovement = datainputstream.ReadFloat();
+            pitchRotation = datainputstream.ReadFloat();
+            yawRotation = datainputstream.ReadFloat();
+            isSneaking = datainputstream.ReadBoolean();
+            isInJump = datainputstream.ReadBoolean();
+        }
 
-		/// <exception cref="System.IO.IOException"/>
-		public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
-		{
-			dataoutputstream.WriteFloat(strafeMovement);
-			dataoutputstream.WriteFloat(fowardMovement);
-			dataoutputstream.WriteFloat(pitchRotation);
-			dataoutputstream.WriteFloat(yawRotation);
-			dataoutputstream.WriteBoolean(field_22039_c);
-			dataoutputstream.WriteBoolean(isInJump);
-		}
+        /// <exception cref="System.IO.IOException"/>
+        public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
+        {
+            dataoutputstream.WriteFloat(strafeMovement);
+            dataoutputstream.WriteFloat(fowardMovement);
+            dataoutputstream.WriteFloat(pitchRotation);
+            dataoutputstream.WriteFloat(yawRotation);
+            dataoutputstream.WriteBoolean(isSneaking);
+            dataoutputstream.WriteBoolean(isInJump);
+        }
 
-		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
-		{
-			nethandler.HandleMovementTypePacket(this);
-		}
+        public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
+        {
+            nethandler.HandleMovementTypePacket(this);
+        }
 
-		public override int GetPacketSize()
-		{
-			return 18;
-		}
+        public override int GetPacketSize()
+        {
+            return 18;
+        }
 
-		public virtual float Func_22031_c()
-		{
-			return strafeMovement;
-		}
+        public virtual float GetStrafeMovement()
+        {
+            return strafeMovement;
+        }
 
-		public virtual float Func_22029_d()
-		{
-			return pitchRotation;
-		}
+        public virtual float GetPitch()
+        {
+            return pitchRotation;
+        }
 
-		public virtual float Func_22028_e()
-		{
-			return fowardMovement;
-		}
+        public virtual float GetForwardMovement()
+        {
+            return fowardMovement;
+        }
 
-		public virtual float Func_22033_f()
-		{
-			return yawRotation;
-		}
+        public virtual float GetYaw()
+        {
+            return yawRotation;
+        }
 
-		public virtual bool Func_22032_g()
-		{
-			return field_22039_c;
-		}
+        public virtual bool GetIsSneaking()
+        {
+            return isSneaking;
+        }
 
-		public virtual bool Func_22030_h()
-		{
-			return isInJump;
-		}
+        public virtual bool GetIsInJump()
+        {
+            return isInJump;
+        }
 
-		private float strafeMovement;
+        private float strafeMovement;
 
-		private float fowardMovement;
+        private float fowardMovement;
 
-		private bool field_22039_c;
+        private bool isSneaking; //SHARP: Are these two variable names swapped?
 
-		private bool isInJump;
+        private bool isInJump; //SHARP: Are these two variable names swapped?
 
-		private float pitchRotation;
+        private float pitchRotation;
 
-		private float yawRotation;
-	}
+        private float yawRotation;
+    }
 }

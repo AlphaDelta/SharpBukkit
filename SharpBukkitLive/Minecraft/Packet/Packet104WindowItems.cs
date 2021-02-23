@@ -64,7 +64,7 @@ namespace net.minecraft.src
 
 		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
 		{
-			nethandler.Func_20001_a(this);
+			nethandler.HandleWindowItems(this);
 		}
 
 		public override int GetPacketSize()

@@ -11,11 +11,11 @@ namespace net.minecraft.src
 		{
 		}
 
-		public Packet9Respawn(byte byte0)
+		public Packet9Respawn(byte dimension)
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            Packet, NetHandler
-			field_28045_a = byte0;
+			Dimension = dimension;
 		}
 
 		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
@@ -26,13 +26,13 @@ namespace net.minecraft.src
 		/// <exception cref="System.IO.IOException"/>
 		public override void ReadPacketData(java.io.DataInputStream datainputstream)
 		{
-			field_28045_a = datainputstream.ReadByte();
+			Dimension = datainputstream.ReadByte();
 		}
 
 		/// <exception cref="System.IO.IOException"/>
 		public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
 		{
-			dataoutputstream.WriteByte(field_28045_a);
+			dataoutputstream.WriteByte(Dimension);
 		}
 
 		public override int GetPacketSize()
@@ -40,6 +40,6 @@ namespace net.minecraft.src
 			return 1;
 		}
 
-		public byte field_28045_a;
+		public byte Dimension;
 	}
 }

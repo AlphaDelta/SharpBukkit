@@ -16,39 +16,39 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            Packet, Entity, MathHelper, EntityLightningBolt, 
 			//            NetHandler
-			field_27043_a = entity.entityId;
-			field_27042_b = net.minecraft.src.MathHelper.Floor_double(entity.posX * 32D);
-			field_27046_c = net.minecraft.src.MathHelper.Floor_double(entity.posY * 32D);
-			field_27045_d = net.minecraft.src.MathHelper.Floor_double(entity.posZ * 32D);
+			EntityID = entity.entityId;
+			EntityX = net.minecraft.src.MathHelper.Floor_double(entity.posX * 32D);
+			EntityY = net.minecraft.src.MathHelper.Floor_double(entity.posY * 32D);
+			EntityZ = net.minecraft.src.MathHelper.Floor_double(entity.posZ * 32D);
 			if (entity is net.minecraft.src.EntityLightningBolt)
 			{
-				field_27044_e = 1;
+				EntityType = 1;
 			}
 		}
 
 		/// <exception cref="System.IO.IOException"/>
 		public override void ReadPacketData(java.io.DataInputStream datainputstream)
 		{
-			field_27043_a = datainputstream.ReadInt();
-			field_27044_e = datainputstream.ReadByte();
-			field_27042_b = datainputstream.ReadInt();
-			field_27046_c = datainputstream.ReadInt();
-			field_27045_d = datainputstream.ReadInt();
+			EntityID = datainputstream.ReadInt();
+			EntityType = datainputstream.ReadByte();
+			EntityX = datainputstream.ReadInt();
+			EntityY = datainputstream.ReadInt();
+			EntityZ = datainputstream.ReadInt();
 		}
 
 		/// <exception cref="System.IO.IOException"/>
 		public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
 		{
-			dataoutputstream.WriteInt(field_27043_a);
-			dataoutputstream.WriteByte(field_27044_e);
-			dataoutputstream.WriteInt(field_27042_b);
-			dataoutputstream.WriteInt(field_27046_c);
-			dataoutputstream.WriteInt(field_27045_d);
+			dataoutputstream.WriteInt(EntityID);
+			dataoutputstream.WriteByte(EntityType);
+			dataoutputstream.WriteInt(EntityX);
+			dataoutputstream.WriteInt(EntityY);
+			dataoutputstream.WriteInt(EntityZ);
 		}
 
 		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
 		{
-			nethandler.Func_27002_a(this);
+			nethandler.HandleWeather(this);
 		}
 
 		public override int GetPacketSize()
@@ -56,14 +56,14 @@ namespace net.minecraft.src
 			return 17;
 		}
 
-		public int field_27043_a;
+		public int EntityID;
 
-		public int field_27042_b;
+		public int EntityX;
 
-		public int field_27046_c;
+		public int EntityY;
 
-		public int field_27045_d;
+		public int EntityZ;
 
-		public int field_27044_e;
+		public int EntityType;
 	}
 }

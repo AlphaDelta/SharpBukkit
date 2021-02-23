@@ -5,41 +5,41 @@ using Sharpen;
 
 namespace net.minecraft.src
 {
-	public class Packet2Handshake : net.minecraft.src.Packet
-	{
-		public Packet2Handshake()
-		{
-		}
+    public class Packet2Handshake : net.minecraft.src.Packet
+    {
+        public Packet2Handshake()
+        {
+        }
 
-		public Packet2Handshake(string s)
-		{
-			// Referenced classes of package net.minecraft.src:
-			//            Packet, NetHandler
-			username = s;
-		}
+        public Packet2Handshake(string username)
+        {
+            // Referenced classes of package net.minecraft.src:
+            //            Packet, NetHandler
+            this.username = username;
+        }
 
-		/// <exception cref="System.IO.IOException"/>
-		public override void ReadPacketData(java.io.DataInputStream datainputstream)
-		{
-			username = ReadString(datainputstream, 32);
-		}
+        /// <exception cref="System.IO.IOException"/>
+        public override void ReadPacketData(java.io.DataInputStream datainputstream)
+        {
+            username = ReadString(datainputstream, 32);
+        }
 
-		/// <exception cref="System.IO.IOException"/>
-		public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
-		{
-			WriteString(username, dataoutputstream);
-		}
+        /// <exception cref="System.IO.IOException"/>
+        public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
+        {
+            WriteString(username, dataoutputstream);
+        }
 
-		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
-		{
-			nethandler.HandleHandshake(this);
-		}
+        public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
+        {
+            nethandler.HandleHandshake(this);
+        }
 
-		public override int GetPacketSize()
-		{
-			return 4 + username.Length + 4;
-		}
+        public override int GetPacketSize()
+        {
+            return 4 + username.Length + 4;
+        }
 
-		public string username;
-	}
+        public string username;
+    }
 }

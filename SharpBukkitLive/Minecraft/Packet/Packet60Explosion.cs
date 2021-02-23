@@ -12,15 +12,15 @@ namespace net.minecraft.src
 		{
 		}
 
-		public Packet60Explosion(double d, double d1, double d2, float f, HashSet<ChunkPosition> set)
+		public Packet60Explosion(double x, double y, double z, float size, HashSet<ChunkPosition> blocksDestroyed)
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            Packet, ChunkPosition, NetHandler
-			explosionX = d;
-			explosionY = d1;
-			explosionZ = d2;
-			explosionSize = f;
-			destroyedBlockPositions = new HashSet<ChunkPosition>(set);
+			explosionX = x;
+			explosionY = y;
+			explosionZ = z;
+			explosionSize = size;
+			destroyedBlockPositions = new HashSet<ChunkPosition>(blocksDestroyed);
 		}
 
 		/// <exception cref="System.IO.IOException"/>
@@ -71,7 +71,7 @@ namespace net.minecraft.src
 
 		public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
 		{
-			nethandler.Func_12001_a(this);
+			nethandler.HandleExplosion(this);
 		}
 
 		public override int GetPacketSize()

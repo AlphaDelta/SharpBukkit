@@ -58,9 +58,13 @@ namespace net.minecraft.src
 		public override void HandleMovementTypePacket(net.minecraft.src.Packet27Position 
 			packet27position)
 		{
-			playerEntity.SetMovementType(packet27position.Func_22031_c(), packet27position.Func_22028_e
-				(), packet27position.Func_22032_g(), packet27position.Func_22030_h(), packet27position
-				.Func_22029_d(), packet27position.Func_22033_f());
+			playerEntity.SetMovementType(
+				packet27position.GetStrafeMovement(),
+				packet27position.GetForwardMovement(),
+				packet27position.GetIsSneaking(),
+				packet27position.GetIsInJump(),
+				packet27position.GetPitch(),
+				packet27position.GetYaw());
 		}
 
 		public override void HandleFlying(net.minecraft.src.Packet10Flying packet10flying
@@ -563,7 +567,7 @@ namespace net.minecraft.src
 			}
 		}
 
-		public override void Func_21001_a(net.minecraft.src.Packet19EntityAction packet19entityaction
+		public override void HandleEntityAction(net.minecraft.src.Packet19EntityAction packet19entityaction
 			)
 		{
 			if (packet19entityaction.state == 1)
@@ -609,7 +613,7 @@ namespace net.minecraft.src
 			return playerEntity.username;
 		}
 
-		public override void Func_6006_a(net.minecraft.src.Packet7UseEntity packet7useentity
+		public override void HandleUseEntity(net.minecraft.src.Packet7UseEntity packet7useentity
 			)
 		{
 			net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(playerEntity
@@ -653,7 +657,7 @@ namespace net.minecraft.src
 			playerEntity.CloseCraftingGui();
 		}
 
-		public override void Func_20007_a(net.minecraft.src.Packet102WindowClick packet102windowclick
+		public override void HandleWindowClick(net.minecraft.src.Packet102WindowClick packet102windowclick
 			)
 		{
 			if (playerEntity.currentCraftingInventory.windowId == packet102windowclick.window_Id
@@ -691,7 +695,7 @@ namespace net.minecraft.src
 			}
 		}
 
-		public override void Func_20008_a(net.minecraft.src.Packet106Transaction packet106transaction
+		public override void HandleTransaction(net.minecraft.src.Packet106Transaction packet106transaction
 			)
 		{
 			short short1 = (short)field_10_k[playerEntity.currentCraftingInventory.windowId];

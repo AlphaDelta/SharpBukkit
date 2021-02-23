@@ -595,24 +595,24 @@ namespace net.minecraft.src
         public virtual void SendPacketToPlayersAroundPoint(double d, double d1, double d2
             , double d3, int i, net.minecraft.src.Packet packet)
         {
-            Func_28171_a(null, d, d1, d2, d3, i, packet);
+            SendPacketToPlayersAroundPoint(null, d, d1, d2, d3, i, packet);
         }
 
-        public virtual void Func_28171_a(net.minecraft.src.EntityPlayer entityplayer, double
-             d, double d1, double d2, double d3, int i, net.minecraft.src.Packet packet)
+        public virtual void SendPacketToPlayersAroundPoint(net.minecraft.src.EntityPlayer entityplayer, double
+             pointX, double pointY, double pointZ, double radius, int dimension, net.minecraft.src.Packet packet)
         {
             for (int j = 0; j < playerEntities.Count; j++)
             {
                 net.minecraft.src.EntityPlayerMP entityplayermp = (net.minecraft.src.EntityPlayerMP
                     )playerEntities[j];
-                if (entityplayermp == entityplayer || entityplayermp.dimension != i)
+                if (entityplayermp == entityplayer || entityplayermp.dimension != dimension)
                 {
                     continue;
                 }
-                double d4 = d - entityplayermp.posX;
-                double d5 = d1 - entityplayermp.posY;
-                double d6 = d2 - entityplayermp.posZ;
-                if (d4 * d4 + d5 * d5 + d6 * d6 < d3 * d3)
+                double deltaX = pointX - entityplayermp.posX;
+                double deltaY = pointY - entityplayermp.posY;
+                double deltaZ = pointZ - entityplayermp.posZ;
+                if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ < radius * radius)
                 {
                     entityplayermp.playerNetServerHandler.SendPacket(packet);
                 }
