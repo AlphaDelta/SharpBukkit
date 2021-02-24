@@ -67,7 +67,7 @@ namespace net.minecraft.src
 
 		protected internal override bool Func_25020_s()
 		{
-			return !Func_25030_y();
+			return !IsTamed();
 		}
 
 		protected internal override string GetLivingSound()
@@ -78,7 +78,7 @@ namespace net.minecraft.src
 			}
 			if (rand.Next(3) == 0)
 			{
-				if (Func_25030_y() && dataWatcher.GetWatchableObjectInteger(18) < 10)
+				if (IsTamed() && dataWatcher.GetWatchableObjectInteger(18) < 10)
 				{
 					return "mob.wolf.whine";
 				}
@@ -116,7 +116,7 @@ namespace net.minecraft.src
 		protected internal override void UpdatePlayerActionState()
 		{
 			base.UpdatePlayerActionState();
-			if (!hasAttacked && !GetGotPath() && Func_25030_y() && ridingEntity == null)
+			if (!hasAttacked && !GetGotPath() && IsTamed() && ridingEntity == null)
 			{
 				net.minecraft.src.EntityPlayer entityplayer = worldObj.GetPlayerEntityByName(GetOwner
 					());
@@ -138,7 +138,7 @@ namespace net.minecraft.src
 			}
 			else
 			{
-				if (playerToAttack == null && !GetGotPath() && !Func_25030_y() && worldObj.rand.NextInt
+				if (playerToAttack == null && !GetGotPath() && !IsTamed() && worldObj.rand.NextInt
 					(100) == 0)
 				{
 					System.Collections.Generic.List<Entity> list = worldObj.GetEntitiesWithinAABB(Sharpen.Runtime.GetClassForType
@@ -174,13 +174,13 @@ namespace net.minecraft.src
 					net.minecraft.src.ItemStack itemstack = entityplayer.inventory.GetCurrentItem();
 					if (itemstack != null)
 					{
-						if (!Func_25030_y() && itemstack.itemID == net.minecraft.src.Item.bone.shiftedIndex)
+						if (!IsTamed() && itemstack.itemID == net.minecraft.src.Item.bone.shiftedIndex)
 						{
 							field_25039_a = true;
 						}
 						else
 						{
-							if (Func_25030_y() && (net.minecraft.src.Item.itemsList[itemstack.itemID] is net.minecraft.src.ItemFood
+							if (IsTamed() && (net.minecraft.src.Item.itemsList[itemstack.itemID] is net.minecraft.src.ItemFood
 								))
 							{
 								field_25039_a = ((net.minecraft.src.ItemFood)net.minecraft.src.Item.itemsList[itemstack
@@ -319,7 +319,7 @@ namespace net.minecraft.src
 			}
 			if (base.AttackEntityFrom(entity, i))
 			{
-				if (!Func_25030_y() && !GetIsAngry())
+				if (!IsTamed() && !GetIsAngry())
 				{
 					if (entity is net.minecraft.src.EntityPlayer)
 					{
@@ -345,7 +345,7 @@ namespace net.minecraft.src
 							}
 							net.minecraft.src.Entity entity1 = (net.minecraft.src.Entity)iterator.Current;
 							net.minecraft.src.EntityWolf entitywolf = (net.minecraft.src.EntityWolf)entity1;
-							if (!entitywolf.Func_25030_y() && entitywolf.playerToAttack == null)
+							if (!entitywolf.IsTamed() && entitywolf.playerToAttack == null)
 							{
 								entitywolf.playerToAttack = entity;
 								if (entity is net.minecraft.src.EntityPlayer)
@@ -361,7 +361,7 @@ namespace net.minecraft.src
 				{
 					if (entity != this && entity != null)
 					{
-						if (Func_25030_y() && (entity is net.minecraft.src.EntityPlayer) && ((net.minecraft.src.EntityPlayer)entity).username.Equals(GetOwner(), System.StringComparison.OrdinalIgnoreCase))
+						if (IsTamed() && (entity is net.minecraft.src.EntityPlayer) && ((net.minecraft.src.EntityPlayer)entity).username.Equals(GetOwner(), System.StringComparison.OrdinalIgnoreCase))
 						{
 							return true;
 						}
@@ -410,7 +410,7 @@ namespace net.minecraft.src
 				{
 					attackTime = 20;
 					byte byte0 = 2;
-					if (Func_25030_y())
+					if (IsTamed())
 					{
 						byte0 = 4;
 					}
@@ -422,7 +422,7 @@ namespace net.minecraft.src
 		public override bool Interact(net.minecraft.src.EntityPlayer entityplayer)
 		{
 			net.minecraft.src.ItemStack itemstack = entityplayer.inventory.GetCurrentItem();
-			if (!Func_25030_y())
+			if (!IsTamed())
 			{
 				if (itemstack != null && itemstack.itemID == net.minecraft.src.Item.bone.shiftedIndex
 					 && !GetIsAngry())
@@ -557,7 +557,7 @@ namespace net.minecraft.src
 			}
 		}
 
-		public virtual bool Func_25030_y()
+		public virtual bool IsTamed()
 		{
 			return (dataWatcher.GetWatchableObjectByte(16) & 4) != 0;
 		}

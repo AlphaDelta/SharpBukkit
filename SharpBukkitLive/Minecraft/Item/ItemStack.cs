@@ -5,295 +5,312 @@ using Sharpen;
 
 namespace net.minecraft.src
 {
-	public sealed class ItemStack
-	{
-		public ItemStack(net.minecraft.src.Block block)
-			: this(block, 1)
-		{
-		}
+    public sealed class ItemStack
+    {
+        public ItemStack(net.minecraft.src.Block block)
+            : this(block, 1)
+        {
+        }
 
-		public ItemStack(net.minecraft.src.Block block, int i)
-			: this(block.blockID, i, 0)
-		{
-		}
+        public ItemStack(net.minecraft.src.Block block, int i)
+            : this(block.blockID, i, 0)
+        {
+        }
 
-		public ItemStack(net.minecraft.src.Block block, int i, int j)
-			: this(block.blockID, i, j)
-		{
-		}
+        public ItemStack(net.minecraft.src.Block block, int i, int j)
+            : this(block.blockID, i, j)
+        {
+        }
 
-		public ItemStack(net.minecraft.src.Item item)
-			: this(item.shiftedIndex, 1, 0)
-		{
-		}
+        public ItemStack(net.minecraft.src.Item item)
+            : this(item.shiftedIndex, 1, 0)
+        {
+        }
 
-		public ItemStack(net.minecraft.src.Item item, int i)
-			: this(item.shiftedIndex, i, 0)
-		{
-		}
+        public ItemStack(net.minecraft.src.Item item, int i)
+            : this(item.shiftedIndex, i, 0)
+        {
+        }
 
-		public ItemStack(net.minecraft.src.Item item, int i, int j)
-			: this(item.shiftedIndex, i, j)
-		{
-		}
+        public ItemStack(net.minecraft.src.Item item, int i, int j)
+            : this(item.shiftedIndex, i, j)
+        {
+        }
 
-		public ItemStack(int i, int j, int k)
-		{
-			// Referenced classes of package net.minecraft.src:
-			//            Block, Item, StatList, EntityPlayer, 
-			//            NBTTagCompound, World, Entity, EntityLiving
-			stackSize = 0;
-			itemID = i;
-			stackSize = j;
-			itemDamage = k;
-		}
+        public ItemStack(int itemID, int stackSize, int itemDamage)
+        {
+            // Referenced classes of package net.minecraft.src:
+            //            Block, Item, StatList, EntityPlayer, 
+            //            NBTTagCompound, World, Entity, EntityLiving
+            this.stackSize = 0;
+            this.itemID = itemID;
+            this.stackSize = stackSize;
+            this.itemDamage = itemDamage;
+        }
 
-		public ItemStack(net.minecraft.src.NBTTagCompound nbttagcompound)
-		{
-			stackSize = 0;
-			ReadFromNBT(nbttagcompound);
-		}
+        public ItemStack(net.minecraft.src.NBTTagCompound nbttagcompound)
+        {
+            stackSize = 0;
+            ReadFromNBT(nbttagcompound);
+        }
 
-		public net.minecraft.src.ItemStack SplitStack(int i)
-		{
-			stackSize -= i;
-			return new net.minecraft.src.ItemStack(itemID, i, itemDamage);
-		}
+        public net.minecraft.src.ItemStack SplitStack(int i)
+        {
+            //TODO: Do proper sanity check to prevent duplication
+            if(stackSize <= 0)
+                return new net.minecraft.src.ItemStack(net.minecraft.src.Item.snowball, i, itemDamage);
+            //===================================================
 
-		public net.minecraft.src.Item GetItem()
-		{
-			return net.minecraft.src.Item.itemsList[itemID];
-		}
+            stackSize -= i;
+            return new net.minecraft.src.ItemStack(itemID, i, itemDamage);
+        }
 
-		public bool UseItem(net.minecraft.src.EntityPlayer entityplayer, net.minecraft.src.World
-			 world, int i, int j, int k, int l)
-		{
-			bool flag = GetItem().OnItemUse(this, entityplayer, world, i, j, k, l);
-			if (flag)
-			{
-				entityplayer.AddStat(net.minecraft.src.StatList.StatUseItem[itemID], 1);
-			}
-			return flag;
-		}
+        public net.minecraft.src.Item GetItem()
+        {
+            return net.minecraft.src.Item.itemsList[itemID];
+        }
 
-		public float GetStrVsBlock(net.minecraft.src.Block block)
-		{
-			return GetItem().GetStrVsBlock(this, block);
-		}
+        public bool UseItem(net.minecraft.src.EntityPlayer entityplayer, net.minecraft.src.World
+             world, int i, int j, int k, int l)
+        {
+            bool flag = GetItem().OnItemUse(this, entityplayer, world, i, j, k, l);
+            if (flag)
+            {
+                entityplayer.AddStat(net.minecraft.src.StatList.StatUseItem[itemID], 1);
+            }
+            return flag;
+        }
 
-		public net.minecraft.src.ItemStack UseItemRightClick(net.minecraft.src.World world
-			, net.minecraft.src.EntityPlayer entityplayer)
-		{
-			return GetItem().OnItemRightClick(this, world, entityplayer);
-		}
+        public float GetStrVsBlock(net.minecraft.src.Block block)
+        {
+            return GetItem().GetStrVsBlock(this, block);
+        }
 
-		public net.minecraft.src.NBTTagCompound WriteToNBT(net.minecraft.src.NBTTagCompound
-			 nbttagcompound)
-		{
-			nbttagcompound.SetShort("id", (short)itemID);
-			nbttagcompound.SetByte("Count", unchecked((byte)stackSize));
-			nbttagcompound.SetShort("Damage", (short)itemDamage);
-			return nbttagcompound;
-		}
+        public net.minecraft.src.ItemStack UseItemRightClick(net.minecraft.src.World world
+            , net.minecraft.src.EntityPlayer entityplayer)
+        {
+            return GetItem().OnItemRightClick(this, world, entityplayer);
+        }
 
-		public void ReadFromNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
-		{
-			itemID = nbttagcompound.GetShort("id");
-			stackSize = nbttagcompound.GetByte("Count");
-			itemDamage = nbttagcompound.GetShort("Damage");
-		}
+        public net.minecraft.src.NBTTagCompound WriteToNBT(net.minecraft.src.NBTTagCompound
+             nbttagcompound)
+        {
+            nbttagcompound.SetShort("id", (short)itemID);
+            nbttagcompound.SetByte("Count", unchecked((byte)stackSize));
+            nbttagcompound.SetShort("Damage", (short)itemDamage);
+            return nbttagcompound;
+        }
 
-		public int GetMaxStackSize()
-		{
-			return GetItem().GetItemStackLimit();
-		}
+        public void ReadFromNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
+        {
+            itemID = nbttagcompound.GetShort("id");
+            stackSize = nbttagcompound.GetByte("Count");
+            itemDamage = nbttagcompound.GetShort("Damage");
+        }
 
-		public bool Func_21132_c()
-		{
-			return GetMaxStackSize() > 1 && (!IsItemStackDamageable() || !IsItemDamaged());
-		}
+        public int GetMaxStackSize()
+        {
+            return GetItem().GetItemStackLimit();
+        }
 
-		public bool IsItemStackDamageable()
-		{
-			return net.minecraft.src.Item.itemsList[itemID].GetMaxDamage() > 0;
-		}
+        public bool Func_21132_c()
+        {
+            return GetMaxStackSize() > 1 && (!IsItemStackDamageable() || !IsItemDamaged());
+        }
 
-		public bool GetHasSubtypes()
-		{
-			return net.minecraft.src.Item.itemsList[itemID].GetHasSubtypes();
-		}
+        public bool IsItemStackDamageable()
+        {
+            return net.minecraft.src.Item.itemsList[itemID].GetMaxDamage() > 0;
+        }
 
-		public bool IsItemDamaged()
-		{
-			return IsItemStackDamageable() && itemDamage > 0;
-		}
+        public bool GetHasSubtypes()
+        {
+            return net.minecraft.src.Item.itemsList[itemID].GetHasSubtypes();
+        }
 
-		public int GetItemDamageForDisplay()
-		{
-			return itemDamage;
-		}
+        public bool IsItemDamaged()
+        {
+            return IsItemStackDamageable() && itemDamage > 0;
+        }
 
-		public int GetItemDamage()
-		{
-			return itemDamage;
-		}
+        public int GetItemDamageForDisplay()
+        {
+            return itemDamage;
+        }
 
-		public void SetItemDamage(int i)
-		{
-			itemDamage = i;
-		}
+        public int GetItemDamage()
+        {
+            return itemDamage;
+        }
 
-		public int GetMaxDamage()
-		{
-			return net.minecraft.src.Item.itemsList[itemID].GetMaxDamage();
-		}
+        public void SetItemDamage(int i)
+        {
+            itemDamage = i;
+        }
 
-		public void DamageItem(int i, net.minecraft.src.Entity entity)
-		{
-			if (!IsItemStackDamageable())
-			{
-				return;
-			}
-			itemDamage += i;
-			if (itemDamage > GetMaxDamage())
-			{
-				if (entity is net.minecraft.src.EntityPlayer)
-				{
-					((net.minecraft.src.EntityPlayer)entity).AddStat(net.minecraft.src.StatList.StatBreakItem
-						[itemID], 1);
-				}
-				stackSize--;
-				if (stackSize < 0)
-				{
-					stackSize = 0;
-				}
-				itemDamage = 0;
-			}
-		}
+        public int GetMaxDamage()
+        {
+            return net.minecraft.src.Item.itemsList[itemID].GetMaxDamage();
+        }
 
-		public void HitEntity(net.minecraft.src.EntityLiving entityliving, net.minecraft.src.EntityPlayer
-			 entityplayer)
-		{
-			bool flag = net.minecraft.src.Item.itemsList[itemID].HitEntity(this, entityliving
-				, entityplayer);
-			if (flag)
-			{
-				entityplayer.AddStat(net.minecraft.src.StatList.StatUseItem[itemID], 1);
-			}
-		}
+        public void DamageItem(int i, net.minecraft.src.Entity entity)
+        {
+            if (!IsItemStackDamageable())
+            {
+                return;
+            }
+            itemDamage += i;
+            if (itemDamage > GetMaxDamage())
+            {
+                if (entity is net.minecraft.src.EntityPlayer)
+                {
+                    ((net.minecraft.src.EntityPlayer)entity).AddStat(net.minecraft.src.StatList.StatBreakItem
+                        [itemID], 1);
+                }
+                stackSize--;
+                if (stackSize < 0)
+                {
+                    stackSize = 0;
+                }
+                itemDamage = 0;
+            }
+        }
 
-		public void Func_25124_a(int i, int j, int k, int l, net.minecraft.src.EntityPlayer
-			 entityplayer)
-		{
-			bool flag = net.minecraft.src.Item.itemsList[itemID].Func_25007_a(this, i, j, k, 
-				l, entityplayer);
-			if (flag)
-			{
-				entityplayer.AddStat(net.minecraft.src.StatList.StatUseItem[itemID], 1);
-			}
-		}
+        public void HitEntity(net.minecraft.src.EntityLiving entityliving, net.minecraft.src.EntityPlayer
+             entityplayer)
+        {
+            bool flag = net.minecraft.src.Item.itemsList[itemID].HitEntity(this, entityliving
+                , entityplayer);
+            if (flag)
+            {
+                entityplayer.AddStat(net.minecraft.src.StatList.StatUseItem[itemID], 1);
+            }
+        }
 
-		public int GetDamageVsEntity(net.minecraft.src.Entity entity)
-		{
-			return net.minecraft.src.Item.itemsList[itemID].GetDamageVsEntity(entity);
-		}
+        public void Func_25124_a(int i, int j, int k, int l, net.minecraft.src.EntityPlayer
+             entityplayer)
+        {
+            bool flag = net.minecraft.src.Item.itemsList[itemID].Func_25007_a(this, i, j, k,
+                l, entityplayer);
+            if (flag)
+            {
+                entityplayer.AddStat(net.minecraft.src.StatList.StatUseItem[itemID], 1);
+            }
+        }
 
-		public bool CanHarvestBlock(net.minecraft.src.Block block)
-		{
-			return net.minecraft.src.Item.itemsList[itemID].CanHarvestBlock(block);
-		}
+        public int GetDamageVsEntity(net.minecraft.src.Entity entity)
+        {
+            return net.minecraft.src.Item.itemsList[itemID].GetDamageVsEntity(entity);
+        }
 
-		public void Func_577_a(net.minecraft.src.EntityPlayer entityplayer)
-		{
-		}
+        public bool CanHarvestBlock(net.minecraft.src.Block block)
+        {
+            return net.minecraft.src.Item.itemsList[itemID].CanHarvestBlock(block);
+        }
 
-		public void UseItemOnEntity(net.minecraft.src.EntityLiving entityliving)
-		{
-			net.minecraft.src.Item.itemsList[itemID].SaddleEntity(this, entityliving);
-		}
+        public void Func_577_a(net.minecraft.src.EntityPlayer entityplayer)
+        {
+        }
 
-		public net.minecraft.src.ItemStack Copy()
-		{
-			return new net.minecraft.src.ItemStack(itemID, stackSize, itemDamage);
-		}
+        public void UseItemOnEntity(net.minecraft.src.EntityLiving entityliving)
+        {
+            net.minecraft.src.Item.itemsList[itemID].SaddleEntity(this, entityliving);
+        }
 
-		public static bool AreItemStacksEqual(net.minecraft.src.ItemStack itemstack, net.minecraft.src.ItemStack
-			 itemstack1)
-		{
-			if (itemstack == null && itemstack1 == null)
-			{
-				return true;
-			}
-			if (itemstack == null || itemstack1 == null)
-			{
-				return false;
-			}
-			else
-			{
-				return itemstack.IsItemStackEqual(itemstack1);
-			}
-		}
+        public net.minecraft.src.ItemStack Copy()
+        {
+            return new net.minecraft.src.ItemStack(itemID, stackSize, itemDamage);
+        }
 
-		private bool IsItemStackEqual(net.minecraft.src.ItemStack itemstack)
-		{
-			if (stackSize != itemstack.stackSize)
-			{
-				return false;
-			}
-			if (itemID != itemstack.itemID)
-			{
-				return false;
-			}
-			return itemDamage == itemstack.itemDamage;
-		}
+        public static bool AreItemStacksEqual(net.minecraft.src.ItemStack itemstack, net.minecraft.src.ItemStack
+             itemstack1)
+        {
+            if (itemstack == null && itemstack1 == null)
+            {
+                return true;
+            }
+            if (itemstack == null || itemstack1 == null)
+            {
+                return false;
+            }
+            else
+            {
+                return itemstack.IsItemStackEqual(itemstack1);
+            }
+        }
 
-		public bool IsItemEqual(net.minecraft.src.ItemStack itemstack)
-		{
-			return itemID == itemstack.itemID && itemDamage == itemstack.itemDamage;
-		}
+        private bool IsItemStackEqual(net.minecraft.src.ItemStack itemstack)
+        {
+            if (stackSize != itemstack.stackSize)
+            {
+                return false;
+            }
+            if (itemID != itemstack.itemID)
+            {
+                return false;
+            }
+            return itemDamage == itemstack.itemDamage;
+        }
 
-		public static net.minecraft.src.ItemStack Func_20117_a(net.minecraft.src.ItemStack
-			 itemstack)
-		{
-			return itemstack != null ? itemstack.Copy() : null;
-		}
+        public bool IsItemEqual(net.minecraft.src.ItemStack itemstack)
+        {
+            return itemID == itemstack.itemID && itemDamage == itemstack.itemDamage;
+        }
 
-		public override string ToString()
-		{
-			return (new java.lang.StringBuilder()).Append(stackSize).Append("x").Append(net.minecraft.src.Item
-				.itemsList[itemID].GetItemName()).Append("@").Append(itemDamage).ToString();
-		}
+        public static net.minecraft.src.ItemStack CloneStack(net.minecraft.src.ItemStack
+             itemstack)
+        {
+            return itemstack != null ? itemstack.Copy() : null;
+        }
 
-		public void Func_28143_a(net.minecraft.src.World world, net.minecraft.src.Entity 
-			entity, int i, bool flag)
-		{
-			if (animationsToGo > 0)
-			{
-				animationsToGo--;
-			}
-			net.minecraft.src.Item.itemsList[itemID].Func_28018_a(this, world, entity, i, flag
-				);
-		}
+        public override string ToString()
+        {
+            return (new java.lang.StringBuilder()).Append(stackSize).Append("x").Append(net.minecraft.src.Item
+                .itemsList[itemID].GetItemName()).Append("@").Append(itemDamage).ToString();
+        }
 
-		public void Func_28142_b(net.minecraft.src.World world, net.minecraft.src.EntityPlayer
-			 entityplayer)
-		{
-			entityplayer.AddStat(net.minecraft.src.StatList.StatisticCraftItem[itemID], stackSize);
-			net.minecraft.src.Item.itemsList[itemID].Func_28020_c(this, world, entityplayer);
-		}
+        public void Func_28143_a(net.minecraft.src.World world, net.minecraft.src.Entity
+            entity, int i, bool flag)
+        {
+            if (animationsToGo > 0)
+            {
+                animationsToGo--;
+            }
+            net.minecraft.src.Item.itemsList[itemID].Func_28018_a(this, world, entity, i, flag);
+        }
 
-		public bool Func_28144_c(net.minecraft.src.ItemStack itemstack)
-		{
-			return itemID == itemstack.itemID && stackSize == itemstack.stackSize && itemDamage
-				 == itemstack.itemDamage;
-		}
+        public void AddCraftStatistic(net.minecraft.src.World world, net.minecraft.src.EntityPlayer entityplayer)
+        {
+            entityplayer.AddStat(net.minecraft.src.StatList.StatisticCraftItem[itemID], stackSize);
+            net.minecraft.src.Item.itemsList[itemID].Func_28020_c(this, world, entityplayer);
+        }
 
-		public int stackSize;
+        public bool CompareStacks(net.minecraft.src.ItemStack itemstack)
+        {
+            return itemID == itemstack.itemID && stackSize == itemstack.stackSize && itemDamage
+                 == itemstack.itemDamage;
+        }
 
-		public int animationsToGo;
+        //SHARP sanity check
+        private int _stackSize;
+        public int stackSize
+        {
+            get
+            {
+                return _stackSize;
+            }
+            set
+            {
+                if (value < 0) _stackSize = 0;
+                else if (value > 128) _stackSize = 128;
+                else _stackSize = value;
+            }
+        }
 
-		public int itemID;
+        public int animationsToGo;
 
-		private int itemDamage;
-	}
+        public int itemID;
+
+        private int itemDamage;
+    }
 }

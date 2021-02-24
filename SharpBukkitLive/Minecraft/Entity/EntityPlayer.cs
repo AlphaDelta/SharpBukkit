@@ -30,13 +30,11 @@ namespace net.minecraft.src
             inPortal = false;
             damageRemainder = 0;
             fishEntity = null;
-            personalCraftingInventory = new net.minecraft.src.ContainerPlayer(inventory, !world
-                .singleplayerWorld);
+            personalCraftingInventory = new net.minecraft.src.ContainerPlayer(inventory, !world.singleplayerWorld);
             currentCraftingInventory = personalCraftingInventory;
             yOffset = 1.62F;
             net.minecraft.src.ChunkCoordinates chunkcoordinates = world.GetSpawnPoint();
-            SetLocationAndAngles((double)chunkcoordinates.posX + 0.5D, chunkcoordinates.posY
-                + 1, (double)chunkcoordinates.posZ + 0.5D, 0.0F, 0.0F);
+            SetLocationAndAngles((double)chunkcoordinates.posX + 0.5D, chunkcoordinates.posY + 1, (double)chunkcoordinates.posZ + 0.5D, 0.0F, 0.0F);
             health = 20;
             entityType = "humanoid";
             field_9117_aI = 180F;
@@ -52,7 +50,7 @@ namespace net.minecraft.src
 
         public override void OnUpdate()
         {
-            if (Func_22057_E())
+            if (IsSleeping())
             {
                 sleepTimer++;
                 if (sleepTimer > 100)
@@ -65,12 +63,9 @@ namespace net.minecraft.src
                     {
                         WakeUpPlayer(true, true, false);
                     }
-                    else
+                    else if (worldObj.IsDaytime())
                     {
-                        if (worldObj.IsDaytime())
-                        {
-                            WakeUpPlayer(false, true, true);
-                        }
+                        WakeUpPlayer(false, true, true);
                     }
                 }
             }
@@ -135,7 +130,7 @@ namespace net.minecraft.src
 
         protected internal override bool IsMovementBlocked()
         {
-            return health <= 0 || Func_22057_E();
+            return health <= 0 || IsSleeping();
         }
 
         protected internal virtual void UsePersonalCraftingInventory()
@@ -151,7 +146,7 @@ namespace net.minecraft.src
             base.UpdateRidden();
             field_9150_ao = field_9149_ap;
             field_9149_ap = 0.0F;
-            Func_27015_h(posX - d, posY - d1, posZ - d2);
+            UpdateRideDistanceStatistics(posX - d, posY - d1, posZ - d2);
         }
 
         protected internal override void UpdatePlayerActionState()
@@ -210,14 +205,14 @@ namespace net.minecraft.src
                         net.minecraft.src.Entity entity = (net.minecraft.src.Entity)list[i];
                         if (!entity.isDead)
                         {
-                            Func_171_h(entity);
+                            CollideWithPlayer(entity);
                         }
                     }
                 }
             }
         }
 
-        private void Func_171_h(net.minecraft.src.Entity entity)
+        private void CollideWithPlayer(net.minecraft.src.Entity entity)
         {
             entity.OnCollideWithPlayer(this);
         }
@@ -230,16 +225,13 @@ namespace net.minecraft.src
             motionY = 0.10000000149011612D;
             if (username.Equals("Notch"))
             {
-                DropPlayerItemWithRandomChoice(new net.minecraft.src.ItemStack(net.minecraft.src.Item
-                    .appleRed, 1), true);
+                DropPlayerItemWithRandomChoice(new net.minecraft.src.ItemStack(net.minecraft.src.Item.appleRed, 1), true);
             }
             inventory.DropAllItems();
             if (entity != null)
             {
-                motionX = -net.minecraft.src.MathHelper.Cos(((attackedAtYaw + rotationYaw) * 3.141593F
-                    ) / 180F) * 0.1F;
-                motionZ = -net.minecraft.src.MathHelper.Sin(((attackedAtYaw + rotationYaw) * 3.141593F
-                    ) / 180F) * 0.1F;
+                motionX = -net.minecraft.src.MathHelper.Cos(((attackedAtYaw + rotationYaw) * 3.141593F) / 180F) * 0.1F;
+                motionZ = -net.minecraft.src.MathHelper.Sin(((attackedAtYaw + rotationYaw) * 3.141593F) / 180F) * 0.1F;
             }
             else
             {
@@ -264,8 +256,7 @@ namespace net.minecraft.src
 
         public virtual void DropCurrentItem()
         {
-            DropPlayerItemWithRandomChoice(inventory.DecrStackSize(inventory.currentItem, 1),
-                false);
+            DropPlayerItemWithRandomChoice(inventory.DecrStackSize(inventory.currentItem, 1), false);
         }
 
         public virtual void DropPlayerItem(net.minecraft.src.ItemStack itemstack)
@@ -402,7 +393,7 @@ namespace net.minecraft.src
             {
                 return false;
             }
-            if (Func_22057_E() && !worldObj.singleplayerWorld)
+            if (IsSleeping() && !worldObj.singleplayerWorld)
             {
                 WakeUpPlayer(true, true, false);
             }
@@ -434,7 +425,7 @@ namespace net.minecraft.src
             }
             if (obj is net.minecraft.src.EntityLiving)
             {
-                Func_25047_a((net.minecraft.src.EntityLiving)obj, false);
+                SetOwnedEntitiesToAttack((net.minecraft.src.EntityLiving)obj, false);
             }
             AddStat(net.minecraft.src.StatList.StatDamageTaken, i);
             return base.AttackEntityFrom(entity, i);
@@ -445,18 +436,16 @@ namespace net.minecraft.src
             return false;
         }
 
-        protected internal virtual void Func_25047_a(net.minecraft.src.EntityLiving entityliving
-            , bool flag)
+        protected internal virtual void SetOwnedEntitiesToAttack(net.minecraft.src.EntityLiving entityliving, bool mustBeStanding)
         {
-            if ((entityliving is net.minecraft.src.EntityCreeper) || (entityliving is net.minecraft.src.EntityGhast
-                ))
+            if ((entityliving is net.minecraft.src.EntityCreeper) || (entityliving is net.minecraft.src.EntityGhast))
             {
                 return;
             }
             if (entityliving is net.minecraft.src.EntityWolf)
             {
                 net.minecraft.src.EntityWolf entitywolf = (net.minecraft.src.EntityWolf)entityliving;
-                if (entitywolf.Func_25030_y() && username.Equals(entitywolf.GetOwner()))
+                if (entitywolf.IsTamed() && username.Equals(entitywolf.GetOwner()))
                 {
                     return;
                 }
@@ -477,8 +466,7 @@ namespace net.minecraft.src
                 }
                 net.minecraft.src.Entity entity = (net.minecraft.src.Entity)iterator.Current;
                 net.minecraft.src.EntityWolf entitywolf1 = (net.minecraft.src.EntityWolf)entity;
-                if (entitywolf1.Func_25030_y() && entitywolf1.GetEntityToAttack() == null && username
-                    .Equals(entitywolf1.GetOwner()) && (!flag || !entitywolf1.GetIsSitting()))
+                if (entitywolf1.IsTamed() && entitywolf1.GetEntityToAttack() == null && entitywolf1.GetOwner() == username && (!mustBeStanding || !entitywolf1.GetIsSitting()))
                 {
                     entitywolf1.SetIsSitting(false);
                     entitywolf1.SetEntityToAttack(entityliving);
@@ -576,7 +564,7 @@ namespace net.minecraft.src
                 {
                     if (entity.IsEntityAlive())
                     {
-                        Func_25047_a((net.minecraft.src.EntityLiving)entity, true);
+                        SetOwnedEntitiesToAttack((net.minecraft.src.EntityLiving)entity, true);
                     }
                     AddStat(net.minecraft.src.StatList.StatDamageDealt, i);
                 }
@@ -606,7 +594,7 @@ namespace net.minecraft.src
         {
             if (!worldObj.singleplayerWorld)
             {
-                if (Func_22057_E() || !IsEntityAlive())
+                if (IsSleeping() || !IsEntityAlive())
                 {
                     return net.minecraft.src.EnumStatus.OTHER_PROBLEM;
                 }
@@ -789,7 +777,7 @@ namespace net.minecraft.src
             }
         }
 
-        public override bool Func_22057_E()
+        public override bool IsSleeping()
         {
             return sleeping;
         }
@@ -821,7 +809,7 @@ namespace net.minecraft.src
             }
         }
 
-        public virtual void Func_27017_a(net.minecraft.src.StatBase statbase)
+        public virtual void AddStatistic(net.minecraft.src.StatBase statbase)
         {
             AddStat(statbase, 1);
         }
@@ -842,10 +830,10 @@ namespace net.minecraft.src
             double d1 = posY;
             double d2 = posZ;
             base.MoveEntityWithHeading(f, f1);
-            Func_25045_g(posX - d, posY - d1, posZ - d2);
+            UpdateDistanceStatistics(posX - d, posY - d1, posZ - d2);
         }
 
-        private void Func_25045_g(double d, double d1, double d2)
+        private void UpdateDistanceStatistics(double d, double d1, double d2)
         {
             if (ridingEntity != null)
             {
@@ -902,7 +890,7 @@ namespace net.minecraft.src
             }
         }
 
-        private void Func_27015_h(double d, double d1, double d2)
+        private void UpdateRideDistanceStatistics(double d, double d1, double d2)
         {
             if (ridingEntity != null)
             {
@@ -956,11 +944,11 @@ namespace net.minecraft.src
             base.Fall(f);
         }
 
-        public override void Func_27010_a(net.minecraft.src.EntityLiving entityliving)
+        public override void UpdateKillStatistic(net.minecraft.src.EntityLiving entityliving)
         {
             if (entityliving is net.minecraft.src.EntityMob)
             {
-                Func_27017_a(net.minecraft.src.AchievementList.aKillEnemy);
+                AddStatistic(net.minecraft.src.AchievementList.aKillEnemy);
             }
         }
 

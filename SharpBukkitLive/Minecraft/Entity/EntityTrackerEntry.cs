@@ -241,7 +241,7 @@ namespace net.minecraft.src
                     if (trackedEntity is net.minecraft.src.EntityPlayer)
                     {
                         net.minecraft.src.EntityPlayer entityplayer = (net.minecraft.src.EntityPlayer)trackedEntity;
-                        if (entityplayer.Func_22057_E())
+                        if (entityplayer.IsSleeping())
                         {
                             entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet17Sleep(
                                 trackedEntity,

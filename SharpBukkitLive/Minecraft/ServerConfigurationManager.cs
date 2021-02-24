@@ -572,8 +572,7 @@ namespace net.minecraft.src
         {
             for (int i = 0; i < playerEntities.Count; i++)
             {
-                net.minecraft.src.EntityPlayerMP entityplayermp = (net.minecraft.src.EntityPlayerMP
-                    )playerEntities[i];
+                net.minecraft.src.EntityPlayerMP entityplayermp = playerEntities[i];
                 if (entityplayermp.username.Equals(s, System.StringComparison.OrdinalIgnoreCase))
                 {
                     return entityplayermp;
@@ -587,15 +586,14 @@ namespace net.minecraft.src
             net.minecraft.src.EntityPlayerMP entityplayermp = GetPlayerEntity(s);
             if (entityplayermp != null)
             {
-                entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet3Chat
-                    (s1));
+                entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet3Chat(s1));
             }
         }
 
-        public virtual void SendPacketToPlayersAroundPoint(double d, double d1, double d2
-            , double d3, int i, net.minecraft.src.Packet packet)
+        public virtual void SendPacketToPlayersAroundPoint(double x, double y, double z
+            , double radius, int dimension, net.minecraft.src.Packet packet)
         {
-            SendPacketToPlayersAroundPoint(null, d, d1, d2, d3, i, packet);
+            SendPacketToPlayersAroundPoint(null, x, y, z, radius, dimension, packet);
         }
 
         public virtual void SendPacketToPlayersAroundPoint(net.minecraft.src.EntityPlayer entityplayer, double
@@ -651,13 +649,11 @@ namespace net.minecraft.src
         {
             for (int i = 0; i < playerEntities.Count; i++)
             {
-                playerNBTManagerObj.WritePlayerData((net.minecraft.src.EntityPlayer)playerEntities
-                    [i]);
+                playerNBTManagerObj.WritePlayerData((net.minecraft.src.EntityPlayer)playerEntities[i]);
             }
         }
 
-        public virtual void SentTileEntityToPlayer(int i, int j, int k, net.minecraft.src.TileEntity
-             tileentity)
+        public virtual void SentTileEntityToPlayer(int i, int j, int k, net.minecraft.src.TileEntity tileentity)
         {
         }
 

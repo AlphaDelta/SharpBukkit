@@ -25,7 +25,7 @@ namespace net.minecraft.src
 
 		public override void OnPickupFromSlot(net.minecraft.src.ItemStack itemstack)
 		{
-			itemstack.Func_28142_b(field_25004_e.worldObj, field_25004_e);
+			itemstack.AddCraftStatistic(field_25004_e.worldObj, field_25004_e);
 			if (itemstack.itemID == net.minecraft.src.Block.workbench.blockID)
 			{
 				field_25004_e.AddStat(net.minecraft.src.AchievementList.aBuildWorkBench, 1);

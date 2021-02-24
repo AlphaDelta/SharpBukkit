@@ -70,7 +70,7 @@ namespace net.minecraft.src
                     }
                     net.minecraft.src.EntityPlayer entityplayer2 = (net.minecraft.src.EntityPlayer)iterator
                         .Current;
-                    if (entityplayer2.Func_22057_E())
+                    if (entityplayer2.IsSleeping())
                     {
                         net.minecraft.src.ChunkCoordinates chunkcoordinates = entityplayer2.playerLocation;
                         if (chunkcoordinates.posX == i && chunkcoordinates.posY == j && chunkcoordinates.

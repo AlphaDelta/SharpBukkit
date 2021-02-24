@@ -255,25 +255,21 @@ namespace net.minecraft.src
             base.OnLivingUpdate();
         }
 
-        public override void OnItemPickup(net.minecraft.src.Entity entity, int i)
+        public override void OnItemPickup(net.minecraft.src.Entity entity, int stackSize)
         {
-            //TODO: Sanity check stack size for the love of god
             if (!entity.isDead)
             {
-                net.minecraft.src.EntityTracker entitytracker = mcServer.GetEntityTracker(dimension
-                    );
+                net.minecraft.src.EntityTracker entitytracker = mcServer.GetEntityTracker(dimension);
                 if (entity is net.minecraft.src.EntityItem)
                 {
-                    entitytracker.SendPacketToTrackedPlayers(entity, new net.minecraft.src.Packet22Collect
-                        (entity.entityId, entityId));
+                    entitytracker.SendPacketToTrackedPlayers(entity, new net.minecraft.src.Packet22Collect(entity.entityId, entityId));
                 }
                 if (entity is net.minecraft.src.EntityArrow)
                 {
-                    entitytracker.SendPacketToTrackedPlayers(entity, new net.minecraft.src.Packet22Collect
-                        (entity.entityId, entityId));
+                    entitytracker.SendPacketToTrackedPlayers(entity, new net.minecraft.src.Packet22Collect(entity.entityId, entityId));
                 }
             }
-            base.OnItemPickup(entity, i);
+            base.OnItemPickup(entity, stackSize);
             currentCraftingInventory.UpdateCraftingMatrix();
         }
 
@@ -312,7 +308,7 @@ namespace net.minecraft.src
 
         public override void WakeUpPlayer(bool flag, bool flag1, bool flag2)
         {
-            if (Func_22057_E())
+            if (IsSleeping())
             {
                 net.minecraft.src.EntityTracker entitytracker = mcServer.GetEntityTracker(dimension
                     );

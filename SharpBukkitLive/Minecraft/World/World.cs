@@ -2620,7 +2620,7 @@ namespace net.minecraft.src
                 }
                 net.minecraft.src.EntityPlayer entityplayer = (net.minecraft.src.EntityPlayer)iterator
                     .Current;
-                if (entityplayer.Func_22057_E())
+                if (entityplayer.IsSleeping())
                 {
                     continue;
                 }
@@ -2642,7 +2642,7 @@ namespace net.minecraft.src
                 }
                 net.minecraft.src.EntityPlayer entityplayer = (net.minecraft.src.EntityPlayer)iterator
                     .Current;
-                if (entityplayer.Func_22057_E())
+                if (entityplayer.IsSleeping())
                 {
                     entityplayer.WakeUpPlayer(false, false, true);
                 }

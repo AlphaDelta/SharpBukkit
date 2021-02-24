@@ -66,8 +66,7 @@ namespace net.minecraft.src
                 motionY = 0.20000000298023224D;
                 motionX = (rand.NextFloat() - rand.NextFloat()) * 0.2F;
                 motionZ = (rand.NextFloat() - rand.NextFloat()) * 0.2F;
-                worldObj.PlaySoundAtEntity(this, "random.fizz", 0.4F, 2.0F + rand.NextFloat() * 0.4F
-                    );
+                worldObj.PlaySoundAtEntity(this, "random.fizz", 0.4F, 2.0F + rand.NextFloat() * 0.4F);
             }
             Func_28005_g(posX, (boundingBox.minY + boundingBox.maxY) / 2D, posZ);
             MoveEntity(motionX, motionY, motionZ);
@@ -92,7 +91,7 @@ namespace net.minecraft.src
             }
             field_9170_e++;
             age++;
-            if (age >= 6000)
+            if (age >= 6000) //TODO: Hook age
             {
                 SetEntityDead();
             }
@@ -125,47 +124,58 @@ namespace net.minecraft.src
         {
             nbttagcompound.SetShort("Health", unchecked((byte)health));
             nbttagcompound.SetShort("Age", (short)age);
-            nbttagcompound.SetCompoundTag("Item", item.WriteToNBT(new net.minecraft.src.NBTTagCompound
-                ()));
+            nbttagcompound.SetCompoundTag("Item", item.WriteToNBT(new net.minecraft.src.NBTTagCompound()));
         }
 
-        protected internal override void ReadEntityFromNBT(net.minecraft.src.NBTTagCompound
-             nbttagcompound)
+        protected internal override void ReadEntityFromNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
         {
             health = nbttagcompound.GetShort("Health") & unchecked((int)(0xff));
             age = nbttagcompound.GetShort("Age");
-            net.minecraft.src.NBTTagCompound nbttagcompound1 = nbttagcompound.GetCompoundTag(
-                "Item");
+            net.minecraft.src.NBTTagCompound nbttagcompound1 = nbttagcompound.GetCompoundTag("Item");
             item = new net.minecraft.src.ItemStack(nbttagcompound1);
         }
 
-        public override void OnCollideWithPlayer(net.minecraft.src.EntityPlayer entityplayer
-            )
+        public override void OnCollideWithPlayer(net.minecraft.src.EntityPlayer entityplayer)
         {
             if (worldObj.singleplayerWorld)
             {
                 return;
             }
-            int i = item.stackSize;
-            if (delayBeforeCanPickup == 0 && entityplayer.inventory.AddItemStackToInventory(item
-                ))
+
+            int stackSize = item.stackSize;
+            if (delayBeforeCanPickup == 0 && SanityCheckStackSize() && entityplayer.inventory.AddItemStackToInventory(item))
             {
-                if (item.itemID == net.minecraft.src.Block.wood.blockID)
-                {
-                    entityplayer.Func_27017_a(net.minecraft.src.AchievementList.aCollectWood);
-                }
-                if (item.itemID == net.minecraft.src.Item.leather.shiftedIndex)
-                {
-                    entityplayer.Func_27017_a(net.minecraft.src.AchievementList.aKillCow);
-                }
-                worldObj.PlaySoundAtEntity(this, "random.pop", 0.2F, ((rand.NextFloat() - rand.NextFloat
-                    ()) * 0.7F + 1.0F) * 2.0F);
-                entityplayer.OnItemPickup(this, i);
+                //SHARP: Do these even matter in MP?
+                //if (item.itemID == net.minecraft.src.Block.wood.blockID)
+                //{
+                //    entityplayer.AddStatistic(net.minecraft.src.AchievementList.aCollectWood);
+                //}
+                //if (item.itemID == net.minecraft.src.Item.leather.shiftedIndex)
+                //{
+                //    entityplayer.AddStatistic(net.minecraft.src.AchievementList.aKillCow);
+                //}
+                worldObj.PlaySoundAtEntity(this, "random.pop", 0.2F, ((rand.NextFloat() - rand.NextFloat()) * 0.7F + 1.0F) * 2.0F);
+                entityplayer.OnItemPickup(this, stackSize);
                 if (item.stackSize <= 0)
                 {
                     SetEntityDead();
                 }
             }
+        }
+
+        //SHARP sanity check
+        bool SanityCheckStackSize()
+        {
+            if (item.stackSize < 0)
+            {
+                item.stackSize = 0;
+                SetEntityDead();
+                return false;
+            }
+            if (item.stackSize > 128)
+                item.stackSize = 128;
+
+            return true;
         }
 
         public net.minecraft.src.ItemStack item;

@@ -413,7 +413,7 @@ namespace net.minecraft.src
 			}
 			if (entity != null)
 			{
-				entity.Func_27010_a(this);
+				entity.UpdateKillStatistic(this);
 			}
 			unused_flag = true;
 			if (!worldObj.singleplayerWorld)
@@ -907,7 +907,7 @@ namespace net.minecraft.src
 			return 4;
 		}
 
-		public virtual bool Func_22057_E()
+		public virtual bool IsSleeping()
 		{
 			return false;
 		}

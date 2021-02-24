@@ -13,7 +13,7 @@ namespace SharpBukkitLive
         public void Help(int page = 1)
         {
             var resp = PagedList<ReflSharpBukkitCommand>(
-                PluginManager.Commands.Where(p => /*!p.Attr.Admin && */ !p.Attr.HideFromSearch).OrderBy(p => p.Name)
+                PluginManager.Commands.Where(p => /*!p.Attr.Admin && */ !p.Attr.HideFromSearch).OrderBy(p => p.Name) //TODO: Logic for listing different commands for different permissions
                 , p => $"{FormattingCodes.Yellow}{p.Name.ToLower()}{(p.Signature.Length > 0 ? " " + FormattingCodes.DarkYellow + p.Signature : "")}{(String.IsNullOrWhiteSpace(p.Attr.Description) ? "" : $" {FormattingCodes.White}- {FormattingCodes.Grey}" + p.Attr.Description)}"
                 , out string output
                 , page

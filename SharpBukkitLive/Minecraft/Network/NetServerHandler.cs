@@ -126,7 +126,7 @@ namespace net.minecraft.src
 					worldserver.UpdateEntity(playerEntity);
 					return;
 				}
-				if (playerEntity.Func_22057_E())
+				if (playerEntity.IsSleeping())
 				{
 					playerEntity.OnUpdateEntity(true);
 					playerEntity.SetPositionAndRotation(lastPosX, lastPosY, lastPosZ, playerEntity.rotationYaw
@@ -154,7 +154,7 @@ namespace net.minecraft.src
 					d5 = packet10flying.yPosition;
 					d7 = packet10flying.zPosition;
 					double d10 = packet10flying.stance - packet10flying.yPosition;
-					if (!playerEntity.Func_22057_E() && (d10 > 1.6499999999999999D || d10 < 0.10000000000000001D
+					if (!playerEntity.IsSleeping() && (d10 > 1.6499999999999999D || d10 < 0.10000000000000001D
 						))
 					{
 						KickPlayer("Illegal stance");
@@ -205,7 +205,7 @@ namespace net.minecraft.src
 				d13 = d7 - playerEntity.posZ;
 				d14 = d11 * d11 + d12 * d12 + d13 * d13;
 				bool flag1 = false;
-				if (d14 > 0.0625D && !playerEntity.Func_22057_E())
+				if (d14 > 0.0625D && !playerEntity.IsSleeping())
 				{
 					flag1 = true;
 					logger.Warning((new java.lang.StringBuilder()).Append(playerEntity.username).Append
@@ -219,7 +219,7 @@ namespace net.minecraft.src
 				playerEntity.SetPositionAndRotation(d3, d5, d7, f2, f3);
 				bool flag2 = worldserver.GetCollidingBoundingBoxes(playerEntity, playerEntity.boundingBox
 					.Copy().GetInsetBoundingBox(f4, f4, f4)).Count == 0;
-				if (flag && (flag1 || !flag2) && !playerEntity.Func_22057_E())
+				if (flag && (flag1 || !flag2) && !playerEntity.IsSleeping())
 				{
 					TeleportTo(lastPosX, lastPosY, lastPosZ, f2, f3);
 					return;
@@ -415,7 +415,7 @@ namespace net.minecraft.src
 			}
 			playerEntity.isChangingQuantityOnly = true;
 			playerEntity.inventory.mainInventory[playerEntity.inventory.currentItem] = net.minecraft.src.ItemStack
-				.Func_20117_a(playerEntity.inventory.mainInventory[playerEntity.inventory.currentItem
+				.CloneStack(playerEntity.inventory.mainInventory[playerEntity.inventory.currentItem
 				]);
 			net.minecraft.src.Slot slot = playerEntity.currentCraftingInventory.Func_20127_a(
 				playerEntity.inventory, playerEntity.inventory.currentItem);

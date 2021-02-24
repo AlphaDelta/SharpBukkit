@@ -159,7 +159,7 @@ namespace net.minecraft.src
 			int j = GetFirstEmptyStack();
 			if (j >= 0)
 			{
-				mainInventory[j] = net.minecraft.src.ItemStack.Func_20117_a(itemstack);
+				mainInventory[j] = net.minecraft.src.ItemStack.CloneStack(itemstack);
 				mainInventory[j].animationsToGo = 5;
 				itemstack.stackSize = 0;
 				return true;
@@ -170,26 +170,26 @@ namespace net.minecraft.src
 			}
 		}
 
-		public virtual net.minecraft.src.ItemStack DecrStackSize(int i, int j)
+		public virtual net.minecraft.src.ItemStack DecrStackSize(int slotId, int num)
 		{
 			net.minecraft.src.ItemStack[] aitemstack = mainInventory;
-			if (i >= mainInventory.Length)
+			if (slotId >= mainInventory.Length)
 			{
 				aitemstack = armorInventory;
-				i -= mainInventory.Length;
+				slotId -= mainInventory.Length;
 			}
-			if (aitemstack[i] != null)
+			if (aitemstack[slotId] != null)
 			{
-				if (aitemstack[i].stackSize <= j)
+				if (aitemstack[slotId].stackSize <= num)
 				{
-					net.minecraft.src.ItemStack itemstack = aitemstack[i];
-					aitemstack[i] = null;
+					net.minecraft.src.ItemStack itemstack = aitemstack[slotId];
+					aitemstack[slotId] = null;
 					return itemstack;
 				}
-				net.minecraft.src.ItemStack itemstack1 = aitemstack[i].SplitStack(j);
-				if (aitemstack[i].stackSize == 0)
+				net.minecraft.src.ItemStack itemstack1 = aitemstack[slotId].SplitStack(num);
+				if (aitemstack[slotId].stackSize <= 0) //SHARP: == to <=, ideally it should never matter
 				{
-					aitemstack[i] = null;
+					aitemstack[slotId] = null;
 				}
 				return itemstack1;
 			}
@@ -199,16 +199,15 @@ namespace net.minecraft.src
 			}
 		}
 
-		public virtual void SetInventorySlotContents(int i, net.minecraft.src.ItemStack itemstack
-			)
+		public virtual void SetInventorySlotContents(int slotId, net.minecraft.src.ItemStack itemstack)
 		{
 			net.minecraft.src.ItemStack[] aitemstack = mainInventory;
-			if (i >= aitemstack.Length)
+			if (slotId >= aitemstack.Length)
 			{
-				i -= aitemstack.Length;
+				slotId -= aitemstack.Length;
 				aitemstack = armorInventory;
 			}
-			aitemstack[i] = itemstack;
+			aitemstack[slotId] = itemstack;
 		}
 
 		public virtual float GetStrVsBlock(net.minecraft.src.Block block)
@@ -427,14 +426,14 @@ namespace net.minecraft.src
 		{
 			for (int i = 0; i < armorInventory.Length; i++)
 			{
-				if (armorInventory[i] != null && armorInventory[i].Func_28144_c(itemstack))
+				if (armorInventory[i] != null && armorInventory[i].CompareStacks(itemstack))
 				{
 					return true;
 				}
 			}
 			for (int j = 0; j < mainInventory.Length; j++)
 			{
-				if (mainInventory[j] != null && mainInventory[j].Func_28144_c(itemstack))
+				if (mainInventory[j] != null && mainInventory[j].CompareStacks(itemstack))
 				{
 					return true;
 				}

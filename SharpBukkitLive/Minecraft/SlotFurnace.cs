@@ -24,7 +24,7 @@ namespace net.minecraft.src
 
 		public override void OnPickupFromSlot(net.minecraft.src.ItemStack itemstack)
 		{
-			itemstack.Func_28142_b(field_27007_d.worldObj, field_27007_d);
+			itemstack.AddCraftStatistic(field_27007_d.worldObj, field_27007_d);
 			if (itemstack.itemID == net.minecraft.src.Item.ingotIron.shiftedIndex)
 			{
 				field_27007_d.AddStat(net.minecraft.src.AchievementList.aAcquireIron, 1);
