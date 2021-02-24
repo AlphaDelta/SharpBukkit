@@ -294,6 +294,8 @@ namespace net.minecraft.src
 			}
 			else
 			{
+
+				//TODO: Fix me
 				float f1 = 0.3F;
 				entityitem.motionX = -net.minecraft.src.MathHelper.Sin((rotationYaw / 180F) * 3.141593F
 					) * net.minecraft.src.MathHelper.Cos((rotationPitch / 180F) * 3.141593F) * f1;

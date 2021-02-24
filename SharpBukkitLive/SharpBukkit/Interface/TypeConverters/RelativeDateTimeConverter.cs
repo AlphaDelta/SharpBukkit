@@ -9,14 +9,14 @@ namespace SharpBukkitLive.Interface.TypeConverters
 {
     public class RelativeDateTimeConverter : DateTimeConverter
     {
-        static Regex rimplicit = new Regex(@"^(now|today|yesterday|tomorrow|(last|next) (second|minute|hour|week|month|year)|(\d+) (seconds?|minutes?|hours?|days?|weeks?|months?|years?) (ago|from now))$", RegexOptions.Compiled);
+        static Regex rimplicit = new Regex(@"^(now|today|yesterday|tomorrow|(last|next) (second|minute|hour|week|month|year)|(\d{0,6}) (seconds?|minutes?|hours?|days?|weeks?|months?|years?) (ago|from now))$", RegexOptions.Compiled);
         public override bool IsValid(ITypeDescriptorContext context, object value)
         {
             return base.IsValid(context, value) || rimplicit.IsMatch((string)value);
         }
 
         static Regex lastnext = new Regex(@"^(last|next) (second|minute|hour|week|month|year)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        static Regex agofromnow = new Regex(@"^(\d{,6}) (seconds?|minutes?|hours?|days?|weeks?|months?|years?) (ago|from now)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static Regex agofromnow = new Regex(@"^(\d{0,6}) (seconds?|minutes?|hours?|days?|weeks?|months?|years?) (ago|from now)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
             string str = (string)value;
@@ -73,7 +73,7 @@ namespace SharpBukkitLive.Interface.TypeConverters
             if (unit == "month")
                 return now.AddMonths(val);
             if (unit == "year")
-                return now.AddMonths(val);
+                return now.AddYears(val);
 
             return now;
         }

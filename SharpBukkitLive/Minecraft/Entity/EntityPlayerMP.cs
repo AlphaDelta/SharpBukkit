@@ -257,6 +257,7 @@ namespace net.minecraft.src
 
         public override void OnItemPickup(net.minecraft.src.Entity entity, int i)
         {
+            //TODO: Sanity check stack size for the love of god
             if (!entity.isDead)
             {
                 net.minecraft.src.EntityTracker entitytracker = mcServer.GetEntityTracker(dimension
