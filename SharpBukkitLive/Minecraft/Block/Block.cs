@@ -451,26 +451,22 @@ namespace net.minecraft.src
             }
         }
 
-        public virtual void OnBlockDestroyedByExplosion(net.minecraft.src.World world, int
-             i, int j, int k)
+        public virtual void OnBlockDestroyedByExplosion(net.minecraft.src.World world, int i, int j, int k)
         {
         }
 
-        public virtual bool CanPlaceBlockOnSide(net.minecraft.src.World world, int i, int
-             j, int k, int l)
+        public virtual bool CanPlaceBlockOnSide(net.minecraft.src.World world, int x, int y, int z, int l)
         {
-            return CanPlaceBlockAt(world, i, j, k);
+            return CanPlaceBlockAt(world, x, y, z);
         }
 
-        public virtual bool CanPlaceBlockAt(net.minecraft.src.World world, int i, int j,
-            int k)
+        public virtual bool CanPlaceBlockAt(net.minecraft.src.World world, int x, int y, int z)
         {
-            int l = world.GetBlockId(i, j, k);
+            int l = world.GetBlockId(x, y, z);
             return l == 0 || blocksList[l].blockMaterial.Func_27090_g();
         }
 
-        public virtual bool BlockActivated(net.minecraft.src.World world, int i, int j, int
-             k, net.minecraft.src.EntityPlayer entityplayer)
+        public virtual bool BlockActivated(net.minecraft.src.World world, int i, int j, int k, net.minecraft.src.EntityPlayer entityplayer)
         {
             return false;
         }

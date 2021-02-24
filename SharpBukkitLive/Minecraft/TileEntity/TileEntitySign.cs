@@ -12,7 +12,7 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            TileEntity, NBTTagCompound, Packet130UpdateSign, Packet
 			lineBeingEdited = -1;
-			isEditAble = true;
+			isEditable = true;
 		}
 
 		public override void WriteToNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
@@ -26,7 +26,7 @@ namespace net.minecraft.src
 
 		public override void ReadFromNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
 		{
-			isEditAble = false;
+			isEditable = false;
 			base.ReadFromNBT(nbttagcompound);
 			for (int i = 0; i < 4; i++)
 			{
@@ -49,14 +49,14 @@ namespace net.minecraft.src
 			return new net.minecraft.src.Packet130UpdateSign(xCoord, yCoord, zCoord, @as);
 		}
 
-		public virtual bool GetIsEditAble()
+		public virtual bool GetEditable()
 		{
-			return isEditAble;
+			return isEditable;
 		}
 
-		public virtual void Func_32001_a(bool flag)
+		public virtual void SetEditable(bool flag)
 		{
-			isEditAble = flag;
+			isEditable = flag;
 		}
 
 		public string[] signText = new string[] { string.Empty, string.Empty, string.Empty
@@ -64,6 +64,6 @@ namespace net.minecraft.src
 
 		public int lineBeingEdited;
 
-		private bool isEditAble;
+		private bool isEditable;
 	}
 }

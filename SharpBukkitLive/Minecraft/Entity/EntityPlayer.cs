@@ -495,8 +495,7 @@ namespace net.minecraft.src
         {
         }
 
-        public virtual void DisplayGUIEditSign(net.minecraft.src.TileEntitySign tileentitysign
-            )
+        public virtual void DisplayGUIEditSign(net.minecraft.src.TileEntitySign tileentitysign)
         {
         }
 

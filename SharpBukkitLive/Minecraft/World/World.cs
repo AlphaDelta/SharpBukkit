@@ -153,25 +153,25 @@ namespace net.minecraft.src
             field_28105_z.Func_28176_a();
         }
 
-        public virtual int GetBlockId(int i, int j, int k)
+        public virtual int GetBlockId(int x, int y, int z)
         {
-            if (i < unchecked((int)(0xfe17b800)) || k < unchecked((int)(0xfe17b800)) || i >=
-                unchecked((int)(0x1e84800)) || k > unchecked((int)(0x1e84800)))
+            if (x < unchecked((int)(0xfe17b800)) || z < unchecked((int)(0xfe17b800)) || x >=
+                unchecked((int)(0x1e84800)) || z > unchecked((int)(0x1e84800)))
             {
                 return 0;
             }
-            if (j < 0)
+            if (y < 0)
             {
                 return 0;
             }
-            if (j >= 128)
+            if (y >= 128)
             {
                 return 0;
             }
             else
             {
-                return GetChunkFromChunkCoords(i >> 4, k >> 4).GetBlockID(i & unchecked((int)(0xf
-                    )), j, k & unchecked((int)(0xf)));
+                return GetChunkFromChunkCoords(x >> 4, z >> 4).GetBlockID(x & unchecked((int)(0xf
+                    )), y, z & unchecked((int)(0xf)));
             }
         }
 

@@ -9,12 +9,19 @@ namespace SharpBukkitLive
 {
     public class BasicCommands : SharpBukkitCommandController
     {
+        public static Func<ReflSharpBukkitCommand, string> CommandInfoFormat =
+            p =>
+                FormattingCodes.Yellow + p.Name.ToLower()
+                + (p.Signature.Length <= 0 ? "" :  " " + FormattingCodes.DarkYellow + p.Signature)
+                + (String.IsNullOrWhiteSpace(p.Attr.Description) ? "" : $" {FormattingCodes.White}- {FormattingCodes.Grey} {p.Attr.Description}")
+            ;//$"{FormattingCodes.Yellow}{p.Name.ToLower()}{(p.Signature.Length > 0 ? " " + FormattingCodes.DarkYellow + p.Signature : "")}{(String.IsNullOrWhiteSpace(p.Attr.Description) ? "" : $" {FormattingCodes.White}- {FormattingCodes.Grey} {p.Attr.Description}")}";
+
         [SharpBukkitCommand("Prints available commands")]
         public void Help(int page = 1)
         {
             var resp = PagedList<ReflSharpBukkitCommand>(
                 PluginManager.Commands.Where(p => /*!p.Attr.Admin && */ !p.Attr.HideFromSearch).OrderBy(p => p.Name) //TODO: Logic for listing different commands for different permissions
-                , p => $"{FormattingCodes.Yellow}{p.Name.ToLower()}{(p.Signature.Length > 0 ? " " + FormattingCodes.DarkYellow + p.Signature : "")}{(String.IsNullOrWhiteSpace(p.Attr.Description) ? "" : $" {FormattingCodes.White}- {FormattingCodes.Grey}" + p.Attr.Description)}"
+                , CommandInfoFormat
                 , out string output
                 , page
             );

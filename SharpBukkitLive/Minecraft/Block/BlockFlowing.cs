@@ -280,12 +280,14 @@ namespace net.minecraft.src
 			return field_658_b;
 		}
 
-		private bool Func_309_k(net.minecraft.src.World world, int i, int j, int k)
+		private bool Func_309_k(net.minecraft.src.World world, int x, int y, int z)
 		{
-			int l = world.GetBlockId(i, j, k);
-			if (l == net.minecraft.src.Block.doorWood.blockID || l == net.minecraft.src.Block
-				.doorSteel.blockID || l == net.minecraft.src.Block.signPost.blockID || l == net.minecraft.src.Block
-				.ladder.blockID || l == net.minecraft.src.Block.reed.blockID)
+			int l = world.GetBlockId(x, y, z);
+			if (l == net.minecraft.src.Block.doorWood.blockID
+				|| l == net.minecraft.src.Block.doorSteel.blockID
+				|| l == net.minecraft.src.Block.signPost.blockID
+				|| l == net.minecraft.src.Block.ladder.blockID
+				|| l == net.minecraft.src.Block.reed.blockID)
 			{
 				return true;
 			}

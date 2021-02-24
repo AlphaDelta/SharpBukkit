@@ -56,7 +56,7 @@ namespace net.minecraft.src
 
         public net.minecraft.src.ItemStack SplitStack(int i)
         {
-            //TODO: Do proper sanity check to prevent duplication
+            //TODO: Do proper sanity check to prevent duplication (Maybe... might break a lot of other methods)
             if(stackSize <= 0)
                 return new net.minecraft.src.ItemStack(net.minecraft.src.Item.snowball, i, itemDamage);
             //===================================================
