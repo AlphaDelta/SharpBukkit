@@ -83,28 +83,28 @@ namespace net.minecraft.src
 			isDead = true;
 		}
 
-		protected internal virtual void SetSize(float f, float f1)
+		protected internal virtual void SetSize(float width, float height)
 		{
-			width = f;
-			height = f1;
+			this.width = width;
+			this.height = height;
 		}
 
-		protected internal virtual void SetRotation(float f, float f1)
+		protected internal virtual void SetRotation(float yaw, float pitch)
 		{
-			rotationYaw = f % 360F;
-			rotationPitch = f1 % 360F;
+			rotationYaw = yaw % 360F;
+			rotationPitch = pitch % 360F;
 		}
 
-		public virtual void SetPosition(double d, double d1, double d2)
+		public virtual void SetPosition(double x, double y, double z)
 		{
-			posX = d;
-			posY = d1;
-			posZ = d2;
+			posX = x;
+			posY = y;
+			posZ = z;
 			float f = width / 2.0F;
 			float f1 = height;
-			boundingBox.SetBounds(d - (double)f, (d1 - (double)yOffset) + (double)ySize, d2 -
-				 (double)f, d + (double)f, (d1 - (double)yOffset) + (double)ySize + (double)f1, 
-				d2 + (double)f);
+			boundingBox.SetBounds(x - (double)f, (y - (double)yOffset) + (double)ySize, z -
+				 (double)f, x + (double)f, (y - (double)yOffset) + (double)ySize + (double)f1, 
+				z + (double)f);
 		}
 
 		public virtual void OnUpdate()

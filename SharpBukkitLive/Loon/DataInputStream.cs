@@ -169,7 +169,7 @@
 
         public float ReadFloat()
         {
-            return (float)BitConverter.DoubleToInt64Bits((double)this.ReadInt());
+            return BitConverter.Int32BitsToSingle(this.ReadInt());
         }
 
         public void ReadFully(byte[] buffer)

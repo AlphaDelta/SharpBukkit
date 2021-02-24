@@ -8,5 +8,4 @@ SharpBukkit is currently **unstable**:
 
 * Minor in-game testing has been performed
 * Currently 1:1 with minecraft_server, meaning no features have been implemented.
-* Various exceptions under stress
-* Items drop from player in wrong direction
+* Various transient exceptions under stress
