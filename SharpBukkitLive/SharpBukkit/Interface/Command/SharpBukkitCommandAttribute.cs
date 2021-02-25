@@ -4,6 +4,7 @@ using System.Text;
 
 namespace SharpBukkitLive.Interface.Command
 {
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public class SharpBukkitCommandAttribute : Attribute
     {
         public string Name, Description;

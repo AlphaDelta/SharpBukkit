@@ -13,7 +13,7 @@ namespace SharpBukkitLive
             p =>
                 (p.Attr.OPOnly ? FormattingCodes.Magenta : FormattingCodes.Yellow) + p.Name.ToLower()
                 + (p.Signature.Length <= 0 ? "" : " " + FormattingCodes.DarkYellow + p.Signature)
-                + (String.IsNullOrWhiteSpace(p.Attr.Description) ? "" : $" {FormattingCodes.White}- {FormattingCodes.Grey} {p.Attr.Description}")
+                + (String.IsNullOrWhiteSpace(p.Attr.Description) ? "" : $" {FormattingCodes.White}-{FormattingCodes.Grey} {p.Attr.Description}")
             ;//$"{FormattingCodes.Yellow}{p.Name.ToLower()}{(p.Signature.Length > 0 ? " " + FormattingCodes.DarkYellow + p.Signature : "")}{(String.IsNullOrWhiteSpace(p.Attr.Description) ? "" : $" {FormattingCodes.White}- {FormattingCodes.Grey} {p.Attr.Description}")}";
 
         /***
@@ -87,6 +87,7 @@ namespace SharpBukkitLive
             ConfigManager.SendChatMessageToPlayer(Username, $"{FormattingCodes.DarkYellow}You have been De-OP'ed");
         }
 
+        [SharpBukkitCommand("", "banip", HideFromSearch = true)]
         [SharpBukkitCommand("Bans an IP address", "ban-ip", OPOnly = true)]
         public void BanIP(string IP)
         {
@@ -94,6 +95,8 @@ namespace SharpBukkitLive
             ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}The IP {FormattingCodes.DarkRed}{IP}{FormattingCodes.DarkYellow} has been banned by {User.GetUsername()}");
         }
 
+        [SharpBukkitCommand("", "unbanip", HideFromSearch = true)]
+        [SharpBukkitCommand("", "pardonip", HideFromSearch = true)]
         [SharpBukkitCommand("Unbans an IP address", "pardon-ip", OPOnly = true)]
         public void UnbanIP(string IP)
         {
@@ -108,6 +111,7 @@ namespace SharpBukkitLive
             ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}The player {FormattingCodes.DarkRed}{Username}{FormattingCodes.DarkYellow} has been banned by {User.GetUsername()}");
         }
 
+        [SharpBukkitCommand("", "unban", HideFromSearch = true)]
         [SharpBukkitCommand("Unbans a player", "pardon", OPOnly = true)]
         public void UnbanPlayer(string Username)
         {
