@@ -74,7 +74,7 @@ namespace SharpBukkitLive
         [SharpBukkitCommand("Adds a player to the list of operators", OPOnly = true)]
         public void OP(string Username)
         {
-            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.Yellow}{Username} has been OP'ed by {User.GetUsername()}");
+            SendMessageToOPs($"{FormattingCodes.Yellow}{Username} has been OP'ed by {User.GetUsername()}");
             ConfigManager.OpPlayer(Username);
             ConfigManager.SendChatMessageToPlayer(Username, $"{FormattingCodes.Yellow}You have been OP'ed");
         }
@@ -83,7 +83,7 @@ namespace SharpBukkitLive
         public void DeOP(string Username)
         {
             ConfigManager.DeopPlayer(Username);
-            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}{Username} has been De-OP'ed by {User.GetUsername()}");
+            SendMessageToOPs($"{FormattingCodes.DarkYellow}{Username} has been De-OP'ed by {User.GetUsername()}");
             ConfigManager.SendChatMessageToPlayer(Username, $"{FormattingCodes.DarkYellow}You have been De-OP'ed");
         }
 
@@ -92,7 +92,7 @@ namespace SharpBukkitLive
         public void BanIP(string IP)
         {
             ConfigManager.BanIP(IP);
-            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}The IP {FormattingCodes.DarkRed}{IP}{FormattingCodes.DarkYellow} has been banned by {User.GetUsername()}");
+            SendMessageToOPs($"{FormattingCodes.DarkYellow}The IP {FormattingCodes.DarkRed}{IP}{FormattingCodes.DarkYellow} has been banned by {User.GetUsername()}");
         }
 
         [SharpBukkitCommand("", "unbanip", HideFromSearch = true)]
@@ -101,14 +101,14 @@ namespace SharpBukkitLive
         public void UnbanIP(string IP)
         {
             ConfigManager.PardonIP(IP);
-            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}The IP {FormattingCodes.DarkRed}{IP}{FormattingCodes.DarkYellow} has been unbanned by {User.GetUsername()}");
+            SendMessageToOPs($"{FormattingCodes.DarkYellow}The IP {FormattingCodes.DarkRed}{IP}{FormattingCodes.DarkYellow} has been unbanned by {User.GetUsername()}");
         }
 
         [SharpBukkitCommand("Bans a player", "ban", OPOnly = true)]
         public void BanPlayer(string Username)
         {
             ConfigManager.BanPlayer(Username);
-            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}The player {FormattingCodes.DarkRed}{Username}{FormattingCodes.DarkYellow} has been banned by {User.GetUsername()}");
+            SendMessageToOPs($"{FormattingCodes.DarkYellow}The player {FormattingCodes.DarkRed}{Username}{FormattingCodes.DarkYellow} has been banned by {User.GetUsername()}");
         }
 
         [SharpBukkitCommand("", "unban", HideFromSearch = true)]
@@ -116,7 +116,7 @@ namespace SharpBukkitLive
         public void UnbanPlayer(string Username)
         {
             ConfigManager.PardonPlayer(Username);
-            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}The player {FormattingCodes.DarkRed}{Username}{FormattingCodes.DarkYellow} has been unbanned by {User.GetUsername()}");
+            SendMessageToOPs($"{FormattingCodes.DarkYellow}The player {FormattingCodes.DarkRed}{Username}{FormattingCodes.DarkYellow} has been unbanned by {User.GetUsername()}");
         }
     }
 }

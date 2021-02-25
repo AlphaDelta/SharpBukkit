@@ -1,4 +1,5 @@
 ﻿using net.minecraft.src;
+using SharpBukkitLive.SharpBukkit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace SharpBukkitLive.Interface.Command
             ((net.minecraft.src.NetServerHandler)User)
             : null;
         public EntityPlayer PlayerEntity => Player?.playerEntity;
+
+        public Logger Logger => Logger.GetLogger();
 
         /// <summary>
         /// This function is run before a command is executed in the controller
@@ -51,6 +54,12 @@ namespace SharpBukkitLive.Interface.Command
         public void Respond(string message)
         {
             User.Log(message);
+        }
+
+        public void SendMessageToOPs(string message)
+        {
+            ConfigManager.SendChatMessageToAllOps(message);
+            Logger.Info(message);
         }
 
         public PagedListResult PagedList<T>(IEnumerable<T> items, Func<T, string> tostring, out string output, int page = 1, int itemsperpage = 15, string title = "Results")
