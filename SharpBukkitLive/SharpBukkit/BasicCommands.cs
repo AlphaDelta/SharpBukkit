@@ -11,16 +11,23 @@ namespace SharpBukkitLive
     {
         public static Func<ReflSharpBukkitCommand, string> CommandInfoFormat =
             p =>
-                FormattingCodes.Yellow + p.Name.ToLower()
-                + (p.Signature.Length <= 0 ? "" :  " " + FormattingCodes.DarkYellow + p.Signature)
+                (p.Attr.OPOnly ? FormattingCodes.Magenta : FormattingCodes.Yellow) + p.Name.ToLower()
+                + (p.Signature.Length <= 0 ? "" : " " + FormattingCodes.DarkYellow + p.Signature)
                 + (String.IsNullOrWhiteSpace(p.Attr.Description) ? "" : $" {FormattingCodes.White}- {FormattingCodes.Grey} {p.Attr.Description}")
             ;//$"{FormattingCodes.Yellow}{p.Name.ToLower()}{(p.Signature.Length > 0 ? " " + FormattingCodes.DarkYellow + p.Signature : "")}{(String.IsNullOrWhiteSpace(p.Attr.Description) ? "" : $" {FormattingCodes.White}- {FormattingCodes.Grey} {p.Attr.Description}")}";
 
+        /***
+         * User Commands
+         ***/
         [SharpBukkitCommand("Prints available commands")]
         public void Help(int page = 1)
         {
             var resp = PagedList<ReflSharpBukkitCommand>(
-                PluginManager.Commands.Where(p => /*!p.Attr.Admin && */ !p.Attr.HideFromSearch).OrderBy(p => p.Name) //TODO: Logic for listing different commands for different permissions
+                PluginManager.Commands.Where(p =>
+                    (p.Attr.OPOnly ? IsUserOP : true)
+                    && (p.Attr.PlayerOnly ? IsUserPlayer : true)
+                    && !p.Attr.HideFromSearch)
+                .OrderBy(p => p.Name) //TODO: Logic for listing different commands for different permissions
                 , CommandInfoFormat
                 , out string output
                 , page
@@ -47,10 +54,65 @@ namespace SharpBukkitLive
             Respond(dt.ToString("R"));
         }
 
+        [SharpBukkitCommand("Prints the temperature and humidity where you're currently standing", "temp", PlayerOnly = true)]
+        public void GetTemperature()
+        {
+            PlayerEntity.worldObj.GetWorldChunkManager().LoadBlockGeneratorData((int)PlayerEntity.posX, (int)PlayerEntity.posZ, 1, 1);
+            Respond("Temperature: " + PlayerEntity.worldObj.GetWorldChunkManager().temperature[0]);
+            Respond("Humidity: " + PlayerEntity.worldObj.GetWorldChunkManager().humidity[0]);
+        }
+
+        /***
+         * Admin Commands
+         ***/
         [SharpBukkitCommand("Initiates a shutdown of the server", OPOnly = true)]
         public void Stop()
         {
             Server.InitiateShutdown();
+        }
+
+        [SharpBukkitCommand("Adds a player to the list of operators", OPOnly = true)]
+        public void OP(string Username)
+        {
+            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.Yellow}{Username} has been OP'ed by {User.GetUsername()}");
+            ConfigManager.OpPlayer(Username);
+            ConfigManager.SendChatMessageToPlayer(Username, $"{FormattingCodes.Yellow}You have been OP'ed");
+        }
+
+        [SharpBukkitCommand("Removes a player to the list of operators", OPOnly = true)]
+        public void DeOP(string Username)
+        {
+            ConfigManager.DeopPlayer(Username);
+            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}{Username} has been De-OP'ed by {User.GetUsername()}");
+            ConfigManager.SendChatMessageToPlayer(Username, $"{FormattingCodes.DarkYellow}You have been De-OP'ed");
+        }
+
+        [SharpBukkitCommand("Bans an IP address", "ban-ip", OPOnly = true)]
+        public void BanIP(string IP)
+        {
+            ConfigManager.BanIP(IP);
+            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}The IP {FormattingCodes.DarkRed}{IP}{FormattingCodes.DarkYellow} has been banned by {User.GetUsername()}");
+        }
+
+        [SharpBukkitCommand("Unbans an IP address", "pardon-ip", OPOnly = true)]
+        public void UnbanIP(string IP)
+        {
+            ConfigManager.PardonIP(IP);
+            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}The IP {FormattingCodes.DarkRed}{IP}{FormattingCodes.DarkYellow} has been unbanned by {User.GetUsername()}");
+        }
+
+        [SharpBukkitCommand("Bans a player", "ban", OPOnly = true)]
+        public void BanPlayer(string Username)
+        {
+            ConfigManager.BanPlayer(Username);
+            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}The player {FormattingCodes.DarkRed}{Username}{FormattingCodes.DarkYellow} has been banned by {User.GetUsername()}");
+        }
+
+        [SharpBukkitCommand("Unbans a player", "pardon", OPOnly = true)]
+        public void UnbanPlayer(string Username)
+        {
+            ConfigManager.PardonPlayer(Username);
+            ConfigManager.SendChatMessageToAllOps($"{FormattingCodes.DarkYellow}The player {FormattingCodes.DarkRed}{Username}{FormattingCodes.DarkYellow} has been unbanned by {User.GetUsername()}");
         }
     }
 }

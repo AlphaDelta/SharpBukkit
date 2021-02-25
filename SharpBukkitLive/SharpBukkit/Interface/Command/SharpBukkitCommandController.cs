@@ -13,6 +13,17 @@ namespace SharpBukkitLive.Interface.Command
         public string FullMessage { get; internal set; }
         public ReflSharpBukkitCommand CurrentCommand { get; internal set; }
 
+
+        public bool IsUserOP => User is net.minecraft.server.MinecraftServer || (User is net.minecraft.src.NetServerHandler && Server.configManager.IsOp(User.GetUsername()));
+        public bool IsUserPlayer => User is net.minecraft.src.NetServerHandler;
+
+        public ServerConfigurationManager ConfigManager => Server.configManager;
+
+        public NetServerHandler Player => User is net.minecraft.src.NetServerHandler ?
+            ((net.minecraft.src.NetServerHandler)User)
+            : null;
+        public EntityPlayer PlayerEntity => Player?.playerEntity;
+
         /// <summary>
         /// This function is run before a command is executed in the controller
         /// </summary>

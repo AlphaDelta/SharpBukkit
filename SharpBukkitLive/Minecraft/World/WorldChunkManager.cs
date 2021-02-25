@@ -32,10 +32,10 @@ namespace net.minecraft.src
 
 		public virtual net.minecraft.src.BiomeGenBase GetBiomeGenAt(int i, int j)
 		{
-			return Func_4065_a(i, j, 1, 1)[0];
+			return LoadBlockGeneratorData(i, j, 1, 1)[0];
 		}
 
-		public virtual net.minecraft.src.BiomeGenBase[] Func_4065_a(int i, int j, int k, 
+		public virtual net.minecraft.src.BiomeGenBase[] LoadBlockGeneratorData(int i, int j, int k, 
 			int l)
 		{
 			field_4256_d = LoadBlockGeneratorData(field_4256_d, i, j, k, l);

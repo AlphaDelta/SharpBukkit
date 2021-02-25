@@ -77,8 +77,13 @@ namespace SharpBukkitLive.Interface.Command
             return c;
         }
 
-        public string HasInvocationProblem(string[] args)
+        public string HasInvocationProblem(string[] args, bool isOP, bool isPlayer)
         {
+            if (Attr.OPOnly && !isOP)
+                return "You must be an operator to use this command";
+            if (Attr.PlayerOnly && !isPlayer)
+                return "This command can only be performed in-game by a player";
+
             int required = Params.Count(p => !p.IsOptional);
             if (args.Length < required) return $"Expected at least {required} parameters";
 

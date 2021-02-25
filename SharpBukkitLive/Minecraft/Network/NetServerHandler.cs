@@ -503,59 +503,59 @@ namespace net.minecraft.src
 
         private void HandleSlashCommand(string s)
         {
-            if (s.ToLower().StartsWith("/me "))
-            {
-                s = (new java.lang.StringBuilder()).Append("* ").Append(playerEntity.username).Append
-                    (" ").Append(s.Substring(s.IndexOf(" ")).Trim()).ToString();
-                logger.Info(s);
-                mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat(s
-                    ));
-            }
-            else
-            {
-                if (s.ToLower().StartsWith("/kill"))
-                {
-                    playerEntity.AttackEntityFrom(null, 1000);
-                }
-                else
-                {
-                    if (s.ToLower().StartsWith("/tell "))
-                    {
-                        string[] @as = s.Split(" ");
-                        if (@as.Length >= 3)
-                        {
-                            s = s.Substring(s.IndexOf(" ")).Trim();
-                            s = s.Substring(s.IndexOf(" ")).Trim();
-                            s = (new java.lang.StringBuilder()).Append("\x9ad").Append(playerEntity.username)
-                                .Append(" whispers ").Append(s).ToString();
-                            logger.Info((new java.lang.StringBuilder()).Append(s).Append(" to ").Append(@as[1
-                                ]).ToString());
-                            if (!mcServer.configManager.SendPacketToPlayer(@as[1], new net.minecraft.src.Packet3Chat
-                                (s)))
-                            {
-                                SendPacket(new net.minecraft.src.Packet3Chat("\xf7cThere's no player by that name online."
-                                    ));
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (mcServer.configManager.IsOp(playerEntity.username))
-                        {
-                            string s1 = s.Substring(1);
-                            logger.Info((new java.lang.StringBuilder()).Append(playerEntity.username).Append(
-                                " issued server command: ").Append(s1).ToString());
-                            mcServer.AddCommand(s1, this);
-                        }
-                        else
-                        {
-                            string s2 = s.Substring(1);
-                            logger.Info((new java.lang.StringBuilder()).Append(playerEntity.username).Append(
-                                " tried command: ").Append(s2).ToString());
-                        }
-                    }
-                }
-            }
+            mcServer.AddCommand(s.Substring(1), this);
+            //if (s.ToLower().StartsWith("/me "))
+            //{
+            //    s = (new java.lang.StringBuilder()).Append("* ").Append(playerEntity.username).Append
+            //        (" ").Append(s.Substring(s.IndexOf(" ")).Trim()).ToString();
+            //    logger.Info(s);
+            //    mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat(s));
+            //}
+            //else
+            //{
+            //    if (s.ToLower().StartsWith("/kill"))
+            //    {
+            //        playerEntity.AttackEntityFrom(null, 1000);
+            //    }
+            //    else
+            //    {
+            //        if (s.ToLower().StartsWith("/tell "))
+            //        {
+            //            string[] @as = s.Split(" ");
+            //            if (@as.Length >= 3)
+            //            {
+            //                s = s.Substring(s.IndexOf(" ")).Trim();
+            //                s = s.Substring(s.IndexOf(" ")).Trim();
+            //                s = (new java.lang.StringBuilder()).Append("\x9ad").Append(playerEntity.username)
+            //                    .Append(" whispers ").Append(s).ToString();
+            //                logger.Info((new java.lang.StringBuilder()).Append(s).Append(" to ").Append(@as[1
+            //                    ]).ToString());
+            //                if (!mcServer.configManager.SendPacketToPlayer(@as[1], new net.minecraft.src.Packet3Chat
+            //                    (s)))
+            //                {
+            //                    SendPacket(new net.minecraft.src.Packet3Chat("\xf7cThere's no player by that name online."
+            //                        ));
+            //                }
+            //            }
+            //        }
+            //        else
+            //        {
+            //            if (mcServer.configManager.IsOp(playerEntity.username))
+            //            {
+            //                string s1 = s.Substring(1);
+            //                logger.Info((new java.lang.StringBuilder()).Append(playerEntity.username).Append(
+            //                    " issued server command: ").Append(s1).ToString());
+            //                mcServer.AddCommand(s1, this);
+            //            }
+            //            else
+            //            {
+            //                string s2 = s.Substring(1);
+            //                logger.Info((new java.lang.StringBuilder()).Append(playerEntity.username).Append(
+            //                    " tried command: ").Append(s2).ToString());
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         public override void HandleArmAnimation(net.minecraft.src.Packet18Animation packet18animation
@@ -775,7 +775,7 @@ namespace net.minecraft.src
 
         private net.minecraft.server.MinecraftServer mcServer;
 
-        private net.minecraft.src.EntityPlayerMP playerEntity;
+        public net.minecraft.src.EntityPlayerMP playerEntity;
 
         private int field_15_f;
 

@@ -28,7 +28,7 @@ namespace net.minecraft.src
 			return field_4262_e;
 		}
 
-		public override net.minecraft.src.BiomeGenBase[] Func_4065_a(int i, int j, int k, 
+		public override net.minecraft.src.BiomeGenBase[] LoadBlockGeneratorData(int i, int j, int k, 
 			int l)
 		{
 			field_4256_d = LoadBlockGeneratorData(field_4256_d, i, j, k, l);

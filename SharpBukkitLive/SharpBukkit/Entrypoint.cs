@@ -9,6 +9,7 @@ namespace SharpBukkitLive.SharpBukkit
     public static class Entrypoint
     {
 		public static Logger logger = Logger.GetLogger();
+		public static net.minecraft.server.MinecraftServer minecraftserver;
 		public static void Main(string[] args)
 		{
 			PluginManager.LoadAllFromDisk();
@@ -17,7 +18,7 @@ namespace SharpBukkitLive.SharpBukkit
 			net.minecraft.src.StatList.Func_27092_a();
 			try
 			{
-				net.minecraft.server.MinecraftServer minecraftserver = new net.minecraft.server.MinecraftServer();
+				minecraftserver = new net.minecraft.server.MinecraftServer();
 				//if (!java.awt.GraphicsEnvironment.IsHeadless() && (args.Length <= 0 || !args[0].Equals("nogui")))
 				//{
 				//	net.minecraft.src.ServerGUI.InitGui(minecraftserver);

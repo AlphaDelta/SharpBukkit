@@ -367,8 +367,7 @@ namespace net.minecraft.server
             }
         }
 
-        public virtual void AddCommand(string s, net.minecraft.src.ICommandListener icommandlistener
-            )
+        public virtual void AddCommand(string s, net.minecraft.src.ICommandListener icommandlistener)
         {
             commands.Add(new net.minecraft.src.ServerCommand(s, icommandlistener));
         }

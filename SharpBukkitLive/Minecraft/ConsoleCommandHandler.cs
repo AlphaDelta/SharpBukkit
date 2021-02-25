@@ -13,8 +13,7 @@ namespace net.minecraft.src
 {
     public class ConsoleCommandHandler
     {
-        public ConsoleCommandHandler(net.minecraft.server.MinecraftServer minecraftserver
-            )
+        public ConsoleCommandHandler(net.minecraft.server.MinecraftServer minecraftserver)
         {
             // Referenced classes of package net.minecraft.src:
             //            ServerCommand, ICommandListener, ServerConfigurationManager, WorldServer, 
@@ -25,12 +24,17 @@ namespace net.minecraft.src
 
         public virtual void HandleCommand(net.minecraft.src.ServerCommand servercommand)
         {
-            //TODO: Put this somewhere else, and also allow any player to invoke a command
+            //TODO: Put this somewhere else
             /* SharpBukkit command handler */
             {
                 PluginManager.ParseInvocation(servercommand.command, out string command, out string[] oargs);
 
-                IEnumerable<(ReflSharpBukkitCommand, string)> cmds = PluginManager.Commands.Where(p => p.Name == command/* && p.Attr.OPOnly == cuddlebang*/).Select(p => (p, p.HasInvocationProblem(oargs)));
+                bool isOP = servercommand.commandListener is net.minecraft.server.MinecraftServer || (servercommand.commandListener is net.minecraft.src.NetServerHandler && minecraftServer.configManager.IsOp(servercommand.commandListener.GetUsername()));
+                bool isPlayer = servercommand.commandListener is net.minecraft.src.NetServerHandler;
+                IEnumerable<(ReflSharpBukkitCommand, string)> cmds =
+                    PluginManager.Commands
+                        .Where(p => p.Name == command)
+                        .Select(p => (p, p.HasInvocationProblem(oargs, isOP, isPlayer)));
 
                 if (cmds.Count() > 0)
                 {
@@ -81,8 +85,7 @@ namespace net.minecraft.src
             string s = servercommand.command;
             net.minecraft.src.ICommandListener icommandlistener = servercommand.commandListener;
             string s1 = icommandlistener.GetUsername();
-            net.minecraft.src.ServerConfigurationManager serverconfigurationmanager = minecraftServer
-                .configManager;
+            net.minecraft.src.ServerConfigurationManager serverconfigurationmanager = minecraftServer.configManager;
             if (s.ToLower().StartsWith("help") || s.ToLower().StartsWith("?"))
             {
                 PrintHelp(icommandlistener);
