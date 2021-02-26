@@ -87,6 +87,21 @@ namespace SharpBukkitLive.SharpBukkit
         }
 
         /// <summary>
+        /// Emits smoke to the player at their current position.
+        /// </summary>
+        public void SendSmoke(SmokeDirection direction)
+        {
+            SendSmoke(direction, (int)Entity.posX, (int)Entity.posY, (int)Entity.posZ - 1);
+        }
+        /// <summary>
+        /// Emits smoke to the player.
+        /// </summary>
+        public void SendSmoke(SmokeDirection direction, int x, int y, int z)
+        {
+            SendPacket(new Packet61SoundEffect((int)SoundType.SMOKE, x, y, z, (int)direction));
+        }
+
+        /// <summary>
         /// Sends a chat message to the player
         /// </summary>
         public void SendMessage(string message)
