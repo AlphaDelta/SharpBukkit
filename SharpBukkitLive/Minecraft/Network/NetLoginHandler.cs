@@ -126,7 +126,7 @@ namespace net.minecraft.src
 
                 //TODO: Defer login message to hook
                 //mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat((new java.lang.StringBuilder()).Append("\xf7e").Append(entityplayermp.username).Append(" joined the game.").ToString()));
-                mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat($"\xf7e{entityplayermp.username} joined the game."));
+                mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat($"§e{entityplayermp.username} joined the game."));
                 mcServer.configManager.PlayerLoggedIn(entityplayermp);
 
                 netserverhandler.TeleportTo(entityplayermp.posX, entityplayermp.posY, entityplayermp.posZ, entityplayermp.rotationYaw, entityplayermp.rotationPitch);

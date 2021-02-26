@@ -10,6 +10,8 @@ namespace net.minecraft.src
 {
     public class ServerConfigurationManager
     {
+        public Dictionary<string, SharpBukkitPlayer> SharpBukkitPlayers = new Dictionary<string, SharpBukkitPlayer>();
+
         public ServerConfigurationManager(net.minecraft.server.MinecraftServer minecraftserver
             )
         {
@@ -80,10 +82,11 @@ namespace net.minecraft.src
             playerNBTManagerObj.ReadPlayerData(entityplayermp);
         }
 
-        public virtual void PlayerLoggedIn(net.minecraft.src.EntityPlayerMP entityplayermp
-            )
+        public virtual void PlayerLoggedIn(net.minecraft.src.EntityPlayerMP entityplayermp)
         {
             playerEntities.Add(entityplayermp);
+            SharpBukkitPlayers[entityplayermp.username.ToLower()] = new SharpBukkitPlayer(entityplayermp); //SHARP
+
             net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(entityplayermp
                 .dimension);
             worldserver.chunkProviderServer.LoadChunk((int)entityplayermp.posX >> 4, (int)entityplayermp
@@ -109,6 +112,7 @@ namespace net.minecraft.src
             mcServer.GetWorldManager(entityplayermp.dimension).RemovePlayerForLogoff(entityplayermp
                 );
             playerEntities.Remove(entityplayermp);
+            SharpBukkitPlayers.Remove(entityplayermp.username.ToLower()); //SHARP
             GetPlayerManager(entityplayermp.dimension).RemovePlayer(entityplayermp);
         }
 

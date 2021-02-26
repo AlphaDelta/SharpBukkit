@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SharpBukkitLive
 {
@@ -58,8 +59,30 @@ namespace SharpBukkitLive
         public void GetTemperature()
         {
             PlayerEntity.worldObj.GetWorldChunkManager().LoadBlockGeneratorData((int)PlayerEntity.posX, (int)PlayerEntity.posZ, 1, 1);
-            Respond("Temperature: " + PlayerEntity.worldObj.GetWorldChunkManager().temperature[0]);
-            Respond("Humidity: " + PlayerEntity.worldObj.GetWorldChunkManager().humidity[0]);
+            Respond($"{FormattingCodes.Yellow}Temperature{FormattingCodes.Reset}: {PlayerEntity.worldObj.GetWorldChunkManager().temperature[0]:0.00}");
+            Respond($"{FormattingCodes.Cyan}Humidity{FormattingCodes.Reset}: {PlayerEntity.worldObj.GetWorldChunkManager().humidity[0]:0.00}");
+        }
+
+        [SharpBukkitCommand("Pings a player with a sound and a message")]
+        public void Ping(string Username)
+        {
+            SharpBukkitPlayer player = FindPlayer(Username);
+
+            if (player == null)
+            {
+                Respond($"{FormattingCodes.Red}Error:{FormattingCodes.Reset} Could not find any player by that username");
+                return;
+            }
+
+            Task.Run(async () =>
+            {
+                player.SendSound(SoundType.CLICK1);
+                await Task.Delay(100);
+                player.SendSound(SoundType.CLICK1);
+                await Task.Delay(100);
+                player.SendSound(SoundType.CLICK1);
+            });
+            player.SendMessage($"{FormattingCodes.Magenta}* You have been pinged by {User.GetUsername()}");
         }
 
         /***

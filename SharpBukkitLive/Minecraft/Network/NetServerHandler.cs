@@ -49,7 +49,7 @@ namespace net.minecraft.src
             SendPacket(new net.minecraft.src.Packet255KickDisconnect(s));
             netManager.ServerShutdown();
             mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat((
-                new java.lang.StringBuilder()).Append("\xf7e").Append(playerEntity.username).Append
+                new java.lang.StringBuilder()).Append("§e").Append(playerEntity.username).Append
                 (" left the game.").ToString()));
             mcServer.configManager.PlayerLoggedOut(playerEntity);
             connectionClosed = true;
@@ -432,11 +432,9 @@ namespace net.minecraft.src
 
         public override void HandleErrorMessage(string s, object[] aobj)
         {
-            logger.Info((new java.lang.StringBuilder()).Append(playerEntity.username).Append(
-                " lost connection: ").Append(s).ToString());
-            mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat((
-                new java.lang.StringBuilder()).Append("\xf7e").Append(playerEntity.username).Append
-                (" left the game.").ToString()));
+            //TODO: Hook leave message
+            logger.Info((new java.lang.StringBuilder()).Append(playerEntity.username).Append(" lost connection: ").Append(s).ToString());
+            mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat((new java.lang.StringBuilder()).Append("§e").Append(playerEntity.username).Append(" left the game.").ToString()));
             mcServer.configManager.PlayerLoggedOut(playerEntity);
             connectionClosed = true;
         }
@@ -604,8 +602,8 @@ namespace net.minecraft.src
 
         public virtual void Log(string s)
         {
-            SendPacket(new net.minecraft.src.Packet3Chat((new java.lang.StringBuilder()).Append
-                ("\x9ad").Append(s).ToString()));
+            //SendPacket(new net.minecraft.src.Packet3Chat((new java.lang.StringBuilder()).Append("§d").Append(s).ToString()));
+            SendPacket(new net.minecraft.src.Packet3Chat(s));
         }
 
         public virtual string GetUsername()

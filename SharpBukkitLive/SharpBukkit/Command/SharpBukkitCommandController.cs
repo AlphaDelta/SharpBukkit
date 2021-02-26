@@ -91,5 +91,15 @@ namespace SharpBukkitLive.SharpBukkit.Command
         {
             return s.Split(new string[] { "\r\n", "\n", "\r", "\\n" }, removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None);
         }
+
+        public SharpBukkitPlayer FindPlayer(string Username)
+        {
+            Username = Username.ToLower();
+
+            if (!ConfigManager.SharpBukkitPlayers.ContainsKey(Username))
+                return null;
+
+            return ConfigManager.SharpBukkitPlayers[Username];
+        }
     }
 }
