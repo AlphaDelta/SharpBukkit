@@ -59,7 +59,7 @@ namespace net.minecraft.src
 
         public virtual void Func_28133_a(net.minecraft.src.EntityPlayer entityplayer, int i, int pointX, int pointY, int pointZ, int i1)
         {
-            mcServer.configManager.SendPacketToPlayersAroundPoint(entityplayer, pointX, pointY, pointZ, 64D, field_28134_b.worldProvider.worldType, new net.minecraft.src.Packet61DoorChange(i, pointX, pointY, pointZ, i1));
+            mcServer.configManager.SendPacketToPlayersAroundPoint(entityplayer, pointX, pointY, pointZ, 64D, field_28134_b.worldProvider.worldType, new net.minecraft.src.Packet61SoundEffect(i, pointX, pointY, pointZ, i1));
         }
 
         private net.minecraft.server.MinecraftServer mcServer;

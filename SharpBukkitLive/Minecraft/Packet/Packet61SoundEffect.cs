@@ -5,13 +5,13 @@ using Sharpen;
 
 namespace net.minecraft.src
 {
-    public class Packet61DoorChange : net.minecraft.src.Packet
+    public class Packet61SoundEffect : net.minecraft.src.Packet
     {
-        public Packet61DoorChange()
+        public Packet61SoundEffect()
         {
         }
 
-        public Packet61DoorChange(int i, int blockX, int blockY, int blockZ, int blockShiftedIndex)
+        public Packet61SoundEffect(int i, int blockX, int blockY, int blockZ, int blockShiftedIndex)
         {
             // Referenced classes of package net.minecraft.src:
             //            Packet, NetHandler

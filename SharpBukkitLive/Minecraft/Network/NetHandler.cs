@@ -274,7 +274,7 @@ namespace net.minecraft.src
             RegisterPacket(packet131mapdata);
         }
 
-        public virtual void HandleDoorChange(net.minecraft.src.Packet61DoorChange packet61doorchange)
+        public virtual void HandleDoorChange(net.minecraft.src.Packet61SoundEffect packet61doorchange)
         {
             RegisterPacket(packet61doorchange);
         }

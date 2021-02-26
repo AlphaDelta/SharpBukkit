@@ -58,14 +58,32 @@ namespace SharpBukkitLive.SharpBukkit
         /// </summary>
         public void SendSound(SoundType type)
         {
-            SendSound(type, (int)Entity.posX, (int)Entity.posY, (int)Entity.posZ);
+            SendSound(type, (int)Entity.posX, (int)Entity.posY, (int)Entity.posZ - 1);
         }
         /// <summary>
         /// Plays a sound for the player.
         /// </summary>
         public void SendSound(SoundType type, int x, int y, int z)
         {
-            SendPacket(new Packet61DoorChange((int)type, x, y, z, 0));
+            if (type == SoundType.RECORD_PLAY || type == SoundType.SMOKE || type == SoundType.BLOCK_BREAK)
+                throw new ArgumentException("RECORD_PLAY, SMOKE, and BLOCK_BREAK are not supported by SendSound. Use SendRecordPlay, SendSmoke, and SendBlockBreak instead.");
+
+            SendPacket(new Packet61SoundEffect((int)type, x, y, z, 0));
+        }
+
+        /// <summary>
+        /// Sends a block break sound and emits particles for the player at their current position.
+        /// </summary>
+        public void SendBlockBreak(Block block)
+        {
+            SendBlockBreak(block, (int)Entity.posX, (int)Entity.posY, (int)Entity.posZ - 1);
+        }
+        /// <summary>
+        /// Sends a block break sound and emits particles.
+        /// </summary>
+        public void SendBlockBreak(Block block, int x, int y, int z)
+        {
+            SendPacket(new Packet61SoundEffect((int)SoundType.BLOCK_BREAK, x, y, z, block.blockID));
         }
 
         /// <summary>

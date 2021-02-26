@@ -253,7 +253,7 @@ namespace net.minecraft.src
             AddIdClassMapping(53, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet53BlockChange)));
             AddIdClassMapping(54, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet54PlayNoteBlock)));
             AddIdClassMapping(60, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet60Explosion)));
-            AddIdClassMapping(61, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet61DoorChange)));
+            AddIdClassMapping(61, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet61SoundEffect)));
             AddIdClassMapping(70, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet70Bed)));
             AddIdClassMapping(71, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet71Weather)));
             AddIdClassMapping(100, true, false, Sharpen.Runtime.GetClassForType(typeof(net.minecraft.src.Packet100OpenWindow)));

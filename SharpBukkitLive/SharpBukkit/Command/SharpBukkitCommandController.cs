@@ -62,13 +62,13 @@ namespace SharpBukkitLive.SharpBukkit.Command
             Logger.Info(message);
         }
 
-        public PagedListResult PagedList<T>(IEnumerable<T> items, Func<T, string> tostring, out string output, int page = 1, int itemsperpage = 15, string title = "Results")
+        public PagedListResult PagedList<T>(IEnumerable<T> items, Func<T, string> tostring, out string output, int page = 1, int itemsperpage = 10, string title = "Results")
         {
             output = "";
             page--;
 
             if (page < 0) page = 0;
-            if (itemsperpage < 1) page = 15;
+            if (itemsperpage < 1) itemsperpage = 10;
 
             int count = items.Count();
             if (count < 1) return PagedListResult.NoItems;
