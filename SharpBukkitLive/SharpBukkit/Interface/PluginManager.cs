@@ -18,8 +18,9 @@ namespace SharpBukkitLive.Interface
             /* Load plugins */
             Entrypoint.logger.Info("Loading SharpBukkit plugins");
             Assembly asm = Assembly.GetExecutingAssembly();
-            string expath = Path.GetDirectoryName(asm.Location);
+            string expath = Path.Combine(Path.GetDirectoryName(asm.Location), "plugins");
             int loaded = 0;
+            if (!Directory.Exists(expath)) Directory.CreateDirectory(expath);
             if (Directory.Exists(expath)) //Edge case
             {
                 string[] files = Directory.GetFiles(expath, "*.dll");
@@ -29,7 +30,7 @@ namespace SharpBukkitLive.Interface
                     string fname = Path.GetFileNameWithoutExtension(f);
                     if (fname == "SharpBukkitLive" || !fname.StartsWith("SharpBukkit.")) continue;
 
-                    AppDomain.CurrentDomain.Load(AssemblyName.GetAssemblyName(f));
+                    System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromAssemblyPath(f);
                     loaded++;
                 }
             }
