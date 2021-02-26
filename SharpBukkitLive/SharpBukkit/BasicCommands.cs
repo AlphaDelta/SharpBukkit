@@ -1,5 +1,5 @@
-﻿using SharpBukkitLive.Interface;
-using SharpBukkitLive.Interface.Command;
+﻿using SharpBukkitLive.SharpBukkit;
+using SharpBukkitLive.SharpBukkit.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;

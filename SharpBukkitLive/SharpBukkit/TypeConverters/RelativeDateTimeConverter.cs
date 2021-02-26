@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace SharpBukkitLive.Interface.TypeConverters
+namespace SharpBukkitLive.SharpBukkit.TypeConverters
 {
     public class RelativeDateTimeConverter : DateTimeConverter
     {

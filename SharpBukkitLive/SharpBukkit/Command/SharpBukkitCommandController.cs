@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SharpBukkitLive.Interface.Command
+namespace SharpBukkitLive.SharpBukkit.Command
 {
     public class SharpBukkitCommandController
     {
@@ -15,13 +15,13 @@ namespace SharpBukkitLive.Interface.Command
         public ReflSharpBukkitCommand CurrentCommand { get; internal set; }
 
 
-        public bool IsUserOP => User is net.minecraft.server.MinecraftServer || (User is net.minecraft.src.NetServerHandler && Server.configManager.IsOp(User.GetUsername()));
-        public bool IsUserPlayer => User is net.minecraft.src.NetServerHandler;
+        public bool IsUserOP => User is net.minecraft.server.MinecraftServer || User is NetServerHandler && Server.configManager.IsOp(User.GetUsername());
+        public bool IsUserPlayer => User is NetServerHandler;
 
         public ServerConfigurationManager ConfigManager => Server.configManager;
 
-        public NetServerHandler Player => User is net.minecraft.src.NetServerHandler ?
-            ((net.minecraft.src.NetServerHandler)User)
+        public NetServerHandler Player => User is NetServerHandler ?
+            (NetServerHandler)User
             : null;
         public EntityPlayer PlayerEntity => Player?.playerEntity;
 
@@ -72,7 +72,7 @@ namespace SharpBukkitLive.Interface.Command
 
             int count = items.Count();
             if (count < 1) return PagedListResult.NoItems;
-            int pages = (int)Math.Ceiling((float)count / (float)itemsperpage);
+            int pages = (int)Math.Ceiling(count / (float)itemsperpage);
             if (page >= pages) return PagedListResult.PageDoesNotExist;
 
             StringBuilder sb = new StringBuilder();

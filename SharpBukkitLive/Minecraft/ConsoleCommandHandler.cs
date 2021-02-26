@@ -1,9 +1,8 @@
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
-using SharpBukkitLive.Interface;
-using SharpBukkitLive.Interface.Command;
 using SharpBukkitLive.SharpBukkit;
+using SharpBukkitLive.SharpBukkit.Command;
 using Sharpen;
 using System;
 using System.Collections.Generic;

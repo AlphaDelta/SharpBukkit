@@ -1,5 +1,4 @@
-﻿using SharpBukkitLive.Interface.Command;
-using SharpBukkitLive.SharpBukkit;
+﻿using SharpBukkitLive.SharpBukkit.Command;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace SharpBukkitLive.Interface
+namespace SharpBukkitLive.SharpBukkit
 {
     internal static class PluginManager
     {
@@ -129,7 +128,7 @@ namespace SharpBukkitLive.Interface
                 {
                     inquote = false;
 
-                    string join = String.Join(' ', spl, q, i - q + 1);
+                    string join = string.Join(' ', spl, q, i - q + 1);
                     args.Add(join.Substring(1, join.Length - 2).Replace("\\\"", "\""));
                 }
             }

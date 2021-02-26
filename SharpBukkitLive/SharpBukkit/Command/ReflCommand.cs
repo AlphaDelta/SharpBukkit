@@ -1,5 +1,4 @@
-﻿using SharpBukkitLive.Interface.TypeConverters;
-using SharpBukkitLive.SharpBukkit;
+﻿using SharpBukkitLive.SharpBukkit.TypeConverters;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace SharpBukkitLive.Interface.Command
+namespace SharpBukkitLive.SharpBukkit.Command
 {
     public class ReflSharpBukkitCommand
     {
@@ -40,7 +39,7 @@ namespace SharpBukkitLive.Interface.Command
                         else
                             ps.Add($"[{p.Name.ToLower()}={(p.DefaultValue == null ? "null" : p.DefaultValue.ToString())}]");
 
-                    _Signature = String.Join(" ", ps);
+                    _Signature = string.Join(" ", ps);
                 }
 
                 return _Signature;
@@ -56,7 +55,7 @@ namespace SharpBukkitLive.Interface.Command
             Method = mi;
             Params = mi.GetParameters();
 
-            if (!String.IsNullOrWhiteSpace(attr.Name))
+            if (!string.IsNullOrWhiteSpace(attr.Name))
                 Name = attr.Name;
 
             Name = Name.ToLower();
@@ -91,7 +90,7 @@ namespace SharpBukkitLive.Interface.Command
             {
                 TypeConverter c = GetTypeConverter(Params[i].ParameterType);
 
-                if ((!Params[i].ParameterType.IsEnum || !Enum.GetNames(Params[i].ParameterType).Any(p => String.Equals(p, args[i], StringComparison.OrdinalIgnoreCase))) && !c.IsValid(args[i]))
+                if ((!Params[i].ParameterType.IsEnum || !Enum.GetNames(Params[i].ParameterType).Any(p => string.Equals(p, args[i], StringComparison.OrdinalIgnoreCase))) && !c.IsValid(args[i]))
                     return $"Expected parameter {i + 1}, {Params[i].Name}, to be a {Params[i].ParameterType.Name}";
             }
 
