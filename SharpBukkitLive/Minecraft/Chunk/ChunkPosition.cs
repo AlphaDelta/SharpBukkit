@@ -30,7 +30,7 @@ namespace net.minecraft.src
 
 		public override int GetHashCode()
 		{
-			return x * unchecked((int)(0x88f9fa)) + y * unchecked((int)(0xef88b)) + z;
+			return x * 0x88f9fa + y * 0xef88b + z;
 		}
 
 		public readonly int x;

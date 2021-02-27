@@ -55,7 +55,7 @@ namespace net.minecraft.src
                 world.SetBlockAndMetadataWithNotify(
                     i, j, k,
                     net.minecraft.src.Block.signPost.blockID,
-                    net.minecraft.src.MathHelper.Floor_double((double)(((entityplayer.rotationYaw + 180F) * 16F) / 360F) + 0.5D) & unchecked((int)(0xf)));
+                    net.minecraft.src.MathHelper.Floor_double((double)(((entityplayer.rotationYaw + 180F) * 16F) / 360F) + 0.5D) & 0xf);
             }
             else
             {

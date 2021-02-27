@@ -21,9 +21,8 @@ namespace net.minecraft.src
 
 		public static int Func_22203_a(int i, int j, int k)
 		{
-			return j & unchecked((int)(0xff)) | (i & unchecked((int)(0x7fff))) << 8 | (k & unchecked(
-				(int)(0x7fff))) << 24 | (i >= 0 ? 0 : unchecked((int)(0x80000000))) | (k >= 0 ? 
-				0 : unchecked((int)(0x8000)));
+			return j & 0xff | (i & 0x7fff) << 8 | (k & 0x7fff) << 24 | (i >= 0 ? 0 : unchecked((int)(0x80000000))) | (k >= 0 ? 
+				0 : 0x8000);
 		}
 
 		public virtual float DistanceTo(net.minecraft.src.PathPoint pathpoint)

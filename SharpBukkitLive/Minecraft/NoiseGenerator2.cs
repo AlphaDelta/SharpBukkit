@@ -76,8 +76,8 @@ namespace net.minecraft.src
 					double d17 = (d15 - (double)i2) + field_4314_g;
 					double d18 = (d14 - 1.0D) + 2D * field_4314_g;
 					double d19 = (d15 - 1.0D) + 2D * field_4314_g;
-					int j2 = j1 & unchecked((int)(0xff));
-					int k2 = k1 & unchecked((int)(0xff));
+					int j2 = j1 & 0xff;
+					int k2 = k1 & 0xff;
 					int l2 = field_4316_e[j2 + field_4316_e[k2]] % 12;
 					int i3 = field_4316_e[j2 + l1 + field_4316_e[k2 + i2]] % 12;
 					int j3 = field_4316_e[j2 + 1 + field_4316_e[k2 + 1]] % 12;

@@ -86,15 +86,14 @@ namespace net.minecraft.src
             j)
         {
             net.minecraft.src.RegionFile regionfile = Func_22123_a(file, i, j);
-            return regionfile.GetChunkDataInputStream(i & unchecked((int)(0x1f)), j & unchecked(
-                (int)(0x1f)));
+            return regionfile.GetChunkDataInputStream(i & 0x1f, j & 0x1f);
         }
 
         public static java.io.DataOutputStream Func_22120_d(string file, int i, int
              j)
         {
             net.minecraft.src.RegionFile regionfile = Func_22123_a(file, i, j);
-            return regionfile.GetChunkDataOutputStream(i & unchecked((int)(0x1f)), j & unchecked((int)(0x1f)));
+            return regionfile.GetChunkDataOutputStream(i & 0x1f, j & 0x1f);
         }
 
         private static readonly SharpBukkitLive.NullSafeDictionary<string, WeakReference> field_22125_a = new NullSafeDictionary<string, WeakReference>();

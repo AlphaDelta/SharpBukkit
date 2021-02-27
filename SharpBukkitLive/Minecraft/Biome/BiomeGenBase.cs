@@ -21,7 +21,7 @@ namespace net.minecraft.src
             //            BiomeGenTaiga, BiomeGenHell, BiomeGenSky, WorldGenerator
             topBlock = unchecked((byte)net.minecraft.src.Block.grass.blockID);
             fillerBlock = unchecked((byte)net.minecraft.src.Block.dirt.blockID);
-            field_6161_q = unchecked((int)(0x4ee031));
+            field_6161_q = 0x4ee031;
             spawnableMonsterList = new List<SpawnListEntry>();
             spawnableCreatureList = new List<SpawnListEntry>();
             spawnableWaterCreatureList = new List<SpawnListEntry>();
@@ -196,49 +196,46 @@ namespace net.minecraft.src
         }
 
         public static readonly net.minecraft.src.BiomeGenBase rainforest = (new net.minecraft.src.BiomeGenRainforest
-            ()).SetColor(unchecked((int)(0x8fa36))).SetBiomeName("Rainforest").Func_4080_a(unchecked(
-            (int)(0x1ff458)));
+            ()).SetColor(0x8fa36).SetBiomeName("Rainforest").Func_4080_a(0x1ff458);
 
         public static readonly net.minecraft.src.BiomeGenBase swampland = (new net.minecraft.src.BiomeGenSwamp
-            ()).SetColor(unchecked((int)(0x7f9b2))).SetBiomeName("Swampland").Func_4080_a(unchecked(
-            (int)(0x8baf48)));
+            ()).SetColor(0x7f9b2).SetBiomeName("Swampland").Func_4080_a(0x8baf48);
 
         public static readonly net.minecraft.src.BiomeGenBase seasonalForest = (new net.minecraft.src.BiomeGenBase
-            ()).SetColor(unchecked((int)(0x9be023))).SetBiomeName("Seasonal Forest");
+            ()).SetColor(0x9be023).SetBiomeName("Seasonal Forest");
 
         public static readonly net.minecraft.src.BiomeGenBase forest = (new net.minecraft.src.BiomeGenForest
-            ()).SetColor(unchecked((int)(0x56621))).SetBiomeName("Forest").Func_4080_a(unchecked(
-            (int)(0x4eba31)));
+            ()).SetColor(0x56621).SetBiomeName("Forest").Func_4080_a(0x4eba31);
 
         public static readonly net.minecraft.src.BiomeGenBase savanna = (new net.minecraft.src.BiomeGenDesert
-            ()).SetColor(unchecked((int)(0xd9e023))).SetBiomeName("Savanna");
+            ()).SetColor(0xd9e023).SetBiomeName("Savanna");
 
         public static readonly net.minecraft.src.BiomeGenBase shrubland = (new net.minecraft.src.BiomeGenBase
-            ()).SetColor(unchecked((int)(0xa1ad20))).SetBiomeName("Shrubland");
+            ()).SetColor(0xa1ad20).SetBiomeName("Shrubland");
 
         public static readonly net.minecraft.src.BiomeGenBase taiga = (new net.minecraft.src.BiomeGenTaiga
-            ()).SetColor(unchecked((int)(0x2eb153))).SetBiomeName("Taiga").SetEnableSnow().Func_4080_a
-            (unchecked((int)(0x7bb731)));
+            ()).SetColor(0x2eb153).SetBiomeName("Taiga").SetEnableSnow().Func_4080_a
+            (0x7bb731);
 
         public static readonly net.minecraft.src.BiomeGenBase desert = (new net.minecraft.src.BiomeGenDesert
-            ()).SetColor(unchecked((int)(0xfa9418))).SetBiomeName("Desert").SetDisableRain();
+            ()).SetColor(0xfa9418).SetBiomeName("Desert").SetDisableRain();
 
         public static readonly net.minecraft.src.BiomeGenBase plains = (new net.minecraft.src.BiomeGenDesert
-            ()).SetColor(unchecked((int)(0xffd910))).SetBiomeName("Plains");
+            ()).SetColor(0xffd910).SetBiomeName("Plains");
 
         public static readonly net.minecraft.src.BiomeGenBase iceDesert = (new net.minecraft.src.BiomeGenDesert
-            ()).SetColor(unchecked((int)(0xffed93))).SetBiomeName("Ice Desert").SetEnableSnow
-            ().SetDisableRain().Func_4080_a(unchecked((int)(0xc4d339)));
+            ()).SetColor(0xffed93).SetBiomeName("Ice Desert").SetEnableSnow
+            ().SetDisableRain().Func_4080_a(0xc4d339);
 
         public static readonly net.minecraft.src.BiomeGenBase tundra = (new net.minecraft.src.BiomeGenBase
-            ()).SetColor(unchecked((int)(0x57ebf9))).SetBiomeName("Tundra").SetEnableSnow().
-            Func_4080_a(unchecked((int)(0xc4d339)));
+            ()).SetColor(0x57ebf9).SetBiomeName("Tundra").SetEnableSnow().
+            Func_4080_a(0xc4d339);
 
         public static readonly net.minecraft.src.BiomeGenBase hell = (new net.minecraft.src.BiomeGenHell
-            ()).SetColor(unchecked((int)(0xff0000))).SetBiomeName("Hell").SetDisableRain();
+            ()).SetColor(0xff0000).SetBiomeName("Hell").SetDisableRain();
 
         public static readonly net.minecraft.src.BiomeGenBase field_28054_m = (new net.minecraft.src.BiomeGenSky
-            ()).SetColor(unchecked((int)(0x8080ff))).SetBiomeName("Sky").SetDisableRain();
+            ()).SetColor(0x8080ff).SetBiomeName("Sky").SetDisableRain();
 
         public string biomeName;
 

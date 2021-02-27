@@ -35,18 +35,18 @@ namespace net.minecraft.src
 	//		displayStrings[1] = (new java.lang.StringBuilder()).Append("Threads: ").Append(net.minecraft.src.NetworkManager
 	//			.numReadThreads).Append(" + ").Append(net.minecraft.src.NetworkManager.numWriteThreads
 	//			).ToString();
-	//		memoryUse[updateCounter++ & unchecked((int)(0xff))] = (int)((l * 100L) / java.lang.Runtime
+	//		memoryUse[updateCounter++ & 0xff] = (int)((l * 100L) / java.lang.Runtime
 	//			.GetRuntime().MaxMemory());
 	//		Repaint();
 	//	}
 
 	//	public override void Paint(java.awt.Graphics g)
 	//	{
-	//		g.SetColor(new java.awt.Color(unchecked((int)(0xffffff))));
+	//		g.SetColor(new java.awt.Color(0xffffff));
 	//		g.FillRect(0, 0, 256, 192);
 	//		for (int i = 0; i < 256; i++)
 	//		{
-	//			int k = memoryUse[i + updateCounter & unchecked((int)(0xff))];
+	//			int k = memoryUse[i + updateCounter & 0xff];
 	//			g.SetColor(new java.awt.Color(k + 28 << 16));
 	//			g.FillRect(i, 100 - k, 1, k);
 	//		}

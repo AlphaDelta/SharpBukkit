@@ -181,9 +181,9 @@ namespace net.minecraft.src
 						, chunkZ, blocksToUpdate, numBlocksToUpdate, worldserver));
 					for (int k = 0; k < numBlocksToUpdate; k++)
 					{
-						int j1 = chunkX * 16 + (numBlocksToUpdate >> 12 & unchecked((int)(0xf)));
-						int i2 = numBlocksToUpdate & unchecked((int)(0xff));
-						int k2 = chunkZ * 16 + (numBlocksToUpdate >> 8 & unchecked((int)(0xf)));
+						int j1 = chunkX * 16 + (numBlocksToUpdate >> 12 & 0xf);
+						int i2 = numBlocksToUpdate & 0xff;
+						int k2 = chunkZ * 16 + (numBlocksToUpdate >> 8 & 0xf);
 						if (net.minecraft.src.Block.isBlockContainer[worldserver.GetBlockId(j1, i2, k2)])
 						{
 							System.Console.Out.WriteLine("Sending!");

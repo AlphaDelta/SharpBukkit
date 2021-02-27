@@ -49,7 +49,7 @@ namespace net.minecraft.src
 
 		public virtual int GetHeightValue(int i, int j)
 		{
-			return heightMap[j << 4 | i] & unchecked((int)(0xff));
+			return heightMap[j << 4 | i] & 0xff;
 		}
 
 		public virtual void Func_348_a()
@@ -66,7 +66,7 @@ namespace net.minecraft.src
 					int j1 = 127;
 					int k1;
 					for (k1 = j << 11 | l << 7; j1 > 0 && net.minecraft.src.Block.lightOpacity[blocks
-						[(k1 + j1) - 1] & unchecked((int)(0xff))] == 0; j1--)
+						[(k1 + j1) - 1] & 0xff] == 0; j1--)
 					{
 					}
 					heightMap[l << 4 | j] = unchecked((byte)j1);
@@ -82,8 +82,7 @@ namespace net.minecraft.src
 					int i2 = 127;
 					do
 					{
-						l1 -= net.minecraft.src.Block.lightOpacity[blocks[k1 + i2] & unchecked((int)(0xff
-							))];
+						l1 -= net.minecraft.src.Block.lightOpacity[blocks[k1 + i2] & 0xff];
 						if (l1 > 0)
 						{
 							skylightMap.SetNibble(j, i2, l, l1);
@@ -140,14 +139,14 @@ namespace net.minecraft.src
 
 		private void Func_339_g(int i, int j, int k)
 		{
-			int l = heightMap[k << 4 | i] & unchecked((int)(0xff));
+			int l = heightMap[k << 4 | i] & 0xff;
 			int i1 = l;
 			if (j > l)
 			{
 				i1 = j;
 			}
 			for (int j1 = i << 11 | k << 7; i1 > 0 && net.minecraft.src.Block.lightOpacity[blocks
-				[(j1 + i1) - 1] & unchecked((int)(0xff))] == 0; i1--)
+				[(j1 + i1) - 1] & 0xff] == 0; i1--)
 			{
 			}
 			if (i1 == l)
@@ -167,9 +166,9 @@ namespace net.minecraft.src
 				{
 					for (int k2 = 0; k2 < 16; k2++)
 					{
-						if ((heightMap[k2 << 4 | i2] & unchecked((int)(0xff))) < k1)
+						if ((heightMap[k2 << 4 | i2] & 0xff) < k1)
 						{
-							k1 = heightMap[k2 << 4 | i2] & unchecked((int)(0xff));
+							k1 = heightMap[k2 << 4 | i2] & 0xff;
 						}
 					}
 				}
@@ -224,21 +223,21 @@ namespace net.minecraft.src
 
 		public virtual int GetBlockID(int i, int j, int k)
 		{
-			return blocks[i << 11 | k << 7 | j] & unchecked((int)(0xff));
+			return blocks[i << 11 | k << 7 | j] & 0xff;
 		}
 
 		public virtual bool SetBlockIDWithMetadata(int i, int j, int k, int l, int i1)
 		{
 			byte byte0 = unchecked((byte)l);
-			int j1 = heightMap[k << 4 | i] & unchecked((int)(0xff));
-			int k1 = blocks[i << 11 | k << 7 | j] & unchecked((int)(0xff));
+			int j1 = heightMap[k << 4 | i] & 0xff;
+			int k1 = blocks[i << 11 | k << 7 | j] & 0xff;
 			if (k1 == l && data.GetNibble(i, j, k) == i1)
 			{
 				return false;
 			}
 			int l1 = xPosition * 16 + i;
 			int i2 = zPosition * 16 + k;
-			blocks[i << 11 | k << 7 | j] = unchecked((byte)(byte0 & unchecked((int)(0xff))));
+			blocks[i << 11 | k << 7 | j] = unchecked((byte)(byte0 & 0xff));
 			if (k1 != 0 && !worldObj.singleplayerWorld)
 			{
 				net.minecraft.src.Block.blocksList[k1].OnBlockRemoval(worldObj, l1, j, i2);
@@ -246,7 +245,7 @@ namespace net.minecraft.src
 			data.SetNibble(i, j, k, i1);
 			if (!worldObj.worldProvider.field_4306_c)
 			{
-				if (net.minecraft.src.Block.lightOpacity[byte0 & unchecked((int)(0xff))] != 0)
+				if (net.minecraft.src.Block.lightOpacity[byte0 & 0xff] != 0)
 				{
 					if (j >= j1)
 					{
@@ -278,21 +277,21 @@ namespace net.minecraft.src
 		public virtual bool SetBlockID(int i, int j, int k, int l)
 		{
 			byte byte0 = unchecked((byte)l);
-			int i1 = heightMap[k << 4 | i] & unchecked((int)(0xff));
-			int j1 = blocks[i << 11 | k << 7 | j] & unchecked((int)(0xff));
+			int i1 = heightMap[k << 4 | i] & 0xff;
+			int j1 = blocks[i << 11 | k << 7 | j] & 0xff;
 			if (j1 == l)
 			{
 				return false;
 			}
 			int k1 = xPosition * 16 + i;
 			int l1 = zPosition * 16 + k;
-			blocks[i << 11 | k << 7 | j] = unchecked((byte)(byte0 & unchecked((int)(0xff))));
+			blocks[i << 11 | k << 7 | j] = unchecked((byte)(byte0 & 0xff));
 			if (j1 != 0)
 			{
 				net.minecraft.src.Block.blocksList[j1].OnBlockRemoval(worldObj, k1, j, l1);
 			}
 			data.SetNibble(i, j, k, 0);
-			if (net.minecraft.src.Block.lightOpacity[byte0 & unchecked((int)(0xff))] != 0)
+			if (net.minecraft.src.Block.lightOpacity[byte0 & 0xff] != 0)
 			{
 				if (j >= i1)
 				{
@@ -431,7 +430,7 @@ namespace net.minecraft.src
 
 		public virtual bool CanBlockSeeTheSky(int i, int j, int k)
 		{
-			return j >= (heightMap[k << 4 | i] & unchecked((int)(0xff)));
+			return j >= (heightMap[k << 4 | i] & 0xff);
 		}
 
 		public virtual net.minecraft.src.TileEntity GetChunkBlockTileEntity(int i, int j, 
@@ -690,9 +689,9 @@ namespace net.minecraft.src
 		public virtual SharpBukkitLive.SharpBukkit.SharpRandom Func_334_a(long l)
 		{
 			return new SharpBukkitLive.SharpBukkit.SharpRandom((worldObj.GetRandomSeed() + (long)(xPosition * xPosition
-				 * unchecked((int)(0x4c1906))) + (long)(xPosition * unchecked((int)(0x5ac0db))) 
+				 * 0x4c1906) + (long)(xPosition * 0x5ac0db) 
 				+ (long)(zPosition * zPosition) * unchecked((long)(0x4307a7L)) + (long)(zPosition
-				 * unchecked((int)(0x5f24f))) ^ l));
+				 * 0x5f24f) ^ l));
 		}
 
 		public virtual bool Func_21101_g()

@@ -66,9 +66,9 @@ namespace net.minecraft.src
 		{
 			net.minecraft.src.PlayerHashEntry[] aplayerhashentry = hashArray;
 			int j = aplayerhashentry.Length;
-			if (j == unchecked((int)(0x40000000)))
+			if (j == 0x40000000)
 			{
-				capacity = unchecked((int)(0x7fffffff));
+				capacity = 0x7fffffff;
 				return;
 			}
 			else

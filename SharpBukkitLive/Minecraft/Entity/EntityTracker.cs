@@ -123,7 +123,7 @@ namespace net.minecraft.src
 															{
 																if (entity is net.minecraft.src.EntityPainting)
 																{
-																	TrackEntity(entity, 160, unchecked((int)(0x7fffffff)), false);
+																	TrackEntity(entity, 160, 0x7fffffff, false);
 																}
 															}
 														}

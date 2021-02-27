@@ -139,7 +139,7 @@ namespace net.minecraft.src
         private static void WriteWatchableObject(java.io.DataOutputStream dataoutputstream, net.minecraft.src.WatchableObject watchableobject)
         {
             int i = (watchableobject.GetObjectType() << 5 | watchableobject.GetDataValueId()
-                & unchecked((int)(0x1f))) & unchecked((int)(0xff));
+                & 0x1f) & 0xff;
             dataoutputstream.WriteByte(i);
             switch (watchableobject.GetObjectType())
             {
@@ -215,8 +215,8 @@ namespace net.minecraft.src
                 {
                     arraylist = new List<WatchableObject>();
                 }
-                int i = (byte0 & unchecked((int)(0xe0))) >> 5;
-                int j = byte0 & unchecked((int)(0x1f));
+                int i = (byte0 & 0xe0) >> 5;
+                int j = byte0 & 0x1f;
                 net.minecraft.src.WatchableObject watchableobject = null;
                 switch (i)
                 {

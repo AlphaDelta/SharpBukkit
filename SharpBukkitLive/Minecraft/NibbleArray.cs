@@ -24,11 +24,11 @@ namespace net.minecraft.src
             int j1 = l & 1;
             if (j1 == 0)
             {
-                return data[i1] & unchecked((int)(0xf));
+                return data[i1] & 0xf;
             }
             else
             {
-                return data[i1] >> 4 & unchecked((int)(0xf));
+                return data[i1] >> 4 & 0xf;
             }
         }
 
@@ -39,13 +39,11 @@ namespace net.minecraft.src
             int k1 = i1 & 1;
             if (k1 == 0)
             {
-                data[j1] = unchecked((byte)(data[j1] & unchecked((int)(0xf0)) | l & unchecked((int
-                    )(0xf))));
+                data[j1] = unchecked((byte)(data[j1] & 0xf0 | l & 0xf));
             }
             else
             {
-                data[j1] = unchecked((byte)(data[j1] & unchecked((int)(0xf)) | (l & unchecked((int
-                    )(0xf))) << 4));
+                data[j1] = unchecked((byte)(data[j1] & 0xf | (l & 0xf) << 4));
             }
         }
 

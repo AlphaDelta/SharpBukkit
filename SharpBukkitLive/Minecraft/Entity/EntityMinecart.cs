@@ -698,7 +698,7 @@ namespace net.minecraft.src
                     {
                         net.minecraft.src.NBTTagCompound nbttagcompound1 = (net.minecraft.src.NBTTagCompound
                             )nbttaglist.TagAt(i);
-                        int j = nbttagcompound1.GetByte("Slot") & unchecked((int)(0xff));
+                        int j = nbttagcompound1.GetByte("Slot") & 0xff;
                         if (j >= 0 && j < cargoItems.Length)
                         {
                             cargoItems[j] = new net.minecraft.src.ItemStack(nbttagcompound1);

@@ -113,12 +113,6 @@ label0_break: ;
 			, "brown", "blue", "purple", "cyan", "silver", "gray", "pink", "lime", "yellow", 
 			"lightBlue", "magenta", "orange", "white" };
 
-		public static readonly int[] field_31023_bk = new int[] { unchecked((int)(0x1e1b1b
-			)), unchecked((int)(0xb3312c)), unchecked((int)(0x3b511a)), unchecked((int)(0x51301a
-			)), unchecked((int)(0x253192)), unchecked((int)(0x7b2fbe)), unchecked((int)(0x287697
-			)), unchecked((int)(0x287697)), unchecked((int)(0x434343)), unchecked((int)(0xd88198
-			)), unchecked((int)(0x41cd34)), unchecked((int)(0xdecf2a)), unchecked((int)(0x6689d3
-			)), unchecked((int)(0xc354cd)), unchecked((int)(0xeb8844)), unchecked((int)(0xf0f0f0
-			)) };
+		public static readonly int[] field_31023_bk = new int[] { 0x1e1b1b, 0xb3312c, 0x3b511a, 0x51301a, 0x253192, 0x7b2fbe, 0x287697, 0x287697, 0x434343, 0xd88198, 0x41cd34, 0xdecf2a, 0x6689d3, 0xc354cd, 0xeb8844, 0xf0f0f0 };
 	}
 }

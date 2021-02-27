@@ -218,7 +218,7 @@ namespace net.minecraft.src
 
         public virtual void ProcessReadPackets()
         {
-            if (sendQueueByteLength > unchecked((int)(0x100000)))
+            if (sendQueueByteLength > 0x100000)
             {
                 NetworkShutdown("disconnect.overflow", new object[0]);
             }

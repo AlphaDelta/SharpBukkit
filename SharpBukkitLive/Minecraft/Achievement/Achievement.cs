@@ -21,7 +21,7 @@ namespace net.minecraft.src
 
         public Achievement(int i, string s, int j, int k, net.minecraft.src.ItemStack itemstack
             , net.minecraft.src.Achievement achievement)
-            : base(unchecked((int)(0x500000)) + i, net.minecraft.src.StatCollector.TranslateToLocal("achievement." + s))
+            : base(0x500000 + i, net.minecraft.src.StatCollector.TranslateToLocal("achievement." + s))
         {
             // Referenced classes of package net.minecraft.src:
             //            StatBase, ItemStack, StatCollector, AchievementList, 

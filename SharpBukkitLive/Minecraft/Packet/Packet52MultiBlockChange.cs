@@ -26,9 +26,9 @@ namespace net.minecraft.src
             net.minecraft.src.Chunk chunk = world.GetChunkFromChunkCoords(x, z);
             for (int l = 0; l < arraySize; l++)
             {
-                int i1 = aword0[l] >> 12 & unchecked((int)(0xf));
-                int j1 = aword0[l] >> 8 & unchecked((int)(0xf));
-                int k1 = aword0[l] & unchecked((int)(0xff));
+                int i1 = aword0[l] >> 12 & 0xf;
+                int j1 = aword0[l] >> 8 & 0xf;
+                int k1 = aword0[l] & 0xff;
                 coordinateArray[l] = aword0[l];
                 typeArray[l] = unchecked((byte)chunk.GetBlockID(i1, k1, j1));
                 metadataArray[l] = unchecked((byte)chunk.GetBlockMetadata(i1, k1, j1));
@@ -40,7 +40,7 @@ namespace net.minecraft.src
         {
             xPosition = datainputstream.ReadInt();
             zPosition = datainputstream.ReadInt();
-            size = datainputstream.ReadShort() & unchecked((int)(0xffff));
+            size = datainputstream.ReadShort() & 0xffff;
             coordinateArray = new short[size];
             typeArray = new byte[size];
             metadataArray = new byte[size];

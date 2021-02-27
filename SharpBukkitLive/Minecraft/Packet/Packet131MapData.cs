@@ -27,7 +27,7 @@ namespace net.minecraft.src
 		{
 			field_28052_a = datainputstream.ReadShort();
 			field_28051_b = datainputstream.ReadShort();
-			field_28053_c = new byte[datainputstream.ReadByte() & unchecked((int)(0xff))];
+			field_28053_c = new byte[datainputstream.ReadByte() & 0xff];
 			datainputstream.ReadFully(field_28053_c);
 		}
 

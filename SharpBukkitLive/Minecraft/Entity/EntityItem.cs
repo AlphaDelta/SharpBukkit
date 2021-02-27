@@ -129,7 +129,7 @@ namespace net.minecraft.src
 
         protected internal override void ReadEntityFromNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
         {
-            health = nbttagcompound.GetShort("Health") & unchecked((int)(0xff));
+            health = nbttagcompound.GetShort("Health") & 0xff;
             age = nbttagcompound.GetShort("Age");
             net.minecraft.src.NBTTagCompound nbttagcompound1 = nbttagcompound.GetCompoundTag("Item");
             item = new net.minecraft.src.ItemStack(nbttagcompound1);

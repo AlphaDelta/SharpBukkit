@@ -66,11 +66,11 @@ namespace net.minecraft.src
 				{
 					int l1 = dataFileIn.ReadInt();
 					offsets[j1] = l1;
-					if (l1 == 0 || (l1 >> 8) + (l1 & unchecked((int)(0xff))) > sectorFree.Count)
+					if (l1 == 0 || (l1 >> 8) + (l1 & 0xff) > sectorFree.Count)
 					{
 						continue;
 					}
-					for (int j2 = 0; j2 < (l1 & unchecked((int)(0xff))); j2++)
+					for (int j2 = 0; j2 < (l1 & 0xff); j2++)
 					{
 						sectorFree[(l1 >> 8) + j2] = false;
 					}
@@ -143,7 +143,7 @@ namespace net.minecraft.src
 						return null;
 					}
 					int l = k >> 8;
-					int i1 = k & unchecked((int)(0xff));
+					int i1 = k & 0xff;
 					if (l + i1 > sectorFree.Count)
 					{
 						Debugln("READ", i, j, "invalid sector");
@@ -207,7 +207,7 @@ namespace net.minecraft.src
 				{
 					int l = GetOffset(i, j);
 					int i1 = l >> 8;
-					int l1 = l & unchecked((int)(0xff));
+					int l1 = l & 0xff;
 					int i2 = (k + 5) / 4096 + 1;
 					if (i2 >= 256)
 					{

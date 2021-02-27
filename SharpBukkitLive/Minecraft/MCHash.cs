@@ -79,9 +79,9 @@ namespace net.minecraft.src
 		{
 			net.minecraft.src.MCHashEntry[] amchashentry = slots;
 			int j = amchashentry.Length;
-			if (j == unchecked((int)(0x40000000)))
+			if (j == 0x40000000)
 			{
-				threshold = unchecked((int)(0x7fffffff));
+				threshold = 0x7fffffff;
 				return;
 			}
 			else

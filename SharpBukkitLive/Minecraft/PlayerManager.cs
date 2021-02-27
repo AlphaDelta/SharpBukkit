@@ -69,8 +69,7 @@ namespace net.minecraft.src
 			net.minecraft.src.PlayerInstance playerinstance = GetPlayerInstance(l, i1, false);
 			if (playerinstance != null)
 			{
-				playerinstance.MarkBlockNeedsUpdate(i & unchecked((int)(0xf)), j, k & unchecked((
-					int)(0xf)));
+				playerinstance.MarkBlockNeedsUpdate(i & 0xf, j, k & 0xf);
 			}
 		}
 

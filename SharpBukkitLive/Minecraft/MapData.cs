@@ -118,8 +118,7 @@ namespace net.minecraft.src
 				if (((sbyte)field_28162_d) < 0)
 				{
 					int l = field_28159_g / 10;
-					byte3 = unchecked((byte)(l * l * unchecked((int)(0x209a771)) + l * 121 >> 15 & unchecked(
-						(int)(0xf))));
+					byte3 = unchecked((byte)(l * l * 0x209a771 + l * 121 >> 15 & 0xf));
 				}
 				if (mapinfo1.player.dimension == field_28162_d)
 				{

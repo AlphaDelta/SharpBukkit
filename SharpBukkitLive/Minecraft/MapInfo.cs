@@ -38,7 +38,7 @@ namespace net.minecraft.src
 					net.minecraft.src.MapCoord mapcoord = (net.minecraft.src.MapCoord)field_28124_d.field_28157_i
 						[j];
 					abyte0[j * 3 + 1] = unchecked((byte)(mapcoord.field_28202_a + (mapcoord.field_28204_d
-						 & unchecked((int)(0xf))) * 16));
+						 & 0xf) * 16));
 					abyte0[j * 3 + 2] = mapcoord.field_28201_b;
 					abyte0[j * 3 + 3] = mapcoord.field_28205_c;
 				}

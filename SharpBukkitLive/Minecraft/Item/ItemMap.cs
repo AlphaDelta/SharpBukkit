@@ -66,8 +66,7 @@ namespace net.minecraft.src
 			mapdata.field_28159_g++;
 			for (int k1 = (l - j1) + 1; k1 < l + j1; k1++)
 			{
-				if ((k1 & unchecked((int)(0xf))) != (mapdata.field_28159_g & unchecked((int)(0xf)
-					)))
+				if ((k1 & 0xf) != (mapdata.field_28159_g & 0xf))
 				{
 					continue;
 				}
@@ -90,14 +89,14 @@ namespace net.minecraft.src
 					int i4 = 0;
 					int[] ai = new int[256];
 					net.minecraft.src.Chunk chunk = world.GetChunkFromBlockCoords(i3, j3);
-					int j4 = i3 & unchecked((int)(0xf));
-					int k4 = j3 & unchecked((int)(0xf));
+					int j4 = i3 & 0xf;
+					int k4 = j3 & 0xf;
 					int l4 = 0;
 					double d1 = 0.0D;
 					if (world.worldProvider.field_4306_c)
 					{
-						int i5 = i3 + j3 * unchecked((int)(0x389bf));
-						i5 = i5 * i5 * unchecked((int)(0x1dd6751)) + i5 * 11;
+						int i5 = i3 + j3 * 0x389bf;
+						i5 = i5 * i5 * 0x1dd6751 + i5 * 11;
 						if ((i5 >> 20 & 1) == 0)
 						{
 							ai[net.minecraft.src.Block.dirt.blockID] += 10;

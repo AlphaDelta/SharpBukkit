@@ -22,8 +22,8 @@ namespace net.minecraft.src
         private string ChunkFileForXZ(int i, int j)
         {
             string s = (new java.lang.StringBuilder()).Append("c.").Append(Base36.Encode(i)).Append(".").Append(Base36.Encode(j)).Append(".dat").ToString();
-            string s1 = Base36.Encode(i & unchecked((int)(0x3f)));
-            string s2 = Base36.Encode(j & unchecked((int)(0x3f)));
+            string s1 = Base36.Encode(i & 0x3f);
+            string s2 = Base36.Encode(j & 0x3f);
             string file = System.IO.Path.Combine(saveDir, s1);
             if (!System.IO.File.Exists(file))
             {

@@ -106,8 +106,7 @@ namespace net.minecraft.src
                 int l = chunkfile.Func_22204_c();
                 net.minecraft.src.RegionFile regionfile = net.minecraft.src.RegionFileCache.Func_22123_a
                     (file, k, l);
-                if (!regionfile.IsChunkSaved(k & unchecked((int)(0x1f)), l & unchecked((int)(0x1f
-                    ))))
+                if (!regionfile.IsChunkSaved(k & 0x1f, l & 0x1f))
                 {
                     try
                     {
@@ -116,7 +115,7 @@ namespace net.minecraft.src
                         {
                             java.io.DataInputStream datainputstream = new java.io.DataInputStream(ds);
                             //java.io.DataInputStream datainputstream = new java.io.DataInputStream(new java.util.zip.GZIPInputStream(new java.io.FileInputStream(chunkfile.Func_22207_a())));
-                            java.io.DataOutputStream dataoutputstream = regionfile.GetChunkDataOutputStream(k & unchecked((int)(0x1f)), l & unchecked((int)(0x1f)));
+                            java.io.DataOutputStream dataoutputstream = regionfile.GetChunkDataOutputStream(k & 0x1f, l & 0x1f);
                             for (int j1 = 0; (j1 = datainputstream.Read(abyte0)) != -1;)
                             {
                                 dataoutputstream.Write(abyte0, 0, j1);

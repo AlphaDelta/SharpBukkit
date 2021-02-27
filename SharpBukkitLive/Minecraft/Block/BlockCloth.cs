@@ -22,7 +22,7 @@ namespace net.minecraft.src
 			}
 			else
 			{
-				j = ~(j & unchecked((int)(0xf)));
+				j = ~(j & 0xf);
 				return 113 + ((j & 8) >> 3) + (j & 7) * 16;
 			}
 		}
@@ -34,12 +34,12 @@ namespace net.minecraft.src
 
 		public static int Func_21033_c(int i)
 		{
-			return ~i & unchecked((int)(0xf));
+			return ~i & 0xf;
 		}
 
 		public static int Func_21034_d(int i)
 		{
-			return ~i & unchecked((int)(0xf));
+			return ~i & 0xf;
 		}
 	}
 }

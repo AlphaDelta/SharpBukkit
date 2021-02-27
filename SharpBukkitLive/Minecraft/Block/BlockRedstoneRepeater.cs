@@ -66,7 +66,7 @@ namespace net.minecraft.src
 						.blockID, l);
 					if (!flag)
 					{
-						int i1 = (l & unchecked((int)(0xc))) >> 2;
+						int i1 = (l & 0xc) >> 2;
 						world.ScheduleUpdateTick(i, j, k, net.minecraft.src.Block.redstoneRepeaterActive.
 							blockID, field_22013_b[i1] * 2);
 					}
@@ -135,7 +135,7 @@ namespace net.minecraft.src
 			}
 			int i1 = world.GetBlockMetadata(i, j, k);
 			bool flag = Func_22012_g(world, i, j, k, i1);
-			int j1 = (i1 & unchecked((int)(0xc))) >> 2;
+			int j1 = (i1 & 0xc) >> 2;
 			if (field_22015_c && !flag)
 			{
 				world.ScheduleUpdateTick(i, j, k, blockID, field_22013_b[j1] * 2);
@@ -194,8 +194,8 @@ namespace net.minecraft.src
 			int k, net.minecraft.src.EntityPlayer entityplayer)
 		{
 			int l = world.GetBlockMetadata(i, j, k);
-			int i1 = (l & unchecked((int)(0xc))) >> 2;
-			i1 = i1 + 1 << 2 & unchecked((int)(0xc));
+			int i1 = (l & 0xc) >> 2;
+			i1 = i1 + 1 << 2 & 0xc;
 			world.SetBlockMetadataWithNotify(i, j, k, i1 | l & 3);
 			return true;
 		}

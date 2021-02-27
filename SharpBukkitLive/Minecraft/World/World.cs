@@ -156,7 +156,7 @@ namespace net.minecraft.src
         public virtual int GetBlockId(int x, int y, int z)
         {
             if (x < unchecked((int)(0xfe17b800)) || z < unchecked((int)(0xfe17b800)) || x >=
-                unchecked((int)(0x1e84800)) || z > unchecked((int)(0x1e84800)))
+                0x1e84800 || z > 0x1e84800)
             {
                 return 0;
             }
@@ -170,8 +170,7 @@ namespace net.minecraft.src
             }
             else
             {
-                return GetChunkFromChunkCoords(x >> 4, z >> 4).GetBlockID(x & unchecked((int)(0xf
-                    )), y, z & unchecked((int)(0xf)));
+                return GetChunkFromChunkCoords(x >> 4, z >> 4).GetBlockID(x & 0xf, y, z & 0xf);
             }
         }
 
@@ -240,7 +239,7 @@ namespace net.minecraft.src
         public virtual bool SetBlockAndMetadata(int i, int j, int k, int l, int i1)
         {
             if (i < unchecked((int)(0xfe17b800)) || k < unchecked((int)(0xfe17b800)) || i >=
-                unchecked((int)(0x1e84800)) || k > unchecked((int)(0x1e84800)))
+                0x1e84800 || k > 0x1e84800)
             {
                 return false;
             }
@@ -255,15 +254,14 @@ namespace net.minecraft.src
             else
             {
                 net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
-                return chunk.SetBlockIDWithMetadata(i & unchecked((int)(0xf)), j, k & unchecked((
-                    int)(0xf)), l, i1);
+                return chunk.SetBlockIDWithMetadata(i & 0xf, j, k & 0xf, l, i1);
             }
         }
 
         public virtual bool SetBlock(int i, int j, int k, int l)
         {
             if (i < unchecked((int)(0xfe17b800)) || k < unchecked((int)(0xfe17b800)) || i >=
-                unchecked((int)(0x1e84800)) || k > unchecked((int)(0x1e84800)))
+                0x1e84800 || k > 0x1e84800)
             {
                 return false;
             }
@@ -278,7 +276,7 @@ namespace net.minecraft.src
             else
             {
                 net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
-                return chunk.SetBlockID(i & unchecked((int)(0xf)), j, k & unchecked((int)(0xf)),
+                return chunk.SetBlockID(i & 0xf, j, k & 0xf,
                     l);
             }
         }
@@ -299,7 +297,7 @@ namespace net.minecraft.src
         public virtual int GetBlockMetadata(int i, int j, int k)
         {
             if (i < unchecked((int)(0xfe17b800)) || k < unchecked((int)(0xfe17b800)) || i >=
-                unchecked((int)(0x1e84800)) || k > unchecked((int)(0x1e84800)))
+                0x1e84800 || k > 0x1e84800)
             {
                 return 0;
             }
@@ -314,8 +312,8 @@ namespace net.minecraft.src
             else
             {
                 net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
-                i &= unchecked((int)(0xf));
-                k &= unchecked((int)(0xf));
+                i &= 0xf;
+                k &= 0xf;
                 return chunk.GetBlockMetadata(i, j, k);
             }
         }
@@ -325,7 +323,7 @@ namespace net.minecraft.src
             if (SetBlockMetadata(i, j, k, l))
             {
                 int i1 = GetBlockId(i, j, k);
-                if (net.minecraft.src.Block.requiresSelfNotify[i1 & unchecked((int)(0xff))])
+                if (net.minecraft.src.Block.requiresSelfNotify[i1 & 0xff])
                 {
                     NotifyBlockChange(i, j, k, i1);
                 }
@@ -339,7 +337,7 @@ namespace net.minecraft.src
         public virtual bool SetBlockMetadata(int i, int j, int k, int l)
         {
             if (i < unchecked((int)(0xfe17b800)) || k < unchecked((int)(0xfe17b800)) || i >=
-                unchecked((int)(0x1e84800)) || k > unchecked((int)(0x1e84800)))
+                0x1e84800 || k > 0x1e84800)
             {
                 return false;
             }
@@ -354,8 +352,8 @@ namespace net.minecraft.src
             else
             {
                 net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
-                i &= unchecked((int)(0xf));
-                k &= unchecked((int)(0xf));
+                i &= 0xf;
+                k &= 0xf;
                 chunk.SetBlockMetadata(i, j, k, l);
                 return true;
             }
@@ -457,8 +455,7 @@ namespace net.minecraft.src
 
         public virtual bool CanBlockSeeTheSky(int i, int j, int k)
         {
-            return GetChunkFromChunkCoords(i >> 4, k >> 4).CanBlockSeeTheSky(i & unchecked((int
-                )(0xf)), j, k & unchecked((int)(0xf)));
+            return GetChunkFromChunkCoords(i >> 4, k >> 4).CanBlockSeeTheSky(i & 0xf, j, k & 0xf);
         }
 
         public virtual int GetBlockLightValueNoChecks(int i, int j, int k)
@@ -471,8 +468,7 @@ namespace net.minecraft.src
             {
                 j = 127;
             }
-            return GetChunkFromChunkCoords(i >> 4, k >> 4).GetBlockLightValue(i & unchecked((
-                int)(0xf)), j, k & unchecked((int)(0xf)), 0);
+            return GetChunkFromChunkCoords(i >> 4, k >> 4).GetBlockLightValue(i & 0xf, j, k & 0xf, 0);
         }
 
         public virtual int GetBlockLightValue(int i, int j, int k)
@@ -483,7 +479,7 @@ namespace net.minecraft.src
         public virtual int GetBlockLightValue_do(int i, int j, int k, bool flag)
         {
             if (i < unchecked((int)(0xfe17b800)) || k < unchecked((int)(0xfe17b800)) || i >=
-                unchecked((int)(0x1e84800)) || k > unchecked((int)(0x1e84800)))
+                0x1e84800 || k > 0x1e84800)
             {
                 return 15;
             }
@@ -527,15 +523,15 @@ namespace net.minecraft.src
                 j = 127;
             }
             net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
-            i &= unchecked((int)(0xf));
-            k &= unchecked((int)(0xf));
+            i &= 0xf;
+            k &= 0xf;
             return chunk.GetBlockLightValue(i, j, k, skylightSubtracted);
         }
 
         public virtual bool CanExistingBlockSeeTheSky(int i, int j, int k)
         {
             if (i < unchecked((int)(0xfe17b800)) || k < unchecked((int)(0xfe17b800)) || i >=
-                unchecked((int)(0x1e84800)) || k > unchecked((int)(0x1e84800)))
+                0x1e84800 || k > 0x1e84800)
             {
                 return false;
             }
@@ -554,8 +550,8 @@ namespace net.minecraft.src
             else
             {
                 net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
-                i &= unchecked((int)(0xf));
-                k &= unchecked((int)(0xf));
+                i &= 0xf;
+                k &= 0xf;
                 return chunk.CanBlockSeeTheSky(i, j, k);
             }
         }
@@ -563,7 +559,7 @@ namespace net.minecraft.src
         public virtual int GetHeightValue(int i, int j)
         {
             if (i < unchecked((int)(0xfe17b800)) || j < unchecked((int)(0xfe17b800)) || i >=
-                unchecked((int)(0x1e84800)) || j > unchecked((int)(0x1e84800)))
+                0x1e84800 || j > 0x1e84800)
             {
                 return 0;
             }
@@ -574,7 +570,7 @@ namespace net.minecraft.src
             else
             {
                 net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, j >> 4);
-                return chunk.GetHeightValue(i & unchecked((int)(0xf)), j & unchecked((int)(0xf)));
+                return chunk.GetHeightValue(i & 0xf, j & 0xf);
             }
         }
 
@@ -626,8 +622,7 @@ namespace net.minecraft.src
                 j = 127;
             }
             if (j < 0 || j >= 128 || i < unchecked((int)(0xfe17b800)) || k < unchecked((int)(
-                0xfe17b800)) || i >= unchecked((int)(0x1e84800)) || k > unchecked((int)(0x1e84800
-                )))
+                0xfe17b800)) || i >= 0x1e84800 || k > 0x1e84800)
             {
                 return enumskyblock.field_984_c;
             }
@@ -640,8 +635,7 @@ namespace net.minecraft.src
             else
             {
                 net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(l, i1);
-                return chunk.GetSavedLightValue(enumskyblock, i & unchecked((int)(0xf)), j, k & unchecked(
-                    (int)(0xf)));
+                return chunk.GetSavedLightValue(enumskyblock, i & 0xf, j, k & 0xf);
             }
         }
 
@@ -649,7 +643,7 @@ namespace net.minecraft.src
              i, int j, int k, int l)
         {
             if (i < unchecked((int)(0xfe17b800)) || k < unchecked((int)(0xfe17b800)) || i >=
-                unchecked((int)(0x1e84800)) || k > unchecked((int)(0x1e84800)))
+                0x1e84800 || k > 0x1e84800)
             {
                 return;
             }
@@ -666,8 +660,7 @@ namespace net.minecraft.src
                 return;
             }
             net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
-            chunk.SetLightValue(enumskyblock, i & unchecked((int)(0xf)), j, k & unchecked((int
-                )(0xf)), l);
+            chunk.SetLightValue(enumskyblock, i & 0xf, j, k & 0xf, l);
             for (int i1 = 0; i1 < worldAccesses.Count; i1++)
             {
                 ((net.minecraft.src.IWorldAccess)worldAccesses[i1]).MarkBlockNeedsUpdate(i, j, k);
@@ -1099,8 +1092,8 @@ namespace net.minecraft.src
         {
             net.minecraft.src.Chunk chunk = GetChunkFromBlockCoords(i, j);
             int k = 127;
-            i &= unchecked((int)(0xf));
-            j &= unchecked((int)(0xf));
+            i &= 0xf;
+            j &= 0xf;
             while (k > 0)
             {
                 int l = chunk.GetBlockID(i, k, j);
@@ -1122,8 +1115,8 @@ namespace net.minecraft.src
         {
             net.minecraft.src.Chunk chunk = GetChunkFromBlockCoords(i, j);
             int k = 127;
-            i &= unchecked((int)(0xf));
-            j &= unchecked((int)(0xf));
+            i &= 0xf;
+            j &= 0xf;
             while (k > 0)
             {
                 int l = chunk.GetBlockID(i, k, j);
@@ -1254,8 +1247,8 @@ namespace net.minecraft.src
                         .zCoord >> 4);
                     if (chunk != null)
                     {
-                        chunk.RemoveChunkBlockTileEntity(tileentity.xCoord & unchecked((int)(0xf)), tileentity
-                            .yCoord, tileentity.zCoord & unchecked((int)(0xf)));
+                        chunk.RemoveChunkBlockTileEntity(tileentity.xCoord & 0xf, tileentity
+                            .yCoord, tileentity.zCoord & 0xf);
                     }
                 }
             }
@@ -1284,8 +1277,8 @@ namespace net.minecraft.src
                             tileentity1.zCoord >> 4);
                         if (chunk1 != null)
                         {
-                            chunk1.SetChunkBlockTileEntity(tileentity1.xCoord & unchecked((int)(0xf)), tileentity1
-                                .yCoord, tileentity1.zCoord & unchecked((int)(0xf)), tileentity1);
+                            chunk1.SetChunkBlockTileEntity(tileentity1.xCoord & 0xf, tileentity1
+                                .yCoord, tileentity1.zCoord & 0xf, tileentity1);
                         }
                         MarkBlockNeedsUpdate(tileentity1.xCoord, tileentity1.yCoord, tileentity1.zCoord);
                     }
@@ -1715,8 +1708,7 @@ namespace net.minecraft.src
             net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
             if (chunk != null)
             {
-                return chunk.GetChunkBlockTileEntity(i & unchecked((int)(0xf)), j, k & unchecked(
-                    (int)(0xf)));
+                return chunk.GetChunkBlockTileEntity(i & 0xf, j, k & 0xf);
             }
             else
             {
@@ -1742,8 +1734,7 @@ namespace net.minecraft.src
                     net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
                     if (chunk != null)
                     {
-                        chunk.SetChunkBlockTileEntity(i & unchecked((int)(0xf)), j, k & unchecked((int)(0xf
-                            )), tileentity);
+                        chunk.SetChunkBlockTileEntity(i & 0xf, j, k & 0xf, tileentity);
                     }
                 }
             }
@@ -1765,8 +1756,7 @@ namespace net.minecraft.src
                 net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
                 if (chunk != null)
                 {
-                    chunk.RemoveChunkBlockTileEntity(i & unchecked((int)(0xf)), j, k & unchecked((int
-                        )(0xf)));
+                    chunk.RemoveChunkBlockTileEntity(i & 0xf, j, k & 0xf);
                 }
             }
         }
@@ -1881,8 +1871,8 @@ namespace net.minecraft.src
                 }
                 field_821_y.Add(new net.minecraft.src.MetadataChunkBlock(enumskyblock, i, j, k, l
                     , i1, j1));
-                int k2 = unchecked((int)(0xf4240));
-                if (field_821_y.Count > unchecked((int)(0xf4240)))
+                int k2 = 0xf4240;
+                if (field_821_y.Count > 0xf4240)
                 {
                     System.Console.Out.WriteLine((new java.lang.StringBuilder()).Append("More than ")
                         .Append(k2).Append(" updates, aborting lighting updates").ToString());
@@ -1981,7 +1971,7 @@ namespace net.minecraft.src
                 }
                 else
                 {
-                    worldInfo.SetThunderTime(rand.Next(unchecked((int)(0x29040))) + 12000);
+                    worldInfo.SetThunderTime(rand.Next(0x29040) + 12000);
                 }
             }
             else
@@ -2002,7 +1992,7 @@ namespace net.minecraft.src
                 }
                 else
                 {
-                    worldInfo.SetRainTime(rand.Next(unchecked((int)(0x29040))) + 12000);
+                    worldInfo.SetRainTime(rand.Next(0x29040) + 12000);
                 }
             }
             else
@@ -2091,11 +2081,11 @@ namespace net.minecraft.src
                     , chunkcoordintpair.chunkZPos);
                 if (ambientTickCountdown == 0)
                 {
-                    distHashCounter = distHashCounter * 3 + unchecked((int)(0x3c6ef35f));
+                    distHashCounter = distHashCounter * 3 + 0x3c6ef35f;
                     int k1 = distHashCounter >> 2;
-                    int l2 = k1 & unchecked((int)(0xf));
-                    int l3 = k1 >> 8 & unchecked((int)(0xf));
-                    int l4 = k1 >> 16 & unchecked((int)(0x7f));
+                    int l2 = k1 & 0xf;
+                    int l3 = k1 >> 8 & 0xf;
+                    int l4 = k1 >> 16 & 0x7f;
                     int l5 = chunk.GetBlockID(l2, l4, l3);
                     l2 += k;
                     l3 += i1;
@@ -2113,13 +2103,13 @@ namespace net.minecraft.src
                         }
                     }
                 }
-                if (rand.Next(unchecked((int)(0x186a0))) == 0 && Func_27068_v() && Func_27067_u
+                if (rand.Next(0x186a0) == 0 && Func_27068_v() && Func_27067_u
                     ())
                 {
-                    distHashCounter = distHashCounter * 3 + unchecked((int)(0x3c6ef35f));
+                    distHashCounter = distHashCounter * 3 + 0x3c6ef35f;
                     int l1 = distHashCounter >> 2;
-                    int i3 = k + (l1 & unchecked((int)(0xf)));
-                    int i4 = i1 + (l1 >> 8 & unchecked((int)(0xf)));
+                    int i3 = k + (l1 & 0xf);
+                    int i4 = i1 + (l1 >> 8 & 0xf);
                     int i5 = GetTopSolidOrLiquidBlock(i3, i4);
                     if (CanLightningStrikeAt(i3, i5, i4))
                     {
@@ -2129,10 +2119,10 @@ namespace net.minecraft.src
                 }
                 if (rand.Next(16) == 0)
                 {
-                    distHashCounter = distHashCounter * 3 + unchecked((int)(0x3c6ef35f));
+                    distHashCounter = distHashCounter * 3 + 0x3c6ef35f;
                     int i2 = distHashCounter >> 2;
-                    int j3 = i2 & unchecked((int)(0xf));
-                    int j4 = i2 >> 8 & unchecked((int)(0xf));
+                    int j3 = i2 & 0xf;
+                    int j4 = i2 >> 8 & 0xf;
                     int j5 = GetTopSolidOrLiquidBlock(j3 + k, j4 + i1);
                     if (GetWorldChunkManager().GetBiomeGenAt(j3 + k, j4 + i1).GetEnableSnow() && j5 >=
                          0 && j5 < 128 && chunk.GetSavedLightValue(net.minecraft.src.EnumSkyBlock.Block,
@@ -2156,12 +2146,12 @@ namespace net.minecraft.src
                 int j2 = 0;
                 while (j2 < 80)
                 {
-                    distHashCounter = distHashCounter * 3 + unchecked((int)(0x3c6ef35f));
+                    distHashCounter = distHashCounter * 3 + 0x3c6ef35f;
                     int k3 = distHashCounter >> 2;
-                    int k4 = k3 & unchecked((int)(0xf));
-                    int k5 = k3 >> 8 & unchecked((int)(0xf));
-                    int j6 = k3 >> 16 & unchecked((int)(0x7f));
-                    int l6 = chunk.blocks[k4 << 11 | k5 << 7 | j6];// & unchecked((int)(0xff)); //SHARP: Redundant, it's already an array of bytes
+                    int k4 = k3 & 0xf;
+                    int k5 = k3 >> 8 & 0xf;
+                    int j6 = k3 >> 16 & 0x7f;
+                    int l6 = chunk.blocks[k4 << 11 | k5 << 7 | j6];// & 0xff; //SHARP: Redundant, it's already an array of bytes
                     if (net.minecraft.src.Block.tickOnLoad[l6])
                     {
                         net.minecraft.src.Block.blocksList[l6].UpdateTick(this, k4 + k, j6, k5 + i1, rand
@@ -2777,7 +2767,7 @@ namespace net.minecraft.src
 
         protected internal int distHashCounter;
 
-        protected internal readonly int DIST_HASH_MAGIC = unchecked((int)(0x3c6ef35f));
+        protected internal readonly int DIST_HASH_MAGIC = 0x3c6ef35f;
 
         protected internal float field_27079_B;
 

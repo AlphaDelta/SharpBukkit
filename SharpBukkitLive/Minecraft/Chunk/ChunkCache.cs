@@ -52,7 +52,7 @@ namespace net.minecraft.src
 			}
 			else
 			{
-				return chunk.GetBlockID(i & unchecked((int)(0xf)), j, k & unchecked((int)(0xf)));
+				return chunk.GetBlockID(i & 0xf, j, k & 0xf);
 			}
 		}
 
@@ -61,8 +61,8 @@ namespace net.minecraft.src
 		{
 			int l = (i >> 4) - chunkX;
 			int i1 = (k >> 4) - chunkZ;
-			return chunkArray[l][i1].GetChunkBlockTileEntity(i & unchecked((int)(0xf)), j, k 
-				& unchecked((int)(0xf)));
+			return chunkArray[l][i1].GetChunkBlockTileEntity(i & 0xf, j, k 
+				& 0xf);
 		}
 
 		public virtual int GetBlockMetadata(int i, int j, int k)
@@ -79,8 +79,7 @@ namespace net.minecraft.src
 			{
 				int l = (i >> 4) - chunkX;
 				int i1 = (k >> 4) - chunkZ;
-				return chunkArray[l][i1].GetBlockMetadata(i & unchecked((int)(0xf)), j, k & unchecked(
-					(int)(0xf)));
+				return chunkArray[l][i1].GetBlockMetadata(i & 0xf, j, k & 0xf);
 			}
 		}
 

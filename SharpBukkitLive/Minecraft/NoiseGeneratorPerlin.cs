@@ -54,9 +54,9 @@ namespace net.minecraft.src
 			{
 				k--;
 			}
-			int l = i & unchecked((int)(0xff));
-			int i1 = j & unchecked((int)(0xff));
-			int j1 = k & unchecked((int)(0xff));
+			int l = i & 0xff;
+			int i1 = j & 0xff;
+			int j1 = k & 0xff;
 			d3 -= i;
 			d4 -= j;
 			d5 -= k;
@@ -84,7 +84,7 @@ namespace net.minecraft.src
 
 		public double Func_4102_a(int i, double d, double d1)
 		{
-			int j = i & unchecked((int)(0xf));
+			int j = i & 0xf;
 			double d2 = (double)(1 - ((j & 8) >> 3)) * d;
 			double d3 = j >= 4 ? j != 12 && j != 14 ? d1 : d : 0.0D;
 			return ((j & 1) != 0 ? -d2 : d2) + ((j & 2) != 0 ? -d3 : d3);
@@ -92,7 +92,7 @@ namespace net.minecraft.src
 
 		public double Grad(int i, double d, double d1, double d2)
 		{
-			int j = i & unchecked((int)(0xf));
+			int j = i & 0xf;
 			double d3 = j >= 8 ? d1 : d;
 			double d4 = j >= 4 ? j != 12 && j != 14 ? d2 : d : d1;
 			return ((j & 1) != 0 ? -d3 : d3) + ((j & 2) != 0 ? -d4 : d4);
@@ -124,7 +124,7 @@ namespace net.minecraft.src
 					{
 						j4--;
 					}
-					int k4 = j4 & unchecked((int)(0xff));
+					int k4 = j4 & 0xff;
 					d14 -= j4;
 					double d17 = d14 * d14 * d14 * (d14 * (d14 * 6D - 15D) + 10D);
 					for (int l4 = 0; l4 < k; l4++)
@@ -135,7 +135,7 @@ namespace net.minecraft.src
 						{
 							j5--;
 						}
-						int l5 = j5 & unchecked((int)(0xff));
+						int l5 = j5 & 0xff;
 						d19 -= j5;
 						double d21 = d19 * d19 * d19 * (d19 * (d19 * 6D - 15D) + 10D);
 						int l = permutations[k4] + 0;
@@ -173,7 +173,7 @@ namespace net.minecraft.src
 				{
 					k5--;
 				}
-				int i6 = k5 & unchecked((int)(0xff));
+				int i6 = k5 & 0xff;
 				d20 -= k5;
 				double d22 = d20 * d20 * d20 * (d20 * (d20 * 6D - 15D) + 10D);
 				for (int j6 = 0; j6 < k; j6++)
@@ -184,7 +184,7 @@ namespace net.minecraft.src
 					{
 						k6--;
 					}
-					int l6 = k6 & unchecked((int)(0xff));
+					int l6 = k6 & 0xff;
 					d24 -= k6;
 					double d25 = d24 * d24 * d24 * (d24 * (d24 * 6D - 15D) + 10D);
 					for (int i7 = 0; i7 < j; i7++)
@@ -195,7 +195,7 @@ namespace net.minecraft.src
 						{
 							j7--;
 						}
-						int k7 = j7 & unchecked((int)(0xff));
+						int k7 = j7 & 0xff;
 						d26 -= j7;
 						double d27 = d26 * d26 * d26 * (d26 * (d26 * 6D - 15D) + 10D);
 						if (i7 == 0 || k7 != i2)

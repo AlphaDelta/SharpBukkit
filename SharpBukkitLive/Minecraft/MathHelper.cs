@@ -14,12 +14,12 @@ namespace net.minecraft.src
 
 		public static float Sin(float f)
 		{
-			return SIN_TABLE[(int)(f * 10430.38F) & unchecked((int)(0xffff))];
+			return SIN_TABLE[(int)(f * 10430.38F) & 0xffff];
 		}
 
 		public static float Cos(float f)
 		{
-			return SIN_TABLE[(int)(f * 10430.38F + 16384F) & unchecked((int)(0xffff))];
+			return SIN_TABLE[(int)(f * 10430.38F + 16384F) & 0xffff];
 		}
 
 		public static float Sqrt_float(float f)
@@ -69,8 +69,8 @@ namespace net.minecraft.src
 
 		static MathHelper()
 		{
-			SIN_TABLE = new float[unchecked((int)(0x10000))];
-			for (int i = 0; i < unchecked((int)(0x10000)); i++)
+			SIN_TABLE = new float[0x10000];
+			for (int i = 0; i < 0x10000; i++)
 			{
 				SIN_TABLE[i] = (float)System.Math.Sin(((double)i * 3.1415926535897931D * 2D) / 65536D
 					);

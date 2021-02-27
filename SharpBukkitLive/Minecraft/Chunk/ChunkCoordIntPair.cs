@@ -15,9 +15,7 @@ namespace net.minecraft.src
 
 		public static int ChunkXZ2Int(int i, int j)
 		{
-			return (i >= 0 ? 0 : unchecked((int)(0x80000000))) | (i & unchecked((int)(0x7fff)
-				)) << 16 | (j >= 0 ? 0 : unchecked((int)(0x8000))) | j & unchecked((int)(0x7fff)
-				);
+			return (i >= 0 ? 0 : unchecked((int)(0x80000000))) | (i & 0x7fff) << 16 | (j >= 0 ? 0 : 0x8000) | j & 0x7fff;
 		}
 
 		public override int GetHashCode()

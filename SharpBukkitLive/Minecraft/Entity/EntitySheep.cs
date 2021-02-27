@@ -100,18 +100,18 @@ namespace net.minecraft.src
 
 		public virtual int GetFleeceColor()
 		{
-			return dataWatcher.GetWatchableObjectByte(16) & unchecked((int)(0xf));
+			return dataWatcher.GetWatchableObjectByte(16) & 0xf;
 		}
 
 		public virtual void SetFleeceColor(int i)
 		{
 			byte byte0 = dataWatcher.GetWatchableObjectByte(16);
-			dataWatcher.UpdateObject(16, (byte)(unchecked((byte)(byte0 & unchecked((int)(0xf0)) | i & unchecked((int)(0xf))))));
+			dataWatcher.UpdateObject(16, (byte)(unchecked((byte)(byte0 & 0xf0 | i & 0xf))));
 		}
 
 		public virtual bool Func_21069_f_()
 		{
-			return (dataWatcher.GetWatchableObjectByte(16) & unchecked((int)(0x10))) != 0;
+			return (dataWatcher.GetWatchableObjectByte(16) & 0x10) != 0;
 		}
 
 		public virtual void SetSheared(bool flag)
@@ -119,8 +119,7 @@ namespace net.minecraft.src
 			byte byte0 = dataWatcher.GetWatchableObjectByte(16);
 			if (flag)
 			{
-				dataWatcher.UpdateObject(16, (byte)(unchecked((byte)(byte0 | unchecked((int
-					)(0x10))))));
+				dataWatcher.UpdateObject(16, (byte)(unchecked((byte)(byte0 | 0x10))));
 			}
 			else
 			{
