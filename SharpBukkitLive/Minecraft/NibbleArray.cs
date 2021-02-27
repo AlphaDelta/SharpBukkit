@@ -51,7 +51,7 @@ namespace net.minecraft.src
 
         public virtual bool IsValid()
         {
-            return data != null;
+            return data != null && data.Length > 0; //SHARP: Added > 0 check, transient issue
         }
 
         public readonly byte[] data;

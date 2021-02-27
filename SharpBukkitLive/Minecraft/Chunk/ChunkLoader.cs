@@ -226,7 +226,7 @@ namespace net.minecraft.src
                 chunk.skylightMap = new net.minecraft.src.NibbleArray(chunk.blocks.Length);
                 chunk.Func_353_b();
             }
-            if (!chunk.blocklightMap.IsValid() || chunk.blocklightMap.data.Length <= 0) //SHARP: Added <= 0 check, transient issue
+            if (!chunk.blocklightMap.IsValid())
             {
                 chunk.blocklightMap = new net.minecraft.src.NibbleArray(chunk.blocks.Length);
                 chunk.Func_348_a();
