@@ -22,7 +22,7 @@ namespace net.minecraft.src
             field_727_f = new List<Chunk>();
             dummyChunk = new net.minecraft.src.EmptyChunk(worldserver, new byte[32768], 0, 0);
             world = worldserver;
-            field_729_d = ichunkloader;
+            chunkLoader = ichunkloader;
             serverChunkGenerator = ichunkprovider;
         }
 
@@ -50,7 +50,7 @@ namespace net.minecraft.src
             net.minecraft.src.Chunk chunk = (net.minecraft.src.Chunk)id2ChunkMap[k];
             if (chunk == null)
             {
-                chunk = Func_4063_e(i, j);
+                chunk = LoadChunkViaChunkLoader(i, j);
                 if (chunk == null)
                 {
                     if (serverChunkGenerator == null)
@@ -113,15 +113,15 @@ namespace net.minecraft.src
             }
         }
 
-        private net.minecraft.src.Chunk Func_4063_e(int i, int j)
+        private net.minecraft.src.Chunk LoadChunkViaChunkLoader(int i, int j)
         {
-            if (field_729_d == null)
+            if (chunkLoader == null)
             {
                 return null;
             }
             try
             {
-                net.minecraft.src.Chunk chunk = field_729_d.LoadChunk(world, i, j);
+                net.minecraft.src.Chunk chunk = chunkLoader.LoadChunk(world, i, j);
                 if (chunk != null)
                 {
                     chunk.lastSaveTime = world.GetWorldTime();
@@ -135,15 +135,15 @@ namespace net.minecraft.src
             return null;
         }
 
-        private void Func_375_a(net.minecraft.src.Chunk chunk)
+        private void SaveChunkExtraData(net.minecraft.src.Chunk chunk)
         {
-            if (field_729_d == null)
+            if (chunkLoader == null)
             {
                 return;
             }
             try
             {
-                field_729_d.SaveExtraChunkData(world, chunk);
+                chunkLoader.SaveExtraChunkData(world, chunk);
             }
             catch (System.Exception exception)
             {
@@ -151,16 +151,16 @@ namespace net.minecraft.src
             }
         }
 
-        private void Func_373_b(net.minecraft.src.Chunk chunk)
+        private void SaveChunkViaChunkLoader(net.minecraft.src.Chunk chunk)
         {
-            if (field_729_d == null)
+            if (chunkLoader == null)
             {
                 return;
             }
             try
             {
                 chunk.lastSaveTime = world.GetWorldTime();
-                field_729_d.SaveChunk(world, chunk);
+                chunkLoader.SaveChunk(world, chunk);
             }
             catch (System.IO.IOException ioexception)
             {
@@ -192,13 +192,13 @@ namespace net.minecraft.src
                 net.minecraft.src.Chunk chunk = (net.minecraft.src.Chunk)field_727_f[j];
                 if (flag && !chunk.neverSave)
                 {
-                    Func_375_a(chunk);
+                    SaveChunkExtraData(chunk);
                 }
                 if (!chunk.NeedsSaving(flag))
                 {
                     continue;
                 }
-                Func_373_b(chunk);
+                SaveChunkViaChunkLoader(chunk);
                 chunk.isModified = false;
                 if (++i == 24 && !flag)
                 {
@@ -207,11 +207,11 @@ namespace net.minecraft.src
             }
             if (flag)
             {
-                if (field_729_d == null)
+                if (chunkLoader == null)
                 {
                     return true;
                 }
-                field_729_d.SaveExtraData();
+                chunkLoader.SaveExtraData();
             }
             return true;
         }
@@ -230,8 +230,8 @@ namespace net.minecraft.src
                             //integer = field_725_a[0];
                             net.minecraft.src.Chunk chunk = (net.minecraft.src.Chunk)id2ChunkMap[integer];
                             chunk.OnChunkUnload();
-                            Func_373_b(chunk);
-                            Func_375_a(chunk);
+                            SaveChunkViaChunkLoader(chunk);
+                            SaveChunkExtraData(chunk);
                             //field_725_a.Remove(integer);
                             id2ChunkMap.Remove(integer);
                             //Sharpen.Collections.Remove(id2ChunkMap, integer);
@@ -240,9 +240,9 @@ namespace net.minecraft.src
                         field_725_a.Clear();
                     }
                 }
-                if (field_729_d != null)
+                if (chunkLoader != null)
                 {
-                    field_729_d.Func_661_a();
+                    chunkLoader.Func_661_a();
                 }
             }
             return serverChunkGenerator.Func_361_a();
@@ -259,7 +259,7 @@ namespace net.minecraft.src
 
         private net.minecraft.src.IChunkProvider serverChunkGenerator;
 
-        private net.minecraft.src.IChunkLoader field_729_d;
+        private net.minecraft.src.IChunkLoader chunkLoader;
 
         public bool chunkLoadOverride;
 

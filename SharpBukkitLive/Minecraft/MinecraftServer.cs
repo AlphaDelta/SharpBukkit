@@ -173,15 +173,15 @@ namespace net.minecraft.server
             percentDone = 0;
         }
 
-        private void SaveServerWorld()
+        private void SaveServerWorld(net.minecraft.src.WorldServer worldserver)
         {
             logger.Info("Saving chunks");
-            for (int i = 0; i < worldMngr.Length; i++)
-            {
-                net.minecraft.src.WorldServer worldserver = worldMngr[i];
+            //for (int i = 0; i < worldMngr.Length; i++)
+            //{
+            //    net.minecraft.src.WorldServer worldserver = worldMngr[i];
                 worldserver.SaveWorld(true, null);
                 worldserver.Func_30006_w();
-            }
+            //}
         }
 
         private void StopServer()
@@ -196,7 +196,7 @@ namespace net.minecraft.server
                 net.minecraft.src.WorldServer worldserver = worldMngr[i];
                 if (worldserver != null)
                 {
-                    SaveServerWorld();
+                    SaveServerWorld(worldserver);
                 }
             }
         }

@@ -202,16 +202,18 @@
                 {
                     throw new IndexOutOfRangeException();
                 }
-                while (length > 0)
-                {
-                    int num = this.stream.Read(buffer, offset, length);
-                    if (num == 0)
-                    {
-                        throw new EndOfStreamException();
-                    }
-                    offset += num;
-                    length -= num;
-                }
+                //while (length > 0)
+                //{
+                //    int num = this.stream.Read(buffer, offset, length);
+                //    if (num == 0)
+                //    {
+                //        throw new EndOfStreamException();
+                //    }
+                //    offset += num;
+                //    length -= num;
+                //}
+                if (stream.Read(buffer, 0, length) < length)
+                    throw new EndOfStreamException();
             }
         }
 
