@@ -13,6 +13,7 @@ namespace SharpBukkitLive.SharpBukkit.TypeConverters
         public static Dictionary<string, int> ItemDict = new Dictionary<string, int>();
         static MinecraftItemConverter()
         {
+            //TODO: Add item IDs
             ItemDict["stone"] = net.minecraft.src.Block.stone.blockID;
             ItemDict["grass"] = net.minecraft.src.Block.grass.blockID;
             ItemDict["dirt"] = net.minecraft.src.Block.dirt.blockID;
