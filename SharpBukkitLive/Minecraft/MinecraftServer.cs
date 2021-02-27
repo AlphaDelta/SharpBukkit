@@ -131,6 +131,8 @@ namespace net.minecraft.server
                 if (i != 0 && !propertyManagerObj.GetBooleanProperty("allow-nether", true))
                     continue;
 
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
                 net.minecraft.src.WorldServer worldserver = worldMngr[i];
                 net.minecraft.src.ChunkCoordinates chunkcoordinates = worldserver.GetSpawnPoint();
                 for (int k = -c; k <= c && serverRunning; k += 16)
@@ -155,6 +157,8 @@ namespace net.minecraft.server
                         }
                     }
                 }
+                sw.Stop();
+                logger.Fine($"Completed world gen {i} in {sw.Elapsed.TotalSeconds:0.000}s");
             }
             ClearCurrentTask();
         }
