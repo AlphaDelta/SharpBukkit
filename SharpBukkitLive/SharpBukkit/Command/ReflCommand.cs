@@ -15,6 +15,7 @@ namespace SharpBukkitLive.SharpBukkit.Command
         static ReflSharpBukkitCommand()
         {
             ConverterCache.TryAdd(typeof(DateTime), new RelativeDateTimeConverter());
+            ConverterCache.TryAdd(typeof(net.minecraft.src.ItemStack), new MinecraftItemConverter());
         }
 
         public string Name = null;

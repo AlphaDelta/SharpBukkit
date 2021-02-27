@@ -1,5 +1,6 @@
 ﻿using SharpBukkitLive.SharpBukkit;
 using SharpBukkitLive.SharpBukkit.Command;
+using SharpBukkitLive.SharpBukkit.TypeConverters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,6 +141,36 @@ namespace SharpBukkitLive
         {
             ConfigManager.PardonPlayer(Username);
             SendMessageToOPs($"{FormattingCodes.DarkYellow}The player {FormattingCodes.DarkRed}{Username}{FormattingCodes.DarkYellow} has been unbanned by {User.GetUsername()}");
+        }
+
+        [SharpBukkitCommand("Gives you an item", OPOnly = true, PlayerOnly = true)]
+        public void Give(string item, int amount = 1)
+        {
+            Give(User.GetUsername(), item, amount);
+        }
+        [SharpBukkitCommand("Gives a player an item", OPOnly = true, PlayerOnly = true)]
+        public void Give(string Username, string item, int amount = 1)
+        {
+            SharpBukkitPlayer player = FindPlayer(Username);
+            if (player == null)
+            {
+                Respond($"{FormattingCodes.Red}Error:{FormattingCodes.Reset} Could not find any player by that username");
+                return;
+            }
+
+            if(!MinecraftItemConverter.ItemDict.ContainsKey(item))
+            {
+                Respond($"{FormattingCodes.Red}Error:{FormattingCodes.Reset} Could not find any item by the name of '{item}'");
+                return;
+            }
+
+            if(amount <= 0)
+            {
+                Respond($"{FormattingCodes.Red}Error:{FormattingCodes.Reset} Amount must be above 0");
+                return;
+            }
+
+            player.Entity.DropPlayerItem(new net.minecraft.src.ItemStack(MinecraftItemConverter.ItemDict[item], amount, 0));
         }
     }
 }
