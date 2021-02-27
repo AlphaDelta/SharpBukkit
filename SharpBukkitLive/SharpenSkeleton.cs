@@ -40,7 +40,7 @@ namespace Sharpen
 
         public static long CurrentTimeMillis()
         {
-            return DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            return DateTimeOffset.Now.ToUnixTimeMilliseconds(); //TODO: Not performant enough
         }
 
         public static void RemoveAll(this IList c, IEnumerable i)

@@ -236,7 +236,7 @@ namespace net.minecraft.src
             net.minecraft.src.Packet packet;
             for (int i = 100; readPackets.Count > 0 && i >= 0; i--)
             {
-                if (readPackets.TryDequeue(out packet))
+                if (readPackets.TryDequeue(out packet)) //TODO: Hook
                     packet.ProcessPacket(netHandler);
                 //packet = (net.minecraft.src.Packet)readPackets.Remove(0);
             }

@@ -16,7 +16,7 @@ namespace net.minecraft.src
 			netManager = networkmanager;
 		}
 
-		public void Run()
+		public void Run() //TODO: Make redundant
 		{
 			try
 			{

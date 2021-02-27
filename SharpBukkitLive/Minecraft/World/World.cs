@@ -2161,7 +2161,7 @@ namespace net.minecraft.src
                     int k4 = k3 & unchecked((int)(0xf));
                     int k5 = k3 >> 8 & unchecked((int)(0xf));
                     int j6 = k3 >> 16 & unchecked((int)(0x7f));
-                    int l6 = chunk.blocks[k4 << 11 | k5 << 7 | j6] & unchecked((int)(0xff));
+                    int l6 = chunk.blocks[k4 << 11 | k5 << 7 | j6];// & unchecked((int)(0xff)); //SHARP: Redundant, it's already an array of bytes
                     if (net.minecraft.src.Block.tickOnLoad[l6])
                     {
                         net.minecraft.src.Block.blocksList[l6].UpdateTick(this, k4 + k, j6, k5 + i1, rand
