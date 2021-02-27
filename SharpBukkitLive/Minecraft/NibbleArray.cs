@@ -17,7 +17,6 @@ namespace net.minecraft.src
             data = abyte0;
         }
 
-        //TODO: Seen IndexOutOfRangeException. 64 * 5 TNT test, occurred 5 minutes after explostion. World.DoLighting() -> MetadataChunkBlock.Func_4107_a(World) -> Here???
         public virtual int GetNibble(int i, int j, int k)
         {
             int l = i << 11 | k << 7 | j;
