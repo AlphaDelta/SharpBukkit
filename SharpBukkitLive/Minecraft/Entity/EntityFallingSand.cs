@@ -103,7 +103,7 @@ namespace net.minecraft.src
 		protected internal override void ReadEntityFromNBT(net.minecraft.src.NBTTagCompound
 			 nbttagcompound)
 		{
-			blockID = nbttagcompound.GetByte("Tile") & 0xff;
+			blockID = nbttagcompound.GetByte("Tile");
 		}
 
 		public int blockID;

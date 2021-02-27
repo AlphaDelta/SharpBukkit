@@ -27,7 +27,7 @@ namespace net.minecraft.src
 			return (float)System.Math.Sqrt(f);
 		}
 
-		public static float Sqrt_double(double d)
+		public static float Sqrt_double(double d) //Dont worry... I don't understand why this is a float either
 		{
 			return (float)System.Math.Sqrt(d);
 		}

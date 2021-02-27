@@ -256,8 +256,8 @@ namespace net.minecraft.src
 			xTileSnowball = nbttagcompound.GetShort("xTile");
 			yTileSnowball = nbttagcompound.GetShort("yTile");
 			zTileSnowball = nbttagcompound.GetShort("zTile");
-			inTileSnowball = nbttagcompound.GetByte("inTile") & 0xff;
-			shakeSnowball = nbttagcompound.GetByte("shake") & 0xff;
+			inTileSnowball = nbttagcompound.GetByte("inTile");
+			shakeSnowball = nbttagcompound.GetByte("shake");
 			inGroundSnowball = nbttagcompound.GetByte("inGround") == 1;
 		}
 

@@ -159,7 +159,7 @@
             {
                 throw new EndOfStreamException();
             }
-            return (char)(((this.buff[0] & 0xff) << 8) | (this.buff[1] & 0xff));
+            return (char)((this.buff[0] << 8) | this.buff[1]);
         }
 
         public double ReadDouble()
@@ -260,7 +260,11 @@
             {
                 throw new EndOfStreamException();
             }
-            return (((((this.buff[0] & 0xff) << 0x18) | ((this.buff[1] & 0xff) << 0x10)) | ((this.buff[2] & 0xff) << 8)) | (this.buff[3] & 0xff));
+            return
+                (this.buff[0] << 0x18)
+                | (this.buff[1] << 0x10)
+                | (this.buff[2] << 8)
+                | this.buff[3];
         }
 
         public string ReadLine()
@@ -298,8 +302,8 @@
             {
                 throw new EndOfStreamException();
             }
-            int num = ((((this.buff[0] & 0xff) << 0x18) | ((this.buff[1] & 0xff) << 0x10)) | ((this.buff[2] & 0xff) << 8)) | (this.buff[3] & 0xff);
-            int num2 = ((((this.buff[4] & 0xff) << 0x18) | ((this.buff[5] & 0xff) << 0x10)) | ((this.buff[6] & 0xff) << 8)) | (this.buff[7] & 0xff);
+            int num = (this.buff[0] << 0x18) | (this.buff[1] << 0x10) | (this.buff[2] << 8) | this.buff[3];
+            int num2 = (this.buff[4] << 0x18) | (this.buff[5] << 0x10) | (this.buff[6] << 8) | this.buff[7];
             return (long)(((num & 0xffffffffL) << 0x20) | (num2 & 0xffffffffL));
         }
 
@@ -309,7 +313,7 @@
             {
                 throw new EndOfStreamException();
             }
-            return (short)(((this.buff[0] & 0xff) << 8) | (this.buff[1] & 0xff));
+            return (short)((this.buff[0] << 8) | this.buff[1]);
         }
 
         private int ReadToBuff(int count)
@@ -343,7 +347,7 @@
             {
                 throw new EndOfStreamException();
             }
-            return (ushort)(((this.buff[0] & 0xff) << 8) | (this.buff[1] & 0xff));
+            return (ushort)((this.buff[0] << 8) | this.buff[1]);
         }
 
         public string ReadUTF()

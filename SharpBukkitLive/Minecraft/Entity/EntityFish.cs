@@ -345,8 +345,8 @@ namespace net.minecraft.src
 			xTile = nbttagcompound.GetShort("xTile");
 			yTile = nbttagcompound.GetShort("yTile");
 			zTile = nbttagcompound.GetShort("zTile");
-			inTile = nbttagcompound.GetByte("inTile") & 0xff;
-			shake = nbttagcompound.GetByte("shake") & 0xff;
+			inTile = nbttagcompound.GetByte("inTile");
+			shake = nbttagcompound.GetByte("shake");
 			inGround = nbttagcompound.GetByte("inGround") == 1;
 		}
 

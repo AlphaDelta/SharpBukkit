@@ -75,7 +75,7 @@ namespace net.minecraft.src
 			{
 				net.minecraft.src.NBTTagCompound nbttagcompound1 = (net.minecraft.src.NBTTagCompound
 					)nbttaglist.TagAt(i);
-				int j = nbttagcompound1.GetByte("Slot") & 0xff;
+				int j = nbttagcompound1.GetByte("Slot");
 				if (j >= 0 && j < chestContents.Length)
 				{
 					chestContents[j] = new net.minecraft.src.ItemStack(nbttagcompound1);

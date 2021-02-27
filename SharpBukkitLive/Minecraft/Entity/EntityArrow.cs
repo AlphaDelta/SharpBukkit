@@ -302,9 +302,9 @@ namespace net.minecraft.src
 			xTile = nbttagcompound.GetShort("xTile");
 			yTile = nbttagcompound.GetShort("yTile");
 			zTile = nbttagcompound.GetShort("zTile");
-			inTile = nbttagcompound.GetByte("inTile") & 0xff;
-			field_28011_h = nbttagcompound.GetByte("inData") & 0xff;
-			arrowShake = nbttagcompound.GetByte("shake") & 0xff;
+			inTile = nbttagcompound.GetByte("inTile");
+			field_28011_h = nbttagcompound.GetByte("inData");
+			arrowShake = nbttagcompound.GetByte("shake");
 			inGround = nbttagcompound.GetByte("inGround") == 1;
 			field_28012_a = nbttagcompound.GetBoolean("player");
 		}

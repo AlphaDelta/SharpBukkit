@@ -40,7 +40,7 @@ namespace net.minecraft.src
         {
             xPosition = datainputstream.ReadInt();
             zPosition = datainputstream.ReadInt();
-            size = datainputstream.ReadShort() & 0xffff;
+            size = datainputstream.ReadShort();
             coordinateArray = new short[size];
             typeArray = new byte[size];
             metadataArray = new byte[size];

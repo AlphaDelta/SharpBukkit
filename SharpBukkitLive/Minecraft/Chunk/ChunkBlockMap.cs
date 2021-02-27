@@ -17,7 +17,7 @@ namespace net.minecraft.src
 		{
 			for (int i = 0; i < abyte0.Length; i++)
 			{
-				abyte0[i] = field_26002_a[abyte0[i] & 0xff];
+				abyte0[i] = field_26002_a[abyte0[i]];
 			}
 		}
 
@@ -31,7 +31,7 @@ namespace net.minecraft.src
 				for (int i = 0; i < 256; i++)
 				{
 					byte byte0 = unchecked((byte)i);
-					if (byte0 != 0 && net.minecraft.src.Block.blocksList[byte0 & 0xff] == null)
+					if (byte0 != 0 && net.minecraft.src.Block.blocksList[byte0] == null)
 					{
 						byte0 = 0;
 					}
