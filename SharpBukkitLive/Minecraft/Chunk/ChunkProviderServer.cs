@@ -95,8 +95,9 @@ namespace net.minecraft.src
 
         public virtual net.minecraft.src.Chunk ProvideChunk(int i, int j)
         {
-            net.minecraft.src.Chunk chunk = (net.minecraft.src.Chunk)id2ChunkMap[net.minecraft.src.ChunkCoordIntPair.ChunkXZ2Int(i, j)];
-            if (chunk == null)
+            //net.minecraft.src.Chunk chunk = (net.minecraft.src.Chunk)id2ChunkMap[net.minecraft.src.ChunkCoordIntPair.ChunkXZ2Int(i, j)];
+            var coord = net.minecraft.src.ChunkCoordIntPair.ChunkXZ2Int(i, j);
+            if (!id2ChunkMap.ContainsKey(coord))
             {
                 if (world.worldChunkLoadOverride || chunkLoadOverride)
                 {
@@ -109,7 +110,7 @@ namespace net.minecraft.src
             }
             else
             {
-                return chunk;
+                return id2ChunkMap[coord];
             }
         }
 

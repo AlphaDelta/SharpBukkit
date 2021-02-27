@@ -13,7 +13,7 @@
 
         void Write(byte[] buffer, int offset, int count);
 
-        void Write(sbyte[] buffer, int offset, int count);
+        //void Write(sbyte[] buffer, int offset, int count);
 
         void WriteBoolean(bool val);
 
@@ -40,7 +40,7 @@
 
     public class DataOutputStream : DataOutput
     {
-        private sbyte[] buff;
+        private byte[] buff;
         private Stream stream;
         protected int written;
 
@@ -49,7 +49,7 @@
         public DataOutputStream(Stream stream)
         {
             this.stream = stream;
-            this.buff = new sbyte[8];
+            this.buff = new byte[8];
         }
 
         public int Available()
@@ -94,17 +94,17 @@
             return this.written;
         }
 
-        public void Write(sbyte[] buffer)
-        {
-            if (buffer == null)
-            {
-                throw new NullReferenceException("K0047");
-            }
-            foreach (byte num in buffer)
-            {
-                this.stream.WriteByte(num);
-            }
-        }
+        //public void Write(sbyte[] buffer)
+        //{
+        //    if (buffer == null)
+        //    {
+        //        throw new NullReferenceException("K0047");
+        //    }
+        //    foreach (byte num in buffer)
+        //    {
+        //        this.stream.WriteByte(num);
+        //    }
+        //}
 
         public void Write(int oneByte)
         {
@@ -127,21 +127,30 @@
             this.stream.Write(buffer, offset, count);
             this.written += count;
         }
-
-        public void Write(sbyte[] buffer, int offset, int count)
+        public void Write(ReadOnlySpan<byte> span)
         {
-            if (buffer == null)
+            if (span == null)
             {
                 throw new NullReferenceException("K0047");
             }
-            byte[] buffer2 = new byte[buffer.Length];
-            for (int i = 0; i < buffer.Length; i++)
-            {
-                buffer2[i] = (byte)buffer[i];
-            }
-            this.stream.Write(buffer2, offset, count);
-            this.written += count;
+            this.stream.Write(span);
+            this.written += span.Length;
         }
+
+        //public void Write(sbyte[] buffer, int offset, int count)
+        //{
+        //    if (buffer == null)
+        //    {
+        //        throw new NullReferenceException("K0047");
+        //    }
+        //    byte[] buffer2 = new byte[buffer.Length];
+        //    for (int i = 0; i < buffer.Length; i++)
+        //    {
+        //        buffer2[i] = (byte)buffer[i];
+        //    }
+        //    this.stream.Write(buffer2, offset, count);
+        //    this.written += count;
+        //}
 
         public void WriteBoolean(bool val)
         {
@@ -159,10 +168,10 @@
         {
             if (str.Length != 0)
             {
-                sbyte[] buffer = new sbyte[str.Length];
+                byte[] buffer = new byte[str.Length];
                 for (int i = 0; i < str.Length; i++)
                 {
-                    buffer[i] = (sbyte)str[i];
+                    buffer[i] = (byte)str[i];
                 }
                 this.Write(buffer);
                 this.written += buffer.Length;
@@ -171,20 +180,20 @@
 
         public void WriteChar(char val)
         {
-            this.buff[0] = (sbyte)(val >> 8);
-            this.buff[1] = (sbyte)val;
+            this.buff[0] = (byte)(val >> 8);
+            this.buff[1] = (byte)val;
             this.Write(this.buff, 0, 2);
             this.written += 2;
         }
 
         public void WriteChars(string str)
         {
-            sbyte[] buffer = new sbyte[str.Length * 2];
+            byte[] buffer = new byte[str.Length * 2];
             for (int i = 0; i < str.Length; i++)
             {
                 int index = (i == 0) ? i : (i * 2);
-                buffer[index] = (sbyte)(str[i] >> 8);
-                buffer[index + 1] = (sbyte)str[i];
+                buffer[index] = (byte)(str[i] >> 8);
+                buffer[index + 1] = (byte)str[i];
             }
             this.Write(buffer);
             this.written += buffer.Length;
@@ -202,32 +211,32 @@
 
         public void WriteInt(int val)
         {
-            this.buff[0] = (sbyte)(val >> 0x18);
-            this.buff[1] = (sbyte)(val >> 0x10);
-            this.buff[2] = (sbyte)(val >> 8);
-            this.buff[3] = (sbyte)val;
+            this.buff[0] = (byte)(val >> 0x18);
+            this.buff[1] = (byte)(val >> 0x10);
+            this.buff[2] = (byte)(val >> 8);
+            this.buff[3] = (byte)val;
             this.Write(this.buff, 0, 4);
             this.written += 4;
         }
 
         public void WriteLong(long val)
         {
-            this.buff[0] = (sbyte)(val >> 0x38);
-            this.buff[1] = (sbyte)(val >> 0x30);
-            this.buff[2] = (sbyte)(val >> 40);
-            this.buff[3] = (sbyte)(val >> 0x20);
-            this.buff[4] = (sbyte)(val >> 0x18);
-            this.buff[5] = (sbyte)(val >> 0x10);
-            this.buff[6] = (sbyte)(val >> 8);
-            this.buff[7] = (sbyte)val;
+            this.buff[0] = (byte)(val >> 0x38);
+            this.buff[1] = (byte)(val >> 0x30);
+            this.buff[2] = (byte)(val >> 40);
+            this.buff[3] = (byte)(val >> 0x20);
+            this.buff[4] = (byte)(val >> 0x18);
+            this.buff[5] = (byte)(val >> 0x10);
+            this.buff[6] = (byte)(val >> 8);
+            this.buff[7] = (byte)val;
             this.Write(this.buff, 0, 8);
             this.written += 8;
         }
 
         public void WriteShort(int val)
         {
-            this.buff[0] = (sbyte)(val >> 8);
-            this.buff[1] = (sbyte)val;
+            this.buff[0] = (byte)(val >> 8);
+            this.buff[1] = (byte)val;
             this.Write(this.buff, 0, 2);
             this.written += 2;
         }
@@ -247,25 +256,25 @@
         {
             int num = (int)count;
             int length = str.Length;
-            sbyte[] buffer = new sbyte[num];
+            byte[] buffer = new byte[num];
             int num3 = 0;
             for (int i = 0; i < length; i++)
             {
                 int num5 = str[i];
                 if ((num5 > 0) && (num5 <= 0x7f))
                 {
-                    buffer[num3++] = (sbyte)num5;
+                    buffer[num3++] = (byte)num5;
                 }
                 else if (num5 <= 0x7ff)
                 {
-                    buffer[num3++] = (sbyte)(0xc0 | (0x1f & (num5 >> 6)));
-                    buffer[num3++] = (sbyte)(0x80 | (0x3f & num5));
+                    buffer[num3++] = (byte)(0xc0 | (0x1f & (num5 >> 6)));
+                    buffer[num3++] = (byte)(0x80 | (0x3f & num5));
                 }
                 else
                 {
-                    buffer[num3++] = (sbyte)(0xe0 | (15 & (num5 >> 12)));
-                    buffer[num3++] = (sbyte)(0x80 | (0x3f & (num5 >> 6)));
-                    buffer[num3++] = (sbyte)(0x80 | (0x3f & num5));
+                    buffer[num3++] = (byte)(0xe0 | (15 & (num5 >> 12)));
+                    buffer[num3++] = (byte)(0x80 | (0x3f & (num5 >> 6)));
+                    buffer[num3++] = (byte)(0x80 | (0x3f & num5));
                 }
             }
             this.Write(buffer, 0, num3);

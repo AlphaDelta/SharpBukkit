@@ -29,7 +29,7 @@ namespace net.minecraft.src
              worldprovider)
         {
             scheduledUpdatesAreImmediate = false;
-            field_821_y = new List<MetadataChunkBlock>();
+            LightingUpdateQueue = new Stack<MetadataChunkBlock>();// List<MetadataChunkBlock>();
             loadedEntityList = new List<Entity>();
             unloadedEntityList = new List<Entity>();
             scheduledTickTreeSet = new SortedSet<NextTickListEntry>();
@@ -1798,20 +1798,18 @@ namespace net.minecraft.src
             field_4265_J++;
             try
             {
-                int i = 500;
-                for (; field_821_y.Count > 0; )
+                for (int i = 500; LightingUpdateQueue.Count > 0;)
                 {
-                    var chunk = ((net.minecraft.src.MetadataChunkBlock)field_821_y[field_821_y.Count - 1]);
+                    var chunk = LightingUpdateQueue.Pop();//[LightingUpdateQueue.Count - 1]);
                     chunk.Func_4107_a(this);
-                    field_821_y.Remove(chunk);
+                    //LightingUpdateQueue.Remove(chunk);
                     if (--i <= 0)
                     {
-                        bool flag = true;
-                        return flag;
+                        return true;
                     }
                 }
-                bool flag1 = false;
-                return flag1;
+
+                return false;
             }
             finally
             {
@@ -1850,7 +1848,7 @@ namespace net.minecraft.src
                 {
                     return;
                 }
-                int i2 = field_821_y.Count;
+                int i2 = LightingUpdateQueue.Count;
                 if (flag)
                 {
                     int j2 = 5;
@@ -1860,23 +1858,20 @@ namespace net.minecraft.src
                     }
                     for (int l2 = 0; l2 < j2; l2++)
                     {
-                        net.minecraft.src.MetadataChunkBlock metadatachunkblock = (net.minecraft.src.MetadataChunkBlock
-                            )field_821_y[field_821_y.Count - l2 - 1];
-                        if (metadatachunkblock.field_957_a == enumskyblock && metadatachunkblock.Func_692_a
-                            (i, j, k, l, i1, j1))
+                        net.minecraft.src.MetadataChunkBlock metadatachunkblock = LightingUpdateQueue.Pop();// (net.minecraft.src.MetadataChunkBlock)LightingUpdateQueue[LightingUpdateQueue.Count - l2 - 1];
+                        if (metadatachunkblock.field_957_a == enumskyblock && metadatachunkblock.Func_692_a(i, j, k, l, i1, j1))
                         {
                             return;
                         }
                     }
                 }
-                field_821_y.Add(new net.minecraft.src.MetadataChunkBlock(enumskyblock, i, j, k, l
-                    , i1, j1));
+                LightingUpdateQueue.Push(new net.minecraft.src.MetadataChunkBlock(enumskyblock, i, j, k, l, i1, j1));
                 int k2 = 0xf4240;
-                if (field_821_y.Count > 0xf4240)
+                if (LightingUpdateQueue.Count > 0xf4240)
                 {
                     System.Console.Out.WriteLine((new java.lang.StringBuilder()).Append("More than ")
                         .Append(k2).Append(" updates, aborting lighting updates").ToString());
-                    field_821_y.Clear();
+                    LightingUpdateQueue.Clear();
                 }
             }
             finally
@@ -2743,7 +2738,7 @@ namespace net.minecraft.src
 
         public bool scheduledUpdatesAreImmediate;
 
-        private List<MetadataChunkBlock> field_821_y;
+        private Stack<MetadataChunkBlock> LightingUpdateQueue;
 
         public List<Entity> loadedEntityList;
 

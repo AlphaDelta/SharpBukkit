@@ -202,8 +202,8 @@ namespace net.minecraft.src
 
 		public virtual net.minecraft.src.Chunk ProvideChunk(int i, int j)
 		{
-			hellRNG = new SharpBukkitLive.SharpBukkit.SharpRandom(((long)i * unchecked((long)(0x4f9939f508L)) + (long)j * unchecked((long)(0x1ef1565bd5L))));
-			//hellRNG.SetSeed((long)i * unchecked((long)(0x4f9939f508L)) + (long)j * unchecked((long)(0x1ef1565bd5L)));
+			//hellRNG = new SharpBukkitLive.SharpBukkit.SharpRandom(((long)i * unchecked((long)(0x4f9939f508L)) + (long)j * unchecked((long)(0x1ef1565bd5L))));
+			hellRNG.SetSeed((long)i * unchecked((long)(0x4f9939f508L)) + (long)j * unchecked((long)(0x1ef1565bd5L)));
 			byte[] abyte0 = new byte[32768];
 			Func_4062_a(i, j, abyte0);
 			Func_4061_b(i, j, abyte0);
@@ -222,16 +222,11 @@ namespace net.minecraft.src
 			}
 			double d = 684.41200000000003D;
 			double d1 = 2053.2359999999999D;
-			field_4243_f = field_4248_a.GenerateNoiseOctaves(field_4243_f, i, j, k, l, 1, j1, 
-				1.0D, 0.0D, 1.0D);
-			field_4242_g = field_4247_b.GenerateNoiseOctaves(field_4242_g, i, j, k, l, 1, j1, 
-				100D, 0.0D, 100D);
-			field_4246_c = field_4238_k.GenerateNoiseOctaves(field_4246_c, i, j, k, l, i1, j1
-				, d / 80D, d1 / 60D, d / 80D);
-			field_4245_d = field_4240_i.GenerateNoiseOctaves(field_4245_d, i, j, k, l, i1, j1
-				, d, d1, d);
-			field_4244_e = field_4239_j.GenerateNoiseOctaves(field_4244_e, i, j, k, l, i1, j1
-				, d, d1, d);
+			field_4243_f = field_4248_a.GenerateNoiseOctaves(field_4243_f, i, j, k, l, 1, j1, 1.0D, 0.0D, 1.0D);
+			field_4242_g = field_4247_b.GenerateNoiseOctaves(field_4242_g, i, j, k, l, 1, j1, 100D, 0.0D, 100D);
+			field_4246_c = field_4238_k.GenerateNoiseOctaves(field_4246_c, i, j, k, l, i1, j1, d / 80D, d1 / 60D, d / 80D);
+			field_4245_d = field_4240_i.GenerateNoiseOctaves(field_4245_d, i, j, k, l, i1, j1, d, d1, d);
+			field_4244_e = field_4239_j.GenerateNoiseOctaves(field_4244_e, i, j, k, l, i1, j1, d, d1, d);
 			int k1 = 0;
 			int l1 = 0;
 			double[] ad1 = new double[i1];

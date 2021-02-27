@@ -2,6 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 using Sharpen;
+using System;
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
@@ -85,48 +86,63 @@ namespace net.minecraft.src
                 bool peek;
                 bool t = false;
                 peek = dataPackets.TryPeek(out ppeek);
-                if (dataPackets.Count > 0 && peek
-                    && (chunkDataSendCounter == 0 || Sharpen.Runtime.CurrentTimeMillis() - ((net.minecraft.src.Packet)ppeek).creationTimeMillis >= (long)chunkDataSendCounter))
+                if (dataPackets.Count > 0 && peek && (chunkDataSendCounter == 0 || Sharpen.Runtime.CurrentTimeMillis() - ((net.minecraft.src.Packet)ppeek).creationTimeMillis >= (long)chunkDataSendCounter))
                 {
-                    net.minecraft.src.Packet packet;
-                    lock (sendQueueLock)
+                    net.minecraft.src.Packet packet = null;
+                    try
                     {
-                        t = dataPackets.TryDequeue(out packet);
-                        //packet = (net.minecraft.src.Packet)dataPackets.(0);
+                        lock (sendQueueLock)
+                        {
+                            t = dataPackets.TryDequeue(out packet);
+                            //packet = (net.minecraft.src.Packet)dataPackets.(0);
+                            if (t)
+                                sendQueueByteLength -= packet.GetPacketSize() + 1;
+                        }
                         if (t)
-                            sendQueueByteLength -= packet.GetPacketSize() + 1;
+                        {
+                            net.minecraft.src.Packet.WritePacket(packet, socketOutputStream);
+                            field_28140_e[packet.GetPacketId()] += packet.GetPacketSize() + 1;
+                            flag = true;
+                        }
                     }
-                    if (t)
+                    finally
                     {
-                        net.minecraft.src.Packet.WritePacket(packet, socketOutputStream);
-                        field_28140_e[packet.GetPacketId()] += packet.GetPacketSize() + 1;
-                        flag = true;
+                        if (t && packet != null && packet is IDisposable)
+                            ((IDisposable)packet).Dispose();
                     }
                 }
                 peek = chunkDataPackets.TryPeek(out ppeek);
                 if (field_20175_w-- <= 0 && chunkDataPackets.Count > 0 && peek
                     && (chunkDataSendCounter == 0 || Sharpen.Runtime.CurrentTimeMillis() - ((net.minecraft.src.Packet)ppeek).creationTimeMillis >= (long)chunkDataSendCounter))
                 {
-                    net.minecraft.src.Packet packet1;
-                    lock (sendQueueLock)
+                    net.minecraft.src.Packet packet1 = null;
+                    try
                     {
-                        t = chunkDataPackets.TryDequeue(out packet1);
-                        //packet1 = (net.minecraft.src.Packet)
+                        lock (sendQueueLock)
+                        {
+                            t = chunkDataPackets.TryDequeue(out packet1);
+                            //packet1 = (net.minecraft.src.Packet)
+                            if (t)
+                                sendQueueByteLength -= packet1.GetPacketSize() + 1;
+                        }
                         if (t)
-                            sendQueueByteLength -= packet1.GetPacketSize() + 1;
+                        {
+                            net.minecraft.src.Packet.WritePacket(packet1, socketOutputStream);
+                            field_28140_e[packet1.GetPacketId()] += packet1.GetPacketSize() + 1;
+                            field_20175_w = 0;
+                            flag = true;
+                        }
                     }
-                    if (t)
+                    finally
                     {
-                        net.minecraft.src.Packet.WritePacket(packet1, socketOutputStream);
-                        field_28140_e[packet1.GetPacketId()] += packet1.GetPacketSize() + 1;
-                        field_20175_w = 0;
-                        flag = true;
+                        if (t && packet1 != null && packet1 is IDisposable)
+                            ((IDisposable)packet1).Dispose();
                     }
                 }
             }
             catch (System.Exception exception)
             {
-                if (exception is ThreadInterruptedException) throw exception; //SHARP: Not sure if this 'fixes' ThreadInterruptionExceptions, just allows it to be ignored by the thread (as it's being caught in NetworkWriterThread).
+                if (exception is ThreadInterruptedException) throw; //SHARP: Not sure if this 'fixes' ThreadInterruptedExceptions, just allows it to be ignored by the thread (as it's being caught in NetworkWriterThread).
 
                 if (!isTerminating)
                 {

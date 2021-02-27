@@ -10,7 +10,7 @@ namespace SharpBukkitLive.SharpBukkit
         Random rng;
 
         public SharpRandom() { rng = new Random(); }
-        public SharpRandom(int i) { SetSeed(i); }
+        //public SharpRandom(int i) { SetSeed(i); }
         public SharpRandom(long l) { SetSeed(l); }
 
         public void SetSeed(int i) { rng = new Random(i); }

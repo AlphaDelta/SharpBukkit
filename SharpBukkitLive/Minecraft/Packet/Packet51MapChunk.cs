@@ -1,14 +1,17 @@
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
-using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
+//using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
+using LibDeflate;
+using Microsoft.Toolkit.HighPerformance.Buffers;
 using Sharpen;
+using System;
 using System.IO;
 using System.IO.Compression;
 
 namespace net.minecraft.src
 {
-    public class Packet51MapChunk : net.minecraft.src.Packet
+    public class Packet51MapChunk : net.minecraft.src.Packet, IDisposable
     {
         public Packet51MapChunk()
         {
@@ -39,54 +42,60 @@ namespace net.minecraft.src
             //{
             //	deflater.End();
             //}
-            using (MemoryStream ms = new MemoryStream(abyte0))
-            using (MemoryStream output = new MemoryStream())
-            using (DeflaterOutputStream ds = new DeflaterOutputStream(output))
+
+            using (Compressor compressor = new LibDeflate.ZlibCompressor(6))
             {
-                ms.CopyTo(ds);
-                ds.Flush();
-                chunk = output.ToArray();
+
+                chunk = compressor.Compress(abyte0);
+                if (chunk == null) throw new System.Exception($"Chunk data was too small to effectively compress??? (Size: {abyte0.Length})");
+
                 chunkSize = chunk.Length;
+                //ms.CopyTo(ds);
+                //ds.Flush();
+                //chunk = output.ToArray();
+                //chunkSize = chunk.Length;
             }
         }
 
         /// <exception cref="System.IO.IOException"/>
-        public override void ReadPacketData(java.io.DataInputStream datainputstream)
-        {
-            xPosition = datainputstream.ReadInt();
-            yPosition = datainputstream.ReadShort();
-            zPosition = datainputstream.ReadInt();
-            xSize = datainputstream.Read() + 1;
-            ySize = datainputstream.Read() + 1;
-            zSize = datainputstream.Read() + 1;
-            chunkSize = datainputstream.ReadInt();
-            byte[] abyte0 = new byte[chunkSize];
-            datainputstream.ReadFully(abyte0);
+        //Never used???
+        public override void ReadPacketData(java.io.DataInputStream datainputstream) { }
+        //public override void ReadPacketData(java.io.DataInputStream datainputstream)
+        //{
+        //    xPosition = datainputstream.ReadInt();
+        //    yPosition = datainputstream.ReadShort();
+        //    zPosition = datainputstream.ReadInt();
+        //    xSize = datainputstream.Read() + 1;
+        //    ySize = datainputstream.Read() + 1;
+        //    zSize = datainputstream.Read() + 1;
+        //    chunkSize = datainputstream.ReadInt();
+        //    byte[] abyte0 = new byte[chunkSize];
+        //    datainputstream.ReadFully(abyte0);
 
-            using (MemoryStream ms = new MemoryStream(abyte0))
-            using (MemoryStream output = new MemoryStream())
-            using (InflaterInputStream ds = new InflaterInputStream(ms))
-            {
-                ds.CopyTo(output);
-                ds.Flush();
-                chunk = output.ToArray();
-            }
-            //chunk = new byte[(xSize * ySize * zSize * 5) / 2];
-            //java.util.zip.Inflater inflater = new java.util.zip.Inflater();
-            //inflater.SetInput(abyte0);
-            //try
-            //{
-            //	inflater.Inflate(chunk);
-            //}
-            //catch (java.util.zip.DataFormatException)
-            //{
-            //	throw new System.IO.IOException("Bad compressed data format");
-            //}
-            //finally
-            //{
-            //	inflater.End();
-            //}
-        }
+        //    using (MemoryStream ms = new MemoryStream(abyte0))
+        //    using (MemoryStream output = new MemoryStream())
+        //    using (InflaterInputStream ds = new InflaterInputStream(ms))
+        //    {
+        //        ds.CopyTo(output);
+        //        ds.Flush();
+        //        chunk = output.ToArray();
+        //    }
+        //    //chunk = new byte[(xSize * ySize * zSize * 5) / 2];
+        //    //java.util.zip.Inflater inflater = new java.util.zip.Inflater();
+        //    //inflater.SetInput(abyte0);
+        //    //try
+        //    //{
+        //    //	inflater.Inflate(chunk);
+        //    //}
+        //    //catch (java.util.zip.DataFormatException)
+        //    //{
+        //    //	throw new System.IO.IOException("Bad compressed data format");
+        //    //}
+        //    //finally
+        //    //{
+        //    //	inflater.End();
+        //    //}
+        //}
 
         /// <exception cref="System.IO.IOException"/>
         public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
@@ -98,13 +107,15 @@ namespace net.minecraft.src
             dataoutputstream.Write(ySize - 1);
             dataoutputstream.Write(zSize - 1);
             dataoutputstream.WriteInt(chunkSize);
-            dataoutputstream.Write(chunk, 0, chunkSize);
+            dataoutputstream.Write(chunk.Span);//, 0, chunkSize);
         }
 
-        public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
-        {
-            nethandler.HandleMapChunk(this);
-        }
+        //Never used???
+        public override void ProcessPacket(net.minecraft.src.NetHandler nethandler) { }
+        //public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
+        //{
+        //    nethandler.HandleMapChunk(this);
+        //}
 
         public override int GetPacketSize()
         {
@@ -123,8 +134,31 @@ namespace net.minecraft.src
 
         public int zSize;
 
-        public byte[] chunk;
+        public MemoryOwner<byte> chunk;
 
         private int chunkSize;
+
+        private bool disposedValue;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    chunk.Dispose();
+                }
+
+                chunk = null;
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
     }
 }
