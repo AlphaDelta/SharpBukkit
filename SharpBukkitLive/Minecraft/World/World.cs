@@ -1801,9 +1801,10 @@ namespace net.minecraft.src
                 int i = 500;
                 for (; LightingUpdateQueue.Count > 0;)
                 {
-                    var chunk = ((net.minecraft.src.MetadataChunkBlock)LightingUpdateQueue[LightingUpdateQueue.Count - 1]);
+                    var chunk = ((net.minecraft.src.MetadataChunkBlock)LightingUpdateQueue[LightingUpdateQueue.Count - 1]); //TODO: Optimise
+                    LightingUpdateQueue.RemoveAt(LightingUpdateQueue.Count - 1);
                     chunk.Func_4107_a(this);
-                    LightingUpdateQueue.Remove(chunk);
+                    //LightingUpdateQueue.Remove(chunk);
                     if (--i <= 0)
                     {
                         bool flag = true;
@@ -1871,8 +1872,8 @@ namespace net.minecraft.src
                 }
                 LightingUpdateQueue.Add(new net.minecraft.src.MetadataChunkBlock(enumskyblock, i, j, k, l
                     , i1, j1));
-                int k2 = 0xf4240;
-                if (LightingUpdateQueue.Count > 0xf4240)
+                int k2 = 1000000;
+                if (LightingUpdateQueue.Count > 1000000)
                 {
                     System.Console.Out.WriteLine((new java.lang.StringBuilder()).Append("More than ")
                         .Append(k2).Append(" updates, aborting lighting updates").ToString());
