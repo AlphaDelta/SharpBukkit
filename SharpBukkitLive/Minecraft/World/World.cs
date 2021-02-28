@@ -1801,7 +1801,7 @@ namespace net.minecraft.src
                 int i = 500;
                 for (; LightingUpdateQueue.Count > 0;)
                 {
-                    var chunk = ((net.minecraft.src.MetadataChunkBlock)LightingUpdateQueue[LightingUpdateQueue.Count - 1]); //TODO: Optimise
+                    var chunk = ((net.minecraft.src.MetadataChunkBlock)LightingUpdateQueue[LightingUpdateQueue.Count - 1]);
                     LightingUpdateQueue.RemoveAt(LightingUpdateQueue.Count - 1);
                     chunk.Func_4107_a(this);
                     //LightingUpdateQueue.Remove(chunk);

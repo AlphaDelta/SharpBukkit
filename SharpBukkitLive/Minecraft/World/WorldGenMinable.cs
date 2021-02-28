@@ -19,14 +19,10 @@ namespace net.minecraft.src
 			, int i, int j, int k)
 		{
 			float f = ((float)random.NextDouble()) * 3.141593F;
-			double d = (float)(i + 8) + (net.minecraft.src.MathHelper.Sin(f) * (float)numberOfBlocks
-				) / 8F;
-			double d1 = (float)(i + 8) - (net.minecraft.src.MathHelper.Sin(f) * (float)numberOfBlocks
-				) / 8F;
-			double d2 = (float)(k + 8) + (net.minecraft.src.MathHelper.Cos(f) * (float)numberOfBlocks
-				) / 8F;
-			double d3 = (float)(k + 8) - (net.minecraft.src.MathHelper.Cos(f) * (float)numberOfBlocks
-				) / 8F;
+			double d = (float)(i + 8) + (net.minecraft.src.MathHelper.Sin(f) * (float)numberOfBlocks) / 8F;
+			double d1 = (float)(i + 8) - (net.minecraft.src.MathHelper.Sin(f) * (float)numberOfBlocks) / 8F;
+			double d2 = (float)(k + 8) + (net.minecraft.src.MathHelper.Cos(f) * (float)numberOfBlocks) / 8F;
+			double d3 = (float)(k + 8) - (net.minecraft.src.MathHelper.Cos(f) * (float)numberOfBlocks) / 8F;
 			double d4 = j + random.Next(3) + 2;
 			double d5 = j + random.Next(3) + 2;
 			for (int l = 0; l <= numberOfBlocks; l++)
@@ -35,10 +31,8 @@ namespace net.minecraft.src
 				double d7 = d4 + ((d5 - d4) * (double)l) / (double)numberOfBlocks;
 				double d8 = d2 + ((d3 - d2) * (double)l) / (double)numberOfBlocks;
 				double d9 = (random.NextDouble() * (double)numberOfBlocks) / 16D;
-				double d10 = (double)(net.minecraft.src.MathHelper.Sin(((float)l * 3.141593F) / (
-					float)numberOfBlocks) + 1.0F) * d9 + 1.0D;
-				double d11 = (double)(net.minecraft.src.MathHelper.Sin(((float)l * 3.141593F) / (
-					float)numberOfBlocks) + 1.0F) * d9 + 1.0D;
+				double d10 = (double)(net.minecraft.src.MathHelper.Sin(((float)l * 3.141593F) / (float)numberOfBlocks) + 1.0F) * d9 + 1.0D;
+				double d11 = (double)(net.minecraft.src.MathHelper.Sin(((float)l * 3.141593F) / (float)numberOfBlocks) + 1.0F) * d9 + 1.0D;
 				int i1 = net.minecraft.src.MathHelper.Floor_double(d6 - d10 / 2D);
 				int j1 = net.minecraft.src.MathHelper.Floor_double(d7 - d11 / 2D);
 				int k1 = net.minecraft.src.MathHelper.Floor_double(d8 - d10 / 2D);

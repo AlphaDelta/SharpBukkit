@@ -94,7 +94,7 @@ namespace net.minecraft.server
             /* Init world */
             logger.Info((new java.lang.StringBuilder()).Append("Preparing level \"").Append(worldName).Append("\"").ToString());
             InitWorld(new net.minecraft.src.SaveConverterMcRegion("."), worldName, worldSeed);
-            logger.Info((new java.lang.StringBuilder()).Append("Done (").Append((DateTime.Now - l).Milliseconds).Append("ms)! For help, type \"help\" or \"?\"").ToString());
+            logger.Info((new java.lang.StringBuilder()).Append("Done (").Append((DateTime.Now - l).TotalSeconds).Append("s)! For help, type \"help\" or \"?\"").ToString());
             return true;
         }
 
