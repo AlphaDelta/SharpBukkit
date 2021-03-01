@@ -205,7 +205,7 @@ namespace net.minecraft.src
 						net.minecraft.src.EntityChicken entitychicken = new net.minecraft.src.EntityChicken
 							(worldObj);
 						entitychicken.SetLocationAndAngles(posX, posY, posZ, rotationYaw, 0.0F);
-						worldObj.EntityJoinedWorld(entitychicken);
+						worldObj.AddEntity(entitychicken);
 					}
 				}
 				for (int j = 0; j < 8; j++)

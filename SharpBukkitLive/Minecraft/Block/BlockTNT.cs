@@ -65,7 +65,7 @@ namespace net.minecraft.src
 				(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F);
 			entitytntprimed.fuse = world.rand.Next(entitytntprimed.fuse / 4) + entitytntprimed
 				.fuse / 8;
-			world.EntityJoinedWorld(entitytntprimed);
+			world.AddEntity(entitytntprimed);
 		}
 
 		public override void OnBlockDestroyedByPlayer(net.minecraft.src.World world, int 
@@ -84,7 +84,7 @@ namespace net.minecraft.src
 			{
 				net.minecraft.src.EntityTNTPrimed entitytntprimed = new net.minecraft.src.EntityTNTPrimed
 					(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F);
-				world.EntityJoinedWorld(entitytntprimed);
+				world.AddEntity(entitytntprimed);
 				world.PlaySoundAtEntity(entitytntprimed, "random.fuse", 1.0F, 1.0F);
 			}
 		}

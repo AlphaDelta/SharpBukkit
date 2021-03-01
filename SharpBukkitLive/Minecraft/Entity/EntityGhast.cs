@@ -110,7 +110,7 @@ namespace net.minecraft.src
 						entityfireball.posX = posX + vec3d.xCoord * d8;
 						entityfireball.posY = posY + (double)(height / 2.0F) + 0.5D;
 						entityfireball.posZ = posZ + vec3d.zCoord * d8;
-						worldObj.EntityJoinedWorld(entityfireball);
+						worldObj.AddEntity(entityfireball);
 						attackCounter = -40;
 					}
 				}

@@ -296,7 +296,7 @@ namespace net.minecraft.src
                 net.minecraft.src.EntityItem entityitem = new net.minecraft.src.EntityItem(world,
                     (double)i + d, (double)j + d1, (double)k + d2, itemstack);
                 entityitem.delayBeforeCanPickup = 10;
-                world.EntityJoinedWorld(entityitem);
+                world.AddEntity(entityitem);
                 return;
             }
         }

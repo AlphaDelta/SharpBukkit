@@ -25,7 +25,7 @@ namespace net.minecraft.src
 			{
 				if (!world.singleplayerWorld)
 				{
-					world.EntityJoinedWorld(new net.minecraft.src.EntityMinecart(world, (float)i + 0.5F
+					world.AddEntity(new net.minecraft.src.EntityMinecart(world, (float)i + 0.5F
 						, (float)j + 0.5F, (float)k + 0.5F, minecartType));
 				}
 				itemstack.stackSize--;

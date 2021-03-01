@@ -301,7 +301,7 @@ namespace net.minecraft.src
         protected internal virtual void JoinEntityItemWithWorld(net.minecraft.src.EntityItem
              entityitem)
         {
-            worldObj.EntityJoinedWorld(entityitem);
+            worldObj.AddEntity(entityitem);
         }
 
         public virtual float GetCurrentPlayerStrVsBlock(net.minecraft.src.Block block)

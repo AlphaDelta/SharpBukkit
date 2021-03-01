@@ -119,7 +119,7 @@ namespace net.minecraft.src
 						(float)i + f2, (float)j + f3, (float)k + f4, new net.minecraft.src.ItemStack(net.minecraft.src.Item
 						.seeds));
 					entityitem.delayBeforeCanPickup = 10;
-					world.EntityJoinedWorld(entityitem);
+					world.AddEntity(entityitem);
 				}
 			}
 		}

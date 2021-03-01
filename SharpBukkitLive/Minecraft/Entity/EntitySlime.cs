@@ -132,7 +132,7 @@ namespace net.minecraft.src
 					entityslime.SetSlimeSize(i / 2);
 					entityslime.SetLocationAndAngles(posX + (double)f, posY + 0.5D, posZ + (double)f1
 						, rand.NextFloat() * 360F, 0.0F);
-					worldObj.EntityJoinedWorld(entityslime);
+					worldObj.AddEntity(entityslime);
 				}
 			}
 			base.SetEntityDead();

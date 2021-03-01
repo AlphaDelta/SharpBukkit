@@ -382,7 +382,7 @@ namespace net.minecraft.src
 					entityitem.motionY = d3 * d9 + (double)net.minecraft.src.MathHelper.Sqrt_double(d7
 						) * 0.080000000000000002D;
 					entityitem.motionZ = d5 * d9;
-					worldObj.EntityJoinedWorld(entityitem);
+					worldObj.AddEntity(entityitem);
 					angler.AddStat(net.minecraft.src.StatList.StatFishCaught, 1);
 					byte0 = 1;
 				}

@@ -108,7 +108,7 @@ namespace net.minecraft.src
 					(worldObj);
 				entitypigzombie.SetLocationAndAngles(posX, posY, posZ, rotationYaw, rotationPitch
 					);
-				worldObj.EntityJoinedWorld(entitypigzombie);
+				worldObj.AddEntity(entitypigzombie);
 				SetEntityDead();
 				return;
 			}

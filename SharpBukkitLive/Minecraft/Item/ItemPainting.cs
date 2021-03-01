@@ -45,7 +45,7 @@ namespace net.minecraft.src
 			{
 				if (!world.singleplayerWorld)
 				{
-					world.EntityJoinedWorld(entitypainting);
+					world.AddEntity(entitypainting);
 				}
 				itemstack.stackSize--;
 			}

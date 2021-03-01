@@ -133,7 +133,7 @@ namespace net.minecraft.src
 					entityitem.motionX = (float)random.NextGaussian() * f3;
 					entityitem.motionY = (float)random.NextGaussian() * f3 + 0.2F;
 					entityitem.motionZ = (float)random.NextGaussian() * f3;
-					world.EntityJoinedWorld(entityitem);
+					world.AddEntity(entityitem);
 				}
 				while (true);
 label0_continue: ;

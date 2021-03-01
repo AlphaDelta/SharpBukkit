@@ -60,7 +60,7 @@ namespace net.minecraft.src
 					{
 						j--;
 					}
-					world.EntityJoinedWorld(new net.minecraft.src.EntityBoat(world, (float)i + 0.5F, 
+					world.AddEntity(new net.minecraft.src.EntityBoat(world, (float)i + 0.5F, 
 						(float)j + 1.0F, (float)k + 0.5F));
 				}
 				itemstack.stackSize--;

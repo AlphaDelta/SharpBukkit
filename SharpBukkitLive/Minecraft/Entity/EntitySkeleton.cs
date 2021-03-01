@@ -63,7 +63,7 @@ namespace net.minecraft.src
 					float f1 = net.minecraft.src.MathHelper.Sqrt_double(d * d + d1 * d1) * 0.2F;
 					worldObj.PlaySoundAtEntity(this, "random.bow", 1.0F, 1.0F / (rand.NextFloat() * 0.4F
 						 + 0.8F));
-					worldObj.EntityJoinedWorld(entityarrow);
+					worldObj.AddEntity(entityarrow);
 					entityarrow.SetArrowHeading(d, d2 + (double)f1, d1, 0.6F, 12F);
 					attackTime = 30;
 				}

@@ -33,7 +33,7 @@ namespace net.minecraft.src
 					() * 0.4F + 0.8F));
 				if (!world.singleplayerWorld)
 				{
-					world.EntityJoinedWorld(new net.minecraft.src.EntityFish(world, entityplayer));
+					world.AddEntity(new net.minecraft.src.EntityFish(world, entityplayer));
 				}
 				entityplayer.SwingItem();
 			}

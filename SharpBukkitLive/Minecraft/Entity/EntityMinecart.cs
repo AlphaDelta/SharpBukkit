@@ -119,7 +119,7 @@ namespace net.minecraft.src
                             entityitem.motionX = (float)rand.NextGaussian() * f3;
                             entityitem.motionY = (float)rand.NextGaussian() * f3 + 0.2F;
                             entityitem.motionZ = (float)rand.NextGaussian() * f3;
-                            worldObj.EntityJoinedWorld(entityitem);
+                            worldObj.AddEntity(entityitem);
                         }
                         while (true);
                         label0_continue:;
@@ -174,7 +174,7 @@ namespace net.minecraft.src
                     entityitem.motionX = (float)rand.NextGaussian() * f3;
                     entityitem.motionY = (float)rand.NextGaussian() * f3 + 0.2F;
                     entityitem.motionZ = (float)rand.NextGaussian() * f3;
-                    worldObj.EntityJoinedWorld(entityitem);
+                    worldObj.AddEntity(entityitem);
                 }
                 while (true);
                 label0_continue:;

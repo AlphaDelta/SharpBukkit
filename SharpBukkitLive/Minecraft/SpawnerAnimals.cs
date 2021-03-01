@@ -145,7 +145,7 @@ namespace net.minecraft.src
                                                         if (var43.GetCanSpawnHere())
                                                         {
                                                             ++var20;
-                                                            var0.EntityJoinedWorld(var43);
+                                                            var0.AddEntity(var43);
                                                             Func_21166_a(var43, var0, var27, var28, var29);
                                                             if (var20 >= var43.GetMaxSpawnedInChunk())
                                                             {
@@ -194,7 +194,7 @@ namespace net.minecraft.src
                 net.minecraft.src.EntitySkeleton entityskeleton = new net.minecraft.src.EntitySkeleton
                     (world);
                 entityskeleton.SetLocationAndAngles(f, f1, f2, entityliving.rotationYaw, 0.0F);
-                world.EntityJoinedWorld(entityskeleton);
+                world.AddEntity(entityskeleton);
                 entityskeleton.MountEntity(entityliving);
             }
             else
@@ -294,7 +294,7 @@ namespace net.minecraft.src
                                         }
                                         entityliving.SetLocationAndAngles((float)chunkcoordinates.posX + 0.5F, chunkcoordinates
                                             .posY, (float)chunkcoordinates.posZ + 0.5F, 0.0F, 0.0F);
-                                        world.EntityJoinedWorld(entityliving);
+                                        world.AddEntity(entityliving);
                                         Func_21166_a(entityliving, world, (float)chunkcoordinates.posX + 0.5F, chunkcoordinates
                                             .posY, (float)chunkcoordinates.posZ + 0.5F);
                                         entityplayer.WakeUpPlayer(true, false, false);

@@ -930,7 +930,7 @@ namespace net.minecraft.src
             return true;
         }
 
-        public virtual bool EntityJoinedWorld(net.minecraft.src.Entity entity)
+        public virtual bool AddEntity(net.minecraft.src.Entity entity)
         {
             int i = net.minecraft.src.MathHelper.Floor_double(entity.posX / 16D);
             int j = net.minecraft.src.MathHelper.Floor_double(entity.posZ / 16D);

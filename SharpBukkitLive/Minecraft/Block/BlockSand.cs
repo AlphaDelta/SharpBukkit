@@ -57,7 +57,7 @@ namespace net.minecraft.src
 				{
 					net.minecraft.src.EntityFallingSand entityfallingsand = new net.minecraft.src.EntityFallingSand
 						(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, blockID);
-					world.EntityJoinedWorld(entityfallingsand);
+					world.AddEntity(entityfallingsand);
 				}
 			}
 		}

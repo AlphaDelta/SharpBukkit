@@ -88,7 +88,7 @@ namespace net.minecraft.src
 					{
 						continue;
 					}
-					worldObj.EntityJoinedWorld(entityliving);
+					worldObj.AddEntity(entityliving);
 					for (int k = 0; k < 20; k++)
 					{
 						double d1 = (double)xCoord + 0.5D + ((double)worldObj.rand.NextFloat() - 0.5D) * 

@@ -133,7 +133,7 @@ namespace net.minecraft.src
 					if (!this.isDead) // CRAFTBUKKIT -- Make sure it's not already dead
 					{
 						SetEntityDead();
-						worldObj.EntityJoinedWorld(new net.minecraft.src.EntityItem(worldObj, posX, posY, posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
+						worldObj.AddEntity(new net.minecraft.src.EntityItem(worldObj, posX, posY, posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
 					}
 				}
 			}
@@ -214,7 +214,7 @@ namespace net.minecraft.src
 			{
 				SetEntityDead();
 				SetBeenAttacked();
-				worldObj.EntityJoinedWorld(new net.minecraft.src.EntityItem(worldObj, posX, posY, 
+				worldObj.AddEntity(new net.minecraft.src.EntityItem(worldObj, posX, posY, 
 					posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
 			}
 			return true;
@@ -260,7 +260,7 @@ namespace net.minecraft.src
 			if (!worldObj.singleplayerWorld && d * d + d1 * d1 + d2 * d2 > 0.0D)
 			{
 				SetEntityDead();
-				worldObj.EntityJoinedWorld(new net.minecraft.src.EntityItem(worldObj, posX, posY, 
+				worldObj.AddEntity(new net.minecraft.src.EntityItem(worldObj, posX, posY, 
 					posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
 			}
 		}
@@ -270,7 +270,7 @@ namespace net.minecraft.src
 			if (!worldObj.singleplayerWorld && d * d + d1 * d1 + d2 * d2 > 0.0D)
 			{
 				SetEntityDead();
-				worldObj.EntityJoinedWorld(new net.minecraft.src.EntityItem(worldObj, posX, posY, 
+				worldObj.AddEntity(new net.minecraft.src.EntityItem(worldObj, posX, posY, 
 					posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
 			}
 		}

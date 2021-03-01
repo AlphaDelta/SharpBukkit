@@ -96,7 +96,7 @@ namespace net.minecraft.src
                  + 1.0D, entityplayermp.posZ))
             {
             }
-            worldserver.EntityJoinedWorld(entityplayermp);
+            worldserver.AddEntity(entityplayermp);
             GetPlayerManager(entityplayermp.dimension).AddPlayer(entityplayermp);
         }
 
@@ -208,7 +208,7 @@ namespace net.minecraft.src
                 );
             Func_28170_a(entityplayermp1, worldserver);
             GetPlayerManager(entityplayermp1.dimension).AddPlayer(entityplayermp1);
-            worldserver.EntityJoinedWorld(entityplayermp1);
+            worldserver.AddEntity(entityplayermp1);
             playerEntities.Add(entityplayermp1);
             entityplayermp1.Func_20057_k();
             entityplayermp1.Func_22068_s();
@@ -263,7 +263,7 @@ namespace net.minecraft.src
             }
             if (entityplayermp.IsEntityAlive())
             {
-                worldserver1.EntityJoinedWorld(entityplayermp);
+                worldserver1.AddEntity(entityplayermp);
                 entityplayermp.SetLocationAndAngles(d, entityplayermp.posY, d1, entityplayermp.rotationYaw
                     , entityplayermp.rotationPitch);
                 worldserver1.UpdateEntityWithOptionalForce(entityplayermp, false);

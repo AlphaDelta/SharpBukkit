@@ -98,7 +98,7 @@ namespace net.minecraft.src
 				(double)i + d, (double)j + d1, (double)k + d2, new net.minecraft.src.ItemStack(i1
 				, 1, 0));
 			entityitem.delayBeforeCanPickup = 10;
-			world.EntityJoinedWorld(entityitem);
+			world.AddEntity(entityitem);
 			world.SetBlockWithNotify(i, j, k, 0);
 			entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[blockID], 1);
 		}

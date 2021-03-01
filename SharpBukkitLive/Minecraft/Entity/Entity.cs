@@ -908,7 +908,7 @@ namespace net.minecraft.src
             net.minecraft.src.EntityItem entityitem = new net.minecraft.src.EntityItem(worldObj
                 , posX, posY + (double)f, posZ, itemstack);
             entityitem.delayBeforeCanPickup = 10;
-            worldObj.EntityJoinedWorld(entityitem);
+            worldObj.AddEntity(entityitem);
             return entityitem;
         }
 
