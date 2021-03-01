@@ -29,7 +29,7 @@ namespace net.minecraft.src
 			{
 				return ((net.minecraft.src.ItemArmor)itemstack.GetItem()).armorType == field_20102_a;
 			}
-			if (itemstack.GetItem().shiftedIndex == net.minecraft.src.Block.pumpkin.blockID)
+			if (itemstack.GetItem().shiftedIndex == net.minecraft.src.Block.PUMPKIN.blockID)
 			{
 				return field_20102_a == 0;
 			}

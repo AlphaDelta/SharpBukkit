@@ -18,7 +18,7 @@ namespace net.minecraft.src
 
 		protected internal override bool CanThisPlantGrowOnThisBlockID(int i)
 		{
-			return i == net.minecraft.src.Block.sand.blockID;
+			return i == net.minecraft.src.Block.SAND.blockID;
 		}
 
 		public override int GetBlockTextureFromSideAndMetadata(int i, int j)

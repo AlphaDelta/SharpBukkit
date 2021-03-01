@@ -16,17 +16,17 @@ namespace net.minecraft.src
 		public virtual void AddRecipes(net.minecraft.src.CraftingManager craftingmanager)
 		{
 			craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block
-				.chest), new object[] { "###", "# #", "###", '#', net.minecraft.src.Block
-				.planks });
+				.CHEST), new object[] { "###", "# #", "###", '#', net.minecraft.src.Block
+				.WOOD });
 			craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block
-				.stoneOvenIdle), new object[] { "###", "# #", "###", '#', net.minecraft.src.Block
-				.cobblestone });
+				.FURNACE), new object[] { "###", "# #", "###", '#', net.minecraft.src.Block
+				.COBBLESTONE });
 			craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block
-				.workbench), new object[] { "##", "##", '#', net.minecraft.src.Block
-				.planks });
+				.WORKBENCH), new object[] { "##", "##", '#', net.minecraft.src.Block
+				.WOOD });
 			craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block
-				.sandStone), new object[] { "##", "##", '#', net.minecraft.src.Block
-				.sand });
+				.SANDSTONE), new object[] { "##", "##", '#', net.minecraft.src.Block
+				.SAND });
 		}
 	}
 }

@@ -287,13 +287,13 @@ namespace net.minecraft.src
 					int l = world.GetBlockMetadata(i, j, k);
 					if (l == 0)
 					{
-						world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.obsidian.blockID);
+						world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.OBSISIAN.blockID);
 					}
 					else
 					{
 						if (l <= 4)
 						{
-							world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.cobblestone.blockID);
+							world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.COBBLESTONE.blockID);
 						}
 					}
 					Func_300_h(world, i, j, k);

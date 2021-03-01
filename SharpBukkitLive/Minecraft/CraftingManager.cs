@@ -32,93 +32,93 @@ namespace net.minecraft.src
 				[] { "###", '#', net.minecraft.src.Item.reed });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.book, 1), new object
 				[] { "#", "#", "#", '#', net.minecraft.src.Item.paper });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.fence, 2), new 
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.FENCE, 2), new 
 				object[] { "###", "###", '#', net.minecraft.src.Item.stick });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.jukebox, 1), new 
-				object[] { "###", "#X#", "###", '#', net.minecraft.src.Block.planks
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.JUKEBOX, 1), new 
+				object[] { "###", "#X#", "###", '#', net.minecraft.src.Block.WOOD
 				, 'X', net.minecraft.src.Item.diamond });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.musicBlock, 1), 
-				new object[] { "###", "#X#", "###", '#', net.minecraft.src.Block.planks
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.NOTE_BLOCK, 1), 
+				new object[] { "###", "#X#", "###", '#', net.minecraft.src.Block.WOOD
 				, 'X', net.minecraft.src.Item.redstone });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.bookShelf, 1), 
-				new object[] { "###", "XXX", "###", '#', net.minecraft.src.Block.planks
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.BOOKSHELF, 1), 
+				new object[] { "###", "XXX", "###", '#', net.minecraft.src.Block.WOOD
 				, 'X', net.minecraft.src.Item.book });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.blockSnow, 1), 
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.SNOW_BLOCK, 1), 
 				new object[] { "##", "##", '#', net.minecraft.src.Item.snowball });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.blockClay, 1), 
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.CLAY, 1), 
 				new object[] { "##", "##", '#', net.minecraft.src.Item.clay });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.brick, 1), new 
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.BRICK, 1), new 
 				object[] { "##", "##", '#', net.minecraft.src.Item.brick });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.glowStone, 1), 
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.GLOWSTONE, 1), 
 				new object[] { "##", "##", '#', net.minecraft.src.Item.lightStoneDust
 				 });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.cloth, 1), new 
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.WOOL, 1), new 
 				object[] { "##", "##", '#', net.minecraft.src.Item.silk });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.tnt, 1), new object
-				[] { "X#X", "#X#", "X#X", 'X', net.minecraft.src.Item.gunpowder, '#', net.minecraft.src.Block.sand });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.stairSingle, 3, 
-				3), new object[] { "###", '#', net.minecraft.src.Block.cobblestone
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.TNT, 1), new object
+				[] { "X#X", "#X#", "X#X", 'X', net.minecraft.src.Item.gunpowder, '#', net.minecraft.src.Block.SAND });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.STEP, 3, 
+				3), new object[] { "###", '#', net.minecraft.src.Block.COBBLESTONE
 				 });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.stairSingle, 3, 
-				0), new object[] { "###", '#', net.minecraft.src.Block.stone });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.stairSingle, 3, 
-				1), new object[] { "###", '#', net.minecraft.src.Block.sandStone }
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.STEP, 3, 
+				0), new object[] { "###", '#', net.minecraft.src.Block.STONE });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.STEP, 3, 
+				1), new object[] { "###", '#', net.minecraft.src.Block.SANDSTONE }
 				);
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.stairSingle, 3, 
-				2), new object[] { "###", '#', net.minecraft.src.Block.planks });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.ladder, 2), new 
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.STEP, 3, 
+				2), new object[] { "###", '#', net.minecraft.src.Block.WOOD });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.LADDER, 2), new 
 				object[] { "# #", "###", "# #", '#', net.minecraft.src.Item.stick }
 				);
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.doorWood, 1), new 
-				object[] { "##", "##", "##", '#', net.minecraft.src.Block.planks }
+				object[] { "##", "##", "##", '#', net.minecraft.src.Block.WOOD }
 				);
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.trapdoor, 2), new 
-				object[] { "###", "###", '#', net.minecraft.src.Block.planks });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.TRAP_DOOR, 2), new 
+				object[] { "###", "###", '#', net.minecraft.src.Block.WOOD });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.doorSteel, 1), new 
 				object[] { "##", "##", "##", '#', net.minecraft.src.Item.ingotIron
 				 });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.sign, 1), new object
-				[] { "###", "###", " X ", '#', net.minecraft.src.Block.planks, 'X', net.minecraft.src.Item.stick });
+				[] { "###", "###", " X ", '#', net.minecraft.src.Block.WOOD, 'X', net.minecraft.src.Item.stick });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.cake, 1), new object
 				[] { "AAA", "BEB", "CCC", 'A', net.minecraft.src.Item.bucketMilk, 
 				'B', net.minecraft.src.Item.sugar, 'C', net.minecraft.src.Item
 				.wheat, 'E', net.minecraft.src.Item.egg });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.sugar, 1), new object
 				[] { "#", '#', net.minecraft.src.Item.reed });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.planks, 4), new 
-				object[] { "#", '#', net.minecraft.src.Block.wood });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.WOOD, 4), new 
+				object[] { "#", '#', net.minecraft.src.Block.LOG });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.stick, 4), new object
-				[] { "#", "#", '#', net.minecraft.src.Block.planks });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.torchWood, 4), 
+				[] { "#", "#", '#', net.minecraft.src.Block.WOOD });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.TORCH, 4), 
 				new object[] { "X", "#", 'X', net.minecraft.src.Item.coal, '#', net.minecraft.src.Item.stick });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.torchWood, 4), 
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.TORCH, 4), 
 				new object[] { "X", "#", 'X', new net.minecraft.src.ItemStack(net.minecraft.src.Item
 				.coal, 1, 1), '#', net.minecraft.src.Item.stick });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.bowlEmpty, 4), new 
-				object[] { "# #", " # ", '#', net.minecraft.src.Block.planks });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.minecartTrack, 
+				object[] { "# #", " # ", '#', net.minecraft.src.Block.WOOD });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.RAILS, 
 				16), new object[] { "X X", "X#X", "X X", 'X', net.minecraft.src.Item
 				.ingotIron, '#', net.minecraft.src.Item.stick });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.railPowered, 6)
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.GOLDEN_RAIL, 6)
 				, new object[] { "X X", "X#X", "XRX", 'X', net.minecraft.src.Item.
 				ingotGold, 'R', net.minecraft.src.Item.redstone, '#'
 				, net.minecraft.src.Item.stick });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.railDetector, 6
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.DETECTOR_RAIL, 6
 				), new object[] { "X X", "X#X", "XRX", 'X', net.minecraft.src.Item
-				.ingotIron, 'R', net.minecraft.src.Item.redstone, '#', net.minecraft.src.Block.pressurePlateStone });
+				.ingotIron, 'R', net.minecraft.src.Item.redstone, '#', net.minecraft.src.Block.STONE_PLATE });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.minecartEmpty, 1
 				), new object[] { "# #", "###", '#', net.minecraft.src.Item.ingotIron
 				 });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.pumpkinLantern, 
-				1), new object[] { "A", "B", 'A', net.minecraft.src.Block.pumpkin, 
-				'B', net.minecraft.src.Block.torchWood });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.JACK_O_LANTERN, 
+				1), new object[] { "A", "B", 'A', net.minecraft.src.Block.PUMPKIN, 
+				'B', net.minecraft.src.Block.TORCH });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.minecartCrate, 1
-				), new object[] { "A", "B", 'A', net.minecraft.src.Block.chest, 'B', net.minecraft.src.Item.minecartEmpty });
+				), new object[] { "A", "B", 'A', net.minecraft.src.Block.CHEST, 'B', net.minecraft.src.Item.minecartEmpty });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.minecartPowered, 
-				1), new object[] { "A", "B", 'A', net.minecraft.src.Block.stoneOvenIdle
+				1), new object[] { "A", "B", 'A', net.minecraft.src.Block.FURNACE
 				, 'B', net.minecraft.src.Item.minecartEmpty });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.boat, 1), new object
-				[] { "# #", "###", '#', net.minecraft.src.Block.planks });
+				[] { "# #", "###", '#', net.minecraft.src.Block.WOOD });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.bucketEmpty, 1), 
 				new object[] { "# #", " # ", '#', net.minecraft.src.Item.ingotIron
 				 });
@@ -127,30 +127,30 @@ namespace net.minecraft.src
 				, 'B', net.minecraft.src.Item.flint });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.bread, 1), new object
 				[] { "###", '#', net.minecraft.src.Item.wheat });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.stairCompactPlanks
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.WOOD_STAIRS
 				, 4), new object[] { "#  ", "## ", "###", '#', net.minecraft.src.Block
-				.planks });
+				.WOOD });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.fishingRod, 1), 
 				new object[] { "  #", " #X", "# X", '#', net.minecraft.src.Item.stick
 				, 'X', net.minecraft.src.Item.silk });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.stairCompactCobblestone
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.COBBLESTONE_STAIRS
 				, 4), new object[] { "#  ", "## ", "###", '#', net.minecraft.src.Block
-				.cobblestone });
+				.COBBLESTONE });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting, 1), new 
 				object[] { "###", "#X#", "###", '#', net.minecraft.src.Item.stick, 
-				'X', net.minecraft.src.Block.cloth });
+				'X', net.minecraft.src.Block.WOOL });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.appleGold, 1), new 
-				object[] { "###", "#X#", "###", '#', net.minecraft.src.Block.blockGold
+				object[] { "###", "#X#", "###", '#', net.minecraft.src.Block.GOLD_BLOCK
 				, 'X', net.minecraft.src.Item.appleRed });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.lever, 1), new 
-				object[] { "X", "#", '#', net.minecraft.src.Block.cobblestone, 'X', net.minecraft.src.Item.stick });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.torchRedstoneActive
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.LEVEL, 1), new 
+				object[] { "X", "#", '#', net.minecraft.src.Block.COBBLESTONE, 'X', net.minecraft.src.Item.stick });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.REDSTONE_TORCH_ON
 				, 1), new object[] { "X", "#", '#', net.minecraft.src.Item.stick, 
 				'X', net.minecraft.src.Item.redstone });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.redstoneRepeater
-				, 1), new object[] { "#X#", "III", '#', net.minecraft.src.Block.torchRedstoneActive
+				, 1), new object[] { "#X#", "III", '#', net.minecraft.src.Block.REDSTONE_TORCH_ON
 				, 'X', net.minecraft.src.Item.redstone, 'I', net.minecraft.src.Block
-				.stone });
+				.STONE });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.pocketSundial, 1
 				), new object[] { " # ", "#X#", " # ", '#', net.minecraft.src.Item
 				.ingotGold, 'X', net.minecraft.src.Item.redstone });
@@ -158,13 +158,13 @@ namespace net.minecraft.src
 				object[] { " # ", "#X#", " # ", '#', net.minecraft.src.Item.ingotIron
 				, 'X', net.minecraft.src.Item.redstone });
 			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.field_28021_bb, 1), new object[] { "###", "#X#", "###", '#', net.minecraft.src.Item.paper, 'X', net.minecraft.src.Item.compass });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.button, 1), new object[] { "#", "#", '#', net.minecraft.src.Block.stone });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.pressurePlateStone, 1), new object[] { "##", '#', net.minecraft.src.Block.stone });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.pressurePlatePlanks, 1), new object[] { "##", '#', net.minecraft.src.Block.planks });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.dispenser, 1), new object[] { "###", "#X#", "#R#", '#', net.minecraft.src.Block.cobblestone, 'X', net.minecraft.src.Item.bow, 'R', net.minecraft.src.Item.redstone });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.pistonBase, 1), new object[] { "TTT", "#X#", "#R#", '#', net.minecraft.src.Block.cobblestone, 'X', net.minecraft.src.Item.ingotIron, 'R', net.minecraft.src.Item.redstone, 'T', net.minecraft.src.Block.planks });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.pistonStickyBase, 1), new object[] { "S", "P", 'S', net.minecraft.src.Item.slimeBall, 'P', net.minecraft.src.Block.pistonBase });
-			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.bed, 1), new object[] { "###", "XXX", '#', net.minecraft.src.Block.cloth, 'X', net.minecraft.src.Block.planks });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.STONE_BUTTON, 1), new object[] { "#", "#", '#', net.minecraft.src.Block.STONE });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.STONE_PLATE, 1), new object[] { "##", '#', net.minecraft.src.Block.STONE });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.WOOD_PLATE, 1), new object[] { "##", '#', net.minecraft.src.Block.WOOD });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.DISPENSER, 1), new object[] { "###", "#X#", "#R#", '#', net.minecraft.src.Block.COBBLESTONE, 'X', net.minecraft.src.Item.bow, 'R', net.minecraft.src.Item.redstone });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.PISTON, 1), new object[] { "TTT", "#X#", "#R#", '#', net.minecraft.src.Block.COBBLESTONE, 'X', net.minecraft.src.Item.ingotIron, 'R', net.minecraft.src.Item.redstone, 'T', net.minecraft.src.Block.WOOD });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block.PISTON_STICKY, 1), new object[] { "S", "P", 'S', net.minecraft.src.Item.slimeBall, 'P', net.minecraft.src.Block.PISTON });
+			AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.bed, 1), new object[] { "###", "XXX", '#', net.minecraft.src.Block.WOOL, 'X', net.minecraft.src.Block.WOOD });
 			//recipes.Sort(new net.minecraft.src.RecipeSorter(this));
 			recipes.Sort(new net.minecraft.src.RecipeSorter(this));
 			System.Console.Out.WriteLine((new java.lang.StringBuilder()).Append(recipes.Count

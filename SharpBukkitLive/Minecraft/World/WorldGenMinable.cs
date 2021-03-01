@@ -57,7 +57,7 @@ namespace net.minecraft.src
 						{
 							double d14 = (((double)i3 + 0.5D) - d8) / (d10 / 2D);
 							if (d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && world.GetBlockId(k2, l2, i3) == net.minecraft.src.Block
-								.stone.blockID)
+								.STONE.blockID)
 							{
 								world.SetBlock(k2, l2, i3, minableBlockId);
 							}

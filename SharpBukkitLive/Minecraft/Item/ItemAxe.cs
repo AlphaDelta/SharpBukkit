@@ -20,8 +20,8 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            ItemTool, Block, EnumToolMaterial
 			blocksEffectiveAgainst = (new net.minecraft.src.Block[] { net.minecraft.src.Block
-				.planks, net.minecraft.src.Block.bookShelf, net.minecraft.src.Block.wood, net.minecraft.src.Block
-				.chest });
+				.WOOD, net.minecraft.src.Block.BOOKSHELF, net.minecraft.src.Block.LOG, net.minecraft.src.Block
+				.CHEST });
 		}
 	}
 }

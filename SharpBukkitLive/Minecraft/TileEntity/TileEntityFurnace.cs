@@ -248,7 +248,7 @@ namespace net.minecraft.src
 			{
 				return 20000;
 			}
-			return i != net.minecraft.src.Block.sapling.blockID ? 0 : 100;
+			return i != net.minecraft.src.Block.SAPLING.blockID ? 0 : 100;
 		}
 
 		public virtual bool CanInteractWith(net.minecraft.src.EntityPlayer entityplayer)

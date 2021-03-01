@@ -54,13 +54,13 @@ namespace net.minecraft.src
 		{
 			int l = 0;
 			int i1 = 0;
-			if (world.GetBlockId(i - 1, j, k) == net.minecraft.src.Block.obsidian.blockID || 
-				world.GetBlockId(i + 1, j, k) == net.minecraft.src.Block.obsidian.blockID)
+			if (world.GetBlockId(i - 1, j, k) == net.minecraft.src.Block.OBSISIAN.blockID || 
+				world.GetBlockId(i + 1, j, k) == net.minecraft.src.Block.OBSISIAN.blockID)
 			{
 				l = 1;
 			}
-			if (world.GetBlockId(i, j, k - 1) == net.minecraft.src.Block.obsidian.blockID || 
-				world.GetBlockId(i, j, k + 1) == net.minecraft.src.Block.obsidian.blockID)
+			if (world.GetBlockId(i, j, k - 1) == net.minecraft.src.Block.OBSISIAN.blockID || 
+				world.GetBlockId(i, j, k + 1) == net.minecraft.src.Block.OBSISIAN.blockID)
 			{
 				i1 = 1;
 			}
@@ -85,13 +85,13 @@ namespace net.minecraft.src
 					int j2 = world.GetBlockId(i + l * j1, j + l1, k + i1 * j1);
 					if (flag)
 					{
-						if (j2 != net.minecraft.src.Block.obsidian.blockID)
+						if (j2 != net.minecraft.src.Block.OBSISIAN.blockID)
 						{
 							return false;
 						}
 						continue;
 					}
-					if (j2 != 0 && j2 != net.minecraft.src.Block.fire.blockID)
+					if (j2 != 0 && j2 != net.minecraft.src.Block.FIRE.blockID)
 					{
 						return false;
 					}
@@ -103,7 +103,7 @@ namespace net.minecraft.src
 				for (int i2 = 0; i2 < 3; i2++)
 				{
 					world.SetBlockWithNotify(i + l * k1, j + i2, k + i1 * k1, net.minecraft.src.Block
-						.portal.blockID);
+						.PORTAL.blockID);
 				}
 			}
 			world.editingBlocks = false;
@@ -125,7 +125,7 @@ namespace net.minecraft.src
 			for (k1 = j; world.GetBlockId(i, k1 - 1, k) == blockID; k1--)
 			{
 			}
-			if (world.GetBlockId(i, k1 - 1, k) != net.minecraft.src.Block.obsidian.blockID)
+			if (world.GetBlockId(i, k1 - 1, k) != net.minecraft.src.Block.OBSISIAN.blockID)
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
 				return;
@@ -134,7 +134,7 @@ namespace net.minecraft.src
 			for (l1 = 1; l1 < 4 && world.GetBlockId(i, k1 + l1, k) == blockID; l1++)
 			{
 			}
-			if (l1 != 3 || world.GetBlockId(i, k1 + l1, k) != net.minecraft.src.Block.obsidian
+			if (l1 != 3 || world.GetBlockId(i, k1 + l1, k) != net.minecraft.src.Block.OBSISIAN
 				.blockID)
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
@@ -149,9 +149,9 @@ namespace net.minecraft.src
 				world.SetBlockWithNotify(i, j, k, 0);
 				return;
 			}
-			if ((world.GetBlockId(i + i1, j, k + j1) != net.minecraft.src.Block.obsidian.blockID
+			if ((world.GetBlockId(i + i1, j, k + j1) != net.minecraft.src.Block.OBSISIAN.blockID
 				 || world.GetBlockId(i - i1, j, k - j1) != blockID) && (world.GetBlockId(i - i1, 
-				j, k - j1) != net.minecraft.src.Block.obsidian.blockID || world.GetBlockId(i + i1
+				j, k - j1) != net.minecraft.src.Block.OBSISIAN.blockID || world.GetBlockId(i + i1
 				, j, k + j1) != blockID))
 			{
 				world.SetBlockWithNotify(i, j, k, 0);

@@ -17,33 +17,33 @@ namespace net.minecraft.src
 		public override bool Generate(net.minecraft.src.World world, SharpBukkitLive.SharpBukkit.SharpRandom random
 			, int i, int j, int k)
 		{
-			if (world.GetBlockId(i, j + 1, k) != net.minecraft.src.Block.bloodStone.blockID)
+			if (world.GetBlockId(i, j + 1, k) != net.minecraft.src.Block.NETHERRACK.blockID)
 			{
 				return false;
 			}
 			if (world.GetBlockId(i, j, k) != 0 && world.GetBlockId(i, j, k) != net.minecraft.src.Block
-				.bloodStone.blockID)
+				.NETHERRACK.blockID)
 			{
 				return false;
 			}
 			int l = 0;
-			if (world.GetBlockId(i - 1, j, k) == net.minecraft.src.Block.bloodStone.blockID)
+			if (world.GetBlockId(i - 1, j, k) == net.minecraft.src.Block.NETHERRACK.blockID)
 			{
 				l++;
 			}
-			if (world.GetBlockId(i + 1, j, k) == net.minecraft.src.Block.bloodStone.blockID)
+			if (world.GetBlockId(i + 1, j, k) == net.minecraft.src.Block.NETHERRACK.blockID)
 			{
 				l++;
 			}
-			if (world.GetBlockId(i, j, k - 1) == net.minecraft.src.Block.bloodStone.blockID)
+			if (world.GetBlockId(i, j, k - 1) == net.minecraft.src.Block.NETHERRACK.blockID)
 			{
 				l++;
 			}
-			if (world.GetBlockId(i, j, k + 1) == net.minecraft.src.Block.bloodStone.blockID)
+			if (world.GetBlockId(i, j, k + 1) == net.minecraft.src.Block.NETHERRACK.blockID)
 			{
 				l++;
 			}
-			if (world.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.bloodStone.blockID)
+			if (world.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.NETHERRACK.blockID)
 			{
 				l++;
 			}

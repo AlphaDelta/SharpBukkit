@@ -32,7 +32,7 @@ namespace net.minecraft.src
 						for (int l1 = -l; l1 <= l; l1++)
 						{
 							int i2 = world.GetBlockId(i + j1, j + k1, k + l1);
-							if (i2 == net.minecraft.src.Block.leaves.blockID)
+							if (i2 == net.minecraft.src.Block.LEAVES.blockID)
 							{
 								int j2 = world.GetBlockMetadata(i + j1, j + k1, k + l1);
 								world.SetBlockMetadata(i + j1, j + k1, k + l1, j2 | 8);
@@ -71,12 +71,12 @@ namespace net.minecraft.src
 							for (int i3 = -byte0; i3 <= byte0; i3++)
 							{
 								int k3 = world.GetBlockId(i + l1, j + k2, k + i3);
-								if (k3 == net.minecraft.src.Block.wood.blockID)
+								if (k3 == net.minecraft.src.Block.LOG.blockID)
 								{
 									adjacentTreeBlocks[(l1 + k1) * j1 + (k2 + k1) * byte1 + (i3 + k1)] = 0;
 									continue;
 								}
-								if (k3 == net.minecraft.src.Block.leaves.blockID)
+								if (k3 == net.minecraft.src.Block.LEAVES.blockID)
 								{
 									adjacentTreeBlocks[(l1 + k1) * j1 + (k2 + k1) * byte1 + (i3 + k1)] = -2;
 								}
@@ -156,7 +156,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.sapling.blockID;
+			return net.minecraft.src.Block.SAPLING.blockID;
 		}
 
 		public override void HarvestBlock(net.minecraft.src.World world, net.minecraft.src.EntityPlayer
@@ -168,7 +168,7 @@ namespace net.minecraft.src
 			{
 				entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[blockID], 1);
 				DropBlockAsItem_do(world, i, j, k, new net.minecraft.src.ItemStack(net.minecraft.src.Block
-					.leaves.blockID, 1, l & 3));
+					.LEAVES.blockID, 1, l & 3));
 			}
 			else
 			{

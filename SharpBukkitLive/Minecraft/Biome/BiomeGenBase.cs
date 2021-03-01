@@ -19,8 +19,8 @@ namespace net.minecraft.src
             //            EntitySquid, WorldGenBigTree, WorldGenTrees, EnumCreatureType, 
             //            BiomeGenRainforest, BiomeGenSwamp, BiomeGenForest, BiomeGenDesert, 
             //            BiomeGenTaiga, BiomeGenHell, BiomeGenSky, WorldGenerator
-            topBlock = unchecked((byte)net.minecraft.src.Block.grass.blockID);
-            fillerBlock = unchecked((byte)net.minecraft.src.Block.dirt.blockID);
+            topBlock = unchecked((byte)net.minecraft.src.Block.GRASS.blockID);
+            fillerBlock = unchecked((byte)net.minecraft.src.Block.DIRT.blockID);
             field_6161_q = 0x4ee031;
             spawnableMonsterList = new List<SpawnListEntry>();
             spawnableCreatureList = new List<SpawnListEntry>();
@@ -53,10 +53,10 @@ namespace net.minecraft.src
                     biomeLookupTable[i + j * 64] = GetBiome((float)i / 63F, (float)j / 63F);
                 }
             }
-            desert.topBlock = desert.fillerBlock = unchecked((byte)net.minecraft.src.Block.sand
+            desert.topBlock = desert.fillerBlock = unchecked((byte)net.minecraft.src.Block.SAND
                 .blockID);
             iceDesert.topBlock = iceDesert.fillerBlock = unchecked((byte)net.minecraft.src.Block
-                .sand.blockID);
+                .SAND.blockID);
         }
 
         public virtual net.minecraft.src.WorldGenerator GetRandomWorldGenForTrees(SharpRandom random)

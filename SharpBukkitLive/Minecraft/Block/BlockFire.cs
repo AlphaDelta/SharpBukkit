@@ -20,15 +20,15 @@ namespace net.minecraft.src
 
 		protected internal override void SetFireBurnRates()
 		{
-			SetBurnRate(net.minecraft.src.Block.planks.blockID, 5, 20);
-			SetBurnRate(net.minecraft.src.Block.fence.blockID, 5, 20);
-			SetBurnRate(net.minecraft.src.Block.stairCompactPlanks.blockID, 5, 20);
-			SetBurnRate(net.minecraft.src.Block.wood.blockID, 5, 5);
-			SetBurnRate(net.minecraft.src.Block.leaves.blockID, 30, 60);
-			SetBurnRate(net.minecraft.src.Block.bookShelf.blockID, 30, 20);
-			SetBurnRate(net.minecraft.src.Block.tnt.blockID, 15, 100);
-			SetBurnRate(net.minecraft.src.Block.tallGrass.blockID, 60, 100);
-			SetBurnRate(net.minecraft.src.Block.cloth.blockID, 30, 60);
+			SetBurnRate(net.minecraft.src.Block.WOOD.blockID, 5, 20);
+			SetBurnRate(net.minecraft.src.Block.FENCE.blockID, 5, 20);
+			SetBurnRate(net.minecraft.src.Block.WOOD_STAIRS.blockID, 5, 20);
+			SetBurnRate(net.minecraft.src.Block.LOG.blockID, 5, 5);
+			SetBurnRate(net.minecraft.src.Block.LEAVES.blockID, 30, 60);
+			SetBurnRate(net.minecraft.src.Block.BOOKSHELF.blockID, 30, 20);
+			SetBurnRate(net.minecraft.src.Block.TNT.blockID, 15, 100);
+			SetBurnRate(net.minecraft.src.Block.LONG_GRASS.blockID, 60, 100);
+			SetBurnRate(net.minecraft.src.Block.WOOL.blockID, 30, 60);
 		}
 
 		private void SetBurnRate(int i, int j, int k)
@@ -66,7 +66,7 @@ namespace net.minecraft.src
 		public override void UpdateTick(net.minecraft.src.World world, int i, int j, int 
 			k, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			bool flag = world.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.bloodStone.blockID;
+			bool flag = world.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.NETHERRACK.blockID;
 			if (!CanPlaceBlockAt(world, i, j, k))
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
@@ -150,7 +150,7 @@ namespace net.minecraft.src
 			int j1 = abilityToCatchFire[world.GetBlockId(i, j, k)];
 			if (random.Next(l) < j1)
 			{
-				bool flag = world.GetBlockId(i, j, k) == net.minecraft.src.Block.tnt.blockID;
+				bool flag = world.GetBlockId(i, j, k) == net.minecraft.src.Block.TNT.blockID;
 				if (random.Next(i1 + 10) < 5 && !world.CanLightningStrikeAt(i, j, k))
 				{
 					int k1 = i1 + random.Next(5) / 4;
@@ -166,7 +166,7 @@ namespace net.minecraft.src
 				}
 				if (flag)
 				{
-					net.minecraft.src.Block.tnt.OnBlockDestroyedByPlayer(world, i, j, k, 1);
+					net.minecraft.src.Block.TNT.OnBlockDestroyedByPlayer(world, i, j, k, 1);
 				}
 			}
 		}
@@ -264,8 +264,8 @@ namespace net.minecraft.src
 		public override void OnBlockAdded(net.minecraft.src.World world, int i, int j, int
 			 k)
 		{
-			if (world.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.obsidian.blockID && 
-				net.minecraft.src.Block.portal.TryToCreatePortal(world, i, j, k))
+			if (world.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.OBSISIAN.blockID && 
+				net.minecraft.src.Block.PORTAL.TryToCreatePortal(world, i, j, k))
 			{
 				return;
 			}

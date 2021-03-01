@@ -99,11 +99,11 @@ namespace net.minecraft.src
 						i5 = i5 * i5 * 0x1dd6751 + i5 * 11;
 						if ((i5 >> 20 & 1) == 0)
 						{
-							ai[net.minecraft.src.Block.dirt.blockID] += 10;
+							ai[net.minecraft.src.Block.DIRT.blockID] += 10;
 						}
 						else
 						{
-							ai[net.minecraft.src.Block.stone.blockID] += 10;
+							ai[net.minecraft.src.Block.STONE.blockID] += 10;
 						}
 						d1 = 100D;
 					}

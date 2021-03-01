@@ -54,7 +54,7 @@ namespace net.minecraft.src
 		public override void OnBlockAdded(net.minecraft.src.World world, int i, int j, int
 			 k)
 		{
-			if (this != net.minecraft.src.Block.stairSingle)
+			if (this != net.minecraft.src.Block.STEP)
 			{
 				base.OnBlockAdded(world, i, j, k);
 			}
@@ -65,17 +65,17 @@ namespace net.minecraft.src
 			{
 				return;
 			}
-			if (l == stairSingle.blockID)
+			if (l == STEP.blockID)
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
-				world.SetBlockAndMetadataWithNotify(i, j - 1, k, net.minecraft.src.Block.stairDouble
+				world.SetBlockAndMetadataWithNotify(i, j - 1, k, net.minecraft.src.Block.DOUBLE_STEP
 					.blockID, i1);
 			}
 		}
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.stairSingle.blockID;
+			return net.minecraft.src.Block.STEP.blockID;
 		}
 
 		public override int QuantityDropped(SharpBukkitLive.SharpBukkit.SharpRandom random)

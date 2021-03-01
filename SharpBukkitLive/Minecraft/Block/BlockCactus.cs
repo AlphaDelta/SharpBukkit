@@ -122,8 +122,8 @@ namespace net.minecraft.src
             else
             {
                 int l = world.GetBlockId(i, j - 1, k);
-                return l == net.minecraft.src.Block.cactus.blockID || l == net.minecraft.src.Block
-                    .sand.blockID;
+                return l == net.minecraft.src.Block.CACTUS.blockID || l == net.minecraft.src.Block
+                    .SAND.blockID;
             }
         }
 

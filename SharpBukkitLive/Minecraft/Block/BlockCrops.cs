@@ -21,7 +21,7 @@ namespace net.minecraft.src
 
 		protected internal override bool CanThisPlantGrowOnThisBlockID(int i)
 		{
-			return i == net.minecraft.src.Block.tilledField.blockID;
+			return i == net.minecraft.src.Block.SOIL.blockID;
 		}
 
 		public override void UpdateTick(net.minecraft.src.World world, int i, int j, int 
@@ -68,7 +68,7 @@ namespace net.minecraft.src
 				{
 					int j3 = world.GetBlockId(l2, j - 1, i3);
 					float f1 = 0.0F;
-					if (j3 == net.minecraft.src.Block.tilledField.blockID)
+					if (j3 == net.minecraft.src.Block.SOIL.blockID)
 					{
 						f1 = 1.0F;
 						if (world.GetBlockMetadata(l2, j - 1, i3) > 0)

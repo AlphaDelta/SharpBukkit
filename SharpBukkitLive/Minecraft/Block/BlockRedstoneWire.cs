@@ -440,7 +440,7 @@ namespace net.minecraft.src
             , int i, int j, int k, int l)
         {
             int i1 = iblockaccess.GetBlockId(i, j, k);
-            if (i1 == net.minecraft.src.Block.redstoneWire.blockID)
+            if (i1 == net.minecraft.src.Block.REDSTONE_WIRE.blockID)
             {
                 return true;
             }
@@ -452,8 +452,8 @@ namespace net.minecraft.src
             {
                 return true;
             }
-            if (i1 == net.minecraft.src.Block.redstoneRepeaterIdle.blockID || i1 == net.minecraft.src.Block
-                .redstoneRepeaterActive.blockID)
+            if (i1 == net.minecraft.src.Block.DIODE_OFF.blockID || i1 == net.minecraft.src.Block
+                .DIODE_ON.blockID)
             {
                 int j1 = iblockaccess.GetBlockMetadata(i, j, k);
                 return l == net.minecraft.src.ModelBed.field_22153_b[j1 & 3];

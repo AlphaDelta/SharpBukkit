@@ -43,7 +43,7 @@ namespace net.minecraft.src
 		public override bool CanCoordinateBeSpawn(int i, int j)
 		{
 			int k = worldObj.GetFirstUncoveredBlock(i, j);
-			if (k == net.minecraft.src.Block.bedrock.blockID)
+			if (k == net.minecraft.src.Block.BEDROCK.blockID)
 			{
 				return false;
 			}

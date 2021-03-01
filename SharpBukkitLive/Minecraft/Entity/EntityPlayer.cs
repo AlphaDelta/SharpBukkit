@@ -714,7 +714,7 @@ namespace net.minecraft.src
             net.minecraft.src.ChunkCoordinates chunkcoordinates = playerLocation;
             net.minecraft.src.ChunkCoordinates chunkcoordinates1 = playerLocation;
             if (chunkcoordinates != null && worldObj.GetBlockId(chunkcoordinates.posX, chunkcoordinates
-                .posY, chunkcoordinates.posZ) == net.minecraft.src.Block.bed.blockID)
+                .posY, chunkcoordinates.posZ) == net.minecraft.src.Block.BED.blockID)
             {
                 net.minecraft.src.BlockBed.Func_22022_a(worldObj, chunkcoordinates.posX, chunkcoordinates
                     .posY, chunkcoordinates.posZ, false);
@@ -751,7 +751,7 @@ namespace net.minecraft.src
         private bool IsInBed()
         {
             return worldObj.GetBlockId(playerLocation.posX, playerLocation.posY, playerLocation
-                .posZ) == net.minecraft.src.Block.bed.blockID;
+                .posZ) == net.minecraft.src.Block.BED.blockID;
         }
 
         public static net.minecraft.src.ChunkCoordinates Func_25051_a(net.minecraft.src.World
@@ -767,7 +767,7 @@ namespace net.minecraft.src
             ichunkprovider.LoadChunk(chunkcoordinates.posX + 3 >> 4, chunkcoordinates.posZ +
                 3 >> 4);
             if (world.GetBlockId(chunkcoordinates.posX, chunkcoordinates.posY, chunkcoordinates
-                .posZ) != net.minecraft.src.Block.bed.blockID)
+                .posZ) != net.minecraft.src.Block.BED.blockID)
             {
                 return null;
             }

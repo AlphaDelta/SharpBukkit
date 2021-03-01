@@ -46,7 +46,7 @@ namespace net.minecraft.src
             {
                 i++;
             }
-            if (!net.minecraft.src.Block.signPost.CanPlaceBlockAt(world, i, j, k))
+            if (!net.minecraft.src.Block.SIGN_POST.CanPlaceBlockAt(world, i, j, k))
             {
                 return false;
             }
@@ -54,12 +54,12 @@ namespace net.minecraft.src
             {
                 world.SetBlockAndMetadataWithNotify(
                     i, j, k,
-                    net.minecraft.src.Block.signPost.blockID,
+                    net.minecraft.src.Block.SIGN_POST.blockID,
                     net.minecraft.src.MathHelper.Floor_double((double)(((entityplayer.rotationYaw + 180F) * 16F) / 360F) + 0.5D) & 0xf);
             }
             else
             {
-                world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.signWall.blockID, l);
+                world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.WALL_SIGN.blockID, l);
             }
             itemstack.stackSize--;
             net.minecraft.src.TileEntitySign tileentitysign = (net.minecraft.src.TileEntitySign

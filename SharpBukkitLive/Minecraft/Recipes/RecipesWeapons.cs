@@ -11,8 +11,8 @@ namespace net.minecraft.src
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            Block, Item, ItemStack, CraftingManager
-			recipeItems = (new object[][] { new object[] { net.minecraft.src.Block.planks, net.minecraft.src.Block
-				.cobblestone, net.minecraft.src.Item.ingotIron, net.minecraft.src.Item.diamond, 
+			recipeItems = (new object[][] { new object[] { net.minecraft.src.Block.WOOD, net.minecraft.src.Block
+				.COBBLESTONE, net.minecraft.src.Item.ingotIron, net.minecraft.src.Item.diamond, 
 				net.minecraft.src.Item.ingotGold }, new object[] { net.minecraft.src.Item.swordWood
 				, net.minecraft.src.Item.swordStone, net.minecraft.src.Item.swordSteel, net.minecraft.src.Item
 				.swordDiamond, net.minecraft.src.Item.swordGold } });

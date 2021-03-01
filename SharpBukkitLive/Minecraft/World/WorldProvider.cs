@@ -50,7 +50,7 @@ namespace net.minecraft.src
 		public virtual bool CanCoordinateBeSpawn(int i, int j)
 		{
 			int k = worldObj.GetFirstUncoveredBlock(i, j);
-			return k == net.minecraft.src.Block.sand.blockID;
+			return k == net.minecraft.src.Block.SAND.blockID;
 		}
 
 		public virtual float CalculateCelestialAngle(long l, float f)

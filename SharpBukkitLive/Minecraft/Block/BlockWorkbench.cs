@@ -23,7 +23,7 @@ namespace net.minecraft.src
 			}
 			if (i == 0)
 			{
-				return net.minecraft.src.Block.planks.GetBlockTextureFromSide(0);
+				return net.minecraft.src.Block.WOOD.GetBlockTextureFromSide(0);
 			}
 			if (i == 2 || i == 4)
 			{

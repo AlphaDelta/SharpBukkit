@@ -23,7 +23,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.wood.blockID;
+			return net.minecraft.src.Block.LOG.blockID;
 		}
 
 		public override void HarvestBlock(net.minecraft.src.World world, net.minecraft.src.EntityPlayer
@@ -46,7 +46,7 @@ namespace net.minecraft.src
 						for (int k1 = -byte0; k1 <= byte0; k1++)
 						{
 							int l1 = world.GetBlockId(i + i1, j + j1, k + k1);
-							if (l1 != net.minecraft.src.Block.leaves.blockID)
+							if (l1 != net.minecraft.src.Block.LEAVES.blockID)
 							{
 								continue;
 							}

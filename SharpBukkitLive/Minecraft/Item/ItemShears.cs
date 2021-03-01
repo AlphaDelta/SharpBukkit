@@ -20,7 +20,7 @@ namespace net.minecraft.src
 		public override bool Func_25007_a(net.minecraft.src.ItemStack itemstack, int i, int
 			 j, int k, int l, net.minecraft.src.EntityLiving entityliving)
 		{
-			if (i == net.minecraft.src.Block.leaves.blockID || i == net.minecraft.src.Block.web
+			if (i == net.minecraft.src.Block.LEAVES.blockID || i == net.minecraft.src.Block.WEB
 				.blockID)
 			{
 				itemstack.DamageItem(1, entityliving);
@@ -30,18 +30,18 @@ namespace net.minecraft.src
 
 		public override bool CanHarvestBlock(net.minecraft.src.Block block)
 		{
-			return block.blockID == net.minecraft.src.Block.web.blockID;
+			return block.blockID == net.minecraft.src.Block.WEB.blockID;
 		}
 
 		public override float GetStrVsBlock(net.minecraft.src.ItemStack itemstack, net.minecraft.src.Block
 			 block)
 		{
-			if (block.blockID == net.minecraft.src.Block.web.blockID || block.blockID == net.minecraft.src.Block
-				.leaves.blockID)
+			if (block.blockID == net.minecraft.src.Block.WEB.blockID || block.blockID == net.minecraft.src.Block
+				.LEAVES.blockID)
 			{
 				return 15F;
 			}
-			if (block.blockID == net.minecraft.src.Block.cloth.blockID)
+			if (block.blockID == net.minecraft.src.Block.WOOL.blockID)
 			{
 				return 5F;
 			}

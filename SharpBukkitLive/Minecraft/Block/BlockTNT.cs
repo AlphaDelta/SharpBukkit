@@ -78,7 +78,7 @@ namespace net.minecraft.src
 			if ((l & 1) == 0)
 			{
 				DropBlockAsItem_do(world, i, j, k, new net.minecraft.src.ItemStack(net.minecraft.src.Block
-					.tnt.blockID, 1, 0));
+					.TNT.blockID, 1, 0));
 			}
 			else
 			{

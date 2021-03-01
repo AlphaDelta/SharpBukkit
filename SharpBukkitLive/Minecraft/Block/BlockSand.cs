@@ -75,7 +75,7 @@ namespace net.minecraft.src
 			{
 				return true;
 			}
-			if (l == net.minecraft.src.Block.fire.blockID)
+			if (l == net.minecraft.src.Block.FIRE.blockID)
 			{
 				return true;
 			}

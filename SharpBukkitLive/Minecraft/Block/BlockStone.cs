@@ -16,7 +16,7 @@ namespace net.minecraft.src
 		//            Block, Material
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.cobblestone.blockID;
+			return net.minecraft.src.Block.COBBLESTONE.blockID;
 		}
 	}
 }

@@ -16,11 +16,11 @@ namespace net.minecraft.src
 		//            ItemTool, Block, EnumToolMaterial
 		public override bool CanHarvestBlock(net.minecraft.src.Block block)
 		{
-			if (block == net.minecraft.src.Block.snow)
+			if (block == net.minecraft.src.Block.SNOW)
 			{
 				return true;
 			}
-			return block == net.minecraft.src.Block.blockSnow;
+			return block == net.minecraft.src.Block.SNOW_BLOCK;
 		}
 
 		private static net.minecraft.src.Block[] blocksEffectiveAgainst;
@@ -28,9 +28,9 @@ namespace net.minecraft.src
 		static ItemSpade()
 		{
 			blocksEffectiveAgainst = (new net.minecraft.src.Block[] { net.minecraft.src.Block
-				.grass, net.minecraft.src.Block.dirt, net.minecraft.src.Block.sand, net.minecraft.src.Block
-				.gravel, net.minecraft.src.Block.snow, net.minecraft.src.Block.blockSnow, net.minecraft.src.Block
-				.blockClay, net.minecraft.src.Block.tilledField });
+				.GRASS, net.minecraft.src.Block.DIRT, net.minecraft.src.Block.SAND, net.minecraft.src.Block
+				.GRAVEL, net.minecraft.src.Block.SNOW, net.minecraft.src.Block.SNOW_BLOCK, net.minecraft.src.Block
+				.CLAY, net.minecraft.src.Block.SOIL });
 		}
 	}
 }

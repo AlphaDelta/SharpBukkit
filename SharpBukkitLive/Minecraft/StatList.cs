@@ -134,17 +134,17 @@ namespace net.minecraft.src
 
         private static void ReplaceAllSimilarBlocks(net.minecraft.src.StatBase[] astatbase)
         {
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.waterStill.blockID, net.minecraft.src.Block.waterMoving.blockID);
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.lavaStill.blockID, net.minecraft.src.Block.lavaStill.blockID);
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.pumpkinLantern.blockID, net.minecraft.src.Block.pumpkin.blockID);
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.stoneOvenActive.blockID, net.minecraft.src.Block.stoneOvenIdle.blockID);
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.oreRedstoneGlowing.blockID, net.minecraft.src.Block.oreRedstone.blockID);
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.redstoneRepeaterActive.blockID, net.minecraft.src.Block.redstoneRepeaterIdle.blockID);
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.torchRedstoneActive.blockID, net.minecraft.src.Block.torchRedstoneIdle.blockID);
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.mushroomRed.blockID, net.minecraft.src.Block.mushroomBrown.blockID);
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.stairDouble.blockID, net.minecraft.src.Block.stairSingle.blockID);
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.grass.blockID, net.minecraft.src.Block.dirt.blockID);
-            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.tilledField.blockID, net.minecraft.src.Block.dirt.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.STATIONARY_WATER.blockID, net.minecraft.src.Block.WATER.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.STATIONARY_LAVA.blockID, net.minecraft.src.Block.STATIONARY_LAVA.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.JACK_O_LANTERN.blockID, net.minecraft.src.Block.PUMPKIN.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.BURNING_FURNACE.blockID, net.minecraft.src.Block.FURNACE.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.GLOWING_REDSTONE_ORE.blockID, net.minecraft.src.Block.REDSTONE_ORE.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.DIODE_ON.blockID, net.minecraft.src.Block.DIODE_OFF.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.REDSTONE_TORCH_ON.blockID, net.minecraft.src.Block.REDSTONE_TORCH_OFF.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.RED_MUSHROOM.blockID, net.minecraft.src.Block.BROWN_MUSHROOM.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.DOUBLE_STEP.blockID, net.minecraft.src.Block.STEP.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.GRASS.blockID, net.minecraft.src.Block.DIRT.blockID);
+            ReplaceSimilarBlocks(astatbase, net.minecraft.src.Block.SOIL.blockID, net.minecraft.src.Block.DIRT.blockID);
         }
 
         private static void ReplaceSimilarBlocks(net.minecraft.src.StatBase[] astatbase, int i, int j)

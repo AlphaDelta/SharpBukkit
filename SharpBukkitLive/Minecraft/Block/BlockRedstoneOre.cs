@@ -49,9 +49,9 @@ namespace net.minecraft.src
 		private void Func_321_g(net.minecraft.src.World world, int i, int j, int k)
 		{
 			Func_320_h(world, i, j, k);
-			if (blockID == net.minecraft.src.Block.oreRedstone.blockID)
+			if (blockID == net.minecraft.src.Block.REDSTONE_ORE.blockID)
 			{
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.oreRedstoneGlowing.blockID
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.GLOWING_REDSTONE_ORE.blockID
 					);
 			}
 		}
@@ -59,9 +59,9 @@ namespace net.minecraft.src
 		public override void UpdateTick(net.minecraft.src.World world, int i, int j, int 
 			k, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			if (blockID == net.minecraft.src.Block.oreRedstoneGlowing.blockID)
+			if (blockID == net.minecraft.src.Block.GLOWING_REDSTONE_ORE.blockID)
 			{
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.oreRedstone.blockID);
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.REDSTONE_ORE.blockID);
 			}
 		}
 

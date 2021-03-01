@@ -28,8 +28,8 @@ namespace net.minecraft.src
 
 		protected internal virtual bool CanThisPlantGrowOnThisBlockID(int i)
 		{
-			return i == net.minecraft.src.Block.grass.blockID || i == net.minecraft.src.Block
-				.dirt.blockID || i == net.minecraft.src.Block.tilledField.blockID;
+			return i == net.minecraft.src.Block.GRASS.blockID || i == net.minecraft.src.Block
+				.DIRT.blockID || i == net.minecraft.src.Block.SOIL.blockID;
 		}
 
 		public override void OnNeighborBlockChange(net.minecraft.src.World world, int i, 

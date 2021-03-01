@@ -283,11 +283,11 @@ namespace net.minecraft.src
 		private bool Func_309_k(net.minecraft.src.World world, int x, int y, int z)
 		{
 			int l = world.GetBlockId(x, y, z);
-			if (l == net.minecraft.src.Block.doorWood.blockID
-				|| l == net.minecraft.src.Block.doorSteel.blockID
-				|| l == net.minecraft.src.Block.signPost.blockID
-				|| l == net.minecraft.src.Block.ladder.blockID
-				|| l == net.minecraft.src.Block.reed.blockID)
+			if (l == net.minecraft.src.Block.WOODEN_DOOR.blockID
+				|| l == net.minecraft.src.Block.IRON_DOOR_BLOCK.blockID
+				|| l == net.minecraft.src.Block.SIGN_POST.blockID
+				|| l == net.minecraft.src.Block.LADDER.blockID
+				|| l == net.minecraft.src.Block.SUGAR_CANE_BLOCK.blockID)
 			{
 				return true;
 			}

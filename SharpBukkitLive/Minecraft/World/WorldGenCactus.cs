@@ -28,9 +28,9 @@ namespace net.minecraft.src
 				int l1 = 1 + random.Next(random.Next(3) + 1);
 				for (int i2 = 0; i2 < l1; i2++)
 				{
-					if (net.minecraft.src.Block.cactus.CanBlockStay(world, i1, j1 + i2, k1))
+					if (net.minecraft.src.Block.CACTUS.CanBlockStay(world, i1, j1 + i2, k1))
 					{
-						world.SetBlock(i1, j1 + i2, k1, net.minecraft.src.Block.cactus.blockID);
+						world.SetBlock(i1, j1 + i2, k1, net.minecraft.src.Block.CACTUS.blockID);
 					}
 				}
 			}

@@ -26,20 +26,20 @@ namespace net.minecraft.src
 				int i = net.minecraft.src.MathHelper.Floor_double(d);
 				int k = net.minecraft.src.MathHelper.Floor_double(d1);
 				int i1 = net.minecraft.src.MathHelper.Floor_double(d2);
-				if (world.GetBlockId(i, k, i1) == 0 && net.minecraft.src.Block.fire.CanPlaceBlockAt
+				if (world.GetBlockId(i, k, i1) == 0 && net.minecraft.src.Block.FIRE.CanPlaceBlockAt
 					(world, i, k, i1))
 				{
-					world.SetBlockWithNotify(i, k, i1, net.minecraft.src.Block.fire.blockID);
+					world.SetBlockWithNotify(i, k, i1, net.minecraft.src.Block.FIRE.blockID);
 				}
 				for (int j = 0; j < 4; j++)
 				{
 					int l = (net.minecraft.src.MathHelper.Floor_double(d) + rand.Next(3)) - 1;
 					int j1 = (net.minecraft.src.MathHelper.Floor_double(d1) + rand.Next(3)) - 1;
 					int k1 = (net.minecraft.src.MathHelper.Floor_double(d2) + rand.Next(3)) - 1;
-					if (world.GetBlockId(l, j1, k1) == 0 && net.minecraft.src.Block.fire.CanPlaceBlockAt
+					if (world.GetBlockId(l, j1, k1) == 0 && net.minecraft.src.Block.FIRE.CanPlaceBlockAt
 						(world, l, j1, k1))
 					{
-						world.SetBlockWithNotify(l, j1, k1, net.minecraft.src.Block.fire.blockID);
+						world.SetBlockWithNotify(l, j1, k1, net.minecraft.src.Block.FIRE.blockID);
 					}
 				}
 			}
@@ -76,10 +76,10 @@ namespace net.minecraft.src
 							int i = net.minecraft.src.MathHelper.Floor_double(posX);
 							int j = net.minecraft.src.MathHelper.Floor_double(posY);
 							int k = net.minecraft.src.MathHelper.Floor_double(posZ);
-							if (worldObj.GetBlockId(i, j, k) == 0 && net.minecraft.src.Block.fire.CanPlaceBlockAt
+							if (worldObj.GetBlockId(i, j, k) == 0 && net.minecraft.src.Block.FIRE.CanPlaceBlockAt
 								(worldObj, i, j, k))
 							{
-								worldObj.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.fire.blockID);
+								worldObj.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.FIRE.blockID);
 							}
 						}
 					}

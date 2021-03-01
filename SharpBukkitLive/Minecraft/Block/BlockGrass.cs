@@ -30,7 +30,7 @@ namespace net.minecraft.src
 				{
 					return;
 				}
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.dirt.blockID);
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.DIRT.blockID);
 			}
 			else
 			{
@@ -40,11 +40,11 @@ namespace net.minecraft.src
 					int i1 = (j + random.Next(5)) - 3;
 					int j1 = (k + random.Next(3)) - 1;
 					int k1 = world.GetBlockId(l, i1 + 1, j1);
-					if (world.GetBlockId(l, i1, j1) == net.minecraft.src.Block.dirt.blockID && world.
+					if (world.GetBlockId(l, i1, j1) == net.minecraft.src.Block.DIRT.blockID && world.
 						GetBlockLightValue(l, i1 + 1, j1) >= 4 && net.minecraft.src.Block.lightOpacity[k1
 						] <= 2)
 					{
-						world.SetBlockWithNotify(l, i1, j1, net.minecraft.src.Block.grass.blockID);
+						world.SetBlockWithNotify(l, i1, j1, net.minecraft.src.Block.GRASS.blockID);
 					}
 				}
 			}
@@ -52,7 +52,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.dirt.IdDropped(0, random);
+			return net.minecraft.src.Block.DIRT.IdDropped(0, random);
 		}
 	}
 }

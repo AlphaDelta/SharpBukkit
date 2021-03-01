@@ -26,7 +26,7 @@ namespace net.minecraft.src
 		public override void OnPickupFromSlot(net.minecraft.src.ItemStack itemstack)
 		{
 			itemstack.AddCraftStatistic(field_25004_e.worldObj, field_25004_e);
-			if (itemstack.itemID == net.minecraft.src.Block.workbench.blockID)
+			if (itemstack.itemID == net.minecraft.src.Block.WORKBENCH.blockID)
 			{
 				field_25004_e.AddStat(net.minecraft.src.AchievementList.aBuildWorkBench, 1);
 			}
@@ -38,7 +38,7 @@ namespace net.minecraft.src
 				}
 				else
 				{
-					if (itemstack.itemID == net.minecraft.src.Block.stoneOvenIdle.blockID)
+					if (itemstack.itemID == net.minecraft.src.Block.FURNACE.blockID)
 					{
 						field_25004_e.AddStat(net.minecraft.src.AchievementList.aBuildFurnace, 1);
 					}

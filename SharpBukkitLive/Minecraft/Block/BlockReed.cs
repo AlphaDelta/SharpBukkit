@@ -52,7 +52,7 @@ namespace net.minecraft.src
 			{
 				return true;
 			}
-			if (l != net.minecraft.src.Block.grass.blockID && l != net.minecraft.src.Block.dirt
+			if (l != net.minecraft.src.Block.GRASS.blockID && l != net.minecraft.src.Block.DIRT
 				.blockID)
 			{
 				return false;

@@ -125,13 +125,13 @@ namespace net.minecraft.src
                         label0_continue:;
                     }
                     label0_break:;
-                    DropItemWithOffset(net.minecraft.src.Block.chest.blockID, 1, 0.0F);
+                    DropItemWithOffset(net.minecraft.src.Block.CHEST.blockID, 1, 0.0F);
                 }
                 else
                 {
                     if (minecartType == 2)
                     {
-                        DropItemWithOffset(net.minecraft.src.Block.stoneOvenIdle.blockID, 1, 0.0F);
+                        DropItemWithOffset(net.minecraft.src.Block.FURNACE.blockID, 1, 0.0F);
                     }
                 }
             }
@@ -242,7 +242,7 @@ namespace net.minecraft.src
                 posY = j;
                 bool flag1 = false;
                 bool flag2 = false;
-                if (l == net.minecraft.src.Block.railPowered.blockID)
+                if (l == net.minecraft.src.Block.GOLDEN_RAIL.blockID)
                 {
                     flag1 = (i1 & 8) != 0;
                     flag2 = !flag1;

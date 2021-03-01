@@ -14,14 +14,14 @@ namespace net.minecraft.src
 			k)
 		{
 			int l = world.GetBlockId(i, j, k);
-			return l == net.minecraft.src.Block.minecartTrack.blockID || l == net.minecraft.src.Block
-				.railPowered.blockID || l == net.minecraft.src.Block.railDetector.blockID;
+			return l == net.minecraft.src.Block.RAILS.blockID || l == net.minecraft.src.Block
+				.GOLDEN_RAIL.blockID || l == net.minecraft.src.Block.DETECTOR_RAIL.blockID;
 		}
 
 		public static bool Func_27030_c(int i)
 		{
-			return i == net.minecraft.src.Block.minecartTrack.blockID || i == net.minecraft.src.Block
-				.railPowered.blockID || i == net.minecraft.src.Block.railDetector.blockID;
+			return i == net.minecraft.src.Block.RAILS.blockID || i == net.minecraft.src.Block
+				.GOLDEN_RAIL.blockID || i == net.minecraft.src.Block.DETECTOR_RAIL.blockID;
 		}
 
 		protected internal BlockRail(int i, int j, bool flag)
@@ -73,7 +73,7 @@ namespace net.minecraft.src
 		{
 			if (field_27034_a)
 			{
-				if (blockID == net.minecraft.src.Block.railPowered.blockID && (j & 8) == 0)
+				if (blockID == net.minecraft.src.Block.GOLDEN_RAIL.blockID && (j & 8) == 0)
 				{
 					return blockIndexInTexture - 16;
 				}
@@ -154,7 +154,7 @@ namespace net.minecraft.src
 			}
 			else
 			{
-				if (blockID == net.minecraft.src.Block.railPowered.blockID)
+				if (blockID == net.minecraft.src.Block.GOLDEN_RAIL.blockID)
 				{
 					bool flag1 = world.IsBlockIndirectlyGettingPowered(i, j, k) || world.IsBlockIndirectlyGettingPowered
 						(i, j + 1, k);
@@ -328,7 +328,7 @@ namespace net.minecraft.src
 			 flag, int l, int i1)
 		{
 			int j1 = world.GetBlockId(i, j, k);
-			if (j1 == net.minecraft.src.Block.railPowered.blockID)
+			if (j1 == net.minecraft.src.Block.GOLDEN_RAIL.blockID)
 			{
 				int k1 = world.GetBlockMetadata(i, j, k);
 				int l1 = k1 & 7;

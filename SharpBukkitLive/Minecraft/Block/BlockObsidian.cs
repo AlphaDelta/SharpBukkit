@@ -21,7 +21,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.obsidian.blockID;
+			return net.minecraft.src.Block.OBSISIAN.blockID;
 		}
 	}
 }

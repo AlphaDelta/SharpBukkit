@@ -24,7 +24,7 @@ namespace net.minecraft.src
 				return false;
 			}
 			int i1 = world.GetBlockId(i, j, k);
-			if (i1 == net.minecraft.src.Block.tilledField.blockID && world.IsAirBlock(i, j + 
+			if (i1 == net.minecraft.src.Block.SOIL.blockID && world.IsAirBlock(i, j + 
 				1, k))
 			{
 				world.SetBlockWithNotify(i, j + 1, k, field_271_a);

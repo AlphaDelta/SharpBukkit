@@ -21,7 +21,7 @@ namespace net.minecraft.src
 		public override float GetStrVsBlock(net.minecraft.src.ItemStack itemstack, net.minecraft.src.Block
 			 block)
 		{
-			return block.blockID != net.minecraft.src.Block.web.blockID ? 1.5F : 15F;
+			return block.blockID != net.minecraft.src.Block.WEB.blockID ? 1.5F : 15F;
 		}
 
 		public override bool HitEntity(net.minecraft.src.ItemStack itemstack, net.minecraft.src.EntityLiving
@@ -45,7 +45,7 @@ namespace net.minecraft.src
 
 		public override bool CanHarvestBlock(net.minecraft.src.Block block)
 		{
-			return block.blockID == net.minecraft.src.Block.web.blockID;
+			return block.blockID == net.minecraft.src.Block.WEB.blockID;
 		}
 
 		private int weaponDamage;

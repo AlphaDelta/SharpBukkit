@@ -17,10 +17,10 @@ namespace net.minecraft.src
 		{
 			craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.
 				bowlSoup), new object[] { "Y", "X", "#", 'X', net.minecraft.src.Block
-				.mushroomBrown, 'Y', net.minecraft.src.Block.mushroomRed, '#', net.minecraft.src.Item.bowlEmpty });
+				.BROWN_MUSHROOM, 'Y', net.minecraft.src.Block.RED_MUSHROOM, '#', net.minecraft.src.Item.bowlEmpty });
 			craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.
 				bowlSoup), new object[] { "Y", "X", "#", 'X', net.minecraft.src.Block
-				.mushroomRed, 'Y', net.minecraft.src.Block.mushroomBrown, '#', net.minecraft.src.Item.bowlEmpty });
+				.RED_MUSHROOM, 'Y', net.minecraft.src.Block.BROWN_MUSHROOM, '#', net.minecraft.src.Item.bowlEmpty });
 			craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.
 				cookie, 8), new object[] { "#X#", 'X', new net.minecraft.src.ItemStack
 				(net.minecraft.src.Item.dyePowder, 1, 3), '#', net.minecraft.src.Item

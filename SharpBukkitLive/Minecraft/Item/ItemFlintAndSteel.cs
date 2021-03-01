@@ -49,7 +49,7 @@ namespace net.minecraft.src
 			{
 				world.PlaySoundEffect((double)i + 0.5D, (double)j + 0.5D, (double)k + 0.5D, "fire.ignite"
 					, 1.0F, itemRand.NextFloat() * 0.4F + 0.8F);
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.fire.blockID);
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.FIRE.blockID);
 			}
 			itemstack.DamageItem(1, entityplayer);
 			return true;

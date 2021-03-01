@@ -28,11 +28,11 @@ namespace net.minecraft.src
 			net.minecraft.src.Block block;
 			if (field_260_a == net.minecraft.src.Material.wood)
 			{
-				block = net.minecraft.src.Block.doorWood;
+				block = net.minecraft.src.Block.WOODEN_DOOR;
 			}
 			else
 			{
-				block = net.minecraft.src.Block.doorSteel;
+				block = net.minecraft.src.Block.IRON_DOOR_BLOCK;
 			}
 			if (!block.CanPlaceBlockAt(world, i, j, k))
 			{

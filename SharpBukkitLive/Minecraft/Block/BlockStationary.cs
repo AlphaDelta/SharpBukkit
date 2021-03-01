@@ -58,7 +58,7 @@ namespace net.minecraft.src
 							(world, i, j, k - 1) || Func_4033_j(world, i, j, k + 1) || Func_4033_j(world, i, 
 							j - 1, k) || Func_4033_j(world, i, j + 1, k))
 						{
-							world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.fire.blockID);
+							world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.FIRE.blockID);
 							return;
 						}
 						continue;

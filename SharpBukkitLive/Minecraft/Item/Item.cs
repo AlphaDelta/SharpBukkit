@@ -457,16 +457,16 @@ namespace net.minecraft.src
             hoeSteel = (new net.minecraft.src.ItemHoe(36, net.minecraft.src.EnumToolMaterial.IRON)).SetIconCoord(2, 8).SetItemName("hoeIron");
             hoeDiamond = (new net.minecraft.src.ItemHoe(37, net.minecraft.src.EnumToolMaterial.EMERALD)).SetIconCoord(3, 8).SetItemName("hoeDiamond");
             hoeGold = (new net.minecraft.src.ItemHoe(38, net.minecraft.src.EnumToolMaterial.GOLD)).SetIconCoord(4, 8).SetItemName("hoeGold");
-            seeds = (new net.minecraft.src.ItemSeeds(39, net.minecraft.src.Block.crops.blockID)).SetIconCoord(9, 0).SetItemName("seeds");
+            seeds = (new net.minecraft.src.ItemSeeds(39, net.minecraft.src.Block.CROPS.blockID)).SetIconCoord(9, 0).SetItemName("seeds");
             doorWood = (new net.minecraft.src.ItemDoor(68, net.minecraft.src.Material.wood)).SetIconCoord(11, 2).SetItemName("doorWood");
             bucketEmpty = (new net.minecraft.src.ItemBucket(69, 0)).SetIconCoord(10, 4).SetItemName("bucket");
-            bucketWater = (new net.minecraft.src.ItemBucket(70, net.minecraft.src.Block.waterMoving.blockID)).SetIconCoord(11, 4).SetItemName("bucketWater").SetContainerItem(bucketEmpty);
-            bucketLava = (new net.minecraft.src.ItemBucket(71, net.minecraft.src.Block.lavaMoving.blockID)).SetIconCoord(12, 4).SetItemName("bucketLava").SetContainerItem(bucketEmpty);
+            bucketWater = (new net.minecraft.src.ItemBucket(70, net.minecraft.src.Block.WATER.blockID)).SetIconCoord(11, 4).SetItemName("bucketWater").SetContainerItem(bucketEmpty);
+            bucketLava = (new net.minecraft.src.ItemBucket(71, net.minecraft.src.Block.LAVA.blockID)).SetIconCoord(12, 4).SetItemName("bucketLava").SetContainerItem(bucketEmpty);
             doorSteel = (new net.minecraft.src.ItemDoor(74, net.minecraft.src.Material.iron)).SetIconCoord(12, 2).SetItemName("doorIron");
             bucketMilk = (new net.minecraft.src.ItemBucket(79, -1)).SetIconCoord(13, 4).SetItemName("milk").SetContainerItem(bucketEmpty);
-            reed = (new net.minecraft.src.ItemReed(82, net.minecraft.src.Block.reed)).SetIconCoord(11, 1).SetItemName("reeds");
-            cake = (new net.minecraft.src.ItemReed(98, net.minecraft.src.Block.cake)).SetMaxStackSize(1).SetIconCoord(13, 1).SetItemName("cake");
-            redstoneRepeater = (new net.minecraft.src.ItemReed(100, net.minecraft.src.Block.redstoneRepeaterIdle)).SetIconCoord(6, 5).SetItemName("diode");
+            reed = (new net.minecraft.src.ItemReed(82, net.minecraft.src.Block.SUGAR_CANE_BLOCK)).SetIconCoord(11, 1).SetItemName("reeds");
+            cake = (new net.minecraft.src.ItemReed(98, net.minecraft.src.Block.CAKE_BLOCK)).SetMaxStackSize(1).SetIconCoord(13, 1).SetItemName("cake");
+            redstoneRepeater = (new net.minecraft.src.ItemReed(100, net.minecraft.src.Block.DIODE_OFF)).SetIconCoord(6, 5).SetItemName("diode");
             net.minecraft.src.StatList.Func_25086_b();
         }
     }

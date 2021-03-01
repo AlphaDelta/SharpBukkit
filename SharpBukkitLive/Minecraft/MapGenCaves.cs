@@ -133,8 +133,8 @@ namespace net.minecraft.src
 							{
 								continue;
 							}
-							if (abyte0[j3] == net.minecraft.src.Block.waterMoving.blockID || abyte0[j3] == net.minecraft.src.Block
-								.waterStill.blockID)
+							if (abyte0[j3] == net.minecraft.src.Block.WATER.blockID || abyte0[j3] == net.minecraft.src.Block
+								.STATIONARY_WATER.blockID)
 							{
 								flag2 = true;
 							}
@@ -172,23 +172,23 @@ namespace net.minecraft.src
 							if (d14 > -0.69999999999999996D && d12 * d12 + d14 * d14 + d13 * d13 < 1.0D)
 							{
 								byte byte0 = abyte0[l3];
-								if (byte0 == net.minecraft.src.Block.grass.blockID)
+								if (byte0 == net.minecraft.src.Block.GRASS.blockID)
 								{
 									flag3 = true;
 								}
-								if (byte0 == net.minecraft.src.Block.stone.blockID || byte0 == net.minecraft.src.Block
-									.dirt.blockID || byte0 == net.minecraft.src.Block.grass.blockID)
+								if (byte0 == net.minecraft.src.Block.STONE.blockID || byte0 == net.minecraft.src.Block
+									.DIRT.blockID || byte0 == net.minecraft.src.Block.GRASS.blockID)
 								{
 									if (i4 < 10)
 									{
-										abyte0[l3] = unchecked((byte)net.minecraft.src.Block.lavaMoving.blockID);
+										abyte0[l3] = unchecked((byte)net.minecraft.src.Block.LAVA.blockID);
 									}
 									else
 									{
 										abyte0[l3] = 0;
-										if (flag3 && abyte0[l3 - 1] == net.minecraft.src.Block.dirt.blockID)
+										if (flag3 && abyte0[l3 - 1] == net.minecraft.src.Block.DIRT.blockID)
 										{
-											abyte0[l3 - 1] = unchecked((byte)net.minecraft.src.Block.grass.blockID);
+											abyte0[l3 - 1] = unchecked((byte)net.minecraft.src.Block.GRASS.blockID);
 										}
 									}
 								}

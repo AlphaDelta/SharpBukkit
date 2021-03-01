@@ -133,8 +133,8 @@ namespace net.minecraft.src
 							{
 								continue;
 							}
-							if (abyte0[j3] == net.minecraft.src.Block.lavaMoving.blockID || abyte0[j3] == net.minecraft.src.Block
-								.lavaStill.blockID)
+							if (abyte0[j3] == net.minecraft.src.Block.LAVA.blockID || abyte0[j3] == net.minecraft.src.Block
+								.STATIONARY_LAVA.blockID)
 							{
 								flag2 = true;
 							}
@@ -162,8 +162,8 @@ namespace net.minecraft.src
 							if (d14 > -0.69999999999999996D && d12 * d12 + d14 * d14 + d13 * d13 < 1.0D)
 							{
 								byte byte0 = abyte0[l3];
-								if (byte0 == net.minecraft.src.Block.bloodStone.blockID || byte0 == net.minecraft.src.Block
-									.dirt.blockID || byte0 == net.minecraft.src.Block.grass.blockID)
+								if (byte0 == net.minecraft.src.Block.NETHERRACK.blockID || byte0 == net.minecraft.src.Block
+									.DIRT.blockID || byte0 == net.minecraft.src.Block.GRASS.blockID)
 								{
 									abyte0[l3] = 0;
 								}

@@ -12,7 +12,7 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            Item, Block, ItemStack, CraftingManager
 			recipeItems = (new object[][] { new object[] { net.minecraft.src.Item.leather, net.minecraft.src.Block
-				.fire, net.minecraft.src.Item.ingotIron, net.minecraft.src.Item.diamond, net.minecraft.src.Item
+				.FIRE, net.minecraft.src.Item.ingotIron, net.minecraft.src.Item.diamond, net.minecraft.src.Item
 				.ingotGold }, new object[] { net.minecraft.src.Item.helmetLeather, net.minecraft.src.Item
 				.helmetChain, net.minecraft.src.Item.helmetSteel, net.minecraft.src.Item.helmetDiamond
 				, net.minecraft.src.Item.helmetGold }, new object[] { net.minecraft.src.Item.plateLeather

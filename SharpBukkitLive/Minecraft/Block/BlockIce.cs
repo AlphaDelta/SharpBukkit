@@ -24,7 +24,7 @@ namespace net.minecraft.src
 			net.minecraft.src.Material material = world.GetBlockMaterial(i, j - 1, k);
 			if (material.GetIsSolid() || material.GetIsLiquid())
 			{
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.waterMoving.blockID);
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.WATER.blockID);
 			}
 		}
 
@@ -40,7 +40,7 @@ namespace net.minecraft.src
 				- net.minecraft.src.Block.lightOpacity[blockID])
 			{
 				DropBlockAsItem(world, i, j, k, world.GetBlockMetadata(i, j, k));
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.waterStill.blockID);
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.STATIONARY_WATER.blockID);
 			}
 		}
 

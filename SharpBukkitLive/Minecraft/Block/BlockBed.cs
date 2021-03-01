@@ -108,7 +108,7 @@ namespace net.minecraft.src
         {
             if (i == 0)
             {
-                return net.minecraft.src.Block.planks.blockIndexInTexture;
+                return net.minecraft.src.Block.WOOD.blockIndexInTexture;
             }
             int k = Func_22019_c(j);
             int l = net.minecraft.src.ModelBed.field_22155_c[k][i];

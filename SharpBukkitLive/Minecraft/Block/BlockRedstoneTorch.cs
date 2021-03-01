@@ -15,7 +15,7 @@ namespace net.minecraft.src
 		{
 			if (i == 1)
 			{
-				return net.minecraft.src.Block.redstoneWire.GetBlockTextureFromSideAndMetadata(i, 
+				return net.minecraft.src.Block.REDSTONE_WIRE.GetBlockTextureFromSideAndMetadata(i, 
 					j);
 			}
 			else
@@ -152,7 +152,7 @@ namespace net.minecraft.src
 			{
 				if (flag)
 				{
-					world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.torchRedstoneIdle
+					world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.REDSTONE_TORCH_OFF
 						.blockID, world.GetBlockMetadata(i, j, k));
 					if (CheckForBurnout(world, i, j, k, true))
 					{
@@ -172,7 +172,7 @@ namespace net.minecraft.src
 			{
 				if (!flag && !CheckForBurnout(world, i, j, k, false))
 				{
-					world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.torchRedstoneActive
+					world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.REDSTONE_TORCH_ON
 						.blockID, world.GetBlockMetadata(i, j, k));
 				}
 			}
@@ -200,7 +200,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.torchRedstoneActive.blockID;
+			return net.minecraft.src.Block.REDSTONE_TORCH_ON.blockID;
 		}
 
 		public override bool CanProvidePower()

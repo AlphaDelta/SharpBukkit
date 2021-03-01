@@ -32,9 +32,9 @@ namespace net.minecraft.src
 				int l1 = 2 + random.Next(random.Next(3) + 1);
 				for (int i2 = 0; i2 < l1; i2++)
 				{
-					if (net.minecraft.src.Block.reed.CanBlockStay(world, i1, j1 + i2, k1))
+					if (net.minecraft.src.Block.SUGAR_CANE_BLOCK.CanBlockStay(world, i1, j1 + i2, k1))
 					{
-						world.SetBlock(i1, j1 + i2, k1, net.minecraft.src.Block.reed.blockID);
+						world.SetBlock(i1, j1 + i2, k1, net.minecraft.src.Block.SUGAR_CANE_BLOCK.blockID);
 					}
 				}
 			}

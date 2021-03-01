@@ -19,14 +19,14 @@ namespace net.minecraft.src
 			for (int i = 0; i < 16; i++)
 			{
 				craftingmanager.AddShapelessRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Block
-					.cloth, 1, net.minecraft.src.BlockCloth.Func_21034_d(i)), new object[] { new net.minecraft.src.ItemStack
+					.WOOL, 1, net.minecraft.src.BlockCloth.Func_21034_d(i)), new object[] { new net.minecraft.src.ItemStack
 					(net.minecraft.src.Item.dyePowder, 1, i), new net.minecraft.src.ItemStack(net.minecraft.src.Item
-					.itemsList[net.minecraft.src.Block.cloth.blockID], 1, 0) });
+					.itemsList[net.minecraft.src.Block.WOOL.blockID], 1, 0) });
 			}
 			craftingmanager.AddShapelessRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item
-				.dyePowder, 2, 11), new object[] { net.minecraft.src.Block.plantYellow });
+				.dyePowder, 2, 11), new object[] { net.minecraft.src.Block.YELLOW_FLOWER });
 			craftingmanager.AddShapelessRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item
-				.dyePowder, 2, 1), new object[] { net.minecraft.src.Block.plantRed });
+				.dyePowder, 2, 1), new object[] { net.minecraft.src.Block.RED_ROSE });
 			craftingmanager.AddShapelessRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item
 				.dyePowder, 3, 15), new object[] { net.minecraft.src.Item.bone });
 			craftingmanager.AddShapelessRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item

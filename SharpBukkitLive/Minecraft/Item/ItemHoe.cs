@@ -22,10 +22,10 @@ namespace net.minecraft.src
 		{
 			int i1 = world.GetBlockId(i, j, k);
 			int j1 = world.GetBlockId(i, j + 1, k);
-			if (l != 0 && j1 == 0 && i1 == net.minecraft.src.Block.grass.blockID || i1 == net.minecraft.src.Block
-				.dirt.blockID)
+			if (l != 0 && j1 == 0 && i1 == net.minecraft.src.Block.GRASS.blockID || i1 == net.minecraft.src.Block
+				.DIRT.blockID)
 			{
-				net.minecraft.src.Block block = net.minecraft.src.Block.tilledField;
+				net.minecraft.src.Block block = net.minecraft.src.Block.SOIL;
 				world.PlaySoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, block.stepSound
 					.Func_737_c(), (block.stepSound.GetVolume() + 1.0F) / 2.0F, block.stepSound.GetPitch
 					() * 0.8F);

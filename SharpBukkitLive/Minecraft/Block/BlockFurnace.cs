@@ -21,7 +21,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.stoneOvenIdle.blockID;
+			return net.minecraft.src.Block.FURNACE.blockID;
 		}
 
 		public override void OnBlockAdded(net.minecraft.src.World world, int i, int j, int
@@ -112,12 +112,12 @@ namespace net.minecraft.src
 			field_28034_c = true;
 			if (flag)
 			{
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.stoneOvenActive.blockID
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.BURNING_FURNACE.blockID
 					);
 			}
 			else
 			{
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.stoneOvenIdle.blockID);
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.FURNACE.blockID);
 			}
 			field_28034_c = false;
 			world.SetBlockMetadataWithNotify(i, j, k, l);

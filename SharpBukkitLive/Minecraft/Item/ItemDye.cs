@@ -25,27 +25,27 @@ namespace net.minecraft.src
 			if (itemstack.GetItemDamage() == 15)
 			{
 				int i1 = world.GetBlockId(i, j, k);
-				if (i1 == net.minecraft.src.Block.sapling.blockID)
+				if (i1 == net.minecraft.src.Block.SAPLING.blockID)
 				{
 					if (!world.singleplayerWorld)
 					{
-						((net.minecraft.src.BlockSapling)net.minecraft.src.Block.sapling).GrowTree(world, 
+						((net.minecraft.src.BlockSapling)net.minecraft.src.Block.SAPLING).GrowTree(world, 
 							i, j, k, world.rand);
 						itemstack.stackSize--;
 					}
 					return true;
 				}
-				if (i1 == net.minecraft.src.Block.crops.blockID)
+				if (i1 == net.minecraft.src.Block.CROPS.blockID)
 				{
 					if (!world.singleplayerWorld)
 					{
-						((net.minecraft.src.BlockCrops)net.minecraft.src.Block.crops).Fertilize(world, i, 
+						((net.minecraft.src.BlockCrops)net.minecraft.src.Block.CROPS).Fertilize(world, i, 
 							j, k);
 						itemstack.stackSize--;
 					}
 					return true;
 				}
-				if (i1 == net.minecraft.src.Block.grass.blockID)
+				if (i1 == net.minecraft.src.Block.GRASS.blockID)
 				{
 					if (!world.singleplayerWorld)
 					{
@@ -60,7 +60,7 @@ namespace net.minecraft.src
 								k1 += itemRand.Next(3) - 1;
 								l1 += ((itemRand.Next(3) - 1) * itemRand.Next(3)) / 2;
 								i2 += itemRand.Next(3) - 1;
-								if (world.GetBlockId(k1, l1 - 1, i2) != net.minecraft.src.Block.grass.blockID || 
+								if (world.GetBlockId(k1, l1 - 1, i2) != net.minecraft.src.Block.GRASS.blockID || 
 									world.IsBlockNormalCube(k1, l1, i2))
 								{
 									goto label0_continue;
@@ -72,17 +72,17 @@ namespace net.minecraft.src
 							}
 							if (itemRand.Next(10) != 0)
 							{
-								world.SetBlockAndMetadataWithNotify(k1, l1, i2, net.minecraft.src.Block.tallGrass
+								world.SetBlockAndMetadataWithNotify(k1, l1, i2, net.minecraft.src.Block.LONG_GRASS
 									.blockID, 1);
 								continue;
 							}
 							if (itemRand.Next(3) != 0)
 							{
-								world.SetBlockWithNotify(k1, l1, i2, net.minecraft.src.Block.plantYellow.blockID);
+								world.SetBlockWithNotify(k1, l1, i2, net.minecraft.src.Block.YELLOW_FLOWER.blockID);
 							}
 							else
 							{
-								world.SetBlockWithNotify(k1, l1, i2, net.minecraft.src.Block.plantRed.blockID);
+								world.SetBlockWithNotify(k1, l1, i2, net.minecraft.src.Block.RED_ROSE.blockID);
 							}
 label0_continue: ;
 						}

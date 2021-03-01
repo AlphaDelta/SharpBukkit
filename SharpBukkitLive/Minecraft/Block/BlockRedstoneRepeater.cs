@@ -55,19 +55,19 @@ namespace net.minecraft.src
 			bool flag = Func_22012_g(world, i, j, k, l);
 			if (field_22015_c && !flag)
 			{
-				world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.redstoneRepeaterIdle
+				world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.DIODE_OFF
 					.blockID, l);
 			}
 			else
 			{
 				if (!field_22015_c)
 				{
-					world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.redstoneRepeaterActive
+					world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.DIODE_ON
 						.blockID, l);
 					if (!flag)
 					{
 						int i1 = (l & 0xc) >> 2;
-						world.ScheduleUpdateTick(i, j, k, net.minecraft.src.Block.redstoneRepeaterActive.
+						world.ScheduleUpdateTick(i, j, k, net.minecraft.src.Block.DIODE_ON.
 							blockID, field_22013_b[i1] * 2);
 					}
 				}
@@ -159,7 +159,7 @@ namespace net.minecraft.src
 				{
 					// '\0'
 					return world.IsBlockIndirectlyProvidingPowerTo(i, j, k + 1, 3) || world.GetBlockId
-						(i, j, k + 1) == net.minecraft.src.Block.redstoneWire.blockID && world.GetBlockMetadata
+						(i, j, k + 1) == net.minecraft.src.Block.REDSTONE_WIRE.blockID && world.GetBlockMetadata
 						(i, j, k + 1) > 0;
 				}
 
@@ -167,7 +167,7 @@ namespace net.minecraft.src
 				{
 					// '\002'
 					return world.IsBlockIndirectlyProvidingPowerTo(i, j, k - 1, 2) || world.GetBlockId
-						(i, j, k - 1) == net.minecraft.src.Block.redstoneWire.blockID && world.GetBlockMetadata
+						(i, j, k - 1) == net.minecraft.src.Block.REDSTONE_WIRE.blockID && world.GetBlockMetadata
 						(i, j, k - 1) > 0;
 				}
 
@@ -175,7 +175,7 @@ namespace net.minecraft.src
 				{
 					// '\003'
 					return world.IsBlockIndirectlyProvidingPowerTo(i + 1, j, k, 5) || world.GetBlockId
-						(i + 1, j, k) == net.minecraft.src.Block.redstoneWire.blockID && world.GetBlockMetadata
+						(i + 1, j, k) == net.minecraft.src.Block.REDSTONE_WIRE.blockID && world.GetBlockMetadata
 						(i + 1, j, k) > 0;
 				}
 
@@ -183,7 +183,7 @@ namespace net.minecraft.src
 				{
 					// '\001'
 					return world.IsBlockIndirectlyProvidingPowerTo(i - 1, j, k, 4) || world.GetBlockId
-						(i - 1, j, k) == net.minecraft.src.Block.redstoneWire.blockID && world.GetBlockMetadata
+						(i - 1, j, k) == net.minecraft.src.Block.REDSTONE_WIRE.blockID && world.GetBlockMetadata
 						(i - 1, j, k) > 0;
 				}
 			}

@@ -12,7 +12,7 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            WorldGenerator, Block, World, Material, 
 			//            MathHelper
-			clayBlockId = net.minecraft.src.Block.blockClay.blockID;
+			clayBlockId = net.minecraft.src.Block.CLAY.blockID;
 			numberOfBlocks = i;
 		}
 
@@ -64,7 +64,7 @@ namespace net.minecraft.src
 								continue;
 							}
 							int j3 = world.GetBlockId(k2, l2, i3);
-							if (j3 == net.minecraft.src.Block.sand.blockID)
+							if (j3 == net.minecraft.src.Block.SAND.blockID)
 							{
 								world.SetBlock(k2, l2, i3, clayBlockId);
 							}

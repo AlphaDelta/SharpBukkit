@@ -72,7 +72,7 @@ namespace net.minecraft.src
 					{
 						if (!IsCropsNearby(world, i, j, k))
 						{
-							world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.dirt.blockID);
+							world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.DIRT.blockID);
 						}
 					}
 				}
@@ -84,7 +84,7 @@ namespace net.minecraft.src
 		{
 			if (world.rand.Next(4) == 0)
 			{
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.dirt.blockID);
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.DIRT.blockID);
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace net.minecraft.src
 			{
 				for (int j1 = k - l; j1 <= k + l; j1++)
 				{
-					if (world.GetBlockId(i1, j + 1, j1) == net.minecraft.src.Block.crops.blockID)
+					if (world.GetBlockId(i1, j + 1, j1) == net.minecraft.src.Block.CROPS.blockID)
 					{
 						return true;
 					}
@@ -129,13 +129,13 @@ namespace net.minecraft.src
 			net.minecraft.src.Material material = world.GetBlockMaterial(i, j + 1, k);
 			if (material.IsSolid())
 			{
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.dirt.blockID);
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.DIRT.blockID);
 			}
 		}
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.dirt.IdDropped(0, random);
+			return net.minecraft.src.Block.DIRT.IdDropped(0, random);
 		}
 	}
 }

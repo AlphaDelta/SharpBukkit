@@ -56,7 +56,7 @@ namespace net.minecraft.src
 				int k = movingobjectposition.blockZ;
 				if (!world.singleplayerWorld)
 				{
-					if (world.GetBlockId(i, j, k) == net.minecraft.src.Block.snow.blockID)
+					if (world.GetBlockId(i, j, k) == net.minecraft.src.Block.SNOW.blockID)
 					{
 						j--;
 					}

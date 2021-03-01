@@ -108,7 +108,7 @@ namespace net.minecraft.src
 					}
 					if (world.IsAirBlock(i, j, k) || !world.GetBlockMaterial(i, j, k).IsSolid())
 					{
-						if (world.worldProvider.isHellWorld && isFull == net.minecraft.src.Block.waterMoving
+						if (world.worldProvider.isHellWorld && isFull == net.minecraft.src.Block.WATER
 							.blockID)
 						{
 							world.PlaySoundEffect(d + 0.5D, d1 + 0.5D, d2 + 0.5D, "random.fizz", 0.5F, 2.6F +

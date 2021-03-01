@@ -100,10 +100,10 @@ namespace net.minecraft.src
 					for (int l3 = 4; l3 < 8; l3++)
 					{
 						if (aflag[(l1 * 16 + l2) * 8 + l3] && world.GetBlockId(i + l1, (j + l3) - 1, k + 
-							l2) == net.minecraft.src.Block.dirt.blockID && world.GetSavedLightValue(net.minecraft.src.EnumSkyBlock
+							l2) == net.minecraft.src.Block.DIRT.blockID && world.GetSavedLightValue(net.minecraft.src.EnumSkyBlock
 							.Sky, i + l1, j + l3, k + l2) > 0)
 						{
-							world.SetBlock(i + l1, (j + l3) - 1, k + l2, net.minecraft.src.Block.grass.blockID
+							world.SetBlock(i + l1, (j + l3) - 1, k + l2, net.minecraft.src.Block.GRASS.blockID
 								);
 						}
 					}
@@ -126,7 +126,7 @@ namespace net.minecraft.src
 							if (flag1 && (i4 < 4 || random.Next(2) != 0) && world.GetBlockMaterial(i + i2, 
 								j + i4, k + i3).IsSolid())
 							{
-								world.SetBlock(i + i2, j + i4, k + i3, net.minecraft.src.Block.stone.blockID);
+								world.SetBlock(i + i2, j + i4, k + i3, net.minecraft.src.Block.STONE.blockID);
 							}
 						}
 					}

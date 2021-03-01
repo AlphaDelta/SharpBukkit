@@ -24,7 +24,7 @@ namespace net.minecraft.src
 			}
 			j++;
 			net.minecraft.src.BlockBed blockbed = (net.minecraft.src.BlockBed)net.minecraft.src.Block
-				.bed;
+				.BED;
 			int i1 = net.minecraft.src.MathHelper.Floor_double((double)((entityplayer.rotationYaw
 				 * 4F) / 360F) + 0.5D) & 3;
 			byte byte0 = 0;

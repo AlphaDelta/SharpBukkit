@@ -17,7 +17,7 @@ namespace net.minecraft.src
 		//            BlockGrass, MathHelper, AxisAlignedBB, NBTTagCompound
 		protected internal override float GetBlockPathWeight(int i, int j, int k)
 		{
-			if (worldObj.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.grass.blockID)
+			if (worldObj.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.GRASS.blockID)
 			{
 				return 10F;
 			}
@@ -44,7 +44,7 @@ namespace net.minecraft.src
 			int i = net.minecraft.src.MathHelper.Floor_double(posX);
 			int j = net.minecraft.src.MathHelper.Floor_double(boundingBox.minY);
 			int k = net.minecraft.src.MathHelper.Floor_double(posZ);
-			return worldObj.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.grass.blockID 
+			return worldObj.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.GRASS.blockID 
 				&& worldObj.GetBlockLightValueNoChecks(i, j, k) > 8 && base.GetCanSpawnHere();
 		}
 

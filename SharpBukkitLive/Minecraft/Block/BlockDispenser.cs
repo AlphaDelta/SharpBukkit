@@ -26,7 +26,7 @@ namespace net.minecraft.src
 
         public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
         {
-            return net.minecraft.src.Block.dispenser.blockID;
+            return net.minecraft.src.Block.DISPENSER.blockID;
         }
 
         public override void OnBlockAdded(net.minecraft.src.World world, int i, int j, int

@@ -68,12 +68,12 @@ namespace net.minecraft.src
 							}
 							if (k2 == j - 1 && random.Next(4) != 0)
 							{
-								world.SetBlockWithNotify(l1, k2, j3, net.minecraft.src.Block.cobblestoneMossy.blockID
+								world.SetBlockWithNotify(l1, k2, j3, net.minecraft.src.Block.MOSSY_COBBLESTONE.blockID
 									);
 							}
 							else
 							{
-								world.SetBlockWithNotify(l1, k2, j3, net.minecraft.src.Block.cobblestone.blockID);
+								world.SetBlockWithNotify(l1, k2, j3, net.minecraft.src.Block.COBBLESTONE.blockID);
 							}
 						}
 						else
@@ -115,7 +115,7 @@ namespace net.minecraft.src
 					{
 						continue;
 					}
-					world.SetBlockWithNotify(k3, l3, i4, net.minecraft.src.Block.chest.blockID);
+					world.SetBlockWithNotify(k3, l3, i4, net.minecraft.src.Block.CHEST.blockID);
 					net.minecraft.src.TileEntityChest tileentitychest = (net.minecraft.src.TileEntityChest
 						)world.GetBlockTileEntity(k3, l3, i4);
 					int k4 = 0;
@@ -138,7 +138,7 @@ label0_continue: ;
 				}
 label0_break: ;
 			}
-			world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.mobSpawner.blockID);
+			world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.MOB_SPAWNER.blockID);
 			net.minecraft.src.TileEntityMobSpawner tileentitymobspawner = (net.minecraft.src.TileEntityMobSpawner
 				)world.GetBlockTileEntity(i, j, k);
 			tileentitymobspawner.SetMobID(PickMobSpawner(random));

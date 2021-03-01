@@ -63,7 +63,7 @@ namespace net.minecraft.src
 			{
 				f = 1.0F - f;
 			}
-			net.minecraft.src.AxisAlignedBB axisalignedbb = net.minecraft.src.Block.pistonMoving
+			net.minecraft.src.AxisAlignedBB axisalignedbb = net.minecraft.src.Block.PISTON_MOVING
 				.Func_31032_a(worldObj, xCoord, yCoord, zCoord, storedBlockID, f, storedOrientation
 				);
 			if (axisalignedbb != null)
@@ -95,7 +95,7 @@ namespace net.minecraft.src
 				lastProgress = progress = 1.0F;
 				worldObj.RemoveBlockTileEntity(xCoord, yCoord, zCoord);
 				Invalidate();
-				if (worldObj.GetBlockId(xCoord, yCoord, zCoord) == net.minecraft.src.Block.pistonMoving
+				if (worldObj.GetBlockId(xCoord, yCoord, zCoord) == net.minecraft.src.Block.PISTON_MOVING
 					.blockID)
 				{
 					worldObj.SetBlockAndMetadataWithNotify(xCoord, yCoord, zCoord, storedBlockID, storedMetadata
@@ -112,7 +112,7 @@ namespace net.minecraft.src
 				Func_31009_a(1.0F, 0.25F);
 				worldObj.RemoveBlockTileEntity(xCoord, yCoord, zCoord);
 				Invalidate();
-				if (worldObj.GetBlockId(xCoord, yCoord, zCoord) == net.minecraft.src.Block.pistonMoving
+				if (worldObj.GetBlockId(xCoord, yCoord, zCoord) == net.minecraft.src.Block.PISTON_MOVING
 					.blockID)
 				{
 					worldObj.SetBlockAndMetadataWithNotify(xCoord, yCoord, zCoord, storedBlockID, storedMetadata

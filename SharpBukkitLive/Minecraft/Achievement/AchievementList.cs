@@ -49,17 +49,17 @@ namespace net.minecraft.src
         {
             AllAchievements = new List<Achievement>();
             aOpenInventory = (new net.minecraft.src.Achievement(0, "openInventory", 0, 0, net.minecraft.src.Item.book, null)).Func_27059_a().Func_27061_c();
-            aCollectWood = (new net.minecraft.src.Achievement(1, "mineWood", 2, 1, net.minecraft.src.Block.wood, aOpenInventory)).Func_27061_c();
-            aBuildWorkBench = (new net.minecraft.src.Achievement(2, "buildWorkBench", 4, -1, net.minecraft.src.Block.workbench, aCollectWood)).Func_27061_c();
+            aCollectWood = (new net.minecraft.src.Achievement(1, "mineWood", 2, 1, net.minecraft.src.Block.LOG, aOpenInventory)).Func_27061_c();
+            aBuildWorkBench = (new net.minecraft.src.Achievement(2, "buildWorkBench", 4, -1, net.minecraft.src.Block.WORKBENCH, aCollectWood)).Func_27061_c();
             aBuildPickaxe = (new net.minecraft.src.Achievement(3, "buildPickaxe", 4, 2, net.minecraft.src.Item.pickaxeWood, aBuildWorkBench)).Func_27061_c();
-            aBuildFurnace = (new net.minecraft.src.Achievement(4, "buildFurnace", 3, 4, net.minecraft.src.Block.stoneOvenActive, aBuildPickaxe)).Func_27061_c();
+            aBuildFurnace = (new net.minecraft.src.Achievement(4, "buildFurnace", 3, 4, net.minecraft.src.Block.BURNING_FURNACE, aBuildPickaxe)).Func_27061_c();
             aAcquireIron = (new net.minecraft.src.Achievement(5, "acquireIron", 1, 4, net.minecraft.src.Item.ingotIron, aBuildFurnace)).Func_27061_c();
             aBuildHoe = (new net.minecraft.src.Achievement(6, "buildHoe", 2, -3, net.minecraft.src.Item.hoeWood, aBuildWorkBench)).Func_27061_c();
             aMakeBreak = (new net.minecraft.src.Achievement(7, "makeBread", -1, -3, net.minecraft.src.Item.bread, aBuildHoe)).Func_27061_c();
             aBakeCake = (new net.minecraft.src.Achievement(8, "bakeCake", 0, -5, net.minecraft.src.Item.cake, aBuildHoe)).Func_27061_c();
             aBuildBetterPickaxe = (new net.minecraft.src.Achievement(9, "buildBetterPickaxe", 6, 2, net.minecraft.src.Item.pickaxeStone, aBuildPickaxe)).Func_27061_c();
             aCookFish = (new net.minecraft.src.Achievement(10, "cookFish", 2, 6, net.minecraft.src.Item.fishCooked, aBuildFurnace)).Func_27061_c();
-            aOnARail = (new net.minecraft.src.Achievement(11, "onARail", 2, 3, net.minecraft.src.Block.minecartTrack, aAcquireIron)).Func_27060_b().Func_27061_c();
+            aOnARail = (new net.minecraft.src.Achievement(11, "onARail", 2, 3, net.minecraft.src.Block.RAILS, aAcquireIron)).Func_27060_b().Func_27061_c();
             aBuildSword = (new net.minecraft.src.Achievement(12, "buildSword", 6, -1, net.minecraft.src.Item.swordWood, aBuildWorkBench)).Func_27061_c();
             aKillEnemy = (new net.minecraft.src.Achievement(13, "killEnemy", 8, -1, net.minecraft.src.Item.bone, aBuildSword)).Func_27061_c();
             aKillCow = (new net.minecraft.src.Achievement(14, "killCow", 7, -3, net.minecraft.src.Item.leather, aBuildSword)).Func_27061_c();

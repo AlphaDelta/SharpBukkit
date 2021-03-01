@@ -131,7 +131,7 @@ label0_break: ;
 					if (l3 == 0 && net.minecraft.src.Block.opaqueCubeLookup[i4] && ExplosionRNG.NextInt
 						(3) == 0)
 					{
-						worldObj.SetBlockWithNotify(i3, j3, k3, net.minecraft.src.Block.fire.blockID);
+						worldObj.SetBlockWithNotify(i3, j3, k3, net.minecraft.src.Block.FIRE.blockID);
 					}
 				}
 			}
