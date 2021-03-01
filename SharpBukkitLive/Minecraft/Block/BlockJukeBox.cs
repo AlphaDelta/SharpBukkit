@@ -59,8 +59,9 @@ namespace net.minecraft.src
 			{
 				return;
 			}
-			net.minecraft.src.TileEntityRecordPlayer tileentityrecordplayer = (net.minecraft.src.TileEntityRecordPlayer
-				)world.GetBlockTileEntity(i, j, k);
+			net.minecraft.src.TileEntityRecordPlayer tileentityrecordplayer = (net.minecraft.src.TileEntityRecordPlayer)world.GetBlockTileEntity(i, j, k);
+			if (tileentityrecordplayer == null) return; // CRAFTBUKKIT
+
 			int l = tileentityrecordplayer.field_28009_a;
 			if (l == 0)
 			{
@@ -68,7 +69,7 @@ namespace net.minecraft.src
 			}
 			else
 			{
-				world.Func_28097_e(1005, i, j, k, 0);
+				world.SendSoundEffectToAllPlayersWithin64(1005, i, j, k, 0);
 				world.PlayRecord(null, i, j, k);
 				tileentityrecordplayer.field_28009_a = 0;
 				tileentityrecordplayer.OnInventoryChanged();

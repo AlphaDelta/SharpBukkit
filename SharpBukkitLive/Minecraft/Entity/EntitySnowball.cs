@@ -56,7 +56,7 @@ namespace net.minecraft.src
 				.Cos((rotationPitch / 180F) * 3.141593F) * f;
 			motionY = -net.minecraft.src.MathHelper.Sin((rotationPitch / 180F) * 3.141593F) *
 				 f;
-			Func_6141_a(motionX, motionY, motionZ, 1.5F, 1.0F);
+			SetSnowballHeading(motionX, motionY, motionZ, 1.5F, 1.0F);
 		}
 
 		public EntitySnowball(net.minecraft.src.World world, double d, double d1, double 
@@ -76,7 +76,7 @@ namespace net.minecraft.src
 			yOffset = 0.0F;
 		}
 
-		public virtual void Func_6141_a(double d, double d1, double d2, float f, float f1
+		public virtual void SetSnowballHeading(double d, double d1, double d2, float f, float f1
 			)
 		{
 			float f2 = net.minecraft.src.MathHelper.Sqrt_double(d * d + d1 * d1 + d2 * d2);

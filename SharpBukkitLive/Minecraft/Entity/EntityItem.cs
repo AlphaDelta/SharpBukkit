@@ -23,6 +23,12 @@ namespace net.minecraft.src
             yOffset = height / 2.0F;
             SetPosition(x, y, z);
             item = itemstack;
+            // CRAFTBUKKIT start - infinite item fix
+            if (this.item.stackSize <= -1)
+            {
+                this.item.stackSize = 1;
+            }
+            // CRAFTBUKKIT end
             rotationYaw = (float)(SharpRandom.NextDouble() * 360D);
             motionX = (float)(SharpRandom.NextDouble() * 0.20000000298023224D - 0.10000000149011612D);
             motionY = 0.20000000298023224D;
@@ -51,7 +57,7 @@ namespace net.minecraft.src
         public override void OnUpdate()
         {
             base.OnUpdate();
-            if (delayBeforeCanPickup > 0)
+            if (delayBeforeCanPickup > 0) //TODO: Bukkit fix???
             {
                 delayBeforeCanPickup--;
             }

@@ -109,6 +109,9 @@ namespace net.minecraft.src
 
         public void DispenseItem(net.minecraft.src.World world, int i, int j, int k, SharpBukkitLive.SharpBukkit.SharpRandom random)
         {
+            //TODO: Implement dispenser fixes
+            return;
+
             int l = world.GetBlockMetadata(i, j, k);
             int i1 = 0;
             int j1 = 0;
@@ -136,7 +139,7 @@ namespace net.minecraft.src
             double d2 = (double)k + (double)j1 * 0.59999999999999998D + 0.5D;
             if (itemstack == null)
             {
-                world.Func_28097_e(1001, i, j, k, 0);
+                world.SendSoundEffectToAllPlayersWithin64(1001, i, j, k, 0);
             }
             else
             {
@@ -146,21 +149,21 @@ namespace net.minecraft.src
                     entityarrow.SetArrowHeading(i1, 0.10000000149011612D, j1, 1.1F, 6F);
                     entityarrow.field_28012_a = true;
                     world.AddEntity(entityarrow);
-                    world.Func_28097_e(1002, i, j, k, 0);
+                    world.SendSoundEffectToAllPlayersWithin64(1002, i, j, k, 0);
                 }
                 else if (itemstack.itemID == net.minecraft.src.Item.egg.shiftedIndex)
                 {
                     net.minecraft.src.EntityEgg entityegg = new net.minecraft.src.EntityEgg(world, d, d1, d2);
-                    entityegg.Func_20078_a(i1, 0.10000000149011612D, j1, 1.1F, 6F);
+                    entityegg.SetEggHeading(i1, 0.10000000149011612D, j1, 1.1F, 6F);
                     world.AddEntity(entityegg);
-                    world.Func_28097_e(1002, i, j, k, 0);
+                    world.SendSoundEffectToAllPlayersWithin64(1002, i, j, k, 0);
                 }
                 else if (itemstack.itemID == net.minecraft.src.Item.snowball.shiftedIndex)
                 {
                     net.minecraft.src.EntitySnowball entitysnowball = new net.minecraft.src.EntitySnowball(world, d, d1, d2);
-                    entitysnowball.Func_6141_a(i1, 0.10000000149011612D, j1, 1.1F, 6F);
+                    entitysnowball.SetSnowballHeading(i1, 0.10000000149011612D, j1, 1.1F, 6F);
                     world.AddEntity(entitysnowball);
-                    world.Func_28097_e(1002, i, j, k, 0);
+                    world.SendSoundEffectToAllPlayersWithin64(1002, i, j, k, 0);
                 }
                 else
                 {
@@ -173,10 +176,10 @@ namespace net.minecraft.src
                     entityitem.motionY += random.NextGaussian() * 0.0074999998323619366D * 6D;
                     entityitem.motionZ += random.NextGaussian() * 0.0074999998323619366D * 6D;
                     world.AddEntity(entityitem);
-                    world.Func_28097_e(1000, i, j, k, 0);
+                    world.SendSoundEffectToAllPlayersWithin64(1000, i, j, k, 0);
                 }
 
-                world.Func_28097_e(2000, i, j, k, i1 + 1 + (j1 + 1) * 3);
+                world.SendSoundEffectToAllPlayersWithin64(2000, i, j, k, i1 + 1 + (j1 + 1) * 3);
             }
         }
 

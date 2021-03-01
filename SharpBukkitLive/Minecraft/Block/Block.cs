@@ -620,6 +620,7 @@ namespace net.minecraft.src
 
         public static readonly bool[] requiresSelfNotify = new bool[256];
 
+        //TODO: change field names to bukkit names
         public static readonly net.minecraft.src.Block stone;
 
         public static readonly net.minecraft.src.BlockGrass grass;

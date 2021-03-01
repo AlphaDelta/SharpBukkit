@@ -1697,7 +1697,7 @@ namespace net.minecraft.src
             }
             if (GetBlockId(i, j, k) == net.minecraft.src.Block.fire.blockID)
             {
-                Func_28101_a(entityplayer, 1004, i, j, k, 0);
+                SendSoundEffectToAllPlayersWithin64(entityplayer, 1004, i, j, k, 0);
                 SetBlockWithNotify(i, j, k, 0);
             }
         }
@@ -2727,17 +2727,17 @@ namespace net.minecraft.src
             return field_28105_z.Func_28173_a(s);
         }
 
-        public virtual void Func_28097_e(int i, int j, int k, int l, int i1)
+        public virtual void SendSoundEffectToAllPlayersWithin64(int i, int j, int k, int l, int i1)
         {
-            Func_28101_a(null, i, j, k, l, i1);
+            SendSoundEffectToAllPlayersWithin64(null, i, j, k, l, i1);
         }
 
-        public virtual void Func_28101_a(net.minecraft.src.EntityPlayer entityplayer, int
+        public virtual void SendSoundEffectToAllPlayersWithin64(net.minecraft.src.EntityPlayer entityplayer, int
              i, int j, int k, int l, int i1)
         {
             for (int j1 = 0; j1 < worldAccesses.Count; j1++)
             {
-                ((net.minecraft.src.IWorldAccess)worldAccesses[j1]).Func_28133_a(entityplayer, i,
+                ((net.minecraft.src.IWorldAccess)worldAccesses[j1]).SendSoundEffectToAllPlayersWithin64(entityplayer, i,
                     j, k, l, i1);
             }
         }

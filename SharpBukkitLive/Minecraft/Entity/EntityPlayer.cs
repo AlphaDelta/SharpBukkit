@@ -548,7 +548,9 @@ namespace net.minecraft.src
                 {
                     i++;
                 }
-                entity.AttackEntityFrom(this, i);
+
+                if (!entity.AttackEntityFrom(this, i)) return; // CRAFTBUKKIT -- Bypass durability if attack failed
+
                 net.minecraft.src.ItemStack itemstack = GetCurrentEquippedItem();
                 if (itemstack != null && (entity is net.minecraft.src.EntityLiving))
                 {

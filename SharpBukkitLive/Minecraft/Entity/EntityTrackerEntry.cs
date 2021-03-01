@@ -287,8 +287,13 @@ namespace net.minecraft.src
             }
             if (trackedEntity is net.minecraft.src.EntityPlayerMP)
             {
-                return new net.minecraft.src.Packet20NamedEntitySpawn((net.minecraft.src.EntityPlayer
-                    )trackedEntity);
+                // CRAFTBUKKIT start - limit name length to 16 characters
+                if (((EntityPlayerMP)this.trackedEntity).username.Length > 16)
+                {
+                    ((EntityPlayerMP)this.trackedEntity).username = ((EntityPlayerMP)this.trackedEntity).username.Substring(0, 16);
+                }
+                // CRAFTBUKKIT end
+                return new net.minecraft.src.Packet20NamedEntitySpawn((net.minecraft.src.EntityPlayer)trackedEntity);
             }
             if (trackedEntity is net.minecraft.src.EntityMinecart)
             {
@@ -333,11 +338,8 @@ namespace net.minecraft.src
             }
             if (trackedEntity is net.minecraft.src.EntityFireball)
             {
-                net.minecraft.src.EntityFireball entityfireball = (net.minecraft.src.EntityFireball
-                    )trackedEntity;
-                net.minecraft.src.Packet23VehicleSpawn packet23vehiclespawn = new net.minecraft.src.Packet23VehicleSpawn
-                    (trackedEntity, 63, ((net.minecraft.src.EntityFireball)trackedEntity).owner.entityId
-                    );
+                net.minecraft.src.EntityFireball entityfireball = (net.minecraft.src.EntityFireball)trackedEntity;
+                net.minecraft.src.Packet23VehicleSpawn packet23vehiclespawn = new net.minecraft.src.Packet23VehicleSpawn(trackedEntity, 63, ((net.minecraft.src.EntityFireball)trackedEntity).owner?.entityId ?? 1); // CRAFTBUKKIT -- added check for null shooter
                 packet23vehiclespawn.motionX = (int)(entityfireball.field_9199_b * 8000D);
                 packet23vehiclespawn.motionY = (int)(entityfireball.field_9198_c * 8000D);
                 packet23vehiclespawn.motionZ = (int)(entityfireball.field_9196_d * 8000D);

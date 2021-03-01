@@ -58,7 +58,7 @@ namespace SharpBukkitLive.SharpBukkit
         /// </summary>
         public void SendSound(SoundType type)
         {
-            SendSound(type, (int)Entity.posX, (int)Entity.posY, (int)Entity.posZ - 1);
+            SendSound(type, (int)Math.Floor(Entity.posX), (int)Math.Floor(Entity.posY), (int)Math.Floor(Entity.posZ));
         }
         /// <summary>
         /// Plays a sound for the player.
@@ -76,7 +76,7 @@ namespace SharpBukkitLive.SharpBukkit
         /// </summary>
         public void SendBlockBreak(Block block)
         {
-            SendBlockBreak(block, (int)Entity.posX, (int)Entity.posY, (int)Entity.posZ - 1);
+            SendBlockBreak(block, (int)Math.Floor(Entity.posX), (int)Math.Floor(Entity.posY), (int)Math.Floor(Entity.posZ));
         }
         /// <summary>
         /// Sends a block break sound and emits particles.
@@ -91,7 +91,7 @@ namespace SharpBukkitLive.SharpBukkit
         /// </summary>
         public void SendSmoke(SmokeDirection direction)
         {
-            SendSmoke(direction, (int)Entity.posX, (int)Entity.posY, (int)Entity.posZ - 1);
+            SendSmoke(direction, (int)Math.Floor(Entity.posX), (int)Math.Floor(Entity.posY), (int)Math.Floor(Entity.posZ));
         }
         /// <summary>
         /// Emits smoke to the player.

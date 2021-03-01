@@ -95,7 +95,7 @@ namespace net.minecraft.src
 			}
 			if (flag && !IsExtended(l))
 			{
-				if (CanExtend(world, i, j, k, i1))
+				if (CanExtend(world, i, j, k, i1)) //TODO: bukkit bool -> int return on CanExtend
 				{
 					world.SetBlockMetadata(i, j, k, i1 | 8);
 					world.PlayNoteAt(i, j, k, 0, i1);

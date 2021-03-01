@@ -57,7 +57,7 @@ namespace net.minecraft.src
             mcServer.configManager.SentTileEntityToPlayer(i, j, k, tileentity);
         }
 
-        public virtual void Func_28133_a(net.minecraft.src.EntityPlayer entityplayer, int i, int pointX, int pointY, int pointZ, int i1)
+        public virtual void SendSoundEffectToAllPlayersWithin64(net.minecraft.src.EntityPlayer entityplayer, int i, int pointX, int pointY, int pointZ, int i1)
         {
             mcServer.configManager.SendPacketToPlayersAroundPoint(entityplayer, pointX, pointY, pointZ, 64D, field_28134_b.worldProvider.worldType, new net.minecraft.src.Packet61SoundEffect(i, pointX, pointY, pointZ, i1));
         }

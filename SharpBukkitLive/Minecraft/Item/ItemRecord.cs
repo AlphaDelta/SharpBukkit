@@ -31,7 +31,7 @@ namespace net.minecraft.src
 				{
 					((net.minecraft.src.BlockJukeBox)net.minecraft.src.Block.jukebox).EjectRecord(world
 						, i, j, k, shiftedIndex);
-					world.Func_28101_a(null, 1005, i, j, k, shiftedIndex);
+					world.SendSoundEffectToAllPlayersWithin64(null, 1005, i, j, k, shiftedIndex);
 					itemstack.stackSize--;
 					return true;
 				}

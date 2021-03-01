@@ -62,7 +62,7 @@ namespace net.minecraft.src
 			int l = world.GetBlockMetadata(i, j, k) & 3;
 			world.SetBlock(i, j, k, 0);
 			object obj = null;
-			if (l == 1)
+			if (l == 1) //TODO: Bukkit fix???
 			{
 				obj = new net.minecraft.src.WorldGenTaiga2();
 			}

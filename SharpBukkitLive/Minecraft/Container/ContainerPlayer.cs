@@ -23,28 +23,24 @@ namespace net.minecraft.src
 			craftResult = new net.minecraft.src.InventoryCraftResult();
 			isMP = false;
 			isMP = flag;
-			AddSlot(new net.minecraft.src.SlotCrafting(inventoryplayer.player, craftMatrix, craftResult
-				, 0, 144, 36));
+			AddSlot(new net.minecraft.src.SlotCrafting(inventoryplayer.player, craftMatrix, craftResult, 0, 144, 36));
 			for (int i = 0; i < 2; i++)
 			{
 				for (int i1 = 0; i1 < 2; i1++)
 				{
-					AddSlot(new net.minecraft.src.Slot(craftMatrix, i1 + i * 2, 88 + i1 * 18, 26 + i 
-						* 18));
+					AddSlot(new net.minecraft.src.Slot(craftMatrix, i1 + i * 2, 88 + i1 * 18, 26 + i * 18));
 				}
 			}
 			for (int j = 0; j < 4; j++)
 			{
 				int j1 = j;
-				AddSlot(new net.minecraft.src.SlotArmor(this, inventoryplayer, inventoryplayer.GetSizeInventory
-					() - 1 - j, 8, 8 + j * 18, j1));
+				AddSlot(new net.minecraft.src.SlotArmor(this, inventoryplayer, inventoryplayer.GetSizeInventory() - 1 - j, 8, 8 + j * 18, j1));
 			}
 			for (int k = 0; k < 3; k++)
 			{
 				for (int k1 = 0; k1 < 9; k1++)
 				{
-					AddSlot(new net.minecraft.src.Slot(inventoryplayer, k1 + (k + 1) * 9, 8 + k1 * 18
-						, 84 + k * 18));
+					AddSlot(new net.minecraft.src.Slot(inventoryplayer, k1 + (k + 1) * 9, 8 + k1 * 18, 84 + k * 18));
 				}
 			}
 			for (int l = 0; l < 9; l++)
@@ -54,15 +50,13 @@ namespace net.minecraft.src
 			OnCraftMatrixChanged(craftMatrix);
 		}
 
-		public override void OnCraftMatrixChanged(net.minecraft.src.IInventory iinventory
-			)
+		public override void OnCraftMatrixChanged(net.minecraft.src.IInventory iinventory)
 		{
-			craftResult.SetInventorySlotContents(0, net.minecraft.src.CraftingManager.GetInstance
-				().FindMatchingRecipe(craftMatrix));
+			//TODO: Bukkit fix???
+			craftResult.SetInventorySlotContents(0, net.minecraft.src.CraftingManager.GetInstance().FindMatchingRecipe(craftMatrix));
 		}
 
-		public override void OnCraftGuiClosed(net.minecraft.src.EntityPlayer entityplayer
-			)
+		public override void OnCraftGuiClosed(net.minecraft.src.EntityPlayer entityplayer)
 		{
 			base.OnCraftGuiClosed(entityplayer);
 			for (int i = 0; i < 4; i++)

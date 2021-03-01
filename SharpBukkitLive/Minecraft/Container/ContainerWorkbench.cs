@@ -45,11 +45,10 @@ namespace net.minecraft.src
 			OnCraftMatrixChanged(craftMatrix);
 		}
 
-		public override void OnCraftMatrixChanged(net.minecraft.src.IInventory iinventory
-			)
+		public override void OnCraftMatrixChanged(net.minecraft.src.IInventory iinventory)
 		{
-			craftResult.SetInventorySlotContents(0, net.minecraft.src.CraftingManager.GetInstance
-				().FindMatchingRecipe(craftMatrix));
+			//TODO: Bukkit fix???
+			craftResult.SetInventorySlotContents(0, net.minecraft.src.CraftingManager.GetInstance().FindMatchingRecipe(craftMatrix));
 		}
 
 		public override void OnCraftGuiClosed(net.minecraft.src.EntityPlayer entityplayer

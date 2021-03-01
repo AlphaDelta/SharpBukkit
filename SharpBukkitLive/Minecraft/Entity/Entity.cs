@@ -1,6 +1,7 @@
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
+using SharpBukkitLive.SharpBukkit;
 using Sharpen;
 using System.Collections.Generic;
 
@@ -91,6 +92,32 @@ namespace net.minecraft.src
 
         protected internal virtual void SetRotation(float yaw, float pitch)
         {
+            // CRAFTBUKKIT/SHARPBUKKIT start
+            if (float.IsNaN(yaw)) yaw = 0;
+            if (float.IsNaN(pitch)) pitch = 0;
+
+            if (float.IsInfinity(yaw))
+            {
+                yaw = 0;
+
+                if (this is EntityPlayerMP)
+                {
+                    Logger.GetLogger().Warning($"Player {((EntityPlayerMP)this).playerNetServerHandler.GetUsername()} ({((EntityPlayerMP)this).playerNetServerHandler.netManager.GetRemoteAddress()}) was caught trying to crash the server with an invalid yaw");
+                    ((EntityPlayerMP)this).playerNetServerHandler.KickPlayer("Nope");
+                }
+            }
+            if (float.IsInfinity(pitch))
+            {
+                pitch = 0;
+
+                if (this is EntityPlayerMP)
+                {
+                    Logger.GetLogger().Warning($"Player {((EntityPlayerMP)this).playerNetServerHandler.GetUsername()} ({((EntityPlayerMP)this).playerNetServerHandler.netManager.GetRemoteAddress()}) was caught trying to crash the server with an invalid pitch");
+                    ((EntityPlayerMP)this).playerNetServerHandler.KickPlayer("Nope");
+                }
+            }
+            // CRAFTBUKKIT/SHARPBUKKIT end
+
             rotationYaw = yaw % 360F;
             rotationPitch = pitch % 360F;
         }
@@ -230,6 +257,7 @@ namespace net.minecraft.src
 
         public virtual void MoveEntity(double d, double d1, double d2)
         {
+            if (d == 0 && d1 == 0 && d2 == 0) return; // CRAFTBUKKIT
             if (noClip)
             {
                 boundingBox.Offset(d, d1, d2);
@@ -647,6 +675,14 @@ namespace net.minecraft.src
 
         public virtual void SetWorldHandler(net.minecraft.src.World world)
         {
+            // CRAFTBUKKIT start
+            if (world == null)
+            {
+                this.SetEntityDead();
+                world = Entrypoint.minecraftserver.worldMngr[0]; //TODO: Is this correct?
+            }
+            // CRAFTBUKKIT end
+
             worldObj = world;
         }
 
@@ -800,12 +836,14 @@ namespace net.minecraft.src
 
         public virtual void WriteToNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
         {
-            nbttagcompound.SetTag("Pos", NewDoubleNBTList(new double[] { posX, posY + (double
-                )ySize, posZ }));
-            nbttagcompound.SetTag("Motion", NewDoubleNBTList(new double[] { motionX, motionY,
-                motionZ }));
-            nbttagcompound.SetTag("Rotation", NewFloatNBTList(new float[] { rotationYaw, rotationPitch
-                 }));
+            // CRAFTBUKKIT start
+            if (float.IsNaN(rotationYaw)) rotationYaw = 0;
+            if (float.IsNaN(rotationPitch)) rotationPitch = 0;
+            // CRAFTBUKKIT end
+
+            nbttagcompound.SetTag("Pos", NewDoubleNBTList(new double[] { posX, posY + (double)ySize, posZ }));
+            nbttagcompound.SetTag("Motion", NewDoubleNBTList(new double[] { motionX, motionY, motionZ }));
+            nbttagcompound.SetTag("Rotation", NewFloatNBTList(new float[] { rotationYaw, rotationPitch }));
             nbttagcompound.SetFloat("FallDistance", fallDistance);
             nbttagcompound.SetShort("Fire", (short)fire);
             nbttagcompound.SetShort("Air", (short)air);
@@ -815,6 +853,7 @@ namespace net.minecraft.src
 
         public virtual void ReadFromNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
         {
+            //TODO: Bukkit stuff???
             net.minecraft.src.NBTTagList nbttaglist = nbttagcompound.GetTagList("Pos");
             net.minecraft.src.NBTTagList nbttaglist1 = nbttagcompound.GetTagList("Motion");
             net.minecraft.src.NBTTagList nbttaglist2 = nbttagcompound.GetTagList("Rotation");

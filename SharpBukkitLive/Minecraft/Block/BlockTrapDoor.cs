@@ -88,7 +88,7 @@ namespace net.minecraft.src
 			{
 				int l = world.GetBlockMetadata(i, j, k);
 				world.SetBlockMetadataWithNotify(i, j, k, l ^ 4);
-				world.Func_28101_a(entityplayer, 1003, i, j, k, 0);
+				world.SendSoundEffectToAllPlayersWithin64(entityplayer, 1003, i, j, k, 0);
 				return true;
 			}
 		}
@@ -105,7 +105,7 @@ namespace net.minecraft.src
 			else
 			{
 				world.SetBlockMetadataWithNotify(i, j, k, l ^ 4);
-				world.Func_28101_a(null, 1003, i, j, k, 0);
+				world.SendSoundEffectToAllPlayersWithin64(null, 1003, i, j, k, 0);
 				return;
 			}
 		}
@@ -177,6 +177,7 @@ namespace net.minecraft.src
 				byte0 = 3;
 			}
 			world.SetBlockMetadataWithNotify(i, j, k, byte0);
+			OnNeighborBlockChange(world, i, j, k, Block.redstoneWire.blockID); // CRAFTBUKKIT
 		}
 
 		public override bool CanPlaceBlockOnSide(net.minecraft.src.World world, int i, int

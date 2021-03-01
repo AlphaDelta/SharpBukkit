@@ -107,6 +107,8 @@ namespace net.minecraft.src
 		{
 			int l = world.GetBlockMetadata(i, j, k);
 			net.minecraft.src.TileEntity tileentity = world.GetBlockTileEntity(i, j, k);
+			if (tileentity == null) return; // CRAFTBUKKIT
+
 			field_28034_c = true;
 			if (flag)
 			{
@@ -156,8 +158,9 @@ namespace net.minecraft.src
 		{
 			if (!field_28034_c)
 			{
-				net.minecraft.src.TileEntityFurnace tileentityfurnace = (net.minecraft.src.TileEntityFurnace
-					)world.GetBlockTileEntity(i, j, k);
+				net.minecraft.src.TileEntityFurnace tileentityfurnace = (net.minecraft.src.TileEntityFurnace)world.GetBlockTileEntity(i, j, k);
+				if (tileentityfurnace == null) return; // CRAFTBUKKIT
+
 				for (int l = 0; l < tileentityfurnace.GetSizeInventory(); l++)
 				{
 					net.minecraft.src.ItemStack itemstack = tileentityfurnace.GetStackInSlot(l);

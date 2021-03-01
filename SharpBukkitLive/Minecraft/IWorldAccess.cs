@@ -29,7 +29,7 @@ namespace net.minecraft.src
 		void DoNothingWithTileEntity(int i, int j, int k, net.minecraft.src.TileEntity tileentity
 			);
 
-		void Func_28133_a(net.minecraft.src.EntityPlayer entityplayer, int i, int j, int 
+		void SendSoundEffectToAllPlayersWithin64(net.minecraft.src.EntityPlayer entityplayer, int i, int j, int 
 			k, int l, int i1);
 	}
 }

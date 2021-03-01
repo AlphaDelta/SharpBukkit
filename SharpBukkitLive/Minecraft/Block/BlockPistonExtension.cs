@@ -24,6 +24,7 @@ namespace net.minecraft.src
 		{
 			base.OnBlockRemoval(world, i, j, k);
 			int l = world.GetBlockMetadata(i, j, k);
+			if (l > 5 || l < 0) return; // CRAFTBUKKIT - fixed a piston AIOOBE issue.
 			int j1 = net.minecraft.src.PistonBlockTextures.field_31052_a[Func_31045_b(l)];
 			i += net.minecraft.src.PistonBlockTextures.field_31051_b[j1];
 			j += net.minecraft.src.PistonBlockTextures.field_31054_c[j1];
@@ -211,6 +212,7 @@ namespace net.minecraft.src
 			int j, int k, int l)
 		{
 			int i1 = Func_31045_b(world.GetBlockMetadata(i, j, k));
+			if (l > 5 || l < 0) return; // CRAFTBUKKIT - fixed a piston AIOOBE issue.
 			int j1 = world.GetBlockId(i - net.minecraft.src.PistonBlockTextures.field_31051_b
 				[i1], j - net.minecraft.src.PistonBlockTextures.field_31054_c[i1], k - net.minecraft.src.PistonBlockTextures
 				.field_31053_d[i1]);

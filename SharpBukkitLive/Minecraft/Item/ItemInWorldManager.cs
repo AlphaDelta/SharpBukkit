@@ -111,7 +111,7 @@ namespace net.minecraft.src
 		{
 			int l = thisWorld.GetBlockId(i, j, k);
 			int i1 = thisWorld.GetBlockMetadata(i, j, k);
-			thisWorld.Func_28101_a(thisPlayer, 2001, i, j, k, l + thisWorld.GetBlockMetadata(
+			thisWorld.SendSoundEffectToAllPlayersWithin64(thisPlayer, 2001, i, j, k, l + thisWorld.GetBlockMetadata(
 				i, j, k) * 256);
 			bool flag = RemoveBlock(i, j, k);
 			net.minecraft.src.ItemStack itemstack = thisPlayer.GetCurrentEquippedItem();

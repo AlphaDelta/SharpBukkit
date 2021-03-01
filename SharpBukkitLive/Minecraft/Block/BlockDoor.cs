@@ -118,7 +118,7 @@ namespace net.minecraft.src
 			}
 			world.SetBlockMetadataWithNotify(i, j, k, l ^ 4);
 			world.MarkBlocksDirty(i, j - 1, k, i, j, k);
-			world.Func_28101_a(entityplayer, 1003, i, j, k, 0);
+			world.SendSoundEffectToAllPlayersWithin64(entityplayer, 1003, i, j, k, 0);
 			return true;
 		}
 
@@ -145,7 +145,7 @@ namespace net.minecraft.src
 			}
 			world.SetBlockMetadataWithNotify(i, j, k, l ^ 4);
 			world.MarkBlocksDirty(i, j - 1, k, i, j, k);
-			world.Func_28101_a(null, 1003, i, j, k, 0);
+			world.SendSoundEffectToAllPlayersWithin64(null, 1003, i, j, k, 0);
 		}
 
 		public override void OnNeighborBlockChange(net.minecraft.src.World world, int i, 
