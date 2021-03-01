@@ -32,7 +32,7 @@ namespace net.minecraft.src
 			}
 		}
 
-		public static int Func_25054_e()
+		public static int GetNumberOfSlots()
 		{
 			return 9;
 		}

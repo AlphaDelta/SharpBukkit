@@ -105,9 +105,10 @@ namespace net.minecraft.src
             GetPlayerManager(entityplayermp.dimension).Func_543_c(entityplayermp);
         }
 
-        public virtual void PlayerLoggedOut(net.minecraft.src.EntityPlayerMP entityplayermp
-            )
+        public virtual void PlayerLoggedOut(net.minecraft.src.EntityPlayerMP entityplayermp)
         {
+            if (entityplayermp.playerNetServerHandler.disconnected) return; // CRAFTBUKKIT - exploitsies fix
+
             playerNBTManagerObj.WritePlayerData(entityplayermp);
             mcServer.GetWorldManager(entityplayermp.dimension).RemovePlayerForLogoff(entityplayermp
                 );
@@ -148,8 +149,7 @@ namespace net.minecraft.src
                     )playerEntities[i];
                 if (entityplayermp.username.Equals(s, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    entityplayermp.playerNetServerHandler.KickPlayer("You logged in from another location"
-                        );
+                    entityplayermp.playerNetServerHandler.KickPlayer("You logged in from another location");
                 }
             }
             return new net.minecraft.src.EntityPlayerMP(mcServer, mcServer.GetWorldManager(0)
@@ -697,7 +697,7 @@ namespace net.minecraft.src
 
         public virtual void Func_30008_g(net.minecraft.src.EntityPlayerMP entityplayermp)
         {
-            entityplayermp.Func_28017_a(entityplayermp.personalCraftingInventory);
+            entityplayermp.UpdateInventory(entityplayermp.personalCraftingInventory);
             entityplayermp.Func_30001_B();
         }
 

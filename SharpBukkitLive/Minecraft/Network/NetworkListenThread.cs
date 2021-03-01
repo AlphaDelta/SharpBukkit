@@ -89,7 +89,7 @@ namespace net.minecraft.src
                     logger.Log(exception1.ToString());
                     netserverhandler.KickPlayer("Internal server error");
                 }
-                if (netserverhandler.connectionClosed)
+                if (netserverhandler.disconnected)
                 {
                     playerList.RemoveAt(j--);
                 }

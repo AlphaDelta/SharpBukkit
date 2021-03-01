@@ -703,8 +703,10 @@ namespace net.minecraft.src
             }
         }
 
-        public virtual void WakeUpPlayer(bool flag, bool flag1, bool flag2)
+        public virtual void WakeUpPlayer(bool resetSleepTimer, bool updateAllPlayersSleeping, bool setSpawnAtBed)
         {
+            if (!sleeping) return; // CRAFTBUKKIT: Can't leave bed if not in one
+
             SetSize(0.6F, 1.8F);
             ResetHeight();
             net.minecraft.src.ChunkCoordinates chunkcoordinates = playerLocation;
@@ -726,11 +728,11 @@ namespace net.minecraft.src
                      yOffset + 0.1F, (float)chunkcoordinates2.posZ + 0.5F);
             }
             sleeping = false;
-            if (!worldObj.singleplayerWorld && flag1)
+            if (!worldObj.singleplayerWorld && updateAllPlayersSleeping)
             {
                 worldObj.UpdateAllPlayersSleepingFlag();
             }
-            if (flag)
+            if (resetSleepTimer)
             {
                 sleepTimer = 0;
             }
@@ -738,7 +740,7 @@ namespace net.minecraft.src
             {
                 sleepTimer = 100;
             }
-            if (flag2)
+            if (setSpawnAtBed)
             {
                 SetSpawnChunk(playerLocation);
             }

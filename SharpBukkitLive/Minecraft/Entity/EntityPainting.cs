@@ -128,9 +128,13 @@ namespace net.minecraft.src
 				field_452_ad = 0;
 				if (!OnValidSurface())
 				{
-					SetEntityDead();
-					worldObj.EntityJoinedWorld(new net.minecraft.src.EntityItem(worldObj, posX, posY, 
-						posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
+					//TODO: Hook
+
+					if (!this.isDead) // CRAFTBUKKIT -- Make sure it's not already dead
+					{
+						SetEntityDead();
+						worldObj.EntityJoinedWorld(new net.minecraft.src.EntityItem(worldObj, posX, posY, posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
+					}
 				}
 			}
 		}

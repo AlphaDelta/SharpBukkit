@@ -409,7 +409,7 @@ namespace net.minecraft.src
             }
         }
 
-        public virtual void Func_28017_a(net.minecraft.src.Container container)
+        public virtual void UpdateInventory(net.minecraft.src.Container container)
         {
             UpdateCraftingInventory(container, container.GetItemStacks());
         }

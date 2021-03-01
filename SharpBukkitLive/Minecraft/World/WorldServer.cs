@@ -178,5 +178,6 @@ namespace net.minecraft.src
 		private net.minecraft.server.MinecraftServer mcServer;
 
 		private net.minecraft.src.MCHash field_20912_E;
-	}
+        public EntityTracker tracker; // CRAFTBUKKIT
+    }
 }

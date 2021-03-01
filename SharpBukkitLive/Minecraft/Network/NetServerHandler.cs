@@ -3,6 +3,7 @@
 // Decompiler options: packimports(3) braces deadcode 
 using SharpBukkitLive.SharpBukkit;
 using Sharpen;
+using System;
 using System.Collections.Generic;
 
 namespace net.minecraft.src
@@ -23,7 +24,7 @@ namespace net.minecraft.src
             //            Packet18Animation, Packet19EntityAction, Packet7UseEntity, Packet102WindowClick, 
             //            Packet106Transaction, Packet130UpdateSign, TileEntitySign, Packet, 
             //            Packet9Respawn, Packet101CloseWindow
-            connectionClosed = false;
+            disconnected = false;
             hasMoved = true;
             field_10_k = new System.Collections.Hashtable();
             mcServer = minecraftserver;
@@ -36,7 +37,19 @@ namespace net.minecraft.src
         public virtual void HandlePackets()
         {
             field_22003_h = false;
-            netManager.ProcessReadPackets();
+
+            // CRAFTBUKKIT start
+            try
+            {
+                netManager.ProcessReadPackets();
+            }
+            catch (Exception e)
+            {
+                logger.Warning("NetServerHandler exception came from " + playerEntity.username);
+                KickPlayer(e.GetType().Name);
+            }
+            // CRAFTBUKKIT end
+
             if (field_15_f - field_22004_g > 20)
             {
                 SendPacket(new net.minecraft.src.Packet0KeepAlive());
@@ -52,7 +65,7 @@ namespace net.minecraft.src
                 new java.lang.StringBuilder()).Append("§e").Append(playerEntity.username).Append
                 (" left the game.").ToString()));
             mcServer.configManager.PlayerLoggedOut(playerEntity);
-            connectionClosed = true;
+            disconnected = true;
         }
 
         public override void HandleMovementTypePacket(net.minecraft.src.Packet27Position
@@ -261,9 +274,10 @@ namespace net.minecraft.src
                 (d, d1 + 1.6200000047683716D, d1, d2, f, f1, false));
         }
 
-        public override void HandleBlockDig(net.minecraft.src.Packet14BlockDig packet14blockdig
-            )
+        public override void HandleBlockDig(net.minecraft.src.Packet14BlockDig packet14blockdig)
         {
+            if (playerEntity.isDead) return; // CRAFTBUKKIT
+
             net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(playerEntity
                 .dimension);
             if (packet14blockdig.status == 4)
@@ -436,35 +450,35 @@ namespace net.minecraft.src
             logger.Info((new java.lang.StringBuilder()).Append(playerEntity.username).Append(" lost connection: ").Append(s).ToString());
             mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat((new java.lang.StringBuilder()).Append("§e").Append(playerEntity.username).Append(" left the game.").ToString()));
             mcServer.configManager.PlayerLoggedOut(playerEntity);
-            connectionClosed = true;
+            disconnected = true;
         }
 
         public override void RegisterPacket(net.minecraft.src.Packet packet)
         {
+            if (disconnected) return;
+
             logger.Warning((new java.lang.StringBuilder()).Append(this.GetType().Name).Append(" wasn't prepared to deal with a ").Append(packet.GetType().Name).ToString());
             KickPlayer("Protocol error, unexpected packet");
         }
 
         public virtual void SendPacket(net.minecraft.src.Packet packet)
         {
-            netManager.AddToSendQueue(packet);
-            field_22004_g = field_15_f;
+            netManager.AddToSendQueue(packet); //TODO: Craftbukkit -- reroute chunk compression to another thread
+            //field_22004_g = field_15_f; // CRAFTBUKKIT -- e85c99289cd0f56cb9aff8e673f3e87664cc4321 fix latency issues
         }
 
-        public override void HandleBlockItemSwitch(net.minecraft.src.Packet16BlockItemSwitch
-             packet16blockitemswitch)
+        public override void HandleBlockItemSwitch(net.minecraft.src.Packet16BlockItemSwitch packet16blockitemswitch)
         {
-            if (packet16blockitemswitch.id < 0 || packet16blockitemswitch.id > net.minecraft.src.InventoryPlayer
-                .Func_25054_e())
+            if (this.playerEntity.isDead) return; // CRAFTBUKKIT
+
+            if (packet16blockitemswitch.id >= 0 && packet16blockitemswitch.id < net.minecraft.src.InventoryPlayer.GetNumberOfSlots())
             {
-                logger.Warning((new java.lang.StringBuilder()).Append(playerEntity.username).Append
-                    (" tried to set an invalid carried item").ToString());
-                return;
+                playerEntity.inventory.currentItem = packet16blockitemswitch.id;
             }
             else
             {
-                playerEntity.inventory.currentItem = packet16blockitemswitch.id;
-                return;
+                logger.Warning((new java.lang.StringBuilder()).Append(playerEntity.username).Append(" tried to set an invalid carried item").ToString());
+                this.KickPlayer("Nope!"); // CRAFTBUKKIT
             }
         }
 
@@ -556,36 +570,36 @@ namespace net.minecraft.src
             //}
         }
 
-        public override void HandleArmAnimation(net.minecraft.src.Packet18Animation packet18animation
-            )
+        public override void HandleArmAnimation(net.minecraft.src.Packet18Animation packet18animation)
         {
+            if (this.playerEntity.isDead) return; // CRAFTBUKKIT
+
             if (packet18animation.animate == 1)
             {
+                //TODO: Craftbukkit -- Raytrace to look for 'rogue armswings'
                 playerEntity.SwingItem();
             }
         }
 
-        public override void HandleEntityAction(net.minecraft.src.Packet19EntityAction packet19entityaction
-            )
+        public override void HandleEntityAction(net.minecraft.src.Packet19EntityAction packet19entityaction)
         {
+            if (this.playerEntity.isDead) return; // CRAFTBUKKIT
+
+            //TODO: Hook ToogleSneak
+
             if (packet19entityaction.state == 1)
             {
                 playerEntity.SetSneaking(true);
             }
-            else
+            else if (packet19entityaction.state == 2)
             {
-                if (packet19entityaction.state == 2)
-                {
-                    playerEntity.SetSneaking(false);
-                }
-                else
-                {
-                    if (packet19entityaction.state == 3)
-                    {
-                        playerEntity.WakeUpPlayer(false, true, true);
-                        hasMoved = false;
-                    }
-                }
+                playerEntity.SetSneaking(false);
+            }
+            else if (packet19entityaction.state == 3)
+            {
+                //TODO: Craftbukkit -- Can't leave bed if not in one! (???)
+                playerEntity.WakeUpPlayer(false, true, true);
+                hasMoved = false;
             }
         }
 
@@ -611,53 +625,68 @@ namespace net.minecraft.src
             return playerEntity.username;
         }
 
-        public override void HandleUseEntity(net.minecraft.src.Packet7UseEntity packet7useentity
-            )
+        public override void HandleUseEntity(net.minecraft.src.Packet7UseEntity packet7useentity)
         {
-            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(playerEntity
-                .dimension);
-            net.minecraft.src.Entity entity = worldserver.Func_6158_a(packet7useentity.targetEntity
-                );
-            if (entity != null && playerEntity.CanEntityBeSeen(entity) && playerEntity.GetDistanceSqToEntity
-                (entity) < 36D)
+            if (this.playerEntity.isDead) return; // CRAFTBUKKIT
+
+            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(playerEntity.dimension);
+            net.minecraft.src.Entity entity = worldserver.Func_6158_a(packet7useentity.targetEntity);
+            ItemStack itemInHand = this.playerEntity.inventory.GetCurrentItem(); // CRAFTBUKKIT
+            if (entity != null && playerEntity.CanEntityBeSeen(entity) && playerEntity.GetDistanceSqToEntity(entity) < 36D)
             {
                 if (packet7useentity.isLeftClick == 0)
                 {
                     playerEntity.UseCurrentItemOnEntity(entity);
-                }
-                else
-                {
-                    if (packet7useentity.isLeftClick == 1)
+
+                    // CRAFTBUKKIT start - update the client if the item is an infinite one
+                    if (itemInHand != null && itemInHand.stackSize <= -1)
                     {
-                        playerEntity.AttackTargetEntityWithCurrentItem(entity);
+                        this.playerEntity.UpdateInventory(this.playerEntity.currentCraftingInventory);
                     }
+                    // CRAFTBUKKIT end
+                }
+                else if (packet7useentity.isLeftClick == 1)
+                {
+                    // CRAFTBUKKIT start
+                    if ((entity is EntityItem) || (entity is EntityArrow)) {
+                        String type = entity.GetType().Name;
+                        KickPlayer("Attacking an " + type + " is not permitted");
+                        logger.Warning("Player " + playerEntity.username + " tried to attack an " + type + ", so I have disconnected them for exploiting.");
+                        return;
+                    }
+                    // CRAFTBUKKIT end
+
+                    playerEntity.AttackTargetEntityWithCurrentItem(entity);
+
+                    // CRAFTBUKKIT start - update the client if the item is an infinite one
+                    if (itemInHand != null && itemInHand.stackSize <= -1)
+                    {
+                        this.playerEntity.UpdateInventory(this.playerEntity.currentCraftingInventory);
+                    }
+                    // CRAFTBUKKIT end
                 }
             }
         }
 
-        public override void HandleRespawnPacket(net.minecraft.src.Packet9Respawn packet9respawn
-            )
+        public override void HandleRespawnPacket(net.minecraft.src.Packet9Respawn packet9respawn)
         {
-            if (playerEntity.health > 0)
-            {
-                return;
-            }
-            else
+            if (playerEntity.health <= 0)
             {
                 playerEntity = mcServer.configManager.RecreatePlayerEntity(playerEntity, 0);
-                return;
             }
         }
 
-        public override void HandleCraftingGuiClosedPacked(net.minecraft.src.Packet101CloseWindow
-             packet101closewindow)
+        public override void HandleCraftingGuiClosedPacked(net.minecraft.src.Packet101CloseWindow packet101closewindow)
         {
+            if (this.playerEntity.isDead) return; // CRAFTBUKKIT
+
             playerEntity.CloseCraftingGui();
         }
 
-        public override void HandleWindowClick(net.minecraft.src.Packet102WindowClick packet102windowclick
-            )
+        public override void HandleWindowClick(net.minecraft.src.Packet102WindowClick packet102windowclick)
         {
+            if (this.playerEntity.isDead) return; // CRAFTBUKKIT
+
             if (playerEntity.currentCraftingInventory.windowId == packet102windowclick.window_Id
                  && playerEntity.currentCraftingInventory.GetCanCraft(playerEntity))
             {
@@ -693,9 +722,10 @@ namespace net.minecraft.src
             }
         }
 
-        public override void HandleTransaction(net.minecraft.src.Packet106Transaction packet106transaction
-            )
+        public override void HandleTransaction(net.minecraft.src.Packet106Transaction packet106transaction)
         {
+            if (this.playerEntity.isDead) return; // CRAFTBUKKIT
+
             short short1 = (short)field_10_k[playerEntity.currentCraftingInventory.windowId];
             if (short1 != null && packet106transaction.shortWindowId == short1 && playerEntity
                 .currentCraftingInventory.windowId == packet106transaction.windowId && !playerEntity
@@ -705,9 +735,10 @@ namespace net.minecraft.src
             }
         }
 
-        public override void HandleUpdateSign(net.minecraft.src.Packet130UpdateSign packet130updatesign
-            )
+        public override void HandleUpdateSign(net.minecraft.src.Packet130UpdateSign packet130updatesign)
         {
+            if (this.playerEntity.isDead) return; // CRAFTBUKKIT
+
             net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(playerEntity.dimension);
             if (worldserver.BlockExists(packet130updatesign.xPosition, packet130updatesign.yPosition, packet130updatesign.zPosition))
             {
@@ -718,6 +749,7 @@ namespace net.minecraft.src
                     if (!tileentitysign.GetEditable())
                     {
                         mcServer.LogWarning((new java.lang.StringBuilder()).Append("Player ").Append(playerEntity.username).Append(" just tried to change non-editable sign").ToString());
+                        this.SendPacket(new Packet130UpdateSign(packet130updatesign.xPosition, packet130updatesign.yPosition, packet130updatesign.zPosition, tileentitysign.signText)); // CRAFTBUKKIT
                         return;
                     }
                 }
@@ -769,7 +801,7 @@ namespace net.minecraft.src
 
         public net.minecraft.src.NetworkManager netManager;
 
-        public bool connectionClosed;
+        public bool disconnected;
 
         private net.minecraft.server.MinecraftServer mcServer;
 

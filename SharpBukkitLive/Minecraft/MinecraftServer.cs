@@ -20,7 +20,7 @@ namespace net.minecraft.server
             deathTime = 0;
             field_9010_p = new List<IUpdatePlayerListBox>();
             commands = ArrayList.Synchronized(new System.Collections.ArrayList());
-            entityTracker = new net.minecraft.src.EntityTracker[2];
+            //entityTracker = new net.minecraft.src.EntityTracker[2];
             //new net.minecraft.src.ThreadSleepForever(this);
         }
 
@@ -73,8 +73,8 @@ namespace net.minecraft.server
                 logger.Warning("To change this, set \"online-mode\" to \"true\" in the server.settings file.");
             }
             configManager = new net.minecraft.src.ServerConfigurationManager(this);
-            entityTracker[0] = new net.minecraft.src.EntityTracker(this, 0);
-            entityTracker[1] = new net.minecraft.src.EntityTracker(this, -1);
+            //entityTracker[0] = new net.minecraft.src.EntityTracker(this, 0);
+            //entityTracker[1] = new net.minecraft.src.EntityTracker(this, -1);
             DateTime l = DateTime.Now;
             string worldName = propertyManagerObj.GetStringProperty("level-name", "world");
             string s2 = propertyManagerObj.GetStringProperty("level-seed", string.Empty);
@@ -115,6 +115,7 @@ namespace net.minecraft.server
                 else
                     worldMngr[i] = new net.minecraft.src.WorldServerMulti(this, saveolddir, name, i != 0 ? -1 : 0, seed, worldMngr[0]);
 
+                worldMngr[i].tracker = new EntityTracker(this, worldMngr[i]); // CRAFTBUKKIT
                 worldMngr[i].AddWorldAccess(new net.minecraft.src.WorldManager(this, worldMngr[i]));
                 worldMngr[i].difficultySetting = propertyManagerObj.GetBooleanProperty("spawn-monsters", true) ? 1 : 0;
                 worldMngr[i].SetAllowedSpawnTypes(propertyManagerObj.GetBooleanProperty("spawn-monsters", true), spawnPeacefulMobs);
@@ -351,10 +352,15 @@ namespace net.minecraft.server
             }
             networkServer.HandleNetworkListenThread();
             configManager.OnTick();
-            for (int k = 0; k < entityTracker.Length; k++)
-            {
-                entityTracker[k].UpdateTrackedEntities();
-            }
+
+            // CRAFTBUKKIT
+            foreach (WorldServer w in worldMngr)
+                w.tracker.UpdateTrackedEntities();
+            //for (int k = 0; k < entityTracker.Length; k++)
+            //{
+            //    entityTracker[k].UpdateTrackedEntities();
+            //}
+
             for (int l = 0; l < field_9010_p.Count; l++)
             {
                 ((net.minecraft.src.IUpdatePlayerListBox)field_9010_p[l]).Update();
@@ -452,14 +458,15 @@ namespace net.minecraft.server
 
         public virtual net.minecraft.src.EntityTracker GetEntityTracker(int i)
         {
-            if (i == -1)
-            {
-                return entityTracker[1];
-            }
-            else
-            {
-                return entityTracker[0];
-            }
+            return worldMngr[i].tracker; // CRAFTBUKKIT
+            //if (i == -1)
+            //{
+            //    return entityTracker[1];
+            //}
+            //else
+            //{
+            //    return entityTracker[0];
+            //}
         }
 
         public static bool IsServerRunning(net.minecraft.server.MinecraftServer minecraftserver
@@ -497,7 +504,7 @@ namespace net.minecraft.server
 
         private IList commands;//List<net.minecraft.src.ServerCommand> commands;
 
-        public net.minecraft.src.EntityTracker[] entityTracker;
+        //public net.minecraft.src.EntityTracker[] entityTracker; // CRAFTBUKKIT -- Removed
 
         public bool onlineMode;
 
