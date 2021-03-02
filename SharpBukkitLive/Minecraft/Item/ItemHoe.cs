@@ -22,8 +22,8 @@ namespace net.minecraft.src
 		{
 			int i1 = world.GetBlockId(i, j, k);
 			int j1 = world.GetBlockId(i, j + 1, k);
-			if (l != 0 && j1 == 0 && i1 == net.minecraft.src.Block.GRASS.blockID || i1 == net.minecraft.src.Block
-				.DIRT.blockID)
+			if (l != 0 && j1 == 0 && i1 == net.minecraft.src.Block.GRASS.ID || i1 == net.minecraft.src.Block
+				.DIRT.ID)
 			{
 				net.minecraft.src.Block block = net.minecraft.src.Block.SOIL;
 				world.PlaySoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, block.stepSound
@@ -35,7 +35,7 @@ namespace net.minecraft.src
 				}
 				else
 				{
-					world.SetBlockWithNotify(i, j, k, block.blockID);
+					world.SetBlockWithNotify(i, j, k, block.ID);
 					itemstack.DamageItem(1, entityplayer);
 					return true;
 				}

@@ -18,7 +18,7 @@ namespace net.minecraft.src
 		public override bool OnItemUse(net.minecraft.src.ItemStack itemstack, net.minecraft.src.EntityPlayer
 			 entityplayer, net.minecraft.src.World world, int i, int j, int k, int l)
 		{
-			if (world.GetBlockId(i, j, k) != net.minecraft.src.Block.SNOW.blockID)
+			if (world.GetBlockId(i, j, k) != net.minecraft.src.Block.SNOW.ID)
 			{
 				if (l == 0)
 				{
@@ -52,7 +52,7 @@ namespace net.minecraft.src
 			if (net.minecraft.src.Block.REDSTONE_WIRE.CanPlaceBlockAt(world, i, j, k))
 			{
 				itemstack.stackSize--;
-				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.REDSTONE_WIRE.blockID);
+				world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.REDSTONE_WIRE.ID);
 			}
 			return true;
 		}

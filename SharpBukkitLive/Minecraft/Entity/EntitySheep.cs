@@ -33,21 +33,21 @@ namespace net.minecraft.src
 		{
 			if (!Func_21069_f_())
 			{
-				EntityDropItem(new net.minecraft.src.ItemStack(net.minecraft.src.Block.WOOL.blockID
+				EntityDropItem(new net.minecraft.src.ItemStack(net.minecraft.src.Block.WOOL.ID
 					, 1, GetFleeceColor()), 0.0F);
 			}
 		}
 
 		protected internal override int GetDropItemId()
 		{
-			return net.minecraft.src.Block.WOOL.blockID;
+			return net.minecraft.src.Block.WOOL.ID;
 		}
 
 		public override bool Interact(net.minecraft.src.EntityPlayer entityplayer)
 		{
 			net.minecraft.src.ItemStack itemstack = entityplayer.inventory.GetCurrentItem();
-			if (itemstack != null && itemstack.itemID == net.minecraft.src.Item.field_31022_bc
-				.shiftedIndex && !Func_21069_f_())
+			if (itemstack != null && itemstack.itemID == net.minecraft.src.Item.SHEARS
+				.ID && !Func_21069_f_())
 			{
 				if (!worldObj.singleplayerWorld)
 				{
@@ -56,7 +56,7 @@ namespace net.minecraft.src
 					for (int j = 0; j < i; j++)
 					{
 						net.minecraft.src.EntityItem entityitem = EntityDropItem(new net.minecraft.src.ItemStack
-							(net.minecraft.src.Block.WOOL.blockID, 1, GetFleeceColor()), 1.0F);
+							(net.minecraft.src.Block.WOOL.ID, 1, GetFleeceColor()), 1.0F);
 						entityitem.motionY += rand.NextFloat() * 0.05F;
 						entityitem.motionX += (rand.NextFloat() - rand.NextFloat()) * 0.1F;
 						entityitem.motionZ += (rand.NextFloat() - rand.NextFloat()) * 0.1F;

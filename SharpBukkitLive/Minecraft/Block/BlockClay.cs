@@ -16,7 +16,7 @@ namespace net.minecraft.src
 		//            Block, Material, Item
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Item.clay.shiftedIndex;
+			return net.minecraft.src.Item.CLAY_BALL.ID;
 		}
 
 		public override int QuantityDropped(SharpBukkitLive.SharpBukkit.SharpRandom random)

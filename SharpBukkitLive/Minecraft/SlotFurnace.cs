@@ -25,11 +25,11 @@ namespace net.minecraft.src
 		public override void OnPickupFromSlot(net.minecraft.src.ItemStack itemstack)
 		{
 			itemstack.AddCraftStatistic(field_27007_d.worldObj, field_27007_d);
-			if (itemstack.itemID == net.minecraft.src.Item.ingotIron.shiftedIndex)
+			if (itemstack.itemID == net.minecraft.src.Item.IRON_INGOT.ID)
 			{
 				field_27007_d.AddStat(net.minecraft.src.AchievementList.aAcquireIron, 1);
 			}
-			if (itemstack.itemID == net.minecraft.src.Item.fishCooked.shiftedIndex)
+			if (itemstack.itemID == net.minecraft.src.Item.COOKED_FISH.ID)
 			{
 				field_27007_d.AddStat(net.minecraft.src.AchievementList.aCookFish, 1);
 			}

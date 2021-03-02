@@ -174,7 +174,7 @@ namespace net.minecraft.src
 					net.minecraft.src.ItemStack itemstack = entityplayer.inventory.GetCurrentItem();
 					if (itemstack != null)
 					{
-						if (!IsTamed() && itemstack.itemID == net.minecraft.src.Item.bone.shiftedIndex)
+						if (!IsTamed() && itemstack.itemID == net.minecraft.src.Item.BONE.ID)
 						{
 							field_25039_a = true;
 						}
@@ -424,7 +424,7 @@ namespace net.minecraft.src
 			net.minecraft.src.ItemStack itemstack = entityplayer.inventory.GetCurrentItem();
 			if (!IsTamed())
 			{
-				if (itemstack != null && itemstack.itemID == net.minecraft.src.Item.bone.shiftedIndex
+				if (itemstack != null && itemstack.itemID == net.minecraft.src.Item.BONE.ID
 					 && !GetIsAngry())
 				{
 					itemstack.stackSize--;
@@ -469,7 +469,7 @@ namespace net.minecraft.src
 							entityplayer.inventory.SetInventorySlotContents(entityplayer.inventory.currentItem
 								, null);
 						}
-						Heal(((net.minecraft.src.ItemFood)net.minecraft.src.Item.porkRaw).GetHealAmount()
+						Heal(((net.minecraft.src.ItemFood)net.minecraft.src.Item.PORK).GetHealAmount()
 							);
 						return true;
 					}

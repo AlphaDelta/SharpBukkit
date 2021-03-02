@@ -454,7 +454,7 @@ namespace net.minecraft.src
                     (double)yOffset);
                 int l1 = net.minecraft.src.MathHelper.Floor_double(posZ);
                 int j3 = worldObj.GetBlockId(l, j1, l1);
-                if (worldObj.GetBlockId(l, j1 - 1, l1) == net.minecraft.src.Block.FENCE.blockID)
+                if (worldObj.GetBlockId(l, j1 - 1, l1) == net.minecraft.src.Block.FENCE.ID)
                 {
                     j3 = worldObj.GetBlockId(l, j1 - 1, l1);
                 }
@@ -462,7 +462,7 @@ namespace net.minecraft.src
                 {
                     nextStepDistance++;
                     net.minecraft.src.StepSound stepsound = net.minecraft.src.Block.blocksList[j3].stepSound;
-                    if (worldObj.GetBlockId(l, j1 + 1, l1) == net.minecraft.src.Block.SNOW.blockID)
+                    if (worldObj.GetBlockId(l, j1 + 1, l1) == net.minecraft.src.Block.SNOW.ID)
                     {
                         stepsound = net.minecraft.src.Block.SNOW.stepSound;
                         worldObj.PlaySoundAtEntity(this, stepsound.Func_737_c(), stepsound.GetVolume() *

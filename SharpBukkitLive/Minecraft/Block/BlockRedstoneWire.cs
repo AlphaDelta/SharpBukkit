@@ -57,7 +57,7 @@ namespace net.minecraft.src
                 net.minecraft.src.ChunkPosition chunkposition = (net.minecraft.src.ChunkPosition)
                     arraylist[l];
                 world.NotifyBlocksOfNeighborChange(chunkposition.x, chunkposition.y, chunkposition
-                    .z, blockID);
+                    .z, ID);
             }
         }
 
@@ -190,19 +190,19 @@ namespace net.minecraft.src
         private void NotifyWireNeighborsOfNeighborChange(net.minecraft.src.World world, int
              i, int j, int k)
         {
-            if (world.GetBlockId(i, j, k) != blockID)
+            if (world.GetBlockId(i, j, k) != ID)
             {
                 return;
             }
             else
             {
-                world.NotifyBlocksOfNeighborChange(i, j, k, blockID);
-                world.NotifyBlocksOfNeighborChange(i - 1, j, k, blockID);
-                world.NotifyBlocksOfNeighborChange(i + 1, j, k, blockID);
-                world.NotifyBlocksOfNeighborChange(i, j, k - 1, blockID);
-                world.NotifyBlocksOfNeighborChange(i, j, k + 1, blockID);
-                world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
-                world.NotifyBlocksOfNeighborChange(i, j + 1, k, blockID);
+                world.NotifyBlocksOfNeighborChange(i, j, k, ID);
+                world.NotifyBlocksOfNeighborChange(i - 1, j, k, ID);
+                world.NotifyBlocksOfNeighborChange(i + 1, j, k, ID);
+                world.NotifyBlocksOfNeighborChange(i, j, k - 1, ID);
+                world.NotifyBlocksOfNeighborChange(i, j, k + 1, ID);
+                world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
+                world.NotifyBlocksOfNeighborChange(i, j + 1, k, ID);
                 return;
             }
         }
@@ -216,8 +216,8 @@ namespace net.minecraft.src
                 return;
             }
             UpdateAndPropagateCurrentStrength(world, i, j, k);
-            world.NotifyBlocksOfNeighborChange(i, j + 1, k, blockID);
-            world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+            world.NotifyBlocksOfNeighborChange(i, j + 1, k, ID);
+            world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
             NotifyWireNeighborsOfNeighborChange(world, i - 1, j, k);
             NotifyWireNeighborsOfNeighborChange(world, i + 1, j, k);
             NotifyWireNeighborsOfNeighborChange(world, i, j, k - 1);
@@ -264,8 +264,8 @@ namespace net.minecraft.src
             {
                 return;
             }
-            world.NotifyBlocksOfNeighborChange(i, j + 1, k, blockID);
-            world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+            world.NotifyBlocksOfNeighborChange(i, j + 1, k, ID);
+            world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
             UpdateAndPropagateCurrentStrength(world, i, j, k);
             NotifyWireNeighborsOfNeighborChange(world, i - 1, j, k);
             NotifyWireNeighborsOfNeighborChange(world, i + 1, j, k);
@@ -308,7 +308,7 @@ namespace net.minecraft.src
         private int GetMaxCurrentStrength(net.minecraft.src.World world, int i, int j, int
              k, int l)
         {
-            if (world.GetBlockId(i, j, k) != blockID)
+            if (world.GetBlockId(i, j, k) != ID)
             {
                 return l;
             }
@@ -346,7 +346,7 @@ namespace net.minecraft.src
 
         public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
         {
-            return net.minecraft.src.Item.redstone.shiftedIndex;
+            return net.minecraft.src.Item.REDSTONE.ID;
         }
 
         public override bool IsIndirectlyPoweringTo(net.minecraft.src.World world, int i,
@@ -440,7 +440,7 @@ namespace net.minecraft.src
             , int i, int j, int k, int l)
         {
             int i1 = iblockaccess.GetBlockId(i, j, k);
-            if (i1 == net.minecraft.src.Block.REDSTONE_WIRE.blockID)
+            if (i1 == net.minecraft.src.Block.REDSTONE_WIRE.ID)
             {
                 return true;
             }
@@ -452,8 +452,8 @@ namespace net.minecraft.src
             {
                 return true;
             }
-            if (i1 == net.minecraft.src.Block.DIODE_OFF.blockID || i1 == net.minecraft.src.Block
-                .DIODE_ON.blockID)
+            if (i1 == net.minecraft.src.Block.DIODE_OFF.ID || i1 == net.minecraft.src.Block
+                .DIODE_ON.ID)
             {
                 int j1 = iblockaccess.GetBlockMetadata(i, j, k);
                 return l == net.minecraft.src.ModelBed.field_22153_b[j1 & 3];

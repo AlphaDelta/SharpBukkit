@@ -19,7 +19,7 @@ namespace net.minecraft.src
 			, int i, int j, int k)
 		{
 			for (int l = 0; ((l = world.GetBlockId(i, j, k)) == 0 || l == net.minecraft.src.Block
-				.LEAVES.blockID) && j > 0; j--)
+				.LEAVES.ID) && j > 0; j--)
 			{
 			}
 			for (int i1 = 0; i1 < 4; i1++)

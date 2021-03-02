@@ -85,7 +85,7 @@ namespace net.minecraft.src
                                     int l2 = 0;
                                     if (d15 > 0.0D)
                                     {
-                                        l2 = net.minecraft.src.Block.STONE.blockID;
+                                        l2 = net.minecraft.src.Block.STONE.ID;
                                     }
                                     abyte0[j2] = unchecked((byte)l2);
                                     j2 += c;
@@ -130,7 +130,7 @@ namespace net.minecraft.src
                             j1 = -1;
                             continue;
                         }
-                        if (byte2 != net.minecraft.src.Block.STONE.blockID)
+                        if (byte2 != net.minecraft.src.Block.STONE.ID)
                         {
                             continue;
                         }
@@ -139,7 +139,7 @@ namespace net.minecraft.src
                             if (i1 <= 0)
                             {
                                 byte0 = 0;
-                                byte1 = unchecked((byte)net.minecraft.src.Block.STONE.blockID);
+                                byte1 = unchecked((byte)net.minecraft.src.Block.STONE.ID);
                             }
                             j1 = i1;
                             if (k1 >= 0)
@@ -158,10 +158,10 @@ namespace net.minecraft.src
                         }
                         j1--;
                         abyte0[l1] = byte1;
-                        if (j1 == 0 && byte1 == net.minecraft.src.Block.SAND.blockID)
+                        if (j1 == 0 && byte1 == net.minecraft.src.Block.SAND.ID)
                         {
                             j1 = field_28085_j.NextInt(4);
-                            byte1 = unchecked((byte)net.minecraft.src.Block.SANDSTONE.blockID);
+                            byte1 = unchecked((byte)net.minecraft.src.Block.SANDSTONE.ID);
                         }
                     }
                 }
@@ -327,7 +327,7 @@ namespace net.minecraft.src
                 int i1 = k + field_28085_j.NextInt(16) + 8;
                 int l4 = field_28085_j.NextInt(128);
                 int i8 = l + field_28085_j.NextInt(16) + 8;
-                (new net.minecraft.src.WorldGenLakes(net.minecraft.src.Block.STATIONARY_WATER.blockID))
+                (new net.minecraft.src.WorldGenLakes(net.minecraft.src.Block.STATIONARY_WATER.ID))
                     .Generate(field_28079_p, field_28085_j, i1, l4, i8);
             }
             if (field_28085_j.NextInt(8) == 0)
@@ -337,7 +337,7 @@ namespace net.minecraft.src
                 int j8 = l + field_28085_j.NextInt(16) + 8;
                 if (i5 < 64 || field_28085_j.NextInt(10) == 0)
                 {
-                    (new net.minecraft.src.WorldGenLakes(net.minecraft.src.Block.STATIONARY_LAVA.blockID)).
+                    (new net.minecraft.src.WorldGenLakes(net.minecraft.src.Block.STATIONARY_LAVA.ID)).
                         Generate(field_28079_p, field_28085_j, j1, i5, j8);
                 }
             }
@@ -362,7 +362,7 @@ namespace net.minecraft.src
                 int l5 = k + field_28085_j.NextInt(16);
                 int i9 = field_28085_j.NextInt(128);
                 int k13 = l + field_28085_j.NextInt(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.DIRT.blockID, 32))
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.DIRT.ID, 32))
                     .Generate(field_28079_p, field_28085_j, l5, i9, k13);
             }
             for (int k2 = 0; k2 < 10; k2++)
@@ -370,7 +370,7 @@ namespace net.minecraft.src
                 int i6 = k + field_28085_j.NextInt(16);
                 int j9 = field_28085_j.NextInt(128);
                 int l13 = l + field_28085_j.NextInt(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.GRAVEL.blockID, 32
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.GRAVEL.ID, 32
                     )).Generate(field_28079_p, field_28085_j, i6, j9, l13);
             }
             for (int i3 = 0; i3 < 20; i3++)
@@ -378,7 +378,7 @@ namespace net.minecraft.src
                 int j6 = k + field_28085_j.NextInt(16);
                 int k9 = field_28085_j.NextInt(128);
                 int i14 = l + field_28085_j.NextInt(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.COAL_ORE.blockID, 16
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.COAL_ORE.ID, 16
                     )).Generate(field_28079_p, field_28085_j, j6, k9, i14);
             }
             for (int j3 = 0; j3 < 20; j3++)
@@ -386,7 +386,7 @@ namespace net.minecraft.src
                 int k6 = k + field_28085_j.NextInt(16);
                 int l9 = field_28085_j.NextInt(64);
                 int j14 = l + field_28085_j.NextInt(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.IRON_ORE.blockID, 8
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.IRON_ORE.ID, 8
                     )).Generate(field_28079_p, field_28085_j, k6, l9, j14);
             }
             for (int k3 = 0; k3 < 2; k3++)
@@ -394,7 +394,7 @@ namespace net.minecraft.src
                 int l6 = k + field_28085_j.NextInt(16);
                 int i10 = field_28085_j.NextInt(32);
                 int k14 = l + field_28085_j.NextInt(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.GOLD_ORE.blockID, 8
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.GOLD_ORE.ID, 8
                     )).Generate(field_28079_p, field_28085_j, l6, i10, k14);
             }
             for (int l3 = 0; l3 < 8; l3++)
@@ -402,7 +402,7 @@ namespace net.minecraft.src
                 int i7 = k + field_28085_j.NextInt(16);
                 int j10 = field_28085_j.NextInt(16);
                 int l14 = l + field_28085_j.NextInt(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.REDSTONE_ORE.blockID
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.REDSTONE_ORE.ID
                     , 7)).Generate(field_28079_p, field_28085_j, i7, j10, l14);
             }
             for (int i4 = 0; i4 < 1; i4++)
@@ -410,7 +410,7 @@ namespace net.minecraft.src
                 int j7 = k + field_28085_j.NextInt(16);
                 int k10 = field_28085_j.NextInt(16);
                 int i15 = l + field_28085_j.NextInt(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.DIAMOND_ORE.blockID
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.DIAMOND_ORE.ID
                     , 7)).Generate(field_28079_p, field_28085_j, j7, k10, i15);
             }
             for (int j4 = 0; j4 < 1; j4++)
@@ -418,7 +418,7 @@ namespace net.minecraft.src
                 int k7 = k + field_28085_j.NextInt(16);
                 int l10 = field_28085_j.NextInt(16) + field_28085_j.NextInt(16);
                 int j15 = l + field_28085_j.NextInt(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.LAPIS_ORE.blockID,
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.LAPIS_ORE.ID,
                     6)).Generate(field_28079_p, field_28085_j, k7, l10, j15);
             }
             d = 0.5D;
@@ -472,7 +472,7 @@ namespace net.minecraft.src
                 int l15 = k + field_28085_j.NextInt(16) + 8;
                 int k18 = field_28085_j.NextInt(128);
                 int i21 = l + field_28085_j.NextInt(16) + 8;
-                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.YELLOW_FLOWER.blockID
+                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.YELLOW_FLOWER.ID
                     )).Generate(field_28079_p, field_28085_j, l15, k18, i21);
             }
             if (field_28085_j.NextInt(2) == 0)
@@ -480,7 +480,7 @@ namespace net.minecraft.src
                 int k11 = k + field_28085_j.NextInt(16) + 8;
                 int i16 = field_28085_j.NextInt(128);
                 int l18 = l + field_28085_j.NextInt(16) + 8;
-                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.RED_ROSE.blockID))
+                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.RED_ROSE.ID))
                     .Generate(field_28079_p, field_28085_j, k11, i16, l18);
             }
             if (field_28085_j.NextInt(4) == 0)
@@ -488,7 +488,7 @@ namespace net.minecraft.src
                 int l11 = k + field_28085_j.NextInt(16) + 8;
                 int j16 = field_28085_j.NextInt(128);
                 int i19 = l + field_28085_j.NextInt(16) + 8;
-                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.BROWN_MUSHROOM.blockID
+                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.BROWN_MUSHROOM.ID
                     )).Generate(field_28079_p, field_28085_j, l11, j16, i19);
             }
             if (field_28085_j.NextInt(8) == 0)
@@ -496,7 +496,7 @@ namespace net.minecraft.src
                 int i12 = k + field_28085_j.NextInt(16) + 8;
                 int k16 = field_28085_j.NextInt(128);
                 int j19 = l + field_28085_j.NextInt(16) + 8;
-                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.RED_MUSHROOM.blockID
+                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.RED_MUSHROOM.ID
                     )).Generate(field_28079_p, field_28085_j, i12, k16, j19);
             }
             for (int j12 = 0; j12 < 10; j12++)
@@ -533,7 +533,7 @@ namespace net.minecraft.src
                 int j20 = k + field_28085_j.NextInt(16) + 8;
                 int l21 = field_28085_j.NextInt(field_28085_j.NextInt(120) + 8);
                 int l22 = l + field_28085_j.NextInt(16) + 8;
-                (new net.minecraft.src.WorldGenLiquids(net.minecraft.src.Block.WATER.blockID
+                (new net.minecraft.src.WorldGenLiquids(net.minecraft.src.Block.WATER.ID
                     )).Generate(field_28079_p, field_28085_j, j20, l21, l22);
             }
             for (int l17 = 0; l17 < 20; l17++)
@@ -542,7 +542,7 @@ namespace net.minecraft.src
                 int i22 = field_28085_j.NextInt(field_28085_j.NextInt(field_28085_j.NextInt(112)
                     + 8) + 8);
                 int i23 = l + field_28085_j.NextInt(16) + 8;
-                (new net.minecraft.src.WorldGenLiquids(net.minecraft.src.Block.LAVA.blockID
+                (new net.minecraft.src.WorldGenLiquids(net.minecraft.src.Block.LAVA.ID
                     )).Generate(field_28079_p, field_28085_j, k20, i22, i23);
             }
             field_28072_w = field_28079_p.GetWorldChunkManager().GetTemperatures(field_28072_w
@@ -559,7 +559,7 @@ namespace net.minecraft.src
                         && field_28079_p.GetBlockMaterial(i18, k23 - 1, l20).GetIsSolid() && field_28079_p
                         .GetBlockMaterial(i18, k23 - 1, l20) != net.minecraft.src.Material.ice)
                     {
-                        field_28079_p.SetBlockWithNotify(i18, k23, l20, net.minecraft.src.Block.SNOW.blockID
+                        field_28079_p.SetBlockWithNotify(i18, k23, l20, net.minecraft.src.Block.SNOW.ID
                             );
                     }
                 }

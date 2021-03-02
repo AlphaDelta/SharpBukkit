@@ -106,13 +106,13 @@ namespace net.minecraft.src
 			int l = world.GetBlockMetadata(i, j, k);
 			if ((l & 8) != 0)
 			{
-				if (world.GetBlockId(i, j - 1, k) == blockID)
+				if (world.GetBlockId(i, j - 1, k) == ID)
 				{
 					BlockActivated(world, i, j - 1, k, entityplayer);
 				}
 				return true;
 			}
-			if (world.GetBlockId(i, j + 1, k) == blockID)
+			if (world.GetBlockId(i, j + 1, k) == ID)
 			{
 				world.SetBlockMetadataWithNotify(i, j + 1, k, (l ^ 4) + 8);
 			}
@@ -128,7 +128,7 @@ namespace net.minecraft.src
 			int l = world.GetBlockMetadata(i, j, k);
 			if ((l & 8) != 0)
 			{
-				if (world.GetBlockId(i, j - 1, k) == blockID)
+				if (world.GetBlockId(i, j - 1, k) == ID)
 				{
 					Func_272_a(world, i, j - 1, k, flag);
 				}
@@ -139,7 +139,7 @@ namespace net.minecraft.src
 			{
 				return;
 			}
-			if (world.GetBlockId(i, j + 1, k) == blockID)
+			if (world.GetBlockId(i, j + 1, k) == ID)
 			{
 				world.SetBlockMetadataWithNotify(i, j + 1, k, (l ^ 4) + 8);
 			}
@@ -154,7 +154,7 @@ namespace net.minecraft.src
 			int i1 = world.GetBlockMetadata(i, j, k);
 			if ((i1 & 8) != 0)
 			{
-				if (world.GetBlockId(i, j - 1, k) != blockID)
+				if (world.GetBlockId(i, j - 1, k) != ID)
 				{
 					world.SetBlockWithNotify(i, j, k, 0);
 				}
@@ -166,7 +166,7 @@ namespace net.minecraft.src
 			else
 			{
 				bool flag = false;
-				if (world.GetBlockId(i, j + 1, k) != blockID)
+				if (world.GetBlockId(i, j + 1, k) != ID)
 				{
 					world.SetBlockWithNotify(i, j, k, 0);
 					flag = true;
@@ -175,7 +175,7 @@ namespace net.minecraft.src
 				{
 					world.SetBlockWithNotify(i, j, k, 0);
 					flag = true;
-					if (world.GetBlockId(i, j + 1, k) == blockID)
+					if (world.GetBlockId(i, j + 1, k) == ID)
 					{
 						world.SetBlockWithNotify(i, j + 1, k, 0);
 					}
@@ -207,11 +207,11 @@ namespace net.minecraft.src
 			}
 			if (blockMaterial == net.minecraft.src.Material.iron)
 			{
-				return net.minecraft.src.Item.doorSteel.shiftedIndex;
+				return net.minecraft.src.Item.IRON_DOOR.ID;
 			}
 			else
 			{
-				return net.minecraft.src.Item.doorWood.shiftedIndex;
+				return net.minecraft.src.Item.WOOD_DOOR.ID;
 			}
 		}
 

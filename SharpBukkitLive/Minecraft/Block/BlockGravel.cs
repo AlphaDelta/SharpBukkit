@@ -18,11 +18,11 @@ namespace net.minecraft.src
 		{
 			if (random.Next(10) == 0)
 			{
-				return net.minecraft.src.Item.flint.shiftedIndex;
+				return net.minecraft.src.Item.FLINT.ID;
 			}
 			else
 			{
-				return blockID;
+				return ID;
 			}
 		}
 	}

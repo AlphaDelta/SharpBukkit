@@ -86,16 +86,16 @@ namespace net.minecraft.src
                                     {
                                         if (d17 < 0.5D && k1 * 8 + l1 >= byte1 - 1)
                                         {
-                                            l2 = net.minecraft.src.Block.ICE.blockID;
+                                            l2 = net.minecraft.src.Block.ICE.ID;
                                         }
                                         else
                                         {
-                                            l2 = net.minecraft.src.Block.STATIONARY_WATER.blockID;
+                                            l2 = net.minecraft.src.Block.STATIONARY_WATER.ID;
                                         }
                                     }
                                     if (d15 > 0.0D)
                                     {
-                                        l2 = net.minecraft.src.Block.STONE.blockID;
+                                        l2 = net.minecraft.src.Block.STONE.ID;
                                     }
                                     abyte0[j2] = unchecked((byte)l2);
                                     j2 += c;
@@ -142,7 +142,7 @@ namespace net.minecraft.src
                         int l1 = (l * 16 + k) * 128 + k1;
                         if (k1 <= 0 + rand.Next(5))
                         {
-                            abyte0[l1] = unchecked((byte)net.minecraft.src.Block.BEDROCK.blockID);
+                            abyte0[l1] = unchecked((byte)net.minecraft.src.Block.BEDROCK.ID);
                             continue;
                         }
                         byte byte3 = abyte0[l1];
@@ -151,7 +151,7 @@ namespace net.minecraft.src
                             j1 = -1;
                             continue;
                         }
-                        if (byte3 != net.minecraft.src.Block.STONE.blockID)
+                        if (byte3 != net.minecraft.src.Block.STONE.ID)
                         {
                             continue;
                         }
@@ -160,7 +160,7 @@ namespace net.minecraft.src
                             if (i1 <= 0)
                             {
                                 byte1 = 0;
-                                byte2 = unchecked((byte)net.minecraft.src.Block.STONE.blockID);
+                                byte2 = unchecked((byte)net.minecraft.src.Block.STONE.ID);
                             }
                             else
                             {
@@ -174,21 +174,21 @@ namespace net.minecraft.src
                                     }
                                     if (flag1)
                                     {
-                                        byte2 = unchecked((byte)net.minecraft.src.Block.GRAVEL.blockID);
+                                        byte2 = unchecked((byte)net.minecraft.src.Block.GRAVEL.ID);
                                     }
                                     if (flag)
                                     {
-                                        byte1 = unchecked((byte)net.minecraft.src.Block.SAND.blockID);
+                                        byte1 = unchecked((byte)net.minecraft.src.Block.SAND.ID);
                                     }
                                     if (flag)
                                     {
-                                        byte2 = unchecked((byte)net.minecraft.src.Block.SAND.blockID);
+                                        byte2 = unchecked((byte)net.minecraft.src.Block.SAND.ID);
                                     }
                                 }
                             }
                             if (k1 < byte0 && byte1 == 0)
                             {
-                                byte1 = unchecked((byte)net.minecraft.src.Block.STATIONARY_WATER.blockID);
+                                byte1 = unchecked((byte)net.minecraft.src.Block.STATIONARY_WATER.ID);
                             }
                             j1 = i1;
                             if (k1 >= byte0 - 1)
@@ -207,10 +207,10 @@ namespace net.minecraft.src
                         }
                         j1--;
                         abyte0[l1] = byte2;
-                        if (j1 == 0 && byte2 == net.minecraft.src.Block.SAND.blockID)
+                        if (j1 == 0 && byte2 == net.minecraft.src.Block.SAND.ID)
                         {
                             j1 = rand.Next(4);
-                            byte2 = unchecked((byte)net.minecraft.src.Block.SANDSTONE.blockID);
+                            byte2 = unchecked((byte)net.minecraft.src.Block.SANDSTONE.ID);
                         }
                     }
                 }
@@ -376,7 +376,7 @@ namespace net.minecraft.src
                 int i1 = k + rand.Next(16) + 8;
                 int l4 = rand.Next(128);
                 int i8 = l + rand.Next(16) + 8;
-                (new net.minecraft.src.WorldGenLakes(net.minecraft.src.Block.STATIONARY_WATER.blockID))
+                (new net.minecraft.src.WorldGenLakes(net.minecraft.src.Block.STATIONARY_WATER.ID))
                     .Generate(worldObj, rand, i1, l4, i8);
             }
             if (rand.Next(8) == 0)
@@ -386,7 +386,7 @@ namespace net.minecraft.src
                 int j8 = l + rand.Next(16) + 8;
                 if (i5 < 64 || rand.Next(10) == 0)
                 {
-                    (new net.minecraft.src.WorldGenLakes(net.minecraft.src.Block.STATIONARY_LAVA.blockID)).
+                    (new net.minecraft.src.WorldGenLakes(net.minecraft.src.Block.STATIONARY_LAVA.ID)).
                         Generate(worldObj, rand, j1, i5, j8);
                 }
             }
@@ -409,7 +409,7 @@ namespace net.minecraft.src
                 int l5 = k + rand.Next(16);
                 int i9 = rand.Next(128);
                 int l11 = l + rand.Next(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.DIRT.blockID, 32))
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.DIRT.ID, 32))
                     .Generate(worldObj, rand, l5, i9, l11);
             }
             for (int k2 = 0; k2 < 10; k2++)
@@ -417,7 +417,7 @@ namespace net.minecraft.src
                 int i6 = k + rand.Next(16);
                 int j9 = rand.Next(128);
                 int i12 = l + rand.Next(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.GRAVEL.blockID, 32
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.GRAVEL.ID, 32
                     )).Generate(worldObj, rand, i6, j9, i12);
             }
             for (int i3 = 0; i3 < 20; i3++)
@@ -425,7 +425,7 @@ namespace net.minecraft.src
                 int j6 = k + rand.Next(16);
                 int k9 = rand.Next(128);
                 int j12 = l + rand.Next(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.COAL_ORE.blockID, 16
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.COAL_ORE.ID, 16
                     )).Generate(worldObj, rand, j6, k9, j12);
             }
             for (int j3 = 0; j3 < 20; j3++)
@@ -433,7 +433,7 @@ namespace net.minecraft.src
                 int k6 = k + rand.Next(16);
                 int l9 = rand.Next(64);
                 int k12 = l + rand.Next(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.IRON_ORE.blockID, 8
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.IRON_ORE.ID, 8
                     )).Generate(worldObj, rand, k6, l9, k12);
             }
             for (int k3 = 0; k3 < 2; k3++)
@@ -441,7 +441,7 @@ namespace net.minecraft.src
                 int l6 = k + rand.Next(16);
                 int i10 = rand.Next(32);
                 int l12 = l + rand.Next(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.GOLD_ORE.blockID, 8
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.GOLD_ORE.ID, 8
                     )).Generate(worldObj, rand, l6, i10, l12);
             }
             for (int l3 = 0; l3 < 8; l3++)
@@ -449,7 +449,7 @@ namespace net.minecraft.src
                 int i7 = k + rand.Next(16);
                 int j10 = rand.Next(16);
                 int i13 = l + rand.Next(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.REDSTONE_ORE.blockID
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.REDSTONE_ORE.ID
                     , 7)).Generate(worldObj, rand, i7, j10, i13);
             }
             for (int i4 = 0; i4 < 1; i4++)
@@ -457,7 +457,7 @@ namespace net.minecraft.src
                 int j7 = k + rand.Next(16);
                 int k10 = rand.Next(16);
                 int j13 = l + rand.Next(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.DIAMOND_ORE.blockID
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.DIAMOND_ORE.ID
                     , 7)).Generate(worldObj, rand, j7, k10, j13);
             }
             for (int j4 = 0; j4 < 1; j4++)
@@ -465,7 +465,7 @@ namespace net.minecraft.src
                 int k7 = k + rand.Next(16);
                 int l10 = rand.Next(16) + rand.Next(16);
                 int k13 = l + rand.Next(16);
-                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.LAPIS_ORE.blockID,
+                (new net.minecraft.src.WorldGenMinable(net.minecraft.src.Block.LAPIS_ORE.ID,
                     6)).Generate(worldObj, rand, k7, l10, k13);
             }
             d = 0.5D;
@@ -536,7 +536,7 @@ namespace net.minecraft.src
                 int k14 = k + rand.Next(16) + 8;
                 int l16 = rand.Next(128);
                 int k19 = l + rand.Next(16) + 8;
-                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.YELLOW_FLOWER.blockID
+                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.YELLOW_FLOWER.ID
                     )).Generate(worldObj, rand, k14, l16, k19);
             }
             byte byte1 = 0;
@@ -571,7 +571,7 @@ namespace net.minecraft.src
                 int l19 = k + rand.Next(16) + 8;
                 int k22 = rand.Next(128);
                 int j24 = l + rand.Next(16) + 8;
-                (new net.minecraft.src.WorldGenTallGrass(net.minecraft.src.Block.LONG_GRASS.blockID
+                (new net.minecraft.src.WorldGenTallGrass(net.minecraft.src.Block.LONG_GRASS.ID
                     , byte2)).Generate(worldObj, rand, l19, k22, j24);
             }
             byte1 = 0;
@@ -584,7 +584,7 @@ namespace net.minecraft.src
                 int i17 = k + rand.Next(16) + 8;
                 int i20 = rand.Next(128);
                 int l22 = l + rand.Next(16) + 8;
-                (new net.minecraft.src.WorldGenDeadBush(net.minecraft.src.Block.DEAD_BUSH.blockID)
+                (new net.minecraft.src.WorldGenDeadBush(net.minecraft.src.Block.DEAD_BUSH.ID)
                     ).Generate(worldObj, rand, i17, i20, l22);
             }
             if (rand.Next(2) == 0)
@@ -592,7 +592,7 @@ namespace net.minecraft.src
                 int j15 = k + rand.Next(16) + 8;
                 int j17 = rand.Next(128);
                 int j20 = l + rand.Next(16) + 8;
-                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.RED_ROSE.blockID))
+                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.RED_ROSE.ID))
                     .Generate(worldObj, rand, j15, j17, j20);
             }
             if (rand.Next(4) == 0)
@@ -600,7 +600,7 @@ namespace net.minecraft.src
                 int k15 = k + rand.Next(16) + 8;
                 int k17 = rand.Next(128);
                 int k20 = l + rand.Next(16) + 8;
-                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.BROWN_MUSHROOM.blockID
+                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.BROWN_MUSHROOM.ID
                     )).Generate(worldObj, rand, k15, k17, k20);
             }
             if (rand.Next(8) == 0)
@@ -608,7 +608,7 @@ namespace net.minecraft.src
                 int l15 = k + rand.Next(16) + 8;
                 int l17 = rand.Next(128);
                 int l20 = l + rand.Next(16) + 8;
-                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.RED_MUSHROOM.blockID
+                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.RED_MUSHROOM.ID
                     )).Generate(worldObj, rand, l15, l17, l20);
             }
             for (int i16 = 0; i16 < 10; i16++)
@@ -642,7 +642,7 @@ namespace net.minecraft.src
                 int l21 = k + rand.Next(16) + 8;
                 int k23 = rand.Next(rand.Next(120) + 8);
                 int l24 = l + rand.Next(16) + 8;
-                (new net.minecraft.src.WorldGenLiquids(net.minecraft.src.Block.WATER.blockID
+                (new net.minecraft.src.WorldGenLiquids(net.minecraft.src.Block.WATER.ID
                     )).Generate(worldObj, rand, l21, k23, l24);
             }
             for (int i19 = 0; i19 < 20; i19++)
@@ -650,7 +650,7 @@ namespace net.minecraft.src
                 int i22 = k + rand.Next(16) + 8;
                 int l23 = rand.Next(rand.Next(rand.Next(112) + 8) + 8);
                 int i25 = l + rand.Next(16) + 8;
-                (new net.minecraft.src.WorldGenLiquids(net.minecraft.src.Block.LAVA.blockID
+                (new net.minecraft.src.WorldGenLiquids(net.minecraft.src.Block.LAVA.ID
                     )).Generate(worldObj, rand, i22, l23, i25);
             }
             generatedTemperatures = worldObj.GetWorldChunkManager().GetTemperatures(generatedTemperatures
@@ -668,7 +668,7 @@ namespace net.minecraft.src
                         .GetBlockMaterial(j19, k25 - 1, j22).GetIsSolid() && worldObj.GetBlockMaterial(j19
                         , k25 - 1, j22) != net.minecraft.src.Material.ice)
                     {
-                        worldObj.SetBlockWithNotify(j19, k25, j22, net.minecraft.src.Block.SNOW.blockID);
+                        worldObj.SetBlockWithNotify(j19, k25, j22, net.minecraft.src.Block.SNOW.ID);
                     }
                 }
             }

@@ -68,12 +68,12 @@ namespace net.minecraft.src
 							}
 							if (k2 == j - 1 && random.Next(4) != 0)
 							{
-								world.SetBlockWithNotify(l1, k2, j3, net.minecraft.src.Block.MOSSY_COBBLESTONE.blockID
+								world.SetBlockWithNotify(l1, k2, j3, net.minecraft.src.Block.MOSSY_COBBLESTONE.ID
 									);
 							}
 							else
 							{
-								world.SetBlockWithNotify(l1, k2, j3, net.minecraft.src.Block.COBBLESTONE.blockID);
+								world.SetBlockWithNotify(l1, k2, j3, net.minecraft.src.Block.COBBLESTONE.ID);
 							}
 						}
 						else
@@ -115,7 +115,7 @@ namespace net.minecraft.src
 					{
 						continue;
 					}
-					world.SetBlockWithNotify(k3, l3, i4, net.minecraft.src.Block.CHEST.blockID);
+					world.SetBlockWithNotify(k3, l3, i4, net.minecraft.src.Block.CHEST.ID);
 					net.minecraft.src.TileEntityChest tileentitychest = (net.minecraft.src.TileEntityChest
 						)world.GetBlockTileEntity(k3, l3, i4);
 					int k4 = 0;
@@ -138,7 +138,7 @@ label0_continue: ;
 				}
 label0_break: ;
 			}
-			world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.MOB_SPAWNER.blockID);
+			world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.MOB_SPAWNER.ID);
 			net.minecraft.src.TileEntityMobSpawner tileentitymobspawner = (net.minecraft.src.TileEntityMobSpawner
 				)world.GetBlockTileEntity(i, j, k);
 			tileentitymobspawner.SetMobID(PickMobSpawner(random));
@@ -150,53 +150,53 @@ label0_break: ;
 			int i = random.Next(11);
 			if (i == 0)
 			{
-				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.saddle);
+				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.SADDLE);
 			}
 			if (i == 1)
 			{
-				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.ingotIron, random.NextInt
+				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.IRON_INGOT, random.NextInt
 					(4) + 1);
 			}
 			if (i == 2)
 			{
-				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.bread);
+				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.BREAD);
 			}
 			if (i == 3)
 			{
-				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.wheat, random.NextInt
+				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.WHEAT, random.NextInt
 					(4) + 1);
 			}
 			if (i == 4)
 			{
-				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.gunpowder, random.NextInt
+				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.SULPHUR, random.NextInt
 					(4) + 1);
 			}
 			if (i == 5)
 			{
-				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.silk, random.NextInt
+				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.STRING, random.NextInt
 					(4) + 1);
 			}
 			if (i == 6)
 			{
-				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.bucketEmpty);
+				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.BUCKET);
 			}
 			if (i == 7 && random.Next(100) == 0)
 			{
-				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.appleGold);
+				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.GOLDEN_APPLE);
 			}
 			if (i == 8 && random.Next(2) == 0)
 			{
-				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.redstone, random.NextInt
+				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.REDSTONE, random.NextInt
 					(4) + 1);
 			}
 			if (i == 9 && random.Next(10) == 0)
 			{
 				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.itemsList[net.minecraft.src.Item
-					.record13.shiftedIndex + random.Next(2)]);
+					.GOLD_RECORD.ID + random.Next(2)]);
 			}
 			if (i == 10)
 			{
-				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.dyePowder, 1, 3);
+				return new net.minecraft.src.ItemStack(net.minecraft.src.Item.INK_SACK, 1, 3);
 			}
 			else
 			{

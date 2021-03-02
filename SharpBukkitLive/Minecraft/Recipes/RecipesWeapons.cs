@@ -12,10 +12,10 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            Block, Item, ItemStack, CraftingManager
 			recipeItems = (new object[][] { new object[] { net.minecraft.src.Block.WOOD, net.minecraft.src.Block
-				.COBBLESTONE, net.minecraft.src.Item.ingotIron, net.minecraft.src.Item.diamond, 
-				net.minecraft.src.Item.ingotGold }, new object[] { net.minecraft.src.Item.swordWood
-				, net.minecraft.src.Item.swordStone, net.minecraft.src.Item.swordSteel, net.minecraft.src.Item
-				.swordDiamond, net.minecraft.src.Item.swordGold } });
+				.COBBLESTONE, net.minecraft.src.Item.IRON_INGOT, net.minecraft.src.Item.DIAMOND, 
+				net.minecraft.src.Item.GOLD_INGOT }, new object[] { net.minecraft.src.Item.WOOD_SWORD
+				, net.minecraft.src.Item.STONE_SWORD, net.minecraft.src.Item.IRON_SWORD, net.minecraft.src.Item
+				.DIAMOND_SWORD, net.minecraft.src.Item.GOLD_SWORD } });
 		}
 
 		public virtual void AddRecipes(net.minecraft.src.CraftingManager craftingmanager)
@@ -27,16 +27,16 @@ namespace net.minecraft.src
 				{
 					net.minecraft.src.Item item = (net.minecraft.src.Item)recipeItems[j + 1][i];
 					craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(item), new object[] { recipePatterns
-						[j], '#', net.minecraft.src.Item.stick, 'X', obj });
+						[j], '#', net.minecraft.src.Item.STICK, 'X', obj });
 				}
 			}
 			craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.
-				bow, 1), new object[] { " #X", "# X", " #X", 'X', net.minecraft.src.Item
-				.silk, '#', net.minecraft.src.Item.stick });
+				BOW, 1), new object[] { " #X", "# X", " #X", 'X', net.minecraft.src.Item
+				.STRING, '#', net.minecraft.src.Item.STICK });
 			craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.
-				arrow, 4), new object[] { "X", "#", "Y", 'Y', net.minecraft.src.Item
-				.feather, 'X', net.minecraft.src.Item.flint, '#', net.minecraft.src.Item
-				.stick });
+				ARROW, 4), new object[] { "X", "#", "Y", 'Y', net.minecraft.src.Item
+				.FEATHER, 'X', net.minecraft.src.Item.FLINT, '#', net.minecraft.src.Item
+				.STICK });
 		}
 
 		private string[][] recipePatterns = new string[][] { new string[] { "X", "X", "#" }

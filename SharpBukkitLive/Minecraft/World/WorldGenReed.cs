@@ -34,7 +34,7 @@ namespace net.minecraft.src
 				{
 					if (net.minecraft.src.Block.SUGAR_CANE_BLOCK.CanBlockStay(world, i1, j1 + i2, k1))
 					{
-						world.SetBlock(i1, j1 + i2, k1, net.minecraft.src.Block.SUGAR_CANE_BLOCK.blockID);
+						world.SetBlock(i1, j1 + i2, k1, net.minecraft.src.Block.SUGAR_CANE_BLOCK.ID);
 					}
 				}
 			}

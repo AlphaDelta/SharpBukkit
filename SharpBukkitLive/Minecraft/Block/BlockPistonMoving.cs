@@ -176,7 +176,7 @@ namespace net.minecraft.src
 		public virtual net.minecraft.src.AxisAlignedBB Func_31032_a(net.minecraft.src.World
 			 world, int i, int j, int k, int l, float f, int i1)
 		{
-			if (l == 0 || l == blockID)
+			if (l == 0 || l == ID)
 			{
 				return null;
 			}

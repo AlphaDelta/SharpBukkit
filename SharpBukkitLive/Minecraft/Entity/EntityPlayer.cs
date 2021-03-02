@@ -225,7 +225,7 @@ namespace net.minecraft.src
             motionY = 0.10000000149011612D;
             if (username.Equals("Notch"))
             {
-                DropPlayerItemWithRandomChoice(new net.minecraft.src.ItemStack(net.minecraft.src.Item.appleRed, 1), true);
+                DropPlayerItemWithRandomChoice(new net.minecraft.src.ItemStack(net.minecraft.src.Item.APPLE, 1), true);
             }
             inventory.DropAllItems();
             if (entity != null)
@@ -714,7 +714,7 @@ namespace net.minecraft.src
             net.minecraft.src.ChunkCoordinates chunkcoordinates = playerLocation;
             net.minecraft.src.ChunkCoordinates chunkcoordinates1 = playerLocation;
             if (chunkcoordinates != null && worldObj.GetBlockId(chunkcoordinates.posX, chunkcoordinates
-                .posY, chunkcoordinates.posZ) == net.minecraft.src.Block.BED.blockID)
+                .posY, chunkcoordinates.posZ) == net.minecraft.src.Block.BED.ID)
             {
                 net.minecraft.src.BlockBed.Func_22022_a(worldObj, chunkcoordinates.posX, chunkcoordinates
                     .posY, chunkcoordinates.posZ, false);
@@ -751,7 +751,7 @@ namespace net.minecraft.src
         private bool IsInBed()
         {
             return worldObj.GetBlockId(playerLocation.posX, playerLocation.posY, playerLocation
-                .posZ) == net.minecraft.src.Block.BED.blockID;
+                .posZ) == net.minecraft.src.Block.BED.ID;
         }
 
         public static net.minecraft.src.ChunkCoordinates Func_25051_a(net.minecraft.src.World
@@ -767,7 +767,7 @@ namespace net.minecraft.src
             ichunkprovider.LoadChunk(chunkcoordinates.posX + 3 >> 4, chunkcoordinates.posZ +
                 3 >> 4);
             if (world.GetBlockId(chunkcoordinates.posX, chunkcoordinates.posY, chunkcoordinates
-                .posZ) != net.minecraft.src.Block.BED.blockID)
+                .posZ) != net.minecraft.src.Block.BED.ID)
             {
                 return null;
             }

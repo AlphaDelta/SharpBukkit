@@ -133,7 +133,7 @@ namespace net.minecraft.src
 					if (!this.isDead) // CRAFTBUKKIT -- Make sure it's not already dead
 					{
 						SetEntityDead();
-						worldObj.AddEntity(new net.minecraft.src.EntityItem(worldObj, posX, posY, posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
+						worldObj.AddEntity(new net.minecraft.src.EntityItem(worldObj, posX, posY, posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.PAINTING)));
 					}
 				}
 			}
@@ -215,7 +215,7 @@ namespace net.minecraft.src
 				SetEntityDead();
 				SetBeenAttacked();
 				worldObj.AddEntity(new net.minecraft.src.EntityItem(worldObj, posX, posY, 
-					posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
+					posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.PAINTING)));
 			}
 			return true;
 		}
@@ -261,7 +261,7 @@ namespace net.minecraft.src
 			{
 				SetEntityDead();
 				worldObj.AddEntity(new net.minecraft.src.EntityItem(worldObj, posX, posY, 
-					posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
+					posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.PAINTING)));
 			}
 		}
 
@@ -271,7 +271,7 @@ namespace net.minecraft.src
 			{
 				SetEntityDead();
 				worldObj.AddEntity(new net.minecraft.src.EntityItem(worldObj, posX, posY, 
-					posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.painting)));
+					posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.PAINTING)));
 			}
 		}
 

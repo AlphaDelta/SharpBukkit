@@ -30,7 +30,7 @@ namespace net.minecraft.src
 				{
 					if (net.minecraft.src.Block.CACTUS.CanBlockStay(world, i1, j1 + i2, k1))
 					{
-						world.SetBlock(i1, j1 + i2, k1, net.minecraft.src.Block.CACTUS.blockID);
+						world.SetBlock(i1, j1 + i2, k1, net.minecraft.src.Block.CACTUS.ID);
 					}
 				}
 			}

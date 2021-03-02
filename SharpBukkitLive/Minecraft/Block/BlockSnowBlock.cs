@@ -18,7 +18,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Item.snowball.shiftedIndex;
+			return net.minecraft.src.Item.SNOW_BALL.ID;
 		}
 
 		public override int QuantityDropped(SharpBukkitLive.SharpBukkit.SharpRandom random)

@@ -20,11 +20,11 @@ namespace net.minecraft.src
 			{
 				return false;
 			}
-			if (world.GetBlockId(i, j + 1, k) != net.minecraft.src.Block.NETHERRACK.blockID)
+			if (world.GetBlockId(i, j + 1, k) != net.minecraft.src.Block.NETHERRACK.ID)
 			{
 				return false;
 			}
-			world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.GLOWSTONE.blockID);
+			world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.GLOWSTONE.ID);
 			for (int l = 0; l < 1500; l++)
 			{
 				int i1 = (i + random.Next(8)) - random.Next(8);
@@ -62,14 +62,14 @@ namespace net.minecraft.src
 					{
 						j2 = world.GetBlockId(i1, j1, k1 + 1);
 					}
-					if (j2 == net.minecraft.src.Block.GLOWSTONE.blockID)
+					if (j2 == net.minecraft.src.Block.GLOWSTONE.ID)
 					{
 						l1++;
 					}
 				}
 				if (l1 == 1)
 				{
-					world.SetBlockWithNotify(i1, j1, k1, net.minecraft.src.Block.GLOWSTONE.blockID);
+					world.SetBlockWithNotify(i1, j1, k1, net.minecraft.src.Block.GLOWSTONE.ID);
 				}
 			}
 			return true;

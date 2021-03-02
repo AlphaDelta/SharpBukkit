@@ -68,12 +68,12 @@ namespace net.minecraft.src
 			}
 			if (torchActive)
 			{
-				world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j + 1, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i - 1, j, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i + 1, j, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j, k - 1, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j, k + 1, blockID);
+				world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
+				world.NotifyBlocksOfNeighborChange(i, j + 1, k, ID);
+				world.NotifyBlocksOfNeighborChange(i - 1, j, k, ID);
+				world.NotifyBlocksOfNeighborChange(i + 1, j, k, ID);
+				world.NotifyBlocksOfNeighborChange(i, j, k - 1, ID);
+				world.NotifyBlocksOfNeighborChange(i, j, k + 1, ID);
 			}
 		}
 
@@ -82,12 +82,12 @@ namespace net.minecraft.src
 		{
 			if (torchActive)
 			{
-				world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j + 1, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i - 1, j, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i + 1, j, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j, k - 1, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j, k + 1, blockID);
+				world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
+				world.NotifyBlocksOfNeighborChange(i, j + 1, k, ID);
+				world.NotifyBlocksOfNeighborChange(i - 1, j, k, ID);
+				world.NotifyBlocksOfNeighborChange(i + 1, j, k, ID);
+				world.NotifyBlocksOfNeighborChange(i, j, k - 1, ID);
+				world.NotifyBlocksOfNeighborChange(i, j, k + 1, ID);
 			}
 		}
 
@@ -153,7 +153,7 @@ namespace net.minecraft.src
 				if (flag)
 				{
 					world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.REDSTONE_TORCH_OFF
-						.blockID, world.GetBlockMetadata(i, j, k));
+						.ID, world.GetBlockMetadata(i, j, k));
 					if (CheckForBurnout(world, i, j, k, true))
 					{
 						world.PlaySoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz"
@@ -173,7 +173,7 @@ namespace net.minecraft.src
 				if (!flag && !CheckForBurnout(world, i, j, k, false))
 				{
 					world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.REDSTONE_TORCH_ON
-						.blockID, world.GetBlockMetadata(i, j, k));
+						.ID, world.GetBlockMetadata(i, j, k));
 				}
 			}
 		}
@@ -182,7 +182,7 @@ namespace net.minecraft.src
 			int j, int k, int l)
 		{
 			base.OnNeighborBlockChange(world, i, j, k, l);
-			world.ScheduleUpdateTick(i, j, k, blockID, TickRate());
+			world.ScheduleUpdateTick(i, j, k, ID, TickRate());
 		}
 
 		public override bool IsIndirectlyPoweringTo(net.minecraft.src.World world, int i, 
@@ -200,7 +200,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.REDSTONE_TORCH_ON.blockID;
+			return net.minecraft.src.Block.REDSTONE_TORCH_ON.ID;
 		}
 
 		public override bool CanProvidePower()

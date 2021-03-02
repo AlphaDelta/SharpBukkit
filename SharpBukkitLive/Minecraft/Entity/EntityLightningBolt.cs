@@ -29,7 +29,7 @@ namespace net.minecraft.src
 				if (world.GetBlockId(i, k, i1) == 0 && net.minecraft.src.Block.FIRE.CanPlaceBlockAt
 					(world, i, k, i1))
 				{
-					world.SetBlockWithNotify(i, k, i1, net.minecraft.src.Block.FIRE.blockID);
+					world.SetBlockWithNotify(i, k, i1, net.minecraft.src.Block.FIRE.ID);
 				}
 				for (int j = 0; j < 4; j++)
 				{
@@ -39,7 +39,7 @@ namespace net.minecraft.src
 					if (world.GetBlockId(l, j1, k1) == 0 && net.minecraft.src.Block.FIRE.CanPlaceBlockAt
 						(world, l, j1, k1))
 					{
-						world.SetBlockWithNotify(l, j1, k1, net.minecraft.src.Block.FIRE.blockID);
+						world.SetBlockWithNotify(l, j1, k1, net.minecraft.src.Block.FIRE.ID);
 					}
 				}
 			}
@@ -79,7 +79,7 @@ namespace net.minecraft.src
 							if (worldObj.GetBlockId(i, j, k) == 0 && net.minecraft.src.Block.FIRE.CanPlaceBlockAt
 								(worldObj, i, j, k))
 							{
-								worldObj.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.FIRE.blockID);
+								worldObj.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.FIRE.ID);
 							}
 						}
 					}

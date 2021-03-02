@@ -117,7 +117,7 @@ namespace net.minecraft.src
 			{
 				net.minecraft.src.ItemStack itemstack = angler.GetCurrentEquippedItem();
 				if (angler.isDead || !angler.IsEntityAlive() || itemstack == null || itemstack.GetItem
-					() != net.minecraft.src.Item.fishingRod || GetDistanceSqToEntity(angler) > 1024D)
+					() != net.minecraft.src.Item.FISHING_ROD || GetDistanceSqToEntity(angler) > 1024D)
 				{
 					SetEntityDead();
 					angler.fishEntity = null;
@@ -371,7 +371,7 @@ namespace net.minecraft.src
 				if (ticksCatchable > 0)
 				{
 					net.minecraft.src.EntityItem entityitem = new net.minecraft.src.EntityItem(worldObj
-						, posX, posY, posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.fishRaw
+						, posX, posY, posZ, new net.minecraft.src.ItemStack(net.minecraft.src.Item.RAW_FISH
 						));
 					double d1 = angler.posX - posX;
 					double d3 = angler.posY - posY;

@@ -78,7 +78,7 @@ namespace net.minecraft.src
 			if ((l & 1) == 0)
 			{
 				DropBlockAsItem_do(world, i, j, k, new net.minecraft.src.ItemStack(net.minecraft.src.Block
-					.TNT.blockID, 1, 0));
+					.TNT.ID, 1, 0));
 			}
 			else
 			{
@@ -93,7 +93,7 @@ namespace net.minecraft.src
 			int k, net.minecraft.src.EntityPlayer entityplayer)
 		{
 			if (entityplayer.GetCurrentEquippedItem() != null && entityplayer.GetCurrentEquippedItem
-				().itemID == net.minecraft.src.Item.flintAndSteel.shiftedIndex)
+				().itemID == net.minecraft.src.Item.FLINT_AND_STEEL.ID)
 			{
 				world.SetBlockMetadata(i, j, k, 1);
 			}

@@ -16,27 +16,27 @@ namespace net.minecraft.src
 		//            Block, Material, Item
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			if (blockID == net.minecraft.src.Block.COAL_ORE.blockID)
+			if (ID == net.minecraft.src.Block.COAL_ORE.ID)
 			{
-				return net.minecraft.src.Item.coal.shiftedIndex;
+				return net.minecraft.src.Item.COAL.ID;
 			}
-			if (blockID == net.minecraft.src.Block.DIAMOND_ORE.blockID)
+			if (ID == net.minecraft.src.Block.DIAMOND_ORE.ID)
 			{
-				return net.minecraft.src.Item.diamond.shiftedIndex;
+				return net.minecraft.src.Item.DIAMOND.ID;
 			}
-			if (blockID == net.minecraft.src.Block.LAPIS_ORE.blockID)
+			if (ID == net.minecraft.src.Block.LAPIS_ORE.ID)
 			{
-				return net.minecraft.src.Item.dyePowder.shiftedIndex;
+				return net.minecraft.src.Item.INK_SACK.ID;
 			}
 			else
 			{
-				return blockID;
+				return ID;
 			}
 		}
 
 		public override int QuantityDropped(SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			if (blockID == net.minecraft.src.Block.LAPIS_ORE.blockID)
+			if (ID == net.minecraft.src.Block.LAPIS_ORE.ID)
 			{
 				return 4 + random.Next(5);
 			}
@@ -48,7 +48,7 @@ namespace net.minecraft.src
 
 		protected internal override int DamageDropped(int i)
 		{
-			return blockID != net.minecraft.src.Block.LAPIS_ORE.blockID ? 0 : 4;
+			return ID != net.minecraft.src.Block.LAPIS_ORE.ID ? 0 : 4;
 		}
 	}
 }

@@ -73,11 +73,11 @@ namespace net.minecraft.src
                                     int l2 = 0;
                                     if (k1 * 8 + l1 < byte1)
                                     {
-                                        l2 = net.minecraft.src.Block.STATIONARY_LAVA.blockID;
+                                        l2 = net.minecraft.src.Block.STATIONARY_LAVA.ID;
                                     }
                                     if (d15 > 0.0D)
                                     {
-                                        l2 = net.minecraft.src.Block.NETHERRACK.blockID;
+                                        l2 = net.minecraft.src.Block.NETHERRACK.ID;
                                     }
                                     abyte0[j2] = unchecked((byte)l2);
                                     j2 += c;
@@ -113,19 +113,19 @@ namespace net.minecraft.src
                          > 0.0D;
                     int i1 = (int)(field_4231_r[k + l * 16] / 3D + 3D + hellRNG.NextDouble() * 0.25D);
                     int j1 = -1;
-                    byte byte1 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.blockID);
-                    byte byte2 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.blockID);
+                    byte byte1 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.ID);
+                    byte byte2 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.ID);
                     for (int k1 = 127; k1 >= 0; k1--)
                     {
                         int l1 = (l * 16 + k) * 128 + k1;
                         if (k1 >= 127 - hellRNG.Next(5))
                         {
-                            abyte0[l1] = unchecked((byte)net.minecraft.src.Block.BEDROCK.blockID);
+                            abyte0[l1] = unchecked((byte)net.minecraft.src.Block.BEDROCK.ID);
                             continue;
                         }
                         if (k1 <= 0 + hellRNG.Next(5))
                         {
-                            abyte0[l1] = unchecked((byte)net.minecraft.src.Block.BEDROCK.blockID);
+                            abyte0[l1] = unchecked((byte)net.minecraft.src.Block.BEDROCK.ID);
                             continue;
                         }
                         byte byte3 = abyte0[l1];
@@ -134,7 +134,7 @@ namespace net.minecraft.src
                             j1 = -1;
                             continue;
                         }
-                        if (byte3 != net.minecraft.src.Block.NETHERRACK.blockID)
+                        if (byte3 != net.minecraft.src.Block.NETHERRACK.ID)
                         {
                             continue;
                         }
@@ -143,35 +143,35 @@ namespace net.minecraft.src
                             if (i1 <= 0)
                             {
                                 byte1 = 0;
-                                byte2 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.blockID);
+                                byte2 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.ID);
                             }
                             else
                             {
                                 if (k1 >= byte0 - 4 && k1 <= byte0 + 1)
                                 {
-                                    byte1 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.blockID);
-                                    byte2 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.blockID);
+                                    byte1 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.ID);
+                                    byte2 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.ID);
                                     if (flag1)
                                     {
-                                        byte1 = unchecked((byte)net.minecraft.src.Block.GRAVEL.blockID);
+                                        byte1 = unchecked((byte)net.minecraft.src.Block.GRAVEL.ID);
                                     }
                                     if (flag1)
                                     {
-                                        byte2 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.blockID);
+                                        byte2 = unchecked((byte)net.minecraft.src.Block.NETHERRACK.ID);
                                     }
                                     if (flag)
                                     {
-                                        byte1 = unchecked((byte)net.minecraft.src.Block.SOUL_SAND.blockID);
+                                        byte1 = unchecked((byte)net.minecraft.src.Block.SOUL_SAND.ID);
                                     }
                                     if (flag)
                                     {
-                                        byte2 = unchecked((byte)net.minecraft.src.Block.SOUL_SAND.blockID);
+                                        byte2 = unchecked((byte)net.minecraft.src.Block.SOUL_SAND.ID);
                                     }
                                 }
                             }
                             if (k1 < byte0 && byte1 == 0)
                             {
-                                byte1 = unchecked((byte)net.minecraft.src.Block.STATIONARY_LAVA.blockID);
+                                byte1 = unchecked((byte)net.minecraft.src.Block.STATIONARY_LAVA.ID);
                             }
                             j1 = i1;
                             if (k1 >= byte0 - 1)
@@ -354,7 +354,7 @@ namespace net.minecraft.src
                 int k1 = k + hellRNG.Next(16) + 8;
                 int i3 = hellRNG.Next(120) + 4;
                 int k4 = l + hellRNG.Next(16) + 8;
-                (new net.minecraft.src.WorldGenHellLava(net.minecraft.src.Block.LAVA.blockID
+                (new net.minecraft.src.WorldGenHellLava(net.minecraft.src.Block.LAVA.ID
                     )).Generate(field_4235_n, hellRNG, k1, i3, k4);
             }
             int j1 = hellRNG.Next(hellRNG.Next(10) + 1) + 1;
@@ -388,7 +388,7 @@ namespace net.minecraft.src
                 int k2 = k + hellRNG.Next(16) + 8;
                 int i4 = hellRNG.Next(128);
                 int k5 = l + hellRNG.Next(16) + 8;
-                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.BROWN_MUSHROOM.blockID
+                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.BROWN_MUSHROOM.ID
                     )).Generate(field_4235_n, hellRNG, k2, i4, k5);
             }
             if (hellRNG.Next(1) == 0)
@@ -396,7 +396,7 @@ namespace net.minecraft.src
                 int l2 = k + hellRNG.Next(16) + 8;
                 int j4 = hellRNG.Next(128);
                 int l5 = l + hellRNG.Next(16) + 8;
-                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.RED_MUSHROOM.blockID
+                (new net.minecraft.src.WorldGenFlowers(net.minecraft.src.Block.RED_MUSHROOM.ID
                     )).Generate(field_4235_n, hellRNG, l2, j4, l5);
             }
             net.minecraft.src.BlockSand.fallInstantly = false;

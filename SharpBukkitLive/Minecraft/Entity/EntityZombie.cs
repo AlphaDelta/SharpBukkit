@@ -49,7 +49,7 @@ namespace net.minecraft.src
 
 		protected internal override int GetDropItemId()
 		{
-			return net.minecraft.src.Item.feather.shiftedIndex;
+			return net.minecraft.src.Item.FEATHER.ID;
 		}
 	}
 }

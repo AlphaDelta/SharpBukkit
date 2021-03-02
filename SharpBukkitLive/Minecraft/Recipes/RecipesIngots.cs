@@ -12,11 +12,11 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            Block, ItemStack, Item, CraftingManager
 			recipeItems = (new object[][] { new object[] { net.minecraft.src.Block.GOLD_BLOCK, 
-				new net.minecraft.src.ItemStack(net.minecraft.src.Item.ingotGold, 9) }, new object
+				new net.minecraft.src.ItemStack(net.minecraft.src.Item.GOLD_INGOT, 9) }, new object
 				[] { net.minecraft.src.Block.IRON_BLOCK, new net.minecraft.src.ItemStack(net.minecraft.src.Item
-				.ingotIron, 9) }, new object[] { net.minecraft.src.Block.DIAMOND_BLOCK, new net.minecraft.src.ItemStack
-				(net.minecraft.src.Item.diamond, 9) }, new object[] { net.minecraft.src.Block.LAPIS_BLOCK
-				, new net.minecraft.src.ItemStack(net.minecraft.src.Item.dyePowder, 9, 4) } });
+				.IRON_INGOT, 9) }, new object[] { net.minecraft.src.Block.DIAMOND_BLOCK, new net.minecraft.src.ItemStack
+				(net.minecraft.src.Item.DIAMOND, 9) }, new object[] { net.minecraft.src.Block.LAPIS_BLOCK
+				, new net.minecraft.src.ItemStack(net.minecraft.src.Item.INK_SACK, 9, 4) } });
 		}
 
 		public virtual void AddRecipes(net.minecraft.src.CraftingManager craftingmanager)

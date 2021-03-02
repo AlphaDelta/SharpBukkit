@@ -87,7 +87,7 @@ namespace net.minecraft.src
 
 		protected internal override int GetDropItemId()
 		{
-			return net.minecraft.src.Item.arrow.shiftedIndex;
+			return net.minecraft.src.Item.ARROW.ID;
 		}
 
 		protected internal override void DropFewItems()
@@ -95,12 +95,12 @@ namespace net.minecraft.src
 			int i = rand.Next(3);
 			for (int j = 0; j < i; j++)
 			{
-				DropItem(net.minecraft.src.Item.arrow.shiftedIndex, 1);
+				DropItem(net.minecraft.src.Item.ARROW.ID, 1);
 			}
 			i = rand.Next(3);
 			for (int k = 0; k < i; k++)
 			{
-				DropItem(net.minecraft.src.Item.bone.shiftedIndex, 1);
+				DropItem(net.minecraft.src.Item.BONE.ID, 1);
 			}
 		}
 
@@ -108,7 +108,7 @@ namespace net.minecraft.src
 
 		static EntitySkeleton()
 		{
-			defaultHeldItem = new net.minecraft.src.ItemStack(net.minecraft.src.Item.bow, 1);
+			defaultHeldItem = new net.minecraft.src.ItemStack(net.minecraft.src.Item.BOW, 1);
 		}
 	}
 }

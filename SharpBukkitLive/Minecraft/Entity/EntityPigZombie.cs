@@ -115,7 +115,7 @@ namespace net.minecraft.src
 
 		protected internal override int GetDropItemId()
 		{
-			return net.minecraft.src.Item.porkCooked.shiftedIndex;
+			return net.minecraft.src.Item.GRILLED_PORK.ID;
 		}
 
 		private int angerLevel;
@@ -126,7 +126,7 @@ namespace net.minecraft.src
 
 		static EntityPigZombie()
 		{
-			defaultHeldItem = new net.minecraft.src.ItemStack(net.minecraft.src.Item.swordGold
+			defaultHeldItem = new net.minecraft.src.ItemStack(net.minecraft.src.Item.GOLD_SWORD
 				, 1);
 		}
 	}

@@ -13,27 +13,27 @@ namespace net.minecraft.src
         }
 
         public ItemStack(net.minecraft.src.Block block, int i)
-            : this(block.blockID, i, 0)
+            : this(block.ID, i, 0)
         {
         }
 
         public ItemStack(net.minecraft.src.Block block, int i, int j)
-            : this(block.blockID, i, j)
+            : this(block.ID, i, j)
         {
         }
 
         public ItemStack(net.minecraft.src.Item item)
-            : this(item.shiftedIndex, 1, 0)
+            : this(item.ID, 1, 0)
         {
         }
 
         public ItemStack(net.minecraft.src.Item item, int i)
-            : this(item.shiftedIndex, i, 0)
+            : this(item.ID, i, 0)
         {
         }
 
         public ItemStack(net.minecraft.src.Item item, int i, int j)
-            : this(item.shiftedIndex, i, j)
+            : this(item.ID, i, j)
         {
         }
 
@@ -58,7 +58,7 @@ namespace net.minecraft.src
         {
             //TODO: Do proper sanity check to prevent duplication (Maybe... might break a lot of other methods)
             if(stackSize <= 0)
-                return new net.minecraft.src.ItemStack(net.minecraft.src.Item.snowball, i, itemDamage);
+                return new net.minecraft.src.ItemStack(net.minecraft.src.Item.SNOW_BALL, i, itemDamage);
             //===================================================
 
             stackSize -= i;

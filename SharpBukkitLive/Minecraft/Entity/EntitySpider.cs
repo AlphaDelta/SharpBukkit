@@ -98,7 +98,7 @@ namespace net.minecraft.src
 
 		protected internal override int GetDropItemId()
 		{
-			return net.minecraft.src.Item.silk.shiftedIndex;
+			return net.minecraft.src.Item.STRING.ID;
 		}
 
 		public override bool IsOnLadder()

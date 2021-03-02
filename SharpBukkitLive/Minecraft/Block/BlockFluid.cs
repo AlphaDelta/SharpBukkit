@@ -255,7 +255,7 @@ namespace net.minecraft.src
 
 		private void CheckForHarden(net.minecraft.src.World world, int i, int j, int k)
 		{
-			if (world.GetBlockId(i, j, k) != blockID)
+			if (world.GetBlockId(i, j, k) != ID)
 			{
 				return;
 			}
@@ -287,13 +287,13 @@ namespace net.minecraft.src
 					int l = world.GetBlockMetadata(i, j, k);
 					if (l == 0)
 					{
-						world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.OBSISIAN.blockID);
+						world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.OBSISIAN.ID);
 					}
 					else
 					{
 						if (l <= 4)
 						{
-							world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.COBBLESTONE.blockID);
+							world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.COBBLESTONE.ID);
 						}
 					}
 					Func_300_h(world, i, j, k);

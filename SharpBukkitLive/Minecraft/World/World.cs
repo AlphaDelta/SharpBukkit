@@ -486,9 +486,9 @@ namespace net.minecraft.src
             if (flag)
             {
                 int l = GetBlockId(i, j, k);
-                if (l == net.minecraft.src.Block.STEP.blockID || l == net.minecraft.src.Block
-                    .SOIL.blockID || l == net.minecraft.src.Block.COBBLESTONE_STAIRS.blockID
-                     || l == net.minecraft.src.Block.WOOD_STAIRS.blockID)
+                if (l == net.minecraft.src.Block.STEP.ID || l == net.minecraft.src.Block
+                    .SOIL.ID || l == net.minecraft.src.Block.COBBLESTONE_STAIRS.ID
+                     || l == net.minecraft.src.Block.WOOD_STAIRS.ID)
                 {
                     int i1 = GetBlockLightValue_do(i, j + 1, k, false);
                     int j1 = GetBlockLightValue_do(i + 1, j, k, false);
@@ -1495,8 +1495,8 @@ namespace net.minecraft.src
                         for (int i2 = i1; i2 < j1; i2++)
                         {
                             int j2 = GetBlockId(k1, l1, i2);
-                            if (j2 == net.minecraft.src.Block.FIRE.blockID || j2 == net.minecraft.src.Block.LAVA
-                                .blockID || j2 == net.minecraft.src.Block.STATIONARY_LAVA.blockID)
+                            if (j2 == net.minecraft.src.Block.FIRE.ID || j2 == net.minecraft.src.Block.LAVA
+                                .ID || j2 == net.minecraft.src.Block.STATIONARY_LAVA.ID)
                             {
                                 return true;
                             }
@@ -1695,7 +1695,7 @@ namespace net.minecraft.src
             {
                 i++;
             }
-            if (GetBlockId(i, j, k) == net.minecraft.src.Block.FIRE.blockID)
+            if (GetBlockId(i, j, k) == net.minecraft.src.Block.FIRE.ID)
             {
                 SendSoundEffectToAllPlayersWithin64(entityplayer, 1004, i, j, k, 0);
                 SetBlockWithNotify(i, j, k, 0);
@@ -2132,15 +2132,15 @@ namespace net.minecraft.src
                         int i6 = chunk.GetBlockID(j3, j5 - 1, j4);
                         int k6 = chunk.GetBlockID(j3, j5, j4);
                         if (Func_27068_v() && k6 == 0 && net.minecraft.src.Block.SNOW.CanPlaceBlockAt(this
-                            , j3 + k, j5, j4 + i1) && i6 != 0 && i6 != net.minecraft.src.Block.ICE.blockID &&
+                            , j3 + k, j5, j4 + i1) && i6 != 0 && i6 != net.minecraft.src.Block.ICE.ID &&
                              net.minecraft.src.Block.blocksList[i6].blockMaterial.GetIsSolid())
                         {
-                            SetBlockWithNotify(j3 + k, j5, j4 + i1, net.minecraft.src.Block.SNOW.blockID);
+                            SetBlockWithNotify(j3 + k, j5, j4 + i1, net.minecraft.src.Block.SNOW.ID);
                         }
-                        if (i6 == net.minecraft.src.Block.STATIONARY_WATER.blockID && chunk.GetBlockMetadata(j3
+                        if (i6 == net.minecraft.src.Block.STATIONARY_WATER.ID && chunk.GetBlockMetadata(j3
                             , j5 - 1, j4) == 0)
                         {
-                            SetBlockWithNotify(j3 + k, j5 - 1, j4 + i1, net.minecraft.src.Block.ICE.blockID);
+                            SetBlockWithNotify(j3 + k, j5 - 1, j4 + i1, net.minecraft.src.Block.ICE.ID);
                         }
                     }
                 }

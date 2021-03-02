@@ -40,7 +40,7 @@ namespace net.minecraft.src
 		{
 			if (random.Next(8) == 0)
 			{
-				return net.minecraft.src.Item.seeds.shiftedIndex;
+				return net.minecraft.src.Item.SEEDS.ID;
 			}
 			else
 			{

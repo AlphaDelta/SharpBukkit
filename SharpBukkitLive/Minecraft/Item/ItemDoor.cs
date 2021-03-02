@@ -62,10 +62,10 @@ namespace net.minecraft.src
 				(i - byte0, j + 1, k - byte1) ? 1 : 0);
 			int k1 = (world.IsBlockNormalCube(i + byte0, j, k + byte1) ? 1 : 0) + (world.IsBlockNormalCube
 				(i + byte0, j + 1, k + byte1) ? 1 : 0);
-			bool flag = world.GetBlockId(i - byte0, j, k - byte1) == block.blockID || world.GetBlockId
-				(i - byte0, j + 1, k - byte1) == block.blockID;
-			bool flag1 = world.GetBlockId(i + byte0, j, k + byte1) == block.blockID || world.
-				GetBlockId(i + byte0, j + 1, k + byte1) == block.blockID;
+			bool flag = world.GetBlockId(i - byte0, j, k - byte1) == block.ID || world.GetBlockId
+				(i - byte0, j + 1, k - byte1) == block.ID;
+			bool flag1 = world.GetBlockId(i + byte0, j, k + byte1) == block.ID || world.
+				GetBlockId(i + byte0, j + 1, k + byte1) == block.ID;
 			bool flag2 = false;
 			if (flag && !flag1)
 			{
@@ -84,11 +84,11 @@ namespace net.minecraft.src
 				i1 += 4;
 			}
 			world.editingBlocks = true;
-			world.SetBlockAndMetadataWithNotify(i, j, k, block.blockID, i1);
-			world.SetBlockAndMetadataWithNotify(i, j + 1, k, block.blockID, i1 + 8);
+			world.SetBlockAndMetadataWithNotify(i, j, k, block.ID, i1);
+			world.SetBlockAndMetadataWithNotify(i, j + 1, k, block.ID, i1 + 8);
 			world.editingBlocks = false;
-			world.NotifyBlocksOfNeighborChange(i, j, k, block.blockID);
-			world.NotifyBlocksOfNeighborChange(i, j + 1, k, block.blockID);
+			world.NotifyBlocksOfNeighborChange(i, j, k, block.ID);
+			world.NotifyBlocksOfNeighborChange(i, j + 1, k, block.ID);
 			itemstack.stackSize--;
 			return true;
 		}

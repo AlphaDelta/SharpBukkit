@@ -99,11 +99,11 @@ namespace net.minecraft.src
 						i5 = i5 * i5 * 0x1dd6751 + i5 * 11;
 						if ((i5 >> 20 & 1) == 0)
 						{
-							ai[net.minecraft.src.Block.DIRT.blockID] += 10;
+							ai[net.minecraft.src.Block.DIRT.ID] += 10;
 						}
 						else
 						{
-							ai[net.minecraft.src.Block.STONE.blockID] += 10;
+							ai[net.minecraft.src.Block.STONE.ID] += 10;
 						}
 						d1 = 100D;
 					}
@@ -280,8 +280,8 @@ namespace net.minecraft.src
 			}
 			else
 			{
-				return new net.minecraft.src.Packet131MapData((short)net.minecraft.src.Item.field_28021_bb
-					.shiftedIndex, (short)itemstack.GetItemDamage(), abyte0);
+				return new net.minecraft.src.Packet131MapData((short)net.minecraft.src.Item.MAP
+					.ID, (short)itemstack.GetItemDamage(), abyte0);
 			}
 		}
 	}

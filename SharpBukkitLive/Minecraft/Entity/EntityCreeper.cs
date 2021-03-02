@@ -106,7 +106,7 @@ namespace net.minecraft.src
 			base.OnDeath(entity);
 			if (entity is net.minecraft.src.EntitySkeleton)
 			{
-				DropItem(net.minecraft.src.Item.record13.shiftedIndex + rand.Next(2), 1);
+				DropItem(net.minecraft.src.Item.GOLD_RECORD.ID + rand.Next(2), 1);
 			}
 		}
 
@@ -158,7 +158,7 @@ namespace net.minecraft.src
 
 		protected internal override int GetDropItemId()
 		{
-			return net.minecraft.src.Item.gunpowder.shiftedIndex;
+			return net.minecraft.src.Item.SULPHUR.ID;
 		}
 
 		private int GetCreeperState()

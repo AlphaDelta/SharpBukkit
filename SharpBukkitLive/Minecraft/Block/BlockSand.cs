@@ -18,13 +18,13 @@ namespace net.minecraft.src
 		public override void OnBlockAdded(net.minecraft.src.World world, int i, int j, int
 			 k)
 		{
-			world.ScheduleUpdateTick(i, j, k, blockID, TickRate());
+			world.ScheduleUpdateTick(i, j, k, ID, TickRate());
 		}
 
 		public override void OnNeighborBlockChange(net.minecraft.src.World world, int i, 
 			int j, int k, int l)
 		{
-			world.ScheduleUpdateTick(i, j, k, blockID, TickRate());
+			world.ScheduleUpdateTick(i, j, k, ID, TickRate());
 		}
 
 		public override void UpdateTick(net.minecraft.src.World world, int i, int j, int 
@@ -50,13 +50,13 @@ namespace net.minecraft.src
 					}
 					if (j > 0)
 					{
-						world.SetBlockWithNotify(i, j, k, blockID);
+						world.SetBlockWithNotify(i, j, k, ID);
 					}
 				}
 				else
 				{
 					net.minecraft.src.EntityFallingSand entityfallingsand = new net.minecraft.src.EntityFallingSand
-						(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, blockID);
+						(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, ID);
 					world.AddEntity(entityfallingsand);
 				}
 			}
@@ -75,7 +75,7 @@ namespace net.minecraft.src
 			{
 				return true;
 			}
-			if (l == net.minecraft.src.Block.FIRE.blockID)
+			if (l == net.minecraft.src.Block.FIRE.ID)
 			{
 				return true;
 			}

@@ -30,8 +30,8 @@ namespace net.minecraft.src
 			j += net.minecraft.src.PistonBlockTextures.field_31054_c[j1];
 			k += net.minecraft.src.PistonBlockTextures.field_31053_d[j1];
 			int k1 = world.GetBlockId(i, j, k);
-			if (k1 == net.minecraft.src.Block.PISTON.blockID || k1 == net.minecraft.src.Block
-				.PISTON_STICKY.blockID)
+			if (k1 == net.minecraft.src.Block.PISTON.ID || k1 == net.minecraft.src.Block
+				.PISTON_STICKY.ID)
 			{
 				int i1 = world.GetBlockMetadata(i, j, k);
 				if (net.minecraft.src.BlockPistonBase.IsExtended(i1))
@@ -216,8 +216,8 @@ namespace net.minecraft.src
 			int j1 = world.GetBlockId(i - net.minecraft.src.PistonBlockTextures.field_31051_b
 				[i1], j - net.minecraft.src.PistonBlockTextures.field_31054_c[i1], k - net.minecraft.src.PistonBlockTextures
 				.field_31053_d[i1]);
-			if (j1 != net.minecraft.src.Block.PISTON.blockID && j1 != net.minecraft.src.Block
-				.PISTON_STICKY.blockID)
+			if (j1 != net.minecraft.src.Block.PISTON.ID && j1 != net.minecraft.src.Block
+				.PISTON_STICKY.ID)
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
 			}

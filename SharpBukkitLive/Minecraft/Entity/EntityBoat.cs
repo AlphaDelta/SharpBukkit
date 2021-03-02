@@ -82,11 +82,11 @@ namespace net.minecraft.src
 				}
 				for (int j = 0; j < 3; j++)
 				{
-					DropItemWithOffset(net.minecraft.src.Block.WOOD.blockID, 1, 0.0F);
+					DropItemWithOffset(net.minecraft.src.Block.WOOD.ID, 1, 0.0F);
 				}
 				for (int k = 0; k < 2; k++)
 				{
-					DropItemWithOffset(net.minecraft.src.Item.stick.shiftedIndex, 1, 0.0F);
+					DropItemWithOffset(net.minecraft.src.Item.STICK.ID, 1, 0.0F);
 				}
 				SetEntityDead();
 			}
@@ -239,11 +239,11 @@ namespace net.minecraft.src
 					SetEntityDead();
 					for (int k = 0; k < 3; k++)
 					{
-						DropItemWithOffset(net.minecraft.src.Block.WOOD.blockID, 1, 0.0F);
+						DropItemWithOffset(net.minecraft.src.Block.WOOD.ID, 1, 0.0F);
 					}
 					for (int l = 0; l < 2; l++)
 					{
-						DropItemWithOffset(net.minecraft.src.Item.stick.shiftedIndex, 1, 0.0F);
+						DropItemWithOffset(net.minecraft.src.Item.STICK.ID, 1, 0.0F);
 					}
 				}
 			}
@@ -299,7 +299,7 @@ namespace net.minecraft.src
 				int i2 = net.minecraft.src.MathHelper.Floor_double(posY);
 				int j2 = net.minecraft.src.MathHelper.Floor_double(posZ + ((double)(k1 / 2) - 0.5D
 					) * 0.80000000000000004D);
-				if (worldObj.GetBlockId(l1, i2, j2) == net.minecraft.src.Block.SNOW.blockID)
+				if (worldObj.GetBlockId(l1, i2, j2) == net.minecraft.src.Block.SNOW.ID)
 				{
 					worldObj.SetBlockWithNotify(l1, i2, j2, 0);
 				}

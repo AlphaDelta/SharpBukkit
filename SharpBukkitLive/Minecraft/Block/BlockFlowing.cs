@@ -21,7 +21,7 @@ namespace net.minecraft.src
 		private void Func_30004_i(net.minecraft.src.World world, int i, int j, int k)
 		{
 			int l = world.GetBlockMetadata(i, j, k);
-			world.SetBlockAndMetadata(i, j, k, blockID + 1, l);
+			world.SetBlockAndMetadata(i, j, k, ID + 1, l);
 			world.MarkBlocksDirty(i, j, k, i, j, k);
 			world.MarkBlockNeedsUpdate(i, j, k);
 		}
@@ -92,8 +92,8 @@ namespace net.minecraft.src
 					else
 					{
 						world.SetBlockMetadataWithNotify(i, j, k, l);
-						world.ScheduleUpdateTick(i, j, k, blockID, TickRate());
-						world.NotifyBlocksOfNeighborChange(i, j, k, blockID);
+						world.ScheduleUpdateTick(i, j, k, ID, TickRate());
+						world.NotifyBlocksOfNeighborChange(i, j, k, ID);
 					}
 				}
 				else
@@ -112,11 +112,11 @@ namespace net.minecraft.src
 			{
 				if (l >= 8)
 				{
-					world.SetBlockAndMetadataWithNotify(i, j - 1, k, blockID, l);
+					world.SetBlockAndMetadataWithNotify(i, j - 1, k, ID, l);
 				}
 				else
 				{
-					world.SetBlockAndMetadataWithNotify(i, j - 1, k, blockID, l + 8);
+					world.SetBlockAndMetadataWithNotify(i, j - 1, k, ID, l + 8);
 				}
 			}
 			else
@@ -171,7 +171,7 @@ namespace net.minecraft.src
 							(i, j, k));
 					}
 				}
-				world.SetBlockAndMetadataWithNotify(i, j, k, blockID, l);
+				world.SetBlockAndMetadataWithNotify(i, j, k, ID, l);
 			}
 		}
 
@@ -283,11 +283,11 @@ namespace net.minecraft.src
 		private bool Func_309_k(net.minecraft.src.World world, int x, int y, int z)
 		{
 			int l = world.GetBlockId(x, y, z);
-			if (l == net.minecraft.src.Block.WOODEN_DOOR.blockID
-				|| l == net.minecraft.src.Block.IRON_DOOR_BLOCK.blockID
-				|| l == net.minecraft.src.Block.SIGN_POST.blockID
-				|| l == net.minecraft.src.Block.LADDER.blockID
-				|| l == net.minecraft.src.Block.SUGAR_CANE_BLOCK.blockID)
+			if (l == net.minecraft.src.Block.WOODEN_DOOR.ID
+				|| l == net.minecraft.src.Block.IRON_DOOR_BLOCK.ID
+				|| l == net.minecraft.src.Block.SIGN_POST.ID
+				|| l == net.minecraft.src.Block.LADDER.ID
+				|| l == net.minecraft.src.Block.SUGAR_CANE_BLOCK.ID)
 			{
 				return true;
 			}
@@ -339,9 +339,9 @@ namespace net.minecraft.src
 			 k)
 		{
 			base.OnBlockAdded(world, i, j, k);
-			if (world.GetBlockId(i, j, k) == blockID)
+			if (world.GetBlockId(i, j, k) == ID)
 			{
-				world.ScheduleUpdateTick(i, j, k, blockID, TickRate());
+				world.ScheduleUpdateTick(i, j, k, ID, TickRate());
 			}
 		}
 

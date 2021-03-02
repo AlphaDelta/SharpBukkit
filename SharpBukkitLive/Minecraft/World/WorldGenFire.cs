@@ -22,9 +22,9 @@ namespace net.minecraft.src
 				int j1 = (j + random.Next(4)) - random.Next(4);
 				int k1 = (k + random.Next(8)) - random.Next(8);
 				if (world.IsAirBlock(i1, j1, k1) && world.GetBlockId(i1, j1 - 1, k1) == net.minecraft.src.Block
-					.NETHERRACK.blockID)
+					.NETHERRACK.ID)
 				{
-					world.SetBlockWithNotify(i1, j1, k1, net.minecraft.src.Block.FIRE.blockID);
+					world.SetBlockWithNotify(i1, j1, k1, net.minecraft.src.Block.FIRE.ID);
 				}
 			}
 			return true;

@@ -13,13 +13,13 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            Item, Block, World, ItemStack, 
 			//            StepSound, EntityPlayer
-			field_253_a = block.blockID;
+			field_253_a = block.ID;
 		}
 
 		public override bool OnItemUse(net.minecraft.src.ItemStack itemstack, net.minecraft.src.EntityPlayer
 			 entityplayer, net.minecraft.src.World world, int i, int j, int k, int l)
 		{
-			if (world.GetBlockId(i, j, k) == net.minecraft.src.Block.SNOW.blockID)
+			if (world.GetBlockId(i, j, k) == net.minecraft.src.Block.SNOW.ID)
 			{
 				l = 0;
 			}

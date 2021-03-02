@@ -48,11 +48,11 @@ namespace net.minecraft.src
 					double d3 = ((double)j2 + 0.5D) - entity.posZ;
 					for (int k2 = 127; k2 >= 0; k2--)
 					{
-						if (world.GetBlockId(j1, k2, j2) != net.minecraft.src.Block.PORTAL.blockID)
+						if (world.GetBlockId(j1, k2, j2) != net.minecraft.src.Block.PORTAL.ID)
 						{
 							continue;
 						}
-						for (; world.GetBlockId(j1, k2 - 1, j2) == net.minecraft.src.Block.PORTAL.blockID
+						for (; world.GetBlockId(j1, k2 - 1, j2) == net.minecraft.src.Block.PORTAL.ID
 							; k2--)
 						{
 						}
@@ -76,19 +76,19 @@ namespace net.minecraft.src
 				double d2 = (double)k1 + 0.5D;
 				double d4 = (double)l1 + 0.5D;
 				double d6 = (double)i2 + 0.5D;
-				if (world.GetBlockId(k1 - 1, l1, i2) == net.minecraft.src.Block.PORTAL.blockID)
+				if (world.GetBlockId(k1 - 1, l1, i2) == net.minecraft.src.Block.PORTAL.ID)
 				{
 					d2 -= 0.5D;
 				}
-				if (world.GetBlockId(k1 + 1, l1, i2) == net.minecraft.src.Block.PORTAL.blockID)
+				if (world.GetBlockId(k1 + 1, l1, i2) == net.minecraft.src.Block.PORTAL.ID)
 				{
 					d2 += 0.5D;
 				}
-				if (world.GetBlockId(k1, l1, i2 - 1) == net.minecraft.src.Block.PORTAL.blockID)
+				if (world.GetBlockId(k1, l1, i2 - 1) == net.minecraft.src.Block.PORTAL.ID)
 				{
 					d6 -= 0.5D;
 				}
-				if (world.GetBlockId(k1, l1, i2 + 1) == net.minecraft.src.Block.PORTAL.blockID)
+				if (world.GetBlockId(k1, l1, i2 + 1) == net.minecraft.src.Block.PORTAL.ID)
 				{
 					d6 += 0.5D;
 				}
@@ -256,7 +256,7 @@ label1_break: ;
 							int l9 = i3 + j7;
 							int i11 = (l3 + (i6 - 1) * j4) - i5 * i4;
 							bool flag = j7 < 0;
-							world.SetBlockWithNotify(k8, l9, i11, flag ? net.minecraft.src.Block.OBSISIAN.blockID
+							world.SetBlockWithNotify(k8, l9, i11, flag ? net.minecraft.src.Block.OBSISIAN.ID
 								 : 0);
 						}
 					}
@@ -273,8 +273,8 @@ label1_break: ;
 						int i10 = i3 + k7;
 						int j11 = l3 + (j6 - 1) * j4;
 						bool flag1 = j6 == 0 || j6 == 3 || k7 == -1 || k7 == 3;
-						world.SetBlockWithNotify(l8, i10, j11, flag1 ? net.minecraft.src.Block.OBSISIAN.blockID
-							 : net.minecraft.src.Block.PORTAL.blockID);
+						world.SetBlockWithNotify(l8, i10, j11, flag1 ? net.minecraft.src.Block.OBSISIAN.ID
+							 : net.minecraft.src.Block.PORTAL.ID);
 					}
 				}
 				world.editingBlocks = false;

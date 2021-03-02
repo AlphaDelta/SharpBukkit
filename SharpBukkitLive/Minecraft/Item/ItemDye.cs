@@ -25,7 +25,7 @@ namespace net.minecraft.src
 			if (itemstack.GetItemDamage() == 15)
 			{
 				int i1 = world.GetBlockId(i, j, k);
-				if (i1 == net.minecraft.src.Block.SAPLING.blockID)
+				if (i1 == net.minecraft.src.Block.SAPLING.ID)
 				{
 					if (!world.singleplayerWorld)
 					{
@@ -35,7 +35,7 @@ namespace net.minecraft.src
 					}
 					return true;
 				}
-				if (i1 == net.minecraft.src.Block.CROPS.blockID)
+				if (i1 == net.minecraft.src.Block.CROPS.ID)
 				{
 					if (!world.singleplayerWorld)
 					{
@@ -45,7 +45,7 @@ namespace net.minecraft.src
 					}
 					return true;
 				}
-				if (i1 == net.minecraft.src.Block.GRASS.blockID)
+				if (i1 == net.minecraft.src.Block.GRASS.ID)
 				{
 					if (!world.singleplayerWorld)
 					{
@@ -60,7 +60,7 @@ namespace net.minecraft.src
 								k1 += itemRand.Next(3) - 1;
 								l1 += ((itemRand.Next(3) - 1) * itemRand.Next(3)) / 2;
 								i2 += itemRand.Next(3) - 1;
-								if (world.GetBlockId(k1, l1 - 1, i2) != net.minecraft.src.Block.GRASS.blockID || 
+								if (world.GetBlockId(k1, l1 - 1, i2) != net.minecraft.src.Block.GRASS.ID || 
 									world.IsBlockNormalCube(k1, l1, i2))
 								{
 									goto label0_continue;
@@ -73,16 +73,16 @@ namespace net.minecraft.src
 							if (itemRand.Next(10) != 0)
 							{
 								world.SetBlockAndMetadataWithNotify(k1, l1, i2, net.minecraft.src.Block.LONG_GRASS
-									.blockID, 1);
+									.ID, 1);
 								continue;
 							}
 							if (itemRand.Next(3) != 0)
 							{
-								world.SetBlockWithNotify(k1, l1, i2, net.minecraft.src.Block.YELLOW_FLOWER.blockID);
+								world.SetBlockWithNotify(k1, l1, i2, net.minecraft.src.Block.YELLOW_FLOWER.ID);
 							}
 							else
 							{
-								world.SetBlockWithNotify(k1, l1, i2, net.minecraft.src.Block.RED_ROSE.blockID);
+								world.SetBlockWithNotify(k1, l1, i2, net.minecraft.src.Block.RED_ROSE.ID);
 							}
 label0_continue: ;
 						}

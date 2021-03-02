@@ -20,7 +20,7 @@ namespace net.minecraft.src
 			)
 		{
 			base.OnItemRightClick(itemstack, world, entityplayer);
-			return new net.minecraft.src.ItemStack(net.minecraft.src.Item.bowlEmpty);
+			return new net.minecraft.src.ItemStack(net.minecraft.src.Item.BOWL);
 		}
 	}
 }

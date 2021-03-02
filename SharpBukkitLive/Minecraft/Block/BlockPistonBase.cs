@@ -185,10 +185,10 @@ namespace net.minecraft.src
 					{
 						((net.minecraft.src.TileEntityPiston)tileentity).ClearPistonTileEntity();
 					}
-					world.SetBlockAndMetadata(i, j, k, net.minecraft.src.Block.PISTON_MOVING.blockID, 
+					world.SetBlockAndMetadata(i, j, k, net.minecraft.src.Block.PISTON_MOVING.ID, 
 						j1);
 					world.SetBlockTileEntity(i, j, k, net.minecraft.src.BlockPistonMoving.GetTileEntity
-						(blockID, j1, j1, false, true));
+						(ID, j1, j1, false, true));
 					if (isSticky)
 					{
 						int k1 = i + net.minecraft.src.PistonBlockTextures.field_31051_b[j1] * 2;
@@ -197,7 +197,7 @@ namespace net.minecraft.src
 						int j2 = world.GetBlockId(k1, l1, i2);
 						int k2 = world.GetBlockMetadata(k1, l1, i2);
 						bool flag = false;
-						if (j2 == net.minecraft.src.Block.PISTON_MOVING.blockID)
+						if (j2 == net.minecraft.src.Block.PISTON_MOVING.ID)
 						{
 							net.minecraft.src.TileEntity tileentity1 = world.GetBlockTileEntity(k1, l1, i2);
 							if (tileentity1 != null && (tileentity1 is net.minecraft.src.TileEntityPiston))
@@ -215,7 +215,7 @@ namespace net.minecraft.src
 						}
 						if (!flag && j2 > 0 && CanPushBlock(j2, world, k1, l1, i2, false) && (net.minecraft.src.Block
 							.blocksList[j2].GetMobilityFlag() == 0 || j2 == net.minecraft.src.Block.PISTON
-							.blockID || j2 == net.minecraft.src.Block.PISTON_STICKY.blockID))
+							.ID || j2 == net.minecraft.src.Block.PISTON_STICKY.ID))
 						{
 							ignoreUpdates = false;
 							world.SetBlockWithNotify(k1, l1, i2, 0);
@@ -223,7 +223,7 @@ namespace net.minecraft.src
 							i += net.minecraft.src.PistonBlockTextures.field_31051_b[j1];
 							j += net.minecraft.src.PistonBlockTextures.field_31054_c[j1];
 							k += net.minecraft.src.PistonBlockTextures.field_31053_d[j1];
-							world.SetBlockAndMetadata(i, j, k, net.minecraft.src.Block.PISTON_MOVING.blockID, 
+							world.SetBlockAndMetadata(i, j, k, net.minecraft.src.Block.PISTON_MOVING.ID, 
 								k2);
 							world.SetBlockTileEntity(i, j, k, net.minecraft.src.BlockPistonMoving.GetTileEntity
 								(j2, k2, j1, false, false));
@@ -369,12 +369,12 @@ namespace net.minecraft.src
 		private static bool CanPushBlock(int i, net.minecraft.src.World world, int j, int
 			 k, int l, bool flag)
 		{
-			if (i == net.minecraft.src.Block.OBSISIAN.blockID)
+			if (i == net.minecraft.src.Block.OBSISIAN.ID)
 			{
 				return false;
 			}
-			if (i == net.minecraft.src.Block.PISTON.blockID || i == net.minecraft.src.Block
-				.PISTON_STICKY.blockID)
+			if (i == net.minecraft.src.Block.PISTON.ID || i == net.minecraft.src.Block
+				.PISTON_STICKY.ID)
 			{
 				if (IsExtended(world.GetBlockMetadata(j, k, l)))
 				{
@@ -493,17 +493,17 @@ namespace net.minecraft.src
 				l2 = k1 - net.minecraft.src.PistonBlockTextures.field_31053_d[l];
 				int i3 = world.GetBlockId(i2, k2, l2);
 				int j3 = world.GetBlockMetadata(i2, k2, l2);
-				if (i3 == blockID && i2 == i && k2 == j && l2 == k)
+				if (i3 == ID && i2 == i && k2 == j && l2 == k)
 				{
-					world.SetBlockAndMetadata(i1, j1, k1, net.minecraft.src.Block.PISTON_MOVING.blockID
+					world.SetBlockAndMetadata(i1, j1, k1, net.minecraft.src.Block.PISTON_MOVING.ID
 						, l | (isSticky ? 8 : 0));
 					world.SetBlockTileEntity(i1, j1, k1, net.minecraft.src.BlockPistonMoving.GetTileEntity
-						(net.minecraft.src.Block.PISTON_EXTENSION.blockID, l | (isSticky ? 8 : 0), l, true
+						(net.minecraft.src.Block.PISTON_EXTENSION.ID, l | (isSticky ? 8 : 0), l, true
 						, false));
 				}
 				else
 				{
-					world.SetBlockAndMetadata(i1, j1, k1, net.minecraft.src.Block.PISTON_MOVING.blockID
+					world.SetBlockAndMetadata(i1, j1, k1, net.minecraft.src.Block.PISTON_MOVING.ID
 						, j3);
 					world.SetBlockTileEntity(i1, j1, k1, net.minecraft.src.BlockPistonMoving.GetTileEntity
 						(i3, j3, l, true, false));

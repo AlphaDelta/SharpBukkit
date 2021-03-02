@@ -317,7 +317,7 @@ namespace net.minecraft.src
 				return;
 			}
 			if (inGround && field_28012_a && arrowShake <= 0 && entityplayer.inventory.AddItemStackToInventory
-				(new net.minecraft.src.ItemStack(net.minecraft.src.Item.arrow, 1)))
+				(new net.minecraft.src.ItemStack(net.minecraft.src.Item.ARROW, 1)))
 			{
 				worldObj.PlaySoundAtEntity(this, "random.pop", 0.2F, ((rand.NextFloat() - rand.NextFloat
 					()) * 0.7F + 1.0F) * 2.0F);

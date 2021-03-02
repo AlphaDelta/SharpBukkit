@@ -21,7 +21,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Item.lightStoneDust.shiftedIndex;
+			return net.minecraft.src.Item.GLOWSTONE_DUST.ID;
 		}
 	}
 }

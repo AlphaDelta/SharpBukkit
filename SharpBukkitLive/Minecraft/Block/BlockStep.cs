@@ -65,17 +65,17 @@ namespace net.minecraft.src
 			{
 				return;
 			}
-			if (l == STEP.blockID)
+			if (l == STEP.ID)
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
 				world.SetBlockAndMetadataWithNotify(i, j - 1, k, net.minecraft.src.Block.DOUBLE_STEP
-					.blockID, i1);
+					.ID, i1);
 			}
 		}
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.STEP.blockID;
+			return net.minecraft.src.Block.STEP.ID;
 		}
 
 		public override int QuantityDropped(SharpBukkitLive.SharpBukkit.SharpRandom random)

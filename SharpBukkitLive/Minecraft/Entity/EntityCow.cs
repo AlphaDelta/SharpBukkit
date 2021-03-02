@@ -51,16 +51,16 @@ namespace net.minecraft.src
 
 		protected internal override int GetDropItemId()
 		{
-			return net.minecraft.src.Item.leather.shiftedIndex;
+			return net.minecraft.src.Item.LEATHER.ID;
 		}
 
 		public override bool Interact(net.minecraft.src.EntityPlayer entityplayer)
 		{
 			net.minecraft.src.ItemStack itemstack = entityplayer.inventory.GetCurrentItem();
-			if (itemstack != null && itemstack.itemID == net.minecraft.src.Item.bucketEmpty.shiftedIndex)
+			if (itemstack != null && itemstack.itemID == net.minecraft.src.Item.BUCKET.ID)
 			{
 				entityplayer.inventory.SetInventorySlotContents(entityplayer.inventory.currentItem
-					, new net.minecraft.src.ItemStack(net.minecraft.src.Item.bucketMilk));
+					, new net.minecraft.src.ItemStack(net.minecraft.src.Item.MILK_BUCKET));
 				return true;
 			}
 			else

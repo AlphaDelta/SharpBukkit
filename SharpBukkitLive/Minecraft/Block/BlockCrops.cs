@@ -21,7 +21,7 @@ namespace net.minecraft.src
 
 		protected internal override bool CanThisPlantGrowOnThisBlockID(int i)
 		{
-			return i == net.minecraft.src.Block.SOIL.blockID;
+			return i == net.minecraft.src.Block.SOIL.ID;
 		}
 
 		public override void UpdateTick(net.minecraft.src.World world, int i, int j, int 
@@ -59,16 +59,16 @@ namespace net.minecraft.src
 			int i2 = world.GetBlockId(i + 1, j, k - 1);
 			int j2 = world.GetBlockId(i + 1, j, k + 1);
 			int k2 = world.GetBlockId(i - 1, j, k + 1);
-			bool flag = j1 == blockID || k1 == blockID;
-			bool flag1 = l == blockID || i1 == blockID;
-			bool flag2 = l1 == blockID || i2 == blockID || j2 == blockID || k2 == blockID;
+			bool flag = j1 == ID || k1 == ID;
+			bool flag1 = l == ID || i1 == ID;
+			bool flag2 = l1 == ID || i2 == ID || j2 == ID || k2 == ID;
 			for (int l2 = i - 1; l2 <= i + 1; l2++)
 			{
 				for (int i3 = k - 1; i3 <= k + 1; i3++)
 				{
 					int j3 = world.GetBlockId(l2, j - 1, i3);
 					float f1 = 0.0F;
-					if (j3 == net.minecraft.src.Block.SOIL.blockID)
+					if (j3 == net.minecraft.src.Block.SOIL.ID)
 					{
 						f1 = 1.0F;
 						if (world.GetBlockMetadata(l2, j - 1, i3) > 0)
@@ -117,7 +117,7 @@ namespace net.minecraft.src
 					float f4 = world.rand.NextFloat() * f1 + (1.0F - f1) * 0.5F;
 					net.minecraft.src.EntityItem entityitem = new net.minecraft.src.EntityItem(world, 
 						(float)i + f2, (float)j + f3, (float)k + f4, new net.minecraft.src.ItemStack(net.minecraft.src.Item
-						.seeds));
+						.SEEDS));
 					entityitem.delayBeforeCanPickup = 10;
 					world.AddEntity(entityitem);
 				}
@@ -128,7 +128,7 @@ namespace net.minecraft.src
 		{
 			if (i == 7)
 			{
-				return net.minecraft.src.Item.wheat.shiftedIndex;
+				return net.minecraft.src.Item.WHEAT.ID;
 			}
 			else
 			{

@@ -22,10 +22,10 @@ namespace net.minecraft.src
 				int j1 = (j + random.Next(4)) - random.Next(4);
 				int k1 = (k + random.Next(8)) - random.Next(8);
 				if (world.IsAirBlock(i1, j1, k1) && world.GetBlockId(i1, j1 - 1, k1) == net.minecraft.src.Block
-					.GRASS.blockID && net.minecraft.src.Block.PUMPKIN.CanPlaceBlockAt(world, i1, j1, 
+					.GRASS.ID && net.minecraft.src.Block.PUMPKIN.CanPlaceBlockAt(world, i1, j1, 
 					k1))
 				{
-					world.SetBlockAndMetadata(i1, j1, k1, net.minecraft.src.Block.PUMPKIN.blockID, random
+					world.SetBlockAndMetadata(i1, j1, k1, net.minecraft.src.Block.PUMPKIN.ID, random
 						.NextInt(4));
 				}
 			}

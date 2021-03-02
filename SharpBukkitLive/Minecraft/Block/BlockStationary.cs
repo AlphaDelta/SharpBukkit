@@ -24,7 +24,7 @@ namespace net.minecraft.src
 			int j, int k, int l)
 		{
 			base.OnNeighborBlockChange(world, i, j, k, l);
-			if (world.GetBlockId(i, j, k) == blockID)
+			if (world.GetBlockId(i, j, k) == ID)
 			{
 				Func_30005_i(world, i, j, k);
 			}
@@ -34,9 +34,9 @@ namespace net.minecraft.src
 		{
 			int l = world.GetBlockMetadata(i, j, k);
 			world.editingBlocks = true;
-			world.SetBlockAndMetadata(i, j, k, blockID - 1, l);
+			world.SetBlockAndMetadata(i, j, k, ID - 1, l);
 			world.MarkBlocksDirty(i, j, k, i, j, k);
-			world.ScheduleUpdateTick(i, j, k, blockID - 1, TickRate());
+			world.ScheduleUpdateTick(i, j, k, ID - 1, TickRate());
 			world.editingBlocks = false;
 		}
 
@@ -58,7 +58,7 @@ namespace net.minecraft.src
 							(world, i, j, k - 1) || Func_4033_j(world, i, j, k + 1) || Func_4033_j(world, i, 
 							j - 1, k) || Func_4033_j(world, i, j + 1, k))
 						{
-							world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.FIRE.blockID);
+							world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.FIRE.ID);
 							return;
 						}
 						continue;

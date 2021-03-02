@@ -184,7 +184,7 @@ namespace net.minecraft.src
                         // '\005'
                         net.minecraft.src.ItemStack itemstack = (net.minecraft.src.ItemStack)watchableobject
                             .GetObject();
-                        dataoutputstream.WriteShort(itemstack.GetItem().shiftedIndex);
+                        dataoutputstream.WriteShort(itemstack.GetItem().ID);
                         dataoutputstream.WriteByte(itemstack.stackSize);
                         dataoutputstream.WriteShort(itemstack.GetItemDamage());
                         break;

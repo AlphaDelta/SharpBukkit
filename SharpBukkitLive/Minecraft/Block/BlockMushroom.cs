@@ -31,7 +31,7 @@ namespace net.minecraft.src
 					k += random.Next(3) - 1;
 					if (world.IsAirBlock(l, i1, j1) && CanBlockStay(world, l, i1, j1))
 					{
-						world.SetBlockWithNotify(l, i1, j1, blockID);
+						world.SetBlockWithNotify(l, i1, j1, ID);
 					}
 				}
 			}

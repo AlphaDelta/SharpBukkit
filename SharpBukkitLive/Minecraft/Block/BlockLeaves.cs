@@ -32,7 +32,7 @@ namespace net.minecraft.src
 						for (int l1 = -l; l1 <= l; l1++)
 						{
 							int i2 = world.GetBlockId(i + j1, j + k1, k + l1);
-							if (i2 == net.minecraft.src.Block.LEAVES.blockID)
+							if (i2 == net.minecraft.src.Block.LEAVES.ID)
 							{
 								int j2 = world.GetBlockMetadata(i + j1, j + k1, k + l1);
 								world.SetBlockMetadata(i + j1, j + k1, k + l1, j2 | 8);
@@ -71,12 +71,12 @@ namespace net.minecraft.src
 							for (int i3 = -byte0; i3 <= byte0; i3++)
 							{
 								int k3 = world.GetBlockId(i + l1, j + k2, k + i3);
-								if (k3 == net.minecraft.src.Block.LOG.blockID)
+								if (k3 == net.minecraft.src.Block.LOG.ID)
 								{
 									adjacentTreeBlocks[(l1 + k1) * j1 + (k2 + k1) * byte1 + (i3 + k1)] = 0;
 									continue;
 								}
-								if (k3 == net.minecraft.src.Block.LEAVES.blockID)
+								if (k3 == net.minecraft.src.Block.LEAVES.ID)
 								{
 									adjacentTreeBlocks[(l1 + k1) * j1 + (k2 + k1) * byte1 + (i3 + k1)] = -2;
 								}
@@ -156,19 +156,19 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Block.SAPLING.blockID;
+			return net.minecraft.src.Block.SAPLING.ID;
 		}
 
 		public override void HarvestBlock(net.minecraft.src.World world, net.minecraft.src.EntityPlayer
 			 entityplayer, int i, int j, int k, int l)
 		{
 			if (!world.singleplayerWorld && entityplayer.GetCurrentEquippedItem() != null && 
-				entityplayer.GetCurrentEquippedItem().itemID == net.minecraft.src.Item.field_31022_bc
-				.shiftedIndex)
+				entityplayer.GetCurrentEquippedItem().itemID == net.minecraft.src.Item.SHEARS
+				.ID)
 			{
-				entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[blockID], 1);
+				entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[ID], 1);
 				DropBlockAsItem_do(world, i, j, k, new net.minecraft.src.ItemStack(net.minecraft.src.Block
-					.LEAVES.blockID, 1, l & 3));
+					.LEAVES.ID, 1, l & 3));
 			}
 			else
 			{

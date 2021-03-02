@@ -20,7 +20,7 @@ namespace net.minecraft.src
 		public override bool OnItemUse(net.minecraft.src.ItemStack itemstack, net.minecraft.src.EntityPlayer
 			 entityplayer, net.minecraft.src.World world, int i, int j, int k, int l)
 		{
-			if (world.GetBlockId(i, j, k) == net.minecraft.src.Block.JUKEBOX.blockID && world
+			if (world.GetBlockId(i, j, k) == net.minecraft.src.Block.JUKEBOX.ID && world
 				.GetBlockMetadata(i, j, k) == 0)
 			{
 				if (world.singleplayerWorld)
@@ -30,8 +30,8 @@ namespace net.minecraft.src
 				else
 				{
 					((net.minecraft.src.BlockJukeBox)net.minecraft.src.Block.JUKEBOX).EjectRecord(world
-						, i, j, k, shiftedIndex);
-					world.SendSoundEffectToAllPlayersWithin64(null, 1005, i, j, k, shiftedIndex);
+						, i, j, k, ID);
+					world.SendSoundEffectToAllPlayersWithin64(null, 1005, i, j, k, ID);
 					itemstack.stackSize--;
 					return true;
 				}

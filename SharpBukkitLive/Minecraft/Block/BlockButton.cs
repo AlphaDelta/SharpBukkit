@@ -236,37 +236,37 @@ namespace net.minecraft.src
             world.MarkBlocksDirty(i, j, k, i, j, k);
             world.PlaySoundEffect((double)i + 0.5D, (double)j + 0.5D, (double)k + 0.5D, "random.click"
                 , 0.3F, 0.6F);
-            world.NotifyBlocksOfNeighborChange(i, j, k, blockID);
+            world.NotifyBlocksOfNeighborChange(i, j, k, ID);
             if (i1 == 1)
             {
-                world.NotifyBlocksOfNeighborChange(i - 1, j, k, blockID);
+                world.NotifyBlocksOfNeighborChange(i - 1, j, k, ID);
             }
             else
             {
                 if (i1 == 2)
                 {
-                    world.NotifyBlocksOfNeighborChange(i + 1, j, k, blockID);
+                    world.NotifyBlocksOfNeighborChange(i + 1, j, k, ID);
                 }
                 else
                 {
                     if (i1 == 3)
                     {
-                        world.NotifyBlocksOfNeighborChange(i, j, k - 1, blockID);
+                        world.NotifyBlocksOfNeighborChange(i, j, k - 1, ID);
                     }
                     else
                     {
                         if (i1 == 4)
                         {
-                            world.NotifyBlocksOfNeighborChange(i, j, k + 1, blockID);
+                            world.NotifyBlocksOfNeighborChange(i, j, k + 1, ID);
                         }
                         else
                         {
-                            world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+                            world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
                         }
                     }
                 }
             }
-            world.ScheduleUpdateTick(i, j, k, blockID, TickRate());
+            world.ScheduleUpdateTick(i, j, k, ID, TickRate());
             return true;
         }
 
@@ -276,33 +276,33 @@ namespace net.minecraft.src
             int l = world.GetBlockMetadata(i, j, k);
             if ((l & 8) > 0)
             {
-                world.NotifyBlocksOfNeighborChange(i, j, k, blockID);
+                world.NotifyBlocksOfNeighborChange(i, j, k, ID);
                 int i1 = l & 7;
                 if (i1 == 1)
                 {
-                    world.NotifyBlocksOfNeighborChange(i - 1, j, k, blockID);
+                    world.NotifyBlocksOfNeighborChange(i - 1, j, k, ID);
                 }
                 else
                 {
                     if (i1 == 2)
                     {
-                        world.NotifyBlocksOfNeighborChange(i + 1, j, k, blockID);
+                        world.NotifyBlocksOfNeighborChange(i + 1, j, k, ID);
                     }
                     else
                     {
                         if (i1 == 3)
                         {
-                            world.NotifyBlocksOfNeighborChange(i, j, k - 1, blockID);
+                            world.NotifyBlocksOfNeighborChange(i, j, k - 1, ID);
                         }
                         else
                         {
                             if (i1 == 4)
                             {
-                                world.NotifyBlocksOfNeighborChange(i, j, k + 1, blockID);
+                                world.NotifyBlocksOfNeighborChange(i, j, k + 1, ID);
                             }
                             else
                             {
-                                world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+                                world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
                             }
                         }
                     }
@@ -363,33 +363,33 @@ namespace net.minecraft.src
                 return;
             }
             world.SetBlockMetadataWithNotify(i, j, k, l & 7);
-            world.NotifyBlocksOfNeighborChange(i, j, k, blockID);
+            world.NotifyBlocksOfNeighborChange(i, j, k, ID);
             int i1 = l & 7;
             if (i1 == 1)
             {
-                world.NotifyBlocksOfNeighborChange(i - 1, j, k, blockID);
+                world.NotifyBlocksOfNeighborChange(i - 1, j, k, ID);
             }
             else
             {
                 if (i1 == 2)
                 {
-                    world.NotifyBlocksOfNeighborChange(i + 1, j, k, blockID);
+                    world.NotifyBlocksOfNeighborChange(i + 1, j, k, ID);
                 }
                 else
                 {
                     if (i1 == 3)
                     {
-                        world.NotifyBlocksOfNeighborChange(i, j, k - 1, blockID);
+                        world.NotifyBlocksOfNeighborChange(i, j, k - 1, ID);
                     }
                     else
                     {
                         if (i1 == 4)
                         {
-                            world.NotifyBlocksOfNeighborChange(i, j, k + 1, blockID);
+                            world.NotifyBlocksOfNeighborChange(i, j, k + 1, ID);
                         }
                         else
                         {
-                            world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+                            world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
                         }
                     }
                 }

@@ -101,20 +101,20 @@ namespace net.minecraft.src
 			if (flag1 && !flag)
 			{
 				world.SetBlockMetadataWithNotify(i, j, k, l | 8);
-				world.NotifyBlocksOfNeighborChange(i, j, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+				world.NotifyBlocksOfNeighborChange(i, j, k, ID);
+				world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
 				world.MarkBlocksDirty(i, j, k, i, j, k);
 			}
 			if (!flag1 && flag)
 			{
 				world.SetBlockMetadataWithNotify(i, j, k, l & 7);
-				world.NotifyBlocksOfNeighborChange(i, j, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+				world.NotifyBlocksOfNeighborChange(i, j, k, ID);
+				world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
 				world.MarkBlocksDirty(i, j, k, i, j, k);
 			}
 			if (flag1)
 			{
-				world.ScheduleUpdateTick(i, j, k, blockID, TickRate());
+				world.ScheduleUpdateTick(i, j, k, ID, TickRate());
 			}
 		}
 	}

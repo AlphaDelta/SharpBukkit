@@ -12,17 +12,17 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            Block, Item, ItemStack, CraftingManager
 			recipeItems = (new object[][] { new object[] { net.minecraft.src.Block.WOOD, net.minecraft.src.Block
-				.COBBLESTONE, net.minecraft.src.Item.ingotIron, net.minecraft.src.Item.diamond, 
-				net.minecraft.src.Item.ingotGold }, new object[] { net.minecraft.src.Item.pickaxeWood
-				, net.minecraft.src.Item.pickaxeStone, net.minecraft.src.Item.pickaxeSteel, net.minecraft.src.Item
-				.pickaxeDiamond, net.minecraft.src.Item.pickaxeGold }, new object[] { net.minecraft.src.Item
-				.shovelWood, net.minecraft.src.Item.shovelStone, net.minecraft.src.Item.shovelSteel
-				, net.minecraft.src.Item.shovelDiamond, net.minecraft.src.Item.shovelGold }, new 
-				object[] { net.minecraft.src.Item.axeWood, net.minecraft.src.Item.axeStone, net.minecraft.src.Item
-				.axeSteel, net.minecraft.src.Item.axeDiamond, net.minecraft.src.Item.axeGold }, 
-				new object[] { net.minecraft.src.Item.hoeWood, net.minecraft.src.Item.hoeStone, 
-				net.minecraft.src.Item.hoeSteel, net.minecraft.src.Item.hoeDiamond, net.minecraft.src.Item
-				.hoeGold } });
+				.COBBLESTONE, net.minecraft.src.Item.IRON_INGOT, net.minecraft.src.Item.DIAMOND, 
+				net.minecraft.src.Item.GOLD_INGOT }, new object[] { net.minecraft.src.Item.WOOD_PICKAXE
+				, net.minecraft.src.Item.STONE_PICKAXE, net.minecraft.src.Item.IRON_PICKAXE, net.minecraft.src.Item
+				.DIAMOND_PICKAXE, net.minecraft.src.Item.GOLD_PICKAXE }, new object[] { net.minecraft.src.Item
+				.WOOD_SPADE, net.minecraft.src.Item.STONE_SPADE, net.minecraft.src.Item.IRON_SPADE
+				, net.minecraft.src.Item.DIAMOND_SPADE, net.minecraft.src.Item.GOLD_SHOVEL }, new 
+				object[] { net.minecraft.src.Item.WOOD_AXE, net.minecraft.src.Item.STONE_AXE, net.minecraft.src.Item
+				.IRON_AXE, net.minecraft.src.Item.DIAMOND_AXE, net.minecraft.src.Item.GOLD_AXE }, 
+				new object[] { net.minecraft.src.Item.WOOD_HOE, net.minecraft.src.Item.STONE_HOE, 
+				net.minecraft.src.Item.IRON_HOE, net.minecraft.src.Item.DIAMOND_HOE, net.minecraft.src.Item
+				.GOLD_HOE } });
 		}
 
 		public virtual void AddRecipes(net.minecraft.src.CraftingManager craftingmanager)
@@ -34,12 +34,12 @@ namespace net.minecraft.src
 				{
 					net.minecraft.src.Item item = (net.minecraft.src.Item)recipeItems[j + 1][i];
 					craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(item), new object[] { recipePatterns
-						[j], '#', net.minecraft.src.Item.stick, 'X', obj });
+						[j], '#', net.minecraft.src.Item.STICK, 'X', obj });
 				}
 			}
 			craftingmanager.AddRecipe(new net.minecraft.src.ItemStack(net.minecraft.src.Item.
-				field_31022_bc), new object[] { " #", "# ", '#', net.minecraft.src.Item
-				.ingotIron });
+				SHEARS), new object[] { " #", "# ", '#', net.minecraft.src.Item
+				.IRON_INGOT });
 		}
 
 		private string[][] recipePatterns = new string[][] { new string[] { "XXX", " # ", " # "

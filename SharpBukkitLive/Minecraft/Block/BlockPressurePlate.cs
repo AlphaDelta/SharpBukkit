@@ -137,8 +137,8 @@ namespace net.minecraft.src
 			if (flag1 && !flag)
 			{
 				world.SetBlockMetadataWithNotify(i, j, k, 1);
-				world.NotifyBlocksOfNeighborChange(i, j, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+				world.NotifyBlocksOfNeighborChange(i, j, k, ID);
+				world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
 				world.MarkBlocksDirty(i, j, k, i, j, k);
 				world.PlaySoundEffect((double)i + 0.5D, (double)j + 0.10000000000000001D, (double
 					)k + 0.5D, "random.click", 0.3F, 0.6F);
@@ -146,15 +146,15 @@ namespace net.minecraft.src
 			if (!flag1 && flag)
 			{
 				world.SetBlockMetadataWithNotify(i, j, k, 0);
-				world.NotifyBlocksOfNeighborChange(i, j, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+				world.NotifyBlocksOfNeighborChange(i, j, k, ID);
+				world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
 				world.MarkBlocksDirty(i, j, k, i, j, k);
 				world.PlaySoundEffect((double)i + 0.5D, (double)j + 0.10000000000000001D, (double
 					)k + 0.5D, "random.click", 0.3F, 0.5F);
 			}
 			if (flag1)
 			{
-				world.ScheduleUpdateTick(i, j, k, blockID, TickRate());
+				world.ScheduleUpdateTick(i, j, k, ID, TickRate());
 			}
 		}
 
@@ -164,8 +164,8 @@ namespace net.minecraft.src
 			int l = world.GetBlockMetadata(i, j, k);
 			if (l > 0)
 			{
-				world.NotifyBlocksOfNeighborChange(i, j, k, blockID);
-				world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+				world.NotifyBlocksOfNeighborChange(i, j, k, ID);
+				world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
 			}
 			base.OnBlockRemoval(world, i, j, k);
 		}

@@ -83,7 +83,7 @@ namespace SharpBukkitLive.SharpBukkit
         /// </summary>
         public void SendBlockBreak(Block block, int x, int y, int z)
         {
-            SendPacket(new Packet61SoundEffect((int)SoundType.BLOCK_BREAK, x, y, z, block.blockID));
+            SendPacket(new Packet61SoundEffect((int)SoundType.BLOCK_BREAK, x, y, z, block.ID));
         }
 
         /// <summary>

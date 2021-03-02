@@ -67,20 +67,20 @@ namespace net.minecraft.src
 						GetBlockMetadata(i, j, k) == 0)
 					{
 						world.SetBlockWithNotify(i, j, k, 0);
-						return new net.minecraft.src.ItemStack(net.minecraft.src.Item.bucketWater);
+						return new net.minecraft.src.ItemStack(net.minecraft.src.Item.WATER_BUCKET);
 					}
 					if (world.GetBlockMaterial(i, j, k) == net.minecraft.src.Material.lava && world.GetBlockMetadata
 						(i, j, k) == 0)
 					{
 						world.SetBlockWithNotify(i, j, k, 0);
-						return new net.minecraft.src.ItemStack(net.minecraft.src.Item.bucketLava);
+						return new net.minecraft.src.ItemStack(net.minecraft.src.Item.LAVA_BUCKET);
 					}
 				}
 				else
 				{
 					if (isFull < 0)
 					{
-						return new net.minecraft.src.ItemStack(net.minecraft.src.Item.bucketEmpty);
+						return new net.minecraft.src.ItemStack(net.minecraft.src.Item.BUCKET);
 					}
 					if (movingobjectposition.sideHit == 0)
 					{
@@ -109,7 +109,7 @@ namespace net.minecraft.src
 					if (world.IsAirBlock(i, j, k) || !world.GetBlockMaterial(i, j, k).IsSolid())
 					{
 						if (world.worldProvider.isHellWorld && isFull == net.minecraft.src.Block.WATER
-							.blockID)
+							.ID)
 						{
 							world.PlaySoundEffect(d + 0.5D, d1 + 0.5D, d2 + 0.5D, "random.fizz", 0.5F, 2.6F +
 								 (world.rand.NextFloat() - world.rand.NextFloat()) * 0.8F);
@@ -122,7 +122,7 @@ namespace net.minecraft.src
 						{
 							world.SetBlockAndMetadataWithNotify(i, j, k, isFull, 0);
 						}
-						return new net.minecraft.src.ItemStack(net.minecraft.src.Item.bucketEmpty);
+						return new net.minecraft.src.ItemStack(net.minecraft.src.Item.BUCKET);
 					}
 				}
 			}
@@ -131,7 +131,7 @@ namespace net.minecraft.src
 				if (isFull == 0 && (movingobjectposition.entityHit is net.minecraft.src.EntityCow
 					))
 				{
-					return new net.minecraft.src.ItemStack(net.minecraft.src.Item.bucketMilk);
+					return new net.minecraft.src.ItemStack(net.minecraft.src.Item.MILK_BUCKET);
 				}
 			}
 			return itemstack;

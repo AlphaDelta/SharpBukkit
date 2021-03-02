@@ -14,14 +14,14 @@ namespace net.minecraft.src
 			k)
 		{
 			int l = world.GetBlockId(i, j, k);
-			return l == net.minecraft.src.Block.RAILS.blockID || l == net.minecraft.src.Block
-				.GOLDEN_RAIL.blockID || l == net.minecraft.src.Block.DETECTOR_RAIL.blockID;
+			return l == net.minecraft.src.Block.RAILS.ID || l == net.minecraft.src.Block
+				.GOLDEN_RAIL.ID || l == net.minecraft.src.Block.DETECTOR_RAIL.ID;
 		}
 
 		public static bool Func_27030_c(int i)
 		{
-			return i == net.minecraft.src.Block.RAILS.blockID || i == net.minecraft.src.Block
-				.GOLDEN_RAIL.blockID || i == net.minecraft.src.Block.DETECTOR_RAIL.blockID;
+			return i == net.minecraft.src.Block.RAILS.ID || i == net.minecraft.src.Block
+				.GOLDEN_RAIL.ID || i == net.minecraft.src.Block.DETECTOR_RAIL.ID;
 		}
 
 		protected internal BlockRail(int i, int j, bool flag)
@@ -73,7 +73,7 @@ namespace net.minecraft.src
 		{
 			if (field_27034_a)
 			{
-				if (blockID == net.minecraft.src.Block.GOLDEN_RAIL.blockID && (j & 8) == 0)
+				if (ID == net.minecraft.src.Block.GOLDEN_RAIL.ID && (j & 8) == 0)
 				{
 					return blockIndexInTexture - 16;
 				}
@@ -154,7 +154,7 @@ namespace net.minecraft.src
 			}
 			else
 			{
-				if (blockID == net.minecraft.src.Block.GOLDEN_RAIL.blockID)
+				if (ID == net.minecraft.src.Block.GOLDEN_RAIL.ID)
 				{
 					bool flag1 = world.IsBlockIndirectlyGettingPowered(i, j, k) || world.IsBlockIndirectlyGettingPowered
 						(i, j + 1, k);
@@ -176,10 +176,10 @@ namespace net.minecraft.src
 					}
 					if (flag2)
 					{
-						world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
+						world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
 						if (j1 == 2 || j1 == 3 || j1 == 4 || j1 == 5)
 						{
-							world.NotifyBlocksOfNeighborChange(i, j + 1, k, blockID);
+							world.NotifyBlocksOfNeighborChange(i, j + 1, k, ID);
 						}
 					}
 				}
@@ -328,7 +328,7 @@ namespace net.minecraft.src
 			 flag, int l, int i1)
 		{
 			int j1 = world.GetBlockId(i, j, k);
-			if (j1 == net.minecraft.src.Block.GOLDEN_RAIL.blockID)
+			if (j1 == net.minecraft.src.Block.GOLDEN_RAIL.ID)
 			{
 				int k1 = world.GetBlockMetadata(i, j, k);
 				int l1 = k1 & 7;

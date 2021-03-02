@@ -11,17 +11,17 @@ namespace net.minecraft.src
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            Item, Block, ItemStack, CraftingManager
-			recipeItems = (new object[][] { new object[] { net.minecraft.src.Item.leather, net.minecraft.src.Block
-				.FIRE, net.minecraft.src.Item.ingotIron, net.minecraft.src.Item.diamond, net.minecraft.src.Item
-				.ingotGold }, new object[] { net.minecraft.src.Item.helmetLeather, net.minecraft.src.Item
-				.helmetChain, net.minecraft.src.Item.helmetSteel, net.minecraft.src.Item.helmetDiamond
-				, net.minecraft.src.Item.helmetGold }, new object[] { net.minecraft.src.Item.plateLeather
-				, net.minecraft.src.Item.plateChain, net.minecraft.src.Item.plateSteel, net.minecraft.src.Item
-				.plateDiamond, net.minecraft.src.Item.plateGold }, new object[] { net.minecraft.src.Item
-				.legsLeather, net.minecraft.src.Item.legsChain, net.minecraft.src.Item.legsSteel
-				, net.minecraft.src.Item.legsDiamond, net.minecraft.src.Item.legsGold }, new object
-				[] { net.minecraft.src.Item.bootsLeather, net.minecraft.src.Item.bootsChain, net.minecraft.src.Item
-				.bootsSteel, net.minecraft.src.Item.bootsDiamond, net.minecraft.src.Item.bootsGold
+			recipeItems = (new object[][] { new object[] { net.minecraft.src.Item.LEATHER, net.minecraft.src.Block
+				.FIRE, net.minecraft.src.Item.IRON_INGOT, net.minecraft.src.Item.DIAMOND, net.minecraft.src.Item
+				.GOLD_INGOT }, new object[] { net.minecraft.src.Item.LEATHER_HELMET, net.minecraft.src.Item
+				.CHAINMAIL_HELMET, net.minecraft.src.Item.IRON_HELMET, net.minecraft.src.Item.DIAMOND_HELMET
+				, net.minecraft.src.Item.GOLD_HELMET }, new object[] { net.minecraft.src.Item.LEATHER_CHESTPLATE
+				, net.minecraft.src.Item.CHAINMAIL_CHESTPLATE, net.minecraft.src.Item.IRON_CHESTPLATE, net.minecraft.src.Item
+				.DIAMOND_CHESTPLATE, net.minecraft.src.Item.GOLD_CHESTPLATE }, new object[] { net.minecraft.src.Item
+				.LEATHER_LEGGINGS, net.minecraft.src.Item.CHAINMAIL_LEGGINGS, net.minecraft.src.Item.IRON_LEGGINGS
+				, net.minecraft.src.Item.DIAMOND_LEGGINGS, net.minecraft.src.Item.GOLD_LEGGINGS }, new object
+				[] { net.minecraft.src.Item.LEATHER_BOOTS, net.minecraft.src.Item.CHAINMAIL_BOOTS, net.minecraft.src.Item
+				.IRON_BOOTS, net.minecraft.src.Item.DIAMOND_BOOTS, net.minecraft.src.Item.GOLD_BOOTS
 				 } });
 		}
 

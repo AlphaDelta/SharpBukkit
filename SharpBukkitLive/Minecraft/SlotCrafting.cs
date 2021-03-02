@@ -26,49 +26,49 @@ namespace net.minecraft.src
 		public override void OnPickupFromSlot(net.minecraft.src.ItemStack itemstack)
 		{
 			itemstack.AddCraftStatistic(field_25004_e.worldObj, field_25004_e);
-			if (itemstack.itemID == net.minecraft.src.Block.WORKBENCH.blockID)
+			if (itemstack.itemID == net.minecraft.src.Block.WORKBENCH.ID)
 			{
 				field_25004_e.AddStat(net.minecraft.src.AchievementList.aBuildWorkBench, 1);
 			}
 			else
 			{
-				if (itemstack.itemID == net.minecraft.src.Item.pickaxeWood.shiftedIndex)
+				if (itemstack.itemID == net.minecraft.src.Item.WOOD_PICKAXE.ID)
 				{
 					field_25004_e.AddStat(net.minecraft.src.AchievementList.aBuildPickaxe, 1);
 				}
 				else
 				{
-					if (itemstack.itemID == net.minecraft.src.Block.FURNACE.blockID)
+					if (itemstack.itemID == net.minecraft.src.Block.FURNACE.ID)
 					{
 						field_25004_e.AddStat(net.minecraft.src.AchievementList.aBuildFurnace, 1);
 					}
 					else
 					{
-						if (itemstack.itemID == net.minecraft.src.Item.hoeWood.shiftedIndex)
+						if (itemstack.itemID == net.minecraft.src.Item.WOOD_HOE.ID)
 						{
 							field_25004_e.AddStat(net.minecraft.src.AchievementList.aBuildHoe, 1);
 						}
 						else
 						{
-							if (itemstack.itemID == net.minecraft.src.Item.bread.shiftedIndex)
+							if (itemstack.itemID == net.minecraft.src.Item.BREAD.ID)
 							{
 								field_25004_e.AddStat(net.minecraft.src.AchievementList.aMakeBreak, 1);
 							}
 							else
 							{
-								if (itemstack.itemID == net.minecraft.src.Item.cake.shiftedIndex)
+								if (itemstack.itemID == net.minecraft.src.Item.CAKE.ID)
 								{
 									field_25004_e.AddStat(net.minecraft.src.AchievementList.aBakeCake, 1);
 								}
 								else
 								{
-									if (itemstack.itemID == net.minecraft.src.Item.pickaxeStone.shiftedIndex)
+									if (itemstack.itemID == net.minecraft.src.Item.STONE_PICKAXE.ID)
 									{
 										field_25004_e.AddStat(net.minecraft.src.AchievementList.aBuildBetterPickaxe, 1);
 									}
 									else
 									{
-										if (itemstack.itemID == net.minecraft.src.Item.swordWood.shiftedIndex)
+										if (itemstack.itemID == net.minecraft.src.Item.WOOD_SWORD.ID)
 										{
 											field_25004_e.AddStat(net.minecraft.src.AchievementList.aBuildSword, 1);
 										}

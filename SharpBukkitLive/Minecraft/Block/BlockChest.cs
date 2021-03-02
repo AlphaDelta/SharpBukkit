@@ -42,19 +42,19 @@ namespace net.minecraft.src
 			int k)
 		{
 			int l = 0;
-			if (world.GetBlockId(i - 1, j, k) == blockID)
+			if (world.GetBlockId(i - 1, j, k) == ID)
 			{
 				l++;
 			}
-			if (world.GetBlockId(i + 1, j, k) == blockID)
+			if (world.GetBlockId(i + 1, j, k) == ID)
 			{
 				l++;
 			}
-			if (world.GetBlockId(i, j, k - 1) == blockID)
+			if (world.GetBlockId(i, j, k - 1) == ID)
 			{
 				l++;
 			}
-			if (world.GetBlockId(i, j, k + 1) == blockID)
+			if (world.GetBlockId(i, j, k + 1) == ID)
 			{
 				l++;
 			}
@@ -80,23 +80,23 @@ namespace net.minecraft.src
 		private bool IsThereANeighborChest(net.minecraft.src.World world, int i, int j, int
 			 k)
 		{
-			if (world.GetBlockId(i, j, k) != blockID)
+			if (world.GetBlockId(i, j, k) != ID)
 			{
 				return false;
 			}
-			if (world.GetBlockId(i - 1, j, k) == blockID)
+			if (world.GetBlockId(i - 1, j, k) == ID)
 			{
 				return true;
 			}
-			if (world.GetBlockId(i + 1, j, k) == blockID)
+			if (world.GetBlockId(i + 1, j, k) == ID)
 			{
 				return true;
 			}
-			if (world.GetBlockId(i, j, k - 1) == blockID)
+			if (world.GetBlockId(i, j, k - 1) == ID)
 			{
 				return true;
 			}
-			return world.GetBlockId(i, j, k + 1) == blockID;
+			return world.GetBlockId(i, j, k + 1) == ID;
 		}
 
 		public override void OnBlockRemoval(net.minecraft.src.World world, int i, int j, 
@@ -150,43 +150,43 @@ label0_break: ;
 			{
 				return true;
 			}
-			if (world.GetBlockId(i - 1, j, k) == blockID && world.IsBlockNormalCube(i - 1, j 
+			if (world.GetBlockId(i - 1, j, k) == ID && world.IsBlockNormalCube(i - 1, j 
 				+ 1, k))
 			{
 				return true;
 			}
-			if (world.GetBlockId(i + 1, j, k) == blockID && world.IsBlockNormalCube(i + 1, j 
+			if (world.GetBlockId(i + 1, j, k) == ID && world.IsBlockNormalCube(i + 1, j 
 				+ 1, k))
 			{
 				return true;
 			}
-			if (world.GetBlockId(i, j, k - 1) == blockID && world.IsBlockNormalCube(i, j + 1, 
+			if (world.GetBlockId(i, j, k - 1) == ID && world.IsBlockNormalCube(i, j + 1, 
 				k - 1))
 			{
 				return true;
 			}
-			if (world.GetBlockId(i, j, k + 1) == blockID && world.IsBlockNormalCube(i, j + 1, 
+			if (world.GetBlockId(i, j, k + 1) == ID && world.IsBlockNormalCube(i, j + 1, 
 				k + 1))
 			{
 				return true;
 			}
-			if (world.GetBlockId(i - 1, j, k) == blockID)
+			if (world.GetBlockId(i - 1, j, k) == ID)
 			{
 				obj = new net.minecraft.src.InventoryLargeChest("Large chest", (net.minecraft.src.TileEntityChest
 					)world.GetBlockTileEntity(i - 1, j, k), ((net.minecraft.src.IInventory)(obj)));
 			}
-			if (world.GetBlockId(i + 1, j, k) == blockID)
+			if (world.GetBlockId(i + 1, j, k) == ID)
 			{
 				obj = new net.minecraft.src.InventoryLargeChest("Large chest", ((net.minecraft.src.IInventory
 					)(obj)), (net.minecraft.src.TileEntityChest)world.GetBlockTileEntity(i + 1, j, k
 					));
 			}
-			if (world.GetBlockId(i, j, k - 1) == blockID)
+			if (world.GetBlockId(i, j, k - 1) == ID)
 			{
 				obj = new net.minecraft.src.InventoryLargeChest("Large chest", (net.minecraft.src.TileEntityChest
 					)world.GetBlockTileEntity(i, j, k - 1), ((net.minecraft.src.IInventory)(obj)));
 			}
-			if (world.GetBlockId(i, j, k + 1) == blockID)
+			if (world.GetBlockId(i, j, k + 1) == ID)
 			{
 				obj = new net.minecraft.src.InventoryLargeChest("Large chest", ((net.minecraft.src.IInventory
 					)(obj)), (net.minecraft.src.TileEntityChest)world.GetBlockTileEntity(i, j, k + 1

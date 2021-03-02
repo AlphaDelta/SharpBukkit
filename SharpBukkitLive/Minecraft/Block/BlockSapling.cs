@@ -83,7 +83,7 @@ namespace net.minecraft.src
 			}
 			if (!((net.minecraft.src.WorldGenerator)(obj)).Generate(world, random, i, j, k))
 			{
-				world.SetBlockAndMetadata(i, j, k, blockID, l);
+				world.SetBlockAndMetadata(i, j, k, ID, l);
 			}
 		}
 

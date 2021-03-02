@@ -20,7 +20,7 @@ namespace net.minecraft.src
 			 itemstack, net.minecraft.src.World world, net.minecraft.src.EntityPlayer entityplayer
 			)
 		{
-			if (entityplayer.inventory.ConsumeInventoryItem(net.minecraft.src.Item.arrow.shiftedIndex
+			if (entityplayer.inventory.ConsumeInventoryItem(net.minecraft.src.Item.ARROW.ID
 				))
 			{
 				world.PlaySoundAtEntity(entityplayer, "random.bow", 1.0F, 1.0F / (itemRand.NextFloat

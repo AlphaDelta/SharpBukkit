@@ -26,7 +26,7 @@ namespace net.minecraft.src
 
         public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
         {
-            return net.minecraft.src.Block.DISPENSER.blockID;
+            return net.minecraft.src.Block.DISPENSER.ID;
         }
 
         public override void OnBlockAdded(net.minecraft.src.World world, int i, int j, int
@@ -143,7 +143,7 @@ namespace net.minecraft.src
             }
             else
             {
-                if (itemstack.itemID == net.minecraft.src.Item.arrow.shiftedIndex)
+                if (itemstack.itemID == net.minecraft.src.Item.ARROW.ID)
                 {
                     net.minecraft.src.EntityArrow entityarrow = new net.minecraft.src.EntityArrow(world, d, d1, d2);
                     entityarrow.SetArrowHeading(i1, 0.10000000149011612D, j1, 1.1F, 6F);
@@ -151,14 +151,14 @@ namespace net.minecraft.src
                     world.AddEntity(entityarrow);
                     world.SendSoundEffectToAllPlayersWithin64(1002, i, j, k, 0);
                 }
-                else if (itemstack.itemID == net.minecraft.src.Item.egg.shiftedIndex)
+                else if (itemstack.itemID == net.minecraft.src.Item.EGG.ID)
                 {
                     net.minecraft.src.EntityEgg entityegg = new net.minecraft.src.EntityEgg(world, d, d1, d2);
                     entityegg.SetEggHeading(i1, 0.10000000149011612D, j1, 1.1F, 6F);
                     world.AddEntity(entityegg);
                     world.SendSoundEffectToAllPlayersWithin64(1002, i, j, k, 0);
                 }
-                else if (itemstack.itemID == net.minecraft.src.Item.snowball.shiftedIndex)
+                else if (itemstack.itemID == net.minecraft.src.Item.SNOW_BALL.ID)
                 {
                     net.minecraft.src.EntitySnowball entitysnowball = new net.minecraft.src.EntitySnowball(world, d, d1, d2);
                     entitysnowball.SetSnowballHeading(i1, 0.10000000149011612D, j1, 1.1F, 6F);
@@ -192,7 +192,7 @@ namespace net.minecraft.src
                     (i, j + 1, k);
                 if (flag)
                 {
-                    world.ScheduleUpdateTick(i, j, k, blockID, TickRate());
+                    world.ScheduleUpdateTick(i, j, k, ID, TickRate());
                 }
             }
         }

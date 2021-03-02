@@ -96,7 +96,7 @@ namespace net.minecraft.src
 				worldObj.RemoveBlockTileEntity(xCoord, yCoord, zCoord);
 				Invalidate();
 				if (worldObj.GetBlockId(xCoord, yCoord, zCoord) == net.minecraft.src.Block.PISTON_MOVING
-					.blockID)
+					.ID)
 				{
 					worldObj.SetBlockAndMetadataWithNotify(xCoord, yCoord, zCoord, storedBlockID, storedMetadata
 						);
@@ -113,7 +113,7 @@ namespace net.minecraft.src
 				worldObj.RemoveBlockTileEntity(xCoord, yCoord, zCoord);
 				Invalidate();
 				if (worldObj.GetBlockId(xCoord, yCoord, zCoord) == net.minecraft.src.Block.PISTON_MOVING
-					.blockID)
+					.ID)
 				{
 					worldObj.SetBlockAndMetadataWithNotify(xCoord, yCoord, zCoord, storedBlockID, storedMetadata
 						);

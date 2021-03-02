@@ -357,11 +357,11 @@ namespace net.minecraft.src
             {
                 net.minecraft.src.EntityFallingSand entityfallingsand = (net.minecraft.src.EntityFallingSand
                     )trackedEntity;
-                if (entityfallingsand.blockID == net.minecraft.src.Block.SAND.blockID)
+                if (entityfallingsand.blockID == net.minecraft.src.Block.SAND.ID)
                 {
                     return new net.minecraft.src.Packet23VehicleSpawn(trackedEntity, 70);
                 }
-                if (entityfallingsand.blockID == net.minecraft.src.Block.GRAVEL.blockID)
+                if (entityfallingsand.blockID == net.minecraft.src.Block.GRAVEL.ID)
                 {
                     return new net.minecraft.src.Packet23VehicleSpawn(trackedEntity, 71);
                 }

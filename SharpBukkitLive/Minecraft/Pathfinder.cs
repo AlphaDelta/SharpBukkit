@@ -221,8 +221,8 @@ namespace net.minecraft.src
 						{
 							continue;
 						}
-						if (k1 == net.minecraft.src.Block.IRON_DOOR_BLOCK.blockID || k1 == net.minecraft.src.Block
-							.WOODEN_DOOR.blockID)
+						if (k1 == net.minecraft.src.Block.IRON_DOOR_BLOCK.ID || k1 == net.minecraft.src.Block
+							.WOODEN_DOOR.ID)
 						{
 							int l1 = worldMap.GetBlockMetadata(l, i1, j1);
 							if (!net.minecraft.src.BlockDoor.Func_27036_e(l1))

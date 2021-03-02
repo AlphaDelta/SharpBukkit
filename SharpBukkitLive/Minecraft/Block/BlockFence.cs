@@ -17,7 +17,7 @@ namespace net.minecraft.src
 		public override bool CanPlaceBlockAt(net.minecraft.src.World world, int i, int j, 
 			int k)
 		{
-			if (world.GetBlockId(i, j - 1, k) == blockID)
+			if (world.GetBlockId(i, j - 1, k) == ID)
 			{
 				return true;
 			}

@@ -177,7 +177,7 @@ namespace net.minecraft.src
 				byte0 = 3;
 			}
 			world.SetBlockMetadataWithNotify(i, j, k, byte0);
-			OnNeighborBlockChange(world, i, j, k, Block.REDSTONE_WIRE.blockID); // CRAFTBUKKIT
+			OnNeighborBlockChange(world, i, j, k, Block.REDSTONE_WIRE.ID); // CRAFTBUKKIT
 		}
 
 		public override bool CanPlaceBlockOnSide(net.minecraft.src.World world, int i, int

@@ -17,26 +17,26 @@ namespace net.minecraft.src
 		private FurnaceRecipes()
 		{
 			smeltingList = new System.Collections.Hashtable();
-			AddSmelting(net.minecraft.src.Block.IRON_ORE.blockID, new net.minecraft.src.ItemStack
-				(net.minecraft.src.Item.ingotIron));
-			AddSmelting(net.minecraft.src.Block.GOLD_ORE.blockID, new net.minecraft.src.ItemStack
-				(net.minecraft.src.Item.ingotGold));
-			AddSmelting(net.minecraft.src.Block.DIAMOND_ORE.blockID, new net.minecraft.src.ItemStack
-				(net.minecraft.src.Item.diamond));
-			AddSmelting(net.minecraft.src.Block.SAND.blockID, new net.minecraft.src.ItemStack
+			AddSmelting(net.minecraft.src.Block.IRON_ORE.ID, new net.minecraft.src.ItemStack
+				(net.minecraft.src.Item.IRON_INGOT));
+			AddSmelting(net.minecraft.src.Block.GOLD_ORE.ID, new net.minecraft.src.ItemStack
+				(net.minecraft.src.Item.GOLD_INGOT));
+			AddSmelting(net.minecraft.src.Block.DIAMOND_ORE.ID, new net.minecraft.src.ItemStack
+				(net.minecraft.src.Item.DIAMOND));
+			AddSmelting(net.minecraft.src.Block.SAND.ID, new net.minecraft.src.ItemStack
 				(net.minecraft.src.Block.GLASS));
-			AddSmelting(net.minecraft.src.Item.porkRaw.shiftedIndex, new net.minecraft.src.ItemStack
-				(net.minecraft.src.Item.porkCooked));
-			AddSmelting(net.minecraft.src.Item.fishRaw.shiftedIndex, new net.minecraft.src.ItemStack
-				(net.minecraft.src.Item.fishCooked));
-			AddSmelting(net.minecraft.src.Block.COBBLESTONE.blockID, new net.minecraft.src.ItemStack
+			AddSmelting(net.minecraft.src.Item.PORK.ID, new net.minecraft.src.ItemStack
+				(net.minecraft.src.Item.GRILLED_PORK));
+			AddSmelting(net.minecraft.src.Item.RAW_FISH.ID, new net.minecraft.src.ItemStack
+				(net.minecraft.src.Item.COOKED_FISH));
+			AddSmelting(net.minecraft.src.Block.COBBLESTONE.ID, new net.minecraft.src.ItemStack
 				(net.minecraft.src.Block.STONE));
-			AddSmelting(net.minecraft.src.Item.clay.shiftedIndex, new net.minecraft.src.ItemStack
-				(net.minecraft.src.Item.brick));
-			AddSmelting(net.minecraft.src.Block.CACTUS.blockID, new net.minecraft.src.ItemStack
-				(net.minecraft.src.Item.dyePowder, 1, 2));
-			AddSmelting(net.minecraft.src.Block.LOG.blockID, new net.minecraft.src.ItemStack
-				(net.minecraft.src.Item.coal, 1, 1));
+			AddSmelting(net.minecraft.src.Item.CLAY_BALL.ID, new net.minecraft.src.ItemStack
+				(net.minecraft.src.Item.CLAY_BRICK));
+			AddSmelting(net.minecraft.src.Block.CACTUS.ID, new net.minecraft.src.ItemStack
+				(net.minecraft.src.Item.INK_SACK, 1, 2));
+			AddSmelting(net.minecraft.src.Block.LOG.ID, new net.minecraft.src.ItemStack
+				(net.minecraft.src.Item.COAL, 1, 1));
 		}
 
 		public virtual void AddSmelting(int i, net.minecraft.src.ItemStack itemstack)

@@ -39,7 +39,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Item.silk.shiftedIndex;
+			return net.minecraft.src.Item.STRING.ID;
 		}
 	}
 }

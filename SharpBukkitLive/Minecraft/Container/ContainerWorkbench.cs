@@ -72,7 +72,7 @@ namespace net.minecraft.src
 		public override bool CanInteractWith(net.minecraft.src.EntityPlayer entityplayer)
 		{
 			if (field_20150_c.GetBlockId(field_20149_h, field_20148_i, field_20147_j) != net.minecraft.src.Block
-				.WORKBENCH.blockID)
+				.WORKBENCH.ID)
 			{
 				return false;
 			}

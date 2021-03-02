@@ -24,8 +24,8 @@ namespace net.minecraft.src
 		public override void SetBlockBoundsBasedOnState(net.minecraft.src.IBlockAccess iblockaccess
 			, int i, int j, int k)
 		{
-			if (iblockaccess.GetBlockId(i - 1, j, k) == blockID || iblockaccess.GetBlockId(i 
-				+ 1, j, k) == blockID)
+			if (iblockaccess.GetBlockId(i - 1, j, k) == ID || iblockaccess.GetBlockId(i 
+				+ 1, j, k) == ID)
 			{
 				float f = 0.5F;
 				float f2 = 0.125F;
@@ -54,13 +54,13 @@ namespace net.minecraft.src
 		{
 			int l = 0;
 			int i1 = 0;
-			if (world.GetBlockId(i - 1, j, k) == net.minecraft.src.Block.OBSISIAN.blockID || 
-				world.GetBlockId(i + 1, j, k) == net.minecraft.src.Block.OBSISIAN.blockID)
+			if (world.GetBlockId(i - 1, j, k) == net.minecraft.src.Block.OBSISIAN.ID || 
+				world.GetBlockId(i + 1, j, k) == net.minecraft.src.Block.OBSISIAN.ID)
 			{
 				l = 1;
 			}
-			if (world.GetBlockId(i, j, k - 1) == net.minecraft.src.Block.OBSISIAN.blockID || 
-				world.GetBlockId(i, j, k + 1) == net.minecraft.src.Block.OBSISIAN.blockID)
+			if (world.GetBlockId(i, j, k - 1) == net.minecraft.src.Block.OBSISIAN.ID || 
+				world.GetBlockId(i, j, k + 1) == net.minecraft.src.Block.OBSISIAN.ID)
 			{
 				i1 = 1;
 			}
@@ -85,13 +85,13 @@ namespace net.minecraft.src
 					int j2 = world.GetBlockId(i + l * j1, j + l1, k + i1 * j1);
 					if (flag)
 					{
-						if (j2 != net.minecraft.src.Block.OBSISIAN.blockID)
+						if (j2 != net.minecraft.src.Block.OBSISIAN.ID)
 						{
 							return false;
 						}
 						continue;
 					}
-					if (j2 != 0 && j2 != net.minecraft.src.Block.FIRE.blockID)
+					if (j2 != 0 && j2 != net.minecraft.src.Block.FIRE.ID)
 					{
 						return false;
 					}
@@ -103,7 +103,7 @@ namespace net.minecraft.src
 				for (int i2 = 0; i2 < 3; i2++)
 				{
 					world.SetBlockWithNotify(i + l * k1, j + i2, k + i1 * k1, net.minecraft.src.Block
-						.PORTAL.blockID);
+						.PORTAL.ID);
 				}
 			}
 			world.editingBlocks = false;
@@ -115,44 +115,44 @@ namespace net.minecraft.src
 		{
 			int i1 = 0;
 			int j1 = 1;
-			if (world.GetBlockId(i - 1, j, k) == blockID || world.GetBlockId(i + 1, j, k) == 
-				blockID)
+			if (world.GetBlockId(i - 1, j, k) == ID || world.GetBlockId(i + 1, j, k) == 
+				ID)
 			{
 				i1 = 1;
 				j1 = 0;
 			}
 			int k1;
-			for (k1 = j; world.GetBlockId(i, k1 - 1, k) == blockID; k1--)
+			for (k1 = j; world.GetBlockId(i, k1 - 1, k) == ID; k1--)
 			{
 			}
-			if (world.GetBlockId(i, k1 - 1, k) != net.minecraft.src.Block.OBSISIAN.blockID)
+			if (world.GetBlockId(i, k1 - 1, k) != net.minecraft.src.Block.OBSISIAN.ID)
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
 				return;
 			}
 			int l1;
-			for (l1 = 1; l1 < 4 && world.GetBlockId(i, k1 + l1, k) == blockID; l1++)
+			for (l1 = 1; l1 < 4 && world.GetBlockId(i, k1 + l1, k) == ID; l1++)
 			{
 			}
 			if (l1 != 3 || world.GetBlockId(i, k1 + l1, k) != net.minecraft.src.Block.OBSISIAN
-				.blockID)
+				.ID)
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
 				return;
 			}
-			bool flag = world.GetBlockId(i - 1, j, k) == blockID || world.GetBlockId(i + 1, j
-				, k) == blockID;
-			bool flag1 = world.GetBlockId(i, j, k - 1) == blockID || world.GetBlockId(i, j, k
-				 + 1) == blockID;
+			bool flag = world.GetBlockId(i - 1, j, k) == ID || world.GetBlockId(i + 1, j
+				, k) == ID;
+			bool flag1 = world.GetBlockId(i, j, k - 1) == ID || world.GetBlockId(i, j, k
+				 + 1) == ID;
 			if (flag && flag1)
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
 				return;
 			}
-			if ((world.GetBlockId(i + i1, j, k + j1) != net.minecraft.src.Block.OBSISIAN.blockID
-				 || world.GetBlockId(i - i1, j, k - j1) != blockID) && (world.GetBlockId(i - i1, 
-				j, k - j1) != net.minecraft.src.Block.OBSISIAN.blockID || world.GetBlockId(i + i1
-				, j, k + j1) != blockID))
+			if ((world.GetBlockId(i + i1, j, k + j1) != net.minecraft.src.Block.OBSISIAN.ID
+				 || world.GetBlockId(i - i1, j, k - j1) != ID) && (world.GetBlockId(i - i1, 
+				j, k - j1) != net.minecraft.src.Block.OBSISIAN.ID || world.GetBlockId(i + i1
+				, j, k + j1) != ID))
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
 				return;

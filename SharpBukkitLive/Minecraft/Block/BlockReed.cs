@@ -25,7 +25,7 @@ namespace net.minecraft.src
 			if (world.IsAirBlock(i, j + 1, k))
 			{
 				int l;
-				for (l = 1; world.GetBlockId(i, j - l, k) == blockID; l++)
+				for (l = 1; world.GetBlockId(i, j - l, k) == ID; l++)
 				{
 				}
 				if (l < 3)
@@ -33,7 +33,7 @@ namespace net.minecraft.src
 					int i1 = world.GetBlockMetadata(i, j, k);
 					if (i1 == 15)
 					{
-						world.SetBlockWithNotify(i, j + 1, k, blockID);
+						world.SetBlockWithNotify(i, j + 1, k, ID);
 						world.SetBlockMetadataWithNotify(i, j, k, 0);
 					}
 					else
@@ -48,12 +48,12 @@ namespace net.minecraft.src
 			int k)
 		{
 			int l = world.GetBlockId(i, j - 1, k);
-			if (l == blockID)
+			if (l == ID)
 			{
 				return true;
 			}
-			if (l != net.minecraft.src.Block.GRASS.blockID && l != net.minecraft.src.Block.DIRT
-				.blockID)
+			if (l != net.minecraft.src.Block.GRASS.ID && l != net.minecraft.src.Block.DIRT
+				.ID)
 			{
 				return false;
 			}
@@ -102,7 +102,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Item.reed.shiftedIndex;
+			return net.minecraft.src.Item.SUGAR_CANE.ID;
 		}
 
 		public override bool IsOpaqueCube()

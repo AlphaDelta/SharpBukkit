@@ -176,7 +176,7 @@ namespace net.minecraft.src
 
 		protected internal override int GetDropItemId()
 		{
-			return net.minecraft.src.Item.gunpowder.shiftedIndex;
+			return net.minecraft.src.Item.SULPHUR.ID;
 		}
 
 		protected internal override float GetSoundVolume()

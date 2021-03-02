@@ -56,19 +56,19 @@ namespace net.minecraft.src
 			if (field_22015_c && !flag)
 			{
 				world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.DIODE_OFF
-					.blockID, l);
+					.ID, l);
 			}
 			else
 			{
 				if (!field_22015_c)
 				{
 					world.SetBlockAndMetadataWithNotify(i, j, k, net.minecraft.src.Block.DIODE_ON
-						.blockID, l);
+						.ID, l);
 					if (!flag)
 					{
 						int i1 = (l & 0xc) >> 2;
 						world.ScheduleUpdateTick(i, j, k, net.minecraft.src.Block.DIODE_ON.
-							blockID, field_22013_b[i1] * 2);
+							ID, field_22013_b[i1] * 2);
 					}
 				}
 			}
@@ -138,13 +138,13 @@ namespace net.minecraft.src
 			int j1 = (i1 & 0xc) >> 2;
 			if (field_22015_c && !flag)
 			{
-				world.ScheduleUpdateTick(i, j, k, blockID, field_22013_b[j1] * 2);
+				world.ScheduleUpdateTick(i, j, k, ID, field_22013_b[j1] * 2);
 			}
 			else
 			{
 				if (!field_22015_c && flag)
 				{
-					world.ScheduleUpdateTick(i, j, k, blockID, field_22013_b[j1] * 2);
+					world.ScheduleUpdateTick(i, j, k, ID, field_22013_b[j1] * 2);
 				}
 			}
 		}
@@ -159,7 +159,7 @@ namespace net.minecraft.src
 				{
 					// '\0'
 					return world.IsBlockIndirectlyProvidingPowerTo(i, j, k + 1, 3) || world.GetBlockId
-						(i, j, k + 1) == net.minecraft.src.Block.REDSTONE_WIRE.blockID && world.GetBlockMetadata
+						(i, j, k + 1) == net.minecraft.src.Block.REDSTONE_WIRE.ID && world.GetBlockMetadata
 						(i, j, k + 1) > 0;
 				}
 
@@ -167,7 +167,7 @@ namespace net.minecraft.src
 				{
 					// '\002'
 					return world.IsBlockIndirectlyProvidingPowerTo(i, j, k - 1, 2) || world.GetBlockId
-						(i, j, k - 1) == net.minecraft.src.Block.REDSTONE_WIRE.blockID && world.GetBlockMetadata
+						(i, j, k - 1) == net.minecraft.src.Block.REDSTONE_WIRE.ID && world.GetBlockMetadata
 						(i, j, k - 1) > 0;
 				}
 
@@ -175,7 +175,7 @@ namespace net.minecraft.src
 				{
 					// '\003'
 					return world.IsBlockIndirectlyProvidingPowerTo(i + 1, j, k, 5) || world.GetBlockId
-						(i + 1, j, k) == net.minecraft.src.Block.REDSTONE_WIRE.blockID && world.GetBlockMetadata
+						(i + 1, j, k) == net.minecraft.src.Block.REDSTONE_WIRE.ID && world.GetBlockMetadata
 						(i + 1, j, k) > 0;
 				}
 
@@ -183,7 +183,7 @@ namespace net.minecraft.src
 				{
 					// '\001'
 					return world.IsBlockIndirectlyProvidingPowerTo(i - 1, j, k, 4) || world.GetBlockId
-						(i - 1, j, k) == net.minecraft.src.Block.REDSTONE_WIRE.blockID && world.GetBlockMetadata
+						(i - 1, j, k) == net.minecraft.src.Block.REDSTONE_WIRE.ID && world.GetBlockMetadata
 						(i - 1, j, k) > 0;
 				}
 			}
@@ -214,19 +214,19 @@ namespace net.minecraft.src
 			bool flag = Func_22012_g(world, i, j, k, l);
 			if (flag)
 			{
-				world.ScheduleUpdateTick(i, j, k, blockID, 1);
+				world.ScheduleUpdateTick(i, j, k, ID, 1);
 			}
 		}
 
 		public override void OnBlockAdded(net.minecraft.src.World world, int i, int j, int
 			 k)
 		{
-			world.NotifyBlocksOfNeighborChange(i + 1, j, k, blockID);
-			world.NotifyBlocksOfNeighborChange(i - 1, j, k, blockID);
-			world.NotifyBlocksOfNeighborChange(i, j, k + 1, blockID);
-			world.NotifyBlocksOfNeighborChange(i, j, k - 1, blockID);
-			world.NotifyBlocksOfNeighborChange(i, j - 1, k, blockID);
-			world.NotifyBlocksOfNeighborChange(i, j + 1, k, blockID);
+			world.NotifyBlocksOfNeighborChange(i + 1, j, k, ID);
+			world.NotifyBlocksOfNeighborChange(i - 1, j, k, ID);
+			world.NotifyBlocksOfNeighborChange(i, j, k + 1, ID);
+			world.NotifyBlocksOfNeighborChange(i, j, k - 1, ID);
+			world.NotifyBlocksOfNeighborChange(i, j - 1, k, ID);
+			world.NotifyBlocksOfNeighborChange(i, j + 1, k, ID);
 		}
 
 		public override bool IsOpaqueCube()
@@ -236,7 +236,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Item.redstoneRepeater.shiftedIndex;
+			return net.minecraft.src.Item.DIODE.ID;
 		}
 
 		public static readonly double[] field_22014_a = new double[] { -0.0625D, 0.0625D, 

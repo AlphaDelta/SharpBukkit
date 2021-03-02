@@ -50,7 +50,7 @@ namespace net.minecraft.src
 			{
 				worldObj.PlaySoundAtEntity(this, "mob.chickenplop", 1.0F, (rand.NextFloat() - rand
 					.NextFloat()) * 0.2F + 1.0F);
-				DropItem(net.minecraft.src.Item.egg.shiftedIndex, 1);
+				DropItem(net.minecraft.src.Item.EGG.ID, 1);
 				timeUntilNextEgg = rand.Next(6000) + 6000;
 			}
 		}
@@ -88,7 +88,7 @@ namespace net.minecraft.src
 
 		protected internal override int GetDropItemId()
 		{
-			return net.minecraft.src.Item.feather.shiftedIndex;
+			return net.minecraft.src.Item.FEATHER.ID;
 		}
 
 		public bool field_392_a;

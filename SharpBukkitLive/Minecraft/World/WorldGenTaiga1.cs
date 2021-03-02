@@ -44,7 +44,7 @@ namespace net.minecraft.src
 						if (l1 >= 0 && l1 < 128)
 						{
 							int j4 = world.GetBlockId(l2, l1, k3);
-							if (j4 != 0 && j4 != net.minecraft.src.Block.LEAVES.blockID)
+							if (j4 != 0 && j4 != net.minecraft.src.Block.LEAVES.ID)
 							{
 								flag = false;
 							}
@@ -61,12 +61,12 @@ namespace net.minecraft.src
 				return false;
 			}
 			int i2 = world.GetBlockId(i, j - 1, k);
-			if (i2 != net.minecraft.src.Block.GRASS.blockID && i2 != net.minecraft.src.Block.
-				DIRT.blockID || j >= 128 - l - 1)
+			if (i2 != net.minecraft.src.Block.GRASS.ID && i2 != net.minecraft.src.Block.
+				DIRT.ID || j >= 128 - l - 1)
 			{
 				return false;
 			}
-			world.SetBlock(i, j - 1, k, net.minecraft.src.Block.DIRT.blockID);
+			world.SetBlock(i, j - 1, k, net.minecraft.src.Block.DIRT.ID);
 			int k2 = 0;
 			for (int i3 = j + l; i3 >= j + i1; i3--)
 			{
@@ -79,7 +79,7 @@ namespace net.minecraft.src
 						if ((System.Math.Abs(k4) != k2 || System.Math.Abs(i5) != k2 || k2 <= 0) && !net.minecraft.src.Block
 							.opaqueCubeLookup[world.GetBlockId(l3, i3, l4)])
 						{
-							world.SetBlockAndMetadata(l3, i3, l4, net.minecraft.src.Block.LEAVES.blockID, 1);
+							world.SetBlockAndMetadata(l3, i3, l4, net.minecraft.src.Block.LEAVES.ID, 1);
 						}
 					}
 				}
@@ -96,9 +96,9 @@ namespace net.minecraft.src
 			for (int j3 = 0; j3 < l - 1; j3++)
 			{
 				int i4 = world.GetBlockId(i, j + j3, k);
-				if (i4 == 0 || i4 == net.minecraft.src.Block.LEAVES.blockID)
+				if (i4 == 0 || i4 == net.minecraft.src.Block.LEAVES.ID)
 				{
-					world.SetBlockAndMetadata(i, j + j3, k, net.minecraft.src.Block.LOG.blockID, 1);
+					world.SetBlockAndMetadata(i, j + j3, k, net.minecraft.src.Block.LOG.ID, 1);
 				}
 			}
 			return true;

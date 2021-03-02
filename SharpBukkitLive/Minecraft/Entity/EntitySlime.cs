@@ -164,7 +164,7 @@ namespace net.minecraft.src
 		{
 			if (Func_25027_m() == 1)
 			{
-				return net.minecraft.src.Item.slimeBall.shiftedIndex;
+				return net.minecraft.src.Item.SLIME_BALL.ID;
 			}
 			else
 			{

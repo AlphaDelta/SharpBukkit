@@ -89,7 +89,7 @@ namespace net.minecraft.src
 		public override void HarvestBlock(net.minecraft.src.World world, net.minecraft.src.EntityPlayer
 			 entityplayer, int i, int j, int k, int l)
 		{
-			int i1 = net.minecraft.src.Item.snowball.shiftedIndex;
+			int i1 = net.minecraft.src.Item.SNOW_BALL.ID;
 			float f = 0.7F;
 			double d = (double)(world.rand.NextFloat() * f) + (double)(1.0F - f) * 0.5D;
 			double d1 = (double)(world.rand.NextFloat() * f) + (double)(1.0F - f) * 0.5D;
@@ -100,12 +100,12 @@ namespace net.minecraft.src
 			entityitem.delayBeforeCanPickup = 10;
 			world.AddEntity(entityitem);
 			world.SetBlockWithNotify(i, j, k, 0);
-			entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[blockID], 1);
+			entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[ID], 1);
 		}
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Item.snowball.shiftedIndex;
+			return net.minecraft.src.Item.SNOW_BALL.ID;
 		}
 
 		public override int QuantityDropped(SharpBukkitLive.SharpBukkit.SharpRandom random)

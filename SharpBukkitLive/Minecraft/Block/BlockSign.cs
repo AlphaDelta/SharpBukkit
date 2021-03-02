@@ -84,7 +84,7 @@ namespace net.minecraft.src
 
 		public override int IdDropped(int i, SharpBukkitLive.SharpBukkit.SharpRandom random)
 		{
-			return net.minecraft.src.Item.sign.shiftedIndex;
+			return net.minecraft.src.Item.SIGN.ID;
 		}
 
 		public override void OnNeighborBlockChange(net.minecraft.src.World world, int i, 

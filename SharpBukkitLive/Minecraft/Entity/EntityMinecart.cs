@@ -86,7 +86,7 @@ namespace net.minecraft.src
                     riddenByEntity.MountEntity(this);
                 }
                 SetEntityDead();
-                DropItemWithOffset(net.minecraft.src.Item.minecartEmpty.shiftedIndex, 1, 0.0F);
+                DropItemWithOffset(net.minecraft.src.Item.MINECART.ID, 1, 0.0F);
                 if (minecartType == 1)
                 {
                     net.minecraft.src.EntityMinecart entityminecart = this;
@@ -125,13 +125,13 @@ namespace net.minecraft.src
                         label0_continue:;
                     }
                     label0_break:;
-                    DropItemWithOffset(net.minecraft.src.Block.CHEST.blockID, 1, 0.0F);
+                    DropItemWithOffset(net.minecraft.src.Block.CHEST.ID, 1, 0.0F);
                 }
                 else
                 {
                     if (minecartType == 2)
                     {
-                        DropItemWithOffset(net.minecraft.src.Block.FURNACE.blockID, 1, 0.0F);
+                        DropItemWithOffset(net.minecraft.src.Block.FURNACE.ID, 1, 0.0F);
                     }
                 }
             }
@@ -242,7 +242,7 @@ namespace net.minecraft.src
                 posY = j;
                 bool flag1 = false;
                 bool flag2 = false;
-                if (l == net.minecraft.src.Block.GOLDEN_RAIL.blockID)
+                if (l == net.minecraft.src.Block.GOLDEN_RAIL.ID)
                 {
                     flag1 = (i1 & 8) != 0;
                     flag2 = !flag1;
@@ -883,7 +883,7 @@ namespace net.minecraft.src
                     if (minecartType == 2)
                     {
                         net.minecraft.src.ItemStack itemstack = entityplayer.inventory.GetCurrentItem();
-                        if (itemstack != null && itemstack.itemID == net.minecraft.src.Item.coal.shiftedIndex)
+                        if (itemstack != null && itemstack.itemID == net.minecraft.src.Item.COAL.ID)
                         {
                             if (--itemstack.stackSize == 0)
                             {

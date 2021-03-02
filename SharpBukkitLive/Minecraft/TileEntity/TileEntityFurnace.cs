@@ -177,7 +177,7 @@ namespace net.minecraft.src
 				return false;
 			}
 			net.minecraft.src.ItemStack itemstack = net.minecraft.src.FurnaceRecipes.Smelting
-				().GetSmeltingResult(furnaceItemStacks[0].GetItem().shiftedIndex);
+				().GetSmeltingResult(furnaceItemStacks[0].GetItem().ID);
 			if (itemstack == null)
 			{
 				return false;
@@ -205,7 +205,7 @@ namespace net.minecraft.src
 				return;
 			}
 			net.minecraft.src.ItemStack itemstack = net.minecraft.src.FurnaceRecipes.Smelting
-				().GetSmeltingResult(furnaceItemStacks[0].GetItem().shiftedIndex);
+				().GetSmeltingResult(furnaceItemStacks[0].GetItem().ID);
 			if (furnaceItemStacks[2] == null)
 			{
 				furnaceItemStacks[2] = itemstack.Copy();
@@ -230,25 +230,25 @@ namespace net.minecraft.src
 			{
 				return 0;
 			}
-			int i = itemstack.GetItem().shiftedIndex;
+			int i = itemstack.GetItem().ID;
 			if (i < 256 && net.minecraft.src.Block.blocksList[i].blockMaterial == net.minecraft.src.Material
 				.wood)
 			{
 				return 300;
 			}
-			if (i == net.minecraft.src.Item.stick.shiftedIndex)
+			if (i == net.minecraft.src.Item.STICK.ID)
 			{
 				return 100;
 			}
-			if (i == net.minecraft.src.Item.coal.shiftedIndex)
+			if (i == net.minecraft.src.Item.COAL.ID)
 			{
 				return 1600;
 			}
-			if (i == net.minecraft.src.Item.bucketLava.shiftedIndex)
+			if (i == net.minecraft.src.Item.LAVA_BUCKET.ID)
 			{
 				return 20000;
 			}
-			return i != net.minecraft.src.Block.SAPLING.blockID ? 0 : 100;
+			return i != net.minecraft.src.Block.SAPLING.ID ? 0 : 100;
 		}
 
 		public virtual bool CanInteractWith(net.minecraft.src.EntityPlayer entityplayer)

@@ -49,8 +49,8 @@ namespace net.minecraft.src
 				.IsBlockNormalCube(i, j - 1, k) && world.IsBlockNormalCube(i + byte0, j - 1, k +
 				 byte1))
 			{
-				world.SetBlockAndMetadataWithNotify(i, j, k, blockbed.blockID, i1);
-				world.SetBlockAndMetadataWithNotify(i + byte0, j, k + byte1, blockbed.blockID, i1
+				world.SetBlockAndMetadataWithNotify(i, j, k, blockbed.ID, i1);
+				world.SetBlockAndMetadataWithNotify(i + byte0, j, k + byte1, blockbed.ID, i1
 					 + 8);
 				itemstack.stackSize--;
 				return true;

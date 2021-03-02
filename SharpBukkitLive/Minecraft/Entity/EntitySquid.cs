@@ -75,7 +75,7 @@ namespace net.minecraft.src
 			int i = rand.Next(3) + 1;
 			for (int j = 0; j < i; j++)
 			{
-				EntityDropItem(new net.minecraft.src.ItemStack(net.minecraft.src.Item.dyePowder, 
+				EntityDropItem(new net.minecraft.src.ItemStack(net.minecraft.src.Item.INK_SACK, 
 					1, 0), 0.0F);
 			}
 		}

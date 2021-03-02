@@ -35,7 +35,7 @@ namespace net.minecraft.src
 		private bool Func_31028_g(net.minecraft.src.World world, int i, int j, int k)
 		{
 			return world.IsBlockNormalCube(i, j, k) || world.GetBlockId(i, j, k) == net.minecraft.src.Block
-				.FENCE.blockID;
+				.FENCE.ID;
 		}
 
 		public override bool CanPlaceBlockAt(net.minecraft.src.World world, int i, int j, 

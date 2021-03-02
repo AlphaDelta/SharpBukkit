@@ -580,7 +580,7 @@ namespace net.minecraft.src
             int i = net.minecraft.src.MathHelper.Floor_double(posX);
             int j = net.minecraft.src.MathHelper.Floor_double(boundingBox.minY);
             int k = net.minecraft.src.MathHelper.Floor_double(posZ);
-            return worldObj.GetBlockId(i, j, k) == net.minecraft.src.Block.LADDER.blockID;
+            return worldObj.GetBlockId(i, j, k) == net.minecraft.src.Block.LADDER.ID;
         }
 
         protected internal override void WriteEntityToNBT(net.minecraft.src.NBTTagCompound

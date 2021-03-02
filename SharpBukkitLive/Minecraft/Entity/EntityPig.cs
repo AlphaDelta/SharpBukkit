@@ -70,11 +70,11 @@ namespace net.minecraft.src
 		{
 			if (fire > 0)
 			{
-				return net.minecraft.src.Item.porkCooked.shiftedIndex;
+				return net.minecraft.src.Item.GRILLED_PORK.ID;
 			}
 			else
 			{
-				return net.minecraft.src.Item.porkRaw.shiftedIndex;
+				return net.minecraft.src.Item.PORK.ID;
 			}
 		}
 

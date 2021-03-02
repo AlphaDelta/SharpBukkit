@@ -127,7 +127,7 @@ namespace net.minecraft.src
         public static readonly Block TRAP_DOOR = (new BlockTrapDoor(96, Material.wood)).SetHardness(3F).SetStepSound(soundWoodFootstep).SetBlockName("trapdoor").DisableStats().SetRequiresSelfNotify();
 
         public int blockIndexInTexture;
-        public readonly int blockID;
+        public readonly int ID;
         protected internal float blockHardness;
         protected internal float blockResistance;
         protected internal bool blockConstructorCalled;
@@ -146,13 +146,13 @@ namespace net.minecraft.src
 
         static Block()
         {
-            Item.itemsList[WOOL.blockID] = (new ItemCloth(WOOL.blockID - 256)).SetItemName("cloth");
-            Item.itemsList[LOG.blockID] = (new ItemLog(LOG.blockID - 256)).SetItemName("log");
-            Item.itemsList[STEP.blockID] = (new ItemSlab(STEP.blockID - 256)).SetItemName("stoneSlab");
-            Item.itemsList[SAPLING.blockID] = (new ItemSapling(SAPLING.blockID - 256)).SetItemName("sapling");
-            Item.itemsList[LEAVES.blockID] = (new ItemLeaves(LEAVES.blockID - 256)).SetItemName("leaves");
-            Item.itemsList[PISTON.blockID] = new ItemPiston(PISTON.blockID - 256);
-            Item.itemsList[PISTON_STICKY.blockID] = new ItemPiston(PISTON_STICKY.blockID - 256);
+            Item.itemsList[WOOL.ID] = (new ItemCloth(WOOL.ID - 256)).SetItemName("cloth");
+            Item.itemsList[LOG.ID] = (new ItemLog(LOG.ID - 256)).SetItemName("log");
+            Item.itemsList[STEP.ID] = (new ItemSlab(STEP.ID - 256)).SetItemName("stoneSlab");
+            Item.itemsList[SAPLING.ID] = (new ItemSapling(SAPLING.ID - 256)).SetItemName("sapling");
+            Item.itemsList[LEAVES.ID] = (new ItemLeaves(LEAVES.ID - 256)).SetItemName("leaves");
+            Item.itemsList[PISTON.ID] = new ItemPiston(PISTON.ID - 256);
+            Item.itemsList[PISTON_STICKY.ID] = new ItemPiston(PISTON_STICKY.ID - 256);
 
             for (int i = 0; i < 256; i++)
             {
@@ -208,7 +208,7 @@ namespace net.minecraft.src
             {
                 blockMaterial = material;
                 blocksList[i] = this;
-                blockID = i;
+                ID = i;
                 SetBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
                 opaqueCubeLookup[i] = IsOpaqueCube();
                 lightOpacity[i] = IsOpaqueCube() ? 255 : 0;
@@ -220,7 +220,7 @@ namespace net.minecraft.src
 
         protected internal virtual net.minecraft.src.Block SetRequiresSelfNotify()
         {
-            requiresSelfNotify[blockID] = true;
+            requiresSelfNotify[ID] = true;
             return this;
         }
 
@@ -243,13 +243,13 @@ namespace net.minecraft.src
 
         protected internal virtual net.minecraft.src.Block SetLightOpacity(int i)
         {
-            lightOpacity[blockID] = i;
+            lightOpacity[ID] = i;
             return this;
         }
 
         protected internal virtual net.minecraft.src.Block SetLightValue(float f)
         {
-            lightValue[blockID] = (int)(15F * f);
+            lightValue[ID] = (int)(15F * f);
             return this;
         }
 
@@ -287,7 +287,7 @@ namespace net.minecraft.src
 
         protected internal virtual net.minecraft.src.Block SetTickOnLoad(bool flag)
         {
-            tickOnLoad[blockID] = flag;
+            tickOnLoad[ID] = flag;
             return this;
         }
 
@@ -388,7 +388,7 @@ namespace net.minecraft.src
 
         public virtual int IdDropped(int i, SharpRandom random)
         {
-            return blockID;
+            return ID;
         }
 
         public virtual float BlockStrength(net.minecraft.src.EntityPlayer entityplayer)
@@ -677,7 +677,7 @@ namespace net.minecraft.src
         public virtual void HarvestBlock(net.minecraft.src.World world, net.minecraft.src.EntityPlayer
              entityplayer, int i, int j, int k, int l)
         {
-            entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[blockID], 1);
+            entityplayer.AddStat(net.minecraft.src.StatList.StatMinedBlocks[ID], 1);
             DropBlockAsItem(world, i, j, k, l);
         }
 

@@ -32,7 +32,7 @@ namespace net.minecraft.src
                 int i1 = Func_22019_c(l);
                 i += field_22023_a[i1][0];
                 k += field_22023_a[i1][1];
-                if (world.GetBlockId(i, j, k) != blockID)
+                if (world.GetBlockId(i, j, k) != ID)
                 {
                     return true;
                 }
@@ -47,7 +47,7 @@ namespace net.minecraft.src
                 int j1 = Func_22019_c(l);
                 i += field_22023_a[j1][0];
                 k += field_22023_a[j1][1];
-                if (world.GetBlockId(i, j, k) == blockID)
+                if (world.GetBlockId(i, j, k) == ID)
                 {
                     world.SetBlockWithNotify(i, j, k, 0);
                     d = (d + (double)i + 0.5D) / 2D;
@@ -164,14 +164,14 @@ namespace net.minecraft.src
             int j1 = Func_22019_c(i1);
             if (Func_22020_d(i1))
             {
-                if (world.GetBlockId(i - field_22023_a[j1][0], j, k - field_22023_a[j1][1]) != blockID)
+                if (world.GetBlockId(i - field_22023_a[j1][0], j, k - field_22023_a[j1][1]) != ID)
                 {
                     world.SetBlockWithNotify(i, j, k, 0);
                 }
             }
             else
             {
-                if (world.GetBlockId(i + field_22023_a[j1][0], j, k + field_22023_a[j1][1]) != blockID)
+                if (world.GetBlockId(i + field_22023_a[j1][0], j, k + field_22023_a[j1][1]) != ID)
                 {
                     world.SetBlockWithNotify(i, j, k, 0);
                     if (!world.singleplayerWorld)
@@ -190,7 +190,7 @@ namespace net.minecraft.src
             }
             else
             {
-                return net.minecraft.src.Item.bed.shiftedIndex;
+                return net.minecraft.src.Item.BED.ID;
             }
         }
 
