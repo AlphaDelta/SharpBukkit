@@ -8,6 +8,7 @@ SharpBukkit is currently **unstable**:
 
 * Minor in-game testing has been performed with only one player
 * Various transient exceptions under computational stress
+* Poor tile entity physics (pistons)
 
 # Features
 * Reflection-based command system

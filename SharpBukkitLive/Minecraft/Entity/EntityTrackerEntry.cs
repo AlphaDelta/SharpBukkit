@@ -175,7 +175,7 @@ namespace net.minecraft.src
         {
             net.minecraft.src.EntityPlayerMP entityplayermp;
             for (System.Collections.IEnumerator iterator = trackedPlayers.GetEnumerator(); iterator
-                .MoveNext(); entityplayermp.playerNetServerHandler.SendPacket(packet))
+                .MoveNext(); entityplayermp.netServerHandler.SendPacket(packet))
             {
                 entityplayermp = (net.minecraft.src.EntityPlayerMP)iterator.Current;
             }
@@ -187,7 +187,7 @@ namespace net.minecraft.src
             SendPacketToTrackedPlayers(packet);
             if (trackedEntity is net.minecraft.src.EntityPlayerMP)
             {
-                ((net.minecraft.src.EntityPlayerMP)trackedEntity).playerNetServerHandler.SendPacket
+                ((net.minecraft.src.EntityPlayerMP)trackedEntity).netServerHandler.SendPacket
                     (packet);
             }
         }
@@ -222,10 +222,10 @@ namespace net.minecraft.src
                 if (!trackedPlayers.Contains(entityplayermp))
                 {
                     trackedPlayers.Add(entityplayermp);
-                    entityplayermp.playerNetServerHandler.SendPacket(GetSpawnPacket());
+                    entityplayermp.netServerHandler.SendPacket(GetSpawnPacket());
                     if (shouldSendMotionUpdates)
                     {
-                        entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet28EntityVelocity
+                        entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet28EntityVelocity
                             (trackedEntity.entityId, trackedEntity.motionX, trackedEntity.motionY, trackedEntity
                             .motionZ));
                     }
@@ -234,7 +234,7 @@ namespace net.minecraft.src
                     {
                         for (int i = 0; i < aitemstack.Length; i++)
                         {
-                            entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet5PlayerInventory
+                            entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet5PlayerInventory
                                 (trackedEntity.entityId, i, aitemstack[i]));
                         }
                     }
@@ -243,7 +243,7 @@ namespace net.minecraft.src
                         net.minecraft.src.EntityPlayer entityplayer = (net.minecraft.src.EntityPlayer)trackedEntity;
                         if (entityplayer.IsSleeping())
                         {
-                            entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet17Sleep(
+                            entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet17Sleep(
                                 trackedEntity,
                                 0,
                                 net.minecraft.src.MathHelper.Floor_double(trackedEntity.posX),
@@ -259,7 +259,7 @@ namespace net.minecraft.src
                 if (trackedPlayers.Contains(entityplayermp))
                 {
                     trackedPlayers.Remove(entityplayermp);
-                    entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet29DestroyEntity
+                    entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet29DestroyEntity
                         (trackedEntity.entityId));
                 }
             }
@@ -383,7 +383,7 @@ namespace net.minecraft.src
             if (trackedPlayers.Contains(entityplayermp))
             {
                 trackedPlayers.Remove(entityplayermp);
-                entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet29DestroyEntity
+                entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet29DestroyEntity
                     (trackedEntity.entityId));
             }
         }

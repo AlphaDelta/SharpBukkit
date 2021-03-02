@@ -97,7 +97,7 @@ namespace net.minecraft.src
                                     }
                                 }
                                 net.minecraft.src.ChunkPosition var41 = GetRandomSpawningPointInChunk(var0, var10
-                                    .chunkXPos * 16, var10.chunkZPos * 16);
+                                    .X * 16, var10.Z * 16);
                                 int var42 = var41.x;
                                 int var18 = var41.y;
                                 int var19 = var41.z;

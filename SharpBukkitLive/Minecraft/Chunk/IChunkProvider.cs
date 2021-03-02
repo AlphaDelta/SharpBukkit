@@ -19,7 +19,7 @@ namespace net.minecraft.src
 
 		bool SaveChunks(bool flag, net.minecraft.src.IProgressUpdate iprogressupdate);
 
-		bool Func_361_a();
+		bool UnloadChunks();
 
 		bool CanSave();
 	}

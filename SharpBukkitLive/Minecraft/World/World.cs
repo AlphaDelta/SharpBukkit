@@ -106,7 +106,8 @@ namespace net.minecraft.src
 
         protected internal virtual void GenerateSpawnPoint()
         {
-            worldChunkLoadOverride = true;
+            //TODO: Bukkit stuff
+            isLoading = true;
             int i = 0;
             byte byte0 = 64;
             int j;
@@ -116,7 +117,7 @@ namespace net.minecraft.src
                 i += rand.Next(64) - rand.Next(64);
             }
             worldInfo.SetSpawnPosition(i, byte0, j);
-            worldChunkLoadOverride = false;
+            isLoading = false;
         }
 
         public virtual int GetFirstUncoveredBlock(int i, int j)
@@ -1168,11 +1169,17 @@ namespace net.minecraft.src
             }
         }
 
-        public virtual void UpdateEntities()
+        public virtual void CleanUp()
         {
             for (int i = 0; i < lightningEntities.Count; i++)
             {
                 net.minecraft.src.Entity entity = (net.minecraft.src.Entity)lightningEntities[i];
+                // CRAFTBUKKIT start - fixed an NPE
+                if (entity == null)
+                {
+                    continue;
+                }
+                // CRAFTBUKKIT end
                 entity.OnUpdate();
                 if (entity.isDead)
                 {
@@ -1253,9 +1260,12 @@ namespace net.minecraft.src
                 }
             }
             while (true);
+
             foreach (TileEntity rem in toremove)
                 loadedTileEntityList.Remove(rem);
+
             field_31048_L = false;
+
             if (field_20912_E.Count > 0)
             {
                 System.Collections.IEnumerator iterator1 = field_20912_E.GetEnumerator();
@@ -1269,16 +1279,22 @@ namespace net.minecraft.src
                         .Current;
                     if (!tileentity1.IsInvalid())
                     {
-                        if (!loadedTileEntityList.Contains(tileentity1))
-                        {
-                            loadedTileEntityList.Add(tileentity1);
-                        }
+                        //if (!loadedTileEntityList.Contains(tileentity1))
+                        //{
+                        //    loadedTileEntityList.Add(tileentity1);
+                        //}
                         net.minecraft.src.Chunk chunk1 = GetChunkFromChunkCoords(tileentity1.xCoord >> 4,
                             tileentity1.zCoord >> 4);
                         if (chunk1 != null)
                         {
-                            chunk1.SetChunkBlockTileEntity(tileentity1.xCoord & 0xf, tileentity1
-                                .yCoord, tileentity1.zCoord & 0xf, tileentity1);
+                            chunk1.SetChunkBlockTileEntity(tileentity1.xCoord & 0xf, tileentity1.yCoord, tileentity1.zCoord & 0xf, tileentity1);
+
+                            // CRAFTBUKKIT start
+                            if (!loadedTileEntityList.Contains(tileentity1))
+                            {
+                                loadedTileEntityList.Add(tileentity1);
+                            }
+                            // CRAFTBUKKIT end
                         }
                         MarkBlockNeedsUpdate(tileentity1.xCoord, tileentity1.yCoord, tileentity1.zCoord);
                     }
@@ -1730,11 +1746,12 @@ namespace net.minecraft.src
                 }
                 else
                 {
-                    loadedTileEntityList.Add(tileentity);
+                    //loadedTileEntityList.Add(tileentity);
                     net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(i >> 4, k >> 4);
                     if (chunk != null)
                     {
                         chunk.SetChunkBlockTileEntity(i & 0xf, j, k & 0xf, tileentity);
+                        loadedTileEntityList.Add(tileentity); // CRAFTBUKKIT
                     }
                 }
             }
@@ -1909,8 +1926,7 @@ namespace net.minecraft.src
                 bool flag = false;
                 if (spawnHostileMobs && difficultySetting >= 1)
                 {
-                    flag = net.minecraft.src.SpawnerAnimals.PerformSleepSpawning(this, playerEntities
-                        );
+                    flag = net.minecraft.src.SpawnerAnimals.PerformSleepSpawning(this, playerEntities);
                 }
                 if (!flag)
                 {
@@ -1919,9 +1935,14 @@ namespace net.minecraft.src
                     WakeUpAllPlayers();
                 }
             }
-            net.minecraft.src.SpawnerAnimals.PerformSpawning(this, spawnHostileMobs, spawnPeacefulMobs
-                );
-            chunkProvider.Func_361_a();
+
+            // CRAFTBUKKIT start - Only call spawner if we have players online and the world allows for mobs or animals
+            //TODO: Entrypoint usage
+            if ((this.spawnHostileMobs || this.spawnPeacefulMobs) && (this is WorldServer && SharpBukkitLive.SharpBukkit.Entrypoint.minecraftserver.configManager.playerEntities.Count > 0))
+                net.minecraft.src.SpawnerAnimals.PerformSpawning(this, spawnHostileMobs, spawnPeacefulMobs);
+            // CRAFTBUKKIT end
+
+            chunkProvider.UnloadChunks();
             int i = CalculateSkylightSubtracted(1.0F);
             if (i != skylightSubtracted)
             {
@@ -2076,10 +2097,10 @@ namespace net.minecraft.src
             {
                 net.minecraft.src.ChunkCoordIntPair chunkcoordintpair = (net.minecraft.src.ChunkCoordIntPair
                     )iterator.Current;
-                int k = chunkcoordintpair.chunkXPos * 16;
-                int i1 = chunkcoordintpair.chunkZPos * 16;
-                net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(chunkcoordintpair.chunkXPos
-                    , chunkcoordintpair.chunkZPos);
+                int k = chunkcoordintpair.X * 16;
+                int i1 = chunkcoordintpair.Z * 16;
+                net.minecraft.src.Chunk chunk = GetChunkFromChunkCoords(chunkcoordintpair.X
+                    , chunkcoordintpair.Z);
                 if (ambientTickCountdown == 0)
                 {
                     distHashCounter = distHashCounter * 3 + 0x3c6ef35f;
@@ -2282,6 +2303,7 @@ namespace net.minecraft.src
 
         public virtual void AddLoadedEntities(List<Entity> list)
         {
+            //TODO: Bukkit fix?
             loadedEntityList.AddRange(list);
             for (int i = 0; i < list.Count; i++)
             {
@@ -2452,8 +2474,15 @@ namespace net.minecraft.src
             net.minecraft.src.EntityPlayer entityplayer = null;
             for (int i = 0; i < playerEntities.Count; i++)
             {
-                net.minecraft.src.EntityPlayer entityplayer1 = (net.minecraft.src.EntityPlayer)playerEntities
-                    [i];
+                net.minecraft.src.EntityPlayer entityplayer1 = (net.minecraft.src.EntityPlayer)playerEntities[i];
+
+                // CRAFTBUKKIT start - fixed an NPE
+                if (entityplayer1 == null || entityplayer1.isDead)
+                {
+                    continue;
+                }
+                // CRAFTBUKKIT end
+
                 double d5 = entityplayer1.GetDistanceSq(d, d1, d2);
                 if ((d3 < 0.0D || d5 < d3 * d3) && (d4 == -1D || d5 < d4))
                 {
@@ -2804,7 +2833,7 @@ namespace net.minecraft.src
 
         protected internal net.minecraft.src.WorldInfo worldInfo;
 
-        public bool worldChunkLoadOverride;
+        public bool isLoading;
 
         private bool allPlayersSleeping;
 

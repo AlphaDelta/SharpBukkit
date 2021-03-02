@@ -106,6 +106,8 @@ namespace net.minecraft.src
 
 		public override void UpdateEntity()
 		{
+			if (this.worldObj == null) return; // CRAFTBUKKIT
+
 			lastProgress = progress;
 			if (lastProgress >= 1.0F)
 			{

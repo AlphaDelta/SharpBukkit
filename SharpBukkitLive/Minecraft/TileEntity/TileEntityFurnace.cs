@@ -7,6 +7,7 @@ namespace net.minecraft.src
 {
 	public class TileEntityFurnace : net.minecraft.src.TileEntity, net.minecraft.src.IInventory
 	{
+		//TODO: Bukkit fixes
 		public TileEntityFurnace()
 		{
 			// Referenced classes of package net.minecraft.src:

@@ -10,6 +10,7 @@ namespace SharpBukkitLive.SharpBukkit
         public readonly net.minecraft.src.NetServerHandler NetServerHandler;
 
         public EntityPlayerMP Entity => NetServerHandler.playerEntity;
+        public int Dimension => Entity.dimension;
 
         /// <summary>
         /// The player's network username.
@@ -40,7 +41,7 @@ namespace SharpBukkitLive.SharpBukkit
 
         public SharpBukkitPlayer(EntityPlayerMP entityplayermp)
         {
-            this.NetServerHandler = entityplayermp.playerNetServerHandler;
+            this.NetServerHandler = entityplayermp.netServerHandler;
         }
 
         public Dictionary<string, object> Memory = new Dictionary<string, object>();

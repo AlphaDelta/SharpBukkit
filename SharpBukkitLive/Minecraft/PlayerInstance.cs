@@ -19,11 +19,11 @@ namespace net.minecraft.src
 			//        super();
 			playerManager = playermanager;
 			players = new List<EntityPlayerMP>();
-			blocksToUpdate = new short[10];
-			numBlocksToUpdate = 0;
+			dirtyBlocks = new short[10];
+			dirtyCount = 0;
 			chunkX = i;
 			chunkZ = j;
-			currentChunk = new net.minecraft.src.ChunkCoordIntPair(i, j);
+			location = new net.minecraft.src.ChunkCoordIntPair(i, j);
 			playermanager.GetMinecraftServer().chunkProviderServer.LoadChunk(i, j);
 		}
 
@@ -37,11 +37,11 @@ namespace net.minecraft.src
 			}
 			else
 			{
-				entityplayermp.field_420_ah.Add(currentChunk);
-				entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet50PreChunk
-					(currentChunk.chunkXPos, currentChunk.chunkZPos, true));
+				if(entityplayermp.playerChunkCoordIntPairs.Add(location)) // CRAFTBUKKIT
+					entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet50PreChunk(location.X, location.Z, true));
+
 				players.Add(entityplayermp);
-				entityplayermp.loadedChunks.Add(currentChunk);
+				entityplayermp.chunkCoordIntPairQueue.Add(location);
 				return;
 			}
 		}
@@ -58,24 +58,24 @@ namespace net.minecraft.src
 				long l = (long)chunkX + unchecked((long)(0x7fffffffL)) | (long)chunkZ + unchecked(
 					(long)(0x7fffffffL)) << 32;
 				net.minecraft.src.PlayerManager.GetPlayerInstances(playerManager).Remove(l);
-				if (numBlocksToUpdate > 0)
+				if (dirtyCount > 0)
 				{
 					net.minecraft.src.PlayerManager.GetPlayerInstancesToUpdate(playerManager).Remove(
 						this);
 				}
 				playerManager.GetMinecraftServer().chunkProviderServer.Func_374_c(chunkX, chunkZ);
 			}
-			entityplayermp.loadedChunks.Remove(currentChunk);
-			if (entityplayermp.field_420_ah.Contains(currentChunk))
+			entityplayermp.chunkCoordIntPairQueue.Remove(location);
+			if (entityplayermp.playerChunkCoordIntPairs.Remove(location)) // CRAFTBUKKIT Contains -> Remove
 			{
-				entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet50PreChunk
+				entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet50PreChunk
 					(chunkX, chunkZ, false));
 			}
 		}
 
 		public virtual void MarkBlockNeedsUpdate(int i, int j, int k)
 		{
-			if (numBlocksToUpdate == 0)
+			if (dirtyCount == 0)
 			{
 				net.minecraft.src.PlayerManager.GetPlayerInstancesToUpdate(playerManager).Add(this
 					);
@@ -107,17 +107,17 @@ namespace net.minecraft.src
 			{
 				maxZ = k;
 			}
-			if (numBlocksToUpdate < 10)
+			if (dirtyCount < 10)
 			{
 				short word0 = (short)(i << 12 | k << 8 | j);
-				for (int l = 0; l < numBlocksToUpdate; l++)
+				for (int l = 0; l < dirtyCount; l++)
 				{
-					if (blocksToUpdate[l] == word0)
+					if (dirtyBlocks[l] == word0)
 					{
 						return;
 					}
 				}
-				blocksToUpdate[numBlocksToUpdate++] = word0;
+				dirtyBlocks[dirtyCount++] = word0;
 			}
 		}
 
@@ -128,9 +128,9 @@ namespace net.minecraft.src
 			{
 				net.minecraft.src.EntityPlayerMP entityplayermp = (net.minecraft.src.EntityPlayerMP
 					)players[i];
-				if (entityplayermp.field_420_ah.Contains(currentChunk))
+				if (entityplayermp.playerChunkCoordIntPairs.Contains(location))
 				{
-					entityplayermp.playerNetServerHandler.SendPacket(packet);
+					entityplayermp.netServerHandler.SendPacket(packet);
 				}
 			}
 		}
@@ -138,11 +138,11 @@ namespace net.minecraft.src
 		public virtual void OnUpdate()
 		{
 			net.minecraft.src.WorldServer worldserver = playerManager.GetMinecraftServer();
-			if (numBlocksToUpdate == 0)
+			if (dirtyCount == 0)
 			{
 				return;
 			}
-			if (numBlocksToUpdate == 1)
+			if (dirtyCount == 1)
 			{
 				int i = chunkX * 16 + minX;
 				int l = minY;
@@ -156,7 +156,7 @@ namespace net.minecraft.src
 			}
 			else
 			{
-				if (numBlocksToUpdate == 10)
+				if (dirtyCount == 10)
 				{
 					minY = (minY / 2) * 2;
 					maxY = (maxY / 2 + 1) * 2;
@@ -166,8 +166,7 @@ namespace net.minecraft.src
 					int j2 = (maxX - minX) + 1;
 					int l2 = (maxY - minY) + 2;
 					int i3 = (maxZ - minZ) + 1;
-					SendPacketToPlayersInInstance(new net.minecraft.src.Packet51MapChunk(j, i1, l1, j2
-						, l2, i3, worldserver));
+					SendPacketToPlayersInInstance(new net.minecraft.src.Packet51MapChunk(j, i1, l1, j2, l2, i3, worldserver));
 					List<TileEntity> list = worldserver.GetTileEntityList(j, i1, l1, j + j2, 
 						i1 + l2, l1 + i3);
 					for (int j3 = 0; j3 < list.Count; j3++)
@@ -177,22 +176,24 @@ namespace net.minecraft.src
 				}
 				else
 				{
-					SendPacketToPlayersInInstance(new net.minecraft.src.Packet52MultiBlockChange(chunkX
-						, chunkZ, blocksToUpdate, numBlocksToUpdate, worldserver));
-					for (int k = 0; k < numBlocksToUpdate; k++)
+					SendPacketToPlayersInInstance(new net.minecraft.src.Packet52MultiBlockChange(chunkX, chunkZ, dirtyBlocks, dirtyCount, worldserver));
+					for (int k = 0; k < dirtyCount; k++)
 					{
-						int j1 = chunkX * 16 + (numBlocksToUpdate >> 12 & 0xf);
-						int i2 = numBlocksToUpdate & 0xff;
-						int k2 = chunkZ * 16 + (numBlocksToUpdate >> 8 & 0xf);
+						// CRAFTBUKKIT start -- Fixes TileEntity updates occurring upon a multi-block change; dirtyCount -> dirtyBlocks[i]
+						int j1 = chunkX * 16 + (dirtyBlocks[k] >> 12 & 0xf);
+						int i2 = dirtyBlocks[k] & 0xff;
+						int k2 = chunkZ * 16 + (dirtyBlocks[k] >> 8 & 0xf);
+						// CRAFTBUKKIT end
+
 						if (net.minecraft.src.Block.isBlockContainer[worldserver.GetBlockId(j1, i2, k2)])
 						{
-							System.Console.Out.WriteLine("Sending!");
+							//System.Console.Out.WriteLine("Sending!");
 							UpdateTileEntity(worldserver.GetBlockTileEntity(j1, i2, k2));
 						}
 					}
 				}
 			}
-			numBlocksToUpdate = 0;
+			dirtyCount = 0;
 		}
 
 		private void UpdateTileEntity(net.minecraft.src.TileEntity tileentity)
@@ -213,11 +214,11 @@ namespace net.minecraft.src
 
 		private int chunkZ;
 
-		private net.minecraft.src.ChunkCoordIntPair currentChunk;
+		private net.minecraft.src.ChunkCoordIntPair location;
 
-		private short[] blocksToUpdate;
+		private short[] dirtyBlocks;
 
-		private int numBlocksToUpdate;
+		private int dirtyCount;
 
 		private int minX;
 

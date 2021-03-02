@@ -12,7 +12,7 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            TileEntity, IInventory, ItemStack, NBTTagCompound, 
 			//            NBTTagList, World, EntityPlayer
-			chestContents = new net.minecraft.src.ItemStack[36];
+			items = new net.minecraft.src.ItemStack[27]; // CRAFTBUKKIT 36 -> 27
 		}
 
 		public virtual int GetSizeInventory()
@@ -22,24 +22,24 @@ namespace net.minecraft.src
 
 		public virtual net.minecraft.src.ItemStack GetStackInSlot(int i)
 		{
-			return chestContents[i];
+			return items[i];
 		}
 
 		public virtual net.minecraft.src.ItemStack DecrStackSize(int i, int j)
 		{
-			if (chestContents[i] != null)
+			if (items[i] != null)
 			{
-				if (chestContents[i].stackSize <= j)
+				if (items[i].stackSize <= j)
 				{
-					net.minecraft.src.ItemStack itemstack = chestContents[i];
-					chestContents[i] = null;
+					net.minecraft.src.ItemStack itemstack = items[i];
+					items[i] = null;
 					OnInventoryChanged();
 					return itemstack;
 				}
-				net.minecraft.src.ItemStack itemstack1 = chestContents[i].SplitStack(j);
-				if (chestContents[i].stackSize == 0)
+				net.minecraft.src.ItemStack itemstack1 = items[i].SplitStack(j);
+				if (items[i].stackSize == 0)
 				{
-					chestContents[i] = null;
+					items[i] = null;
 				}
 				OnInventoryChanged();
 				return itemstack1;
@@ -53,7 +53,7 @@ namespace net.minecraft.src
 		public virtual void SetInventorySlotContents(int i, net.minecraft.src.ItemStack itemstack
 			)
 		{
-			chestContents[i] = itemstack;
+			items[i] = itemstack;
 			if (itemstack != null && itemstack.stackSize > GetInventoryStackLimit())
 			{
 				itemstack.stackSize = GetInventoryStackLimit();
@@ -70,15 +70,15 @@ namespace net.minecraft.src
 		{
 			base.ReadFromNBT(nbttagcompound);
 			net.minecraft.src.NBTTagList nbttaglist = nbttagcompound.GetTagList("Items");
-			chestContents = new net.minecraft.src.ItemStack[GetSizeInventory()];
+			items = new net.minecraft.src.ItemStack[GetSizeInventory()];
 			for (int i = 0; i < nbttaglist.TagCount(); i++)
 			{
 				net.minecraft.src.NBTTagCompound nbttagcompound1 = (net.minecraft.src.NBTTagCompound
 					)nbttaglist.TagAt(i);
 				int j = nbttagcompound1.GetByte("Slot");
-				if (j >= 0 && j < chestContents.Length)
+				if (j >= 0 && j < items.Length)
 				{
-					chestContents[j] = new net.minecraft.src.ItemStack(nbttagcompound1);
+					items[j] = new net.minecraft.src.ItemStack(nbttagcompound1);
 				}
 			}
 		}
@@ -87,14 +87,14 @@ namespace net.minecraft.src
 		{
 			base.WriteToNBT(nbttagcompound);
 			net.minecraft.src.NBTTagList nbttaglist = new net.minecraft.src.NBTTagList();
-			for (int i = 0; i < chestContents.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 			{
-				if (chestContents[i] != null)
+				if (items[i] != null)
 				{
 					net.minecraft.src.NBTTagCompound nbttagcompound1 = new net.minecraft.src.NBTTagCompound
 						();
 					nbttagcompound1.SetByte("Slot", unchecked((byte)i));
-					chestContents[i].WriteToNBT(nbttagcompound1);
+					items[i].WriteToNBT(nbttagcompound1);
 					nbttaglist.SetTag(nbttagcompound1);
 				}
 			}
@@ -116,6 +116,6 @@ namespace net.minecraft.src
 				double)zCoord + 0.5D) <= 64D;
 		}
 
-		private net.minecraft.src.ItemStack[] chestContents;
+		public net.minecraft.src.ItemStack[] items;
 	}
 }

@@ -7,20 +7,22 @@ namespace net.minecraft.src
 {
 	public class TileEntityMobSpawner : net.minecraft.src.TileEntity
 	{
+		public int spawnDelay = -1;
+		public string mobName = "Pig";
+		public double yaw;
+		public double yaw2 = 0.0d;
+
 		public TileEntityMobSpawner()
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            TileEntity, World, EntityList, EntityLiving, 
 			//            AxisAlignedBB, NBTTagCompound
-			delay = -1;
-			yaw2 = 0.0D;
-			mobID = "Pig";
-			delay = 20;
+			spawnDelay = 20;
 		}
 
 		public virtual void SetMobID(string s)
 		{
-			mobID = s;
+			mobName = s;
 		}
 
 		public virtual bool AnyPlayerInRange()
@@ -41,27 +43,27 @@ namespace net.minecraft.src
 			double d4 = (float)zCoord + worldObj.rand.NextFloat();
 			worldObj.SpawnParticle("smoke", d, d2, d4, 0.0D, 0.0D, 0.0D);
 			worldObj.SpawnParticle("flame", d, d2, d4, 0.0D, 0.0D, 0.0D);
-			for (yaw += 1000F / ((float)delay + 200F); yaw > 360D; )
+			for (yaw += 1000F / ((float)spawnDelay + 200F); yaw > 360D; )
 			{
 				yaw -= 360D;
 				yaw2 -= 360D;
 			}
 			if (!worldObj.singleplayerWorld)
 			{
-				if (delay == -1)
+				if (spawnDelay == -1)
 				{
 					UpdateDelay();
 				}
-				if (delay > 0)
+				if (spawnDelay > 0)
 				{
-					delay--;
+					spawnDelay--;
 					return;
 				}
 				byte byte0 = 4;
 				for (int i = 0; i < byte0; i++)
 				{
 					net.minecraft.src.EntityLiving entityliving = (net.minecraft.src.EntityLiving)net.minecraft.src.EntityList
-						.CreateEntityInWorld(mobID, worldObj);
+						.CreateEntityInWorld(mobName, worldObj);
 					if (entityliving == null)
 					{
 						return;
@@ -109,29 +111,21 @@ namespace net.minecraft.src
 
 		private void UpdateDelay()
 		{
-			delay = 200 + worldObj.rand.Next(600);
+			spawnDelay = 200 + worldObj.rand.Next(600);
 		}
 
 		public override void ReadFromNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
 		{
 			base.ReadFromNBT(nbttagcompound);
-			mobID = nbttagcompound.GetString("EntityId");
-			delay = nbttagcompound.GetShort("Delay");
+			mobName = nbttagcompound.GetString("EntityId");
+			spawnDelay = nbttagcompound.GetShort("Delay");
 		}
 
 		public override void WriteToNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
 		{
 			base.WriteToNBT(nbttagcompound);
-			nbttagcompound.SetString("EntityId", mobID);
-			nbttagcompound.SetShort("Delay", (short)delay);
+			nbttagcompound.SetString("EntityId", mobName);
+			nbttagcompound.SetShort("Delay", (short)spawnDelay);
 		}
-
-		public int delay;
-
-		private string mobID;
-
-		public double yaw;
-
-		public double yaw2;
 	}
 }

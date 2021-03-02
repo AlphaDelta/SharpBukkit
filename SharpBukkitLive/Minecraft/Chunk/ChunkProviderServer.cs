@@ -99,7 +99,7 @@ namespace net.minecraft.src
             var coord = net.minecraft.src.ChunkCoordIntPair.ChunkXZ2Int(i, j);
             if (!id2ChunkMap.ContainsKey(coord))
             {
-                if (world.worldChunkLoadOverride || chunkLoadOverride)
+                if (world.isLoading || chunkLoadOverride)
                 {
                     return LoadChunk(i, j);
                 }
@@ -217,7 +217,7 @@ namespace net.minecraft.src
             return true;
         }
 
-        public virtual bool Func_361_a()
+        public virtual bool UnloadChunks()
         {
             if (!world.levelSaving)
             {
@@ -246,7 +246,7 @@ namespace net.minecraft.src
                     chunkLoader.Func_661_a();
                 }
             }
-            return serverChunkGenerator.Func_361_a();
+            return serverChunkGenerator.UnloadChunks();
         }
 
         public virtual bool CanSave()

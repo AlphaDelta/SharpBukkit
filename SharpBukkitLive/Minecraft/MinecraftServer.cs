@@ -348,7 +348,7 @@ namespace net.minecraft.server
                 while (worldserver.DoLighting())
                 {
                 }
-                worldserver.UpdateEntities();
+                worldserver.CleanUp();
             }
             networkServer.HandleNetworkListenThread();
             configManager.OnTick();

@@ -25,8 +25,8 @@ namespace net.minecraft.src
             //            ContainerDispenser, SlotCrafting, Packet103SetSlot, Packet104WindowItems, 
             //            Packet105UpdateProgressbar, Packet101CloseWindow, StatBase, Packet200Statistic, 
             //            StringTranslate, Packet3Chat
-            loadedChunks = new List<ChunkCoordIntPair>();
-            field_420_ah = new HashSet<ChunkCoordIntPair>();
+            chunkCoordIntPairQueue = new List<ChunkCoordIntPair>();
+            playerChunkCoordIntPairs = new HashSet<ChunkCoordIntPair>();
             lastHealth = unchecked((int)(0xfa0a1f01));
             ticksOfInvuln = 60;
             currentWindowId = 0;
@@ -152,7 +152,7 @@ namespace net.minecraft.src
             {
                 net.minecraft.src.ItemStack itemstack = inventory.GetStackInSlot(i);
                 if (itemstack == null || !net.minecraft.src.Item.itemsList[itemstack.itemID].Func_28019_b
-                    () || playerNetServerHandler.GetNumChunkDataPackets() > 2)
+                    () || netServerHandler.GetNumChunkDataPackets() > 2)
                 {
                     continue;
                 }
@@ -160,29 +160,29 @@ namespace net.minecraft.src
                     .itemsList[itemstack.itemID]).Func_28022_b(itemstack, worldObj, this);
                 if (packet != null)
                 {
-                    playerNetServerHandler.SendPacket(packet);
+                    netServerHandler.SendPacket(packet);
                 }
             }
-            if (flag && loadedChunks.Count > 0)
+            if (flag && chunkCoordIntPairQueue.Count > 0)
             {
                 net.minecraft.src.ChunkCoordIntPair chunkcoordintpair = (net.minecraft.src.ChunkCoordIntPair
-                    )loadedChunks[0];
+                    )chunkCoordIntPairQueue[0];
                 if (chunkcoordintpair != null)
                 {
                     bool flag1 = false;
-                    if (playerNetServerHandler.GetNumChunkDataPackets() < 4)
+                    if (netServerHandler.GetNumChunkDataPackets() < 4)
                     {
                         flag1 = true;
                     }
                     if (flag1)
                     {
                         net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(dimension);
-                        loadedChunks.Remove(chunkcoordintpair);
-                        playerNetServerHandler.SendPacket(new net.minecraft.src.Packet51MapChunk(chunkcoordintpair
-                            .chunkXPos * 16, 0, chunkcoordintpair.chunkZPos * 16, 16, 128, 16, worldserver));
-                        System.Collections.Generic.List<TileEntity> list = worldserver.GetTileEntityList(chunkcoordintpair.chunkXPos
-                             * 16, 0, chunkcoordintpair.chunkZPos * 16, chunkcoordintpair.chunkXPos * 16 + 16
-                            , 128, chunkcoordintpair.chunkZPos * 16 + 16);
+                        chunkCoordIntPairQueue.Remove(chunkcoordintpair);
+                        netServerHandler.SendPacket(new net.minecraft.src.Packet51MapChunk(chunkcoordintpair
+                            .X * 16, 0, chunkcoordintpair.Z * 16, 16, 128, 16, worldserver));
+                        System.Collections.Generic.List<TileEntity> list = worldserver.GetTileEntityList(chunkcoordintpair.X
+                             * 16, 0, chunkcoordintpair.Z * 16, chunkcoordintpair.X * 16 + 16
+                            , 128, chunkcoordintpair.Z * 16 + 16);
                         for (int j = 0; j < list.Count; j++)
                         {
                             GetTileEntityInfo((net.minecraft.src.TileEntity)list[j]);
@@ -232,7 +232,7 @@ namespace net.minecraft.src
             }
             if (health != lastHealth)
             {
-                playerNetServerHandler.SendPacket(new net.minecraft.src.Packet8UpdateHealth(health
+                netServerHandler.SendPacket(new net.minecraft.src.Packet8UpdateHealth(health
                     ));
                 lastHealth = health;
             }
@@ -245,7 +245,7 @@ namespace net.minecraft.src
                 net.minecraft.src.Packet packet = tileentity.GetDescriptionPacket();
                 if (packet != null)
                 {
-                    playerNetServerHandler.SendPacket(packet);
+                    netServerHandler.SendPacket(packet);
                 }
             }
         }
@@ -300,8 +300,8 @@ namespace net.minecraft.src
                 net.minecraft.src.Packet17Sleep packet17sleep = new net.minecraft.src.Packet17Sleep
                     (this, 0, i, j, k);
                 entitytracker.SendPacketToTrackedPlayers(this, packet17sleep);
-                playerNetServerHandler.TeleportTo(posX, posY, posZ, rotationYaw, rotationPitch);
-                playerNetServerHandler.SendPacket(packet17sleep);
+                netServerHandler.TeleportTo(posX, posY, posZ, rotationYaw, rotationPitch);
+                netServerHandler.SendPacket(packet17sleep);
             }
             return enumstatus;
         }
@@ -316,18 +316,18 @@ namespace net.minecraft.src
                     (this, 3));
             }
             base.WakeUpPlayer(flag, flag1, flag2);
-            if (playerNetServerHandler != null)
+            if (netServerHandler != null)
             {
-                playerNetServerHandler.TeleportTo(posX, posY, posZ, rotationYaw, rotationPitch);
+                netServerHandler.TeleportTo(posX, posY, posZ, rotationYaw, rotationPitch);
             }
         }
 
         public override void MountEntity(net.minecraft.src.Entity entity)
         {
             base.MountEntity(entity);
-            playerNetServerHandler.SendPacket(new net.minecraft.src.Packet39AttachEntity(this
+            netServerHandler.SendPacket(new net.minecraft.src.Packet39AttachEntity(this
                 , ridingEntity));
-            playerNetServerHandler.TeleportTo(posX, posY, posZ, rotationYaw, rotationPitch);
+            netServerHandler.TeleportTo(posX, posY, posZ, rotationYaw, rotationPitch);
         }
 
         protected internal override void UpdateFallState(double d, bool flag)
@@ -347,7 +347,7 @@ namespace net.minecraft.src
         public override void DisplayWorkbenchGUI(int i, int j, int k)
         {
             GetNextWidowId();
-            playerNetServerHandler.SendPacket(new net.minecraft.src.Packet100OpenWindow(currentWindowId
+            netServerHandler.SendPacket(new net.minecraft.src.Packet100OpenWindow(currentWindowId
                 , 1, "Crafting", 9));
             currentCraftingInventory = new net.minecraft.src.ContainerWorkbench(inventory, worldObj
                 , i, j, k);
@@ -358,7 +358,7 @@ namespace net.minecraft.src
         public override void DisplayGUIChest(net.minecraft.src.IInventory iinventory)
         {
             GetNextWidowId();
-            playerNetServerHandler.SendPacket(new net.minecraft.src.Packet100OpenWindow(currentWindowId
+            netServerHandler.SendPacket(new net.minecraft.src.Packet100OpenWindow(currentWindowId
                 , 0, iinventory.GetInvName(), iinventory.GetSizeInventory()));
             currentCraftingInventory = new net.minecraft.src.ContainerChest(inventory, iinventory
                 );
@@ -370,7 +370,7 @@ namespace net.minecraft.src
             )
         {
             GetNextWidowId();
-            playerNetServerHandler.SendPacket(new net.minecraft.src.Packet100OpenWindow(currentWindowId
+            netServerHandler.SendPacket(new net.minecraft.src.Packet100OpenWindow(currentWindowId
                 , 2, tileentityfurnace.GetInvName(), tileentityfurnace.GetSizeInventory()));
             currentCraftingInventory = new net.minecraft.src.ContainerFurnace(inventory, tileentityfurnace
                 );
@@ -382,7 +382,7 @@ namespace net.minecraft.src
             )
         {
             GetNextWidowId();
-            playerNetServerHandler.SendPacket(new net.minecraft.src.Packet100OpenWindow(currentWindowId
+            netServerHandler.SendPacket(new net.minecraft.src.Packet100OpenWindow(currentWindowId
                 , 3, tileentitydispenser.GetInvName(), tileentitydispenser.GetSizeInventory()));
             currentCraftingInventory = new net.minecraft.src.ContainerDispenser(inventory, tileentitydispenser
                 );
@@ -403,7 +403,7 @@ namespace net.minecraft.src
             }
             else
             {
-                playerNetServerHandler.SendPacket(new net.minecraft.src.Packet103SetSlot(container
+                netServerHandler.SendPacket(new net.minecraft.src.Packet103SetSlot(container
                     .windowId, i, itemstack));
                 return;
             }
@@ -417,16 +417,16 @@ namespace net.minecraft.src
         public virtual void UpdateCraftingInventory(net.minecraft.src.Container container
             , System.Collections.IList list)
         {
-            playerNetServerHandler.SendPacket(new net.minecraft.src.Packet104WindowItems(container
+            netServerHandler.SendPacket(new net.minecraft.src.Packet104WindowItems(container
                 .windowId, list));
-            playerNetServerHandler.SendPacket(new net.minecraft.src.Packet103SetSlot(-1, -1,
+            netServerHandler.SendPacket(new net.minecraft.src.Packet103SetSlot(-1, -1,
                 inventory.GetItemStack()));
         }
 
         public virtual void UpdateCraftingInventoryInfo(net.minecraft.src.Container container
             , int i, int j)
         {
-            playerNetServerHandler.SendPacket(new net.minecraft.src.Packet105UpdateProgressbar
+            netServerHandler.SendPacket(new net.minecraft.src.Packet105UpdateProgressbar
                 (container.windowId, i, j));
         }
 
@@ -436,7 +436,7 @@ namespace net.minecraft.src
 
         protected internal override void UsePersonalCraftingInventory()
         {
-            playerNetServerHandler.SendPacket(new net.minecraft.src.Packet101CloseWindow(currentCraftingInventory
+            netServerHandler.SendPacket(new net.minecraft.src.Packet101CloseWindow(currentCraftingInventory
                 .windowId));
             CloseCraftingGui();
         }
@@ -449,7 +449,7 @@ namespace net.minecraft.src
             }
             else
             {
-                playerNetServerHandler.SendPacket(new net.minecraft.src.Packet103SetSlot(-1, -1,
+                netServerHandler.SendPacket(new net.minecraft.src.Packet103SetSlot(-1, -1,
                     inventory.GetItemStack()));
                 return;
             }
@@ -481,9 +481,9 @@ namespace net.minecraft.src
             {
                 for (; i > 100; i -= 100)
                 {
-                    playerNetServerHandler.SendPacket(new net.minecraft.src.Packet200Statistic(statbase.statId, 100));
+                    netServerHandler.SendPacket(new net.minecraft.src.Packet200Statistic(statbase.statId, 100));
                 }
-                playerNetServerHandler.SendPacket(new net.minecraft.src.Packet200Statistic(statbase.statId, i));
+                netServerHandler.SendPacket(new net.minecraft.src.Packet200Statistic(statbase.statId, i));
             }
         }
 
@@ -513,10 +513,10 @@ namespace net.minecraft.src
             net.minecraft.src.StringTranslate stringtranslate = net.minecraft.src.StringTranslate
                 .GetInstance();
             string s1 = stringtranslate.TranslateKey(s);
-            playerNetServerHandler.SendPacket(new net.minecraft.src.Packet3Chat(s1));
+            netServerHandler.SendPacket(new net.minecraft.src.Packet3Chat(s1));
         }
 
-        public net.minecraft.src.NetServerHandler playerNetServerHandler;
+        public net.minecraft.src.NetServerHandler netServerHandler;
 
         public net.minecraft.server.MinecraftServer mcServer;
 
@@ -526,9 +526,9 @@ namespace net.minecraft.src
 
         public double field_9154_e;
 
-        public System.Collections.Generic.List<ChunkCoordIntPair> loadedChunks;
+        public System.Collections.Generic.List<ChunkCoordIntPair> chunkCoordIntPairQueue;
 
-        public HashSet<ChunkCoordIntPair> field_420_ah;
+        public HashSet<ChunkCoordIntPair> playerChunkCoordIntPairs;
 
         private int lastHealth;
 

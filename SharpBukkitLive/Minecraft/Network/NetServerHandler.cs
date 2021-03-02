@@ -31,24 +31,27 @@ namespace net.minecraft.src
             netManager = networkmanager;
             networkmanager.SetNetHandler(this);
             playerEntity = entityplayermp;
-            entityplayermp.playerNetServerHandler = this;
+            entityplayermp.netServerHandler = this;
         }
 
         public virtual void HandlePackets()
         {
             field_22003_h = false;
 
-            // CRAFTBUKKIT start
+            // CRAFTBUKKIT/SHARP start
             try
             {
                 netManager.ProcessReadPackets();
             }
+#if !DEBUG
             catch (Exception e)
             {
                 logger.Warning("NetServerHandler exception came from " + playerEntity.username);
                 KickPlayer(e.GetType().Name);
             }
-            // CRAFTBUKKIT end
+#endif
+            finally { }
+            // CRAFTBUKKIT/SHARP end
 
             if (field_15_f - field_22004_g > 20)
             {
@@ -270,7 +273,7 @@ namespace net.minecraft.src
             lastPosY = d1;
             lastPosZ = d2;
             playerEntity.SetPositionAndRotation(d, d1, d2, f, f1);
-            playerEntity.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet13PlayerLookMove
+            playerEntity.netServerHandler.SendPacket(new net.minecraft.src.Packet13PlayerLookMove
                 (d, d1 + 1.6200000047683716D, d1, d2, f, f1, false));
         }
 
@@ -325,7 +328,7 @@ namespace net.minecraft.src
                 }
                 else
                 {
-                    playerEntity.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet53BlockChange
+                    playerEntity.netServerHandler.SendPacket(new net.minecraft.src.Packet53BlockChange
                         (i, j, k, worldserver));
                 }
             }
@@ -336,7 +339,7 @@ namespace net.minecraft.src
                     playerEntity.itemInWorldManager.Func_22045_b(i, j, k);
                     if (worldserver.GetBlockId(i, j, k) != 0)
                     {
-                        playerEntity.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet53BlockChange
+                        playerEntity.netServerHandler.SendPacket(new net.minecraft.src.Packet53BlockChange
                             (i, j, k, worldserver));
                     }
                 }
@@ -350,7 +353,7 @@ namespace net.minecraft.src
                         double d7 = d2 * d2 + d4 * d4 + d6 * d6;
                         if (d7 < 256D)
                         {
-                            playerEntity.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet53BlockChange
+                            playerEntity.netServerHandler.SendPacket(new net.minecraft.src.Packet53BlockChange
                                 (i, j, k, worldserver));
                         }
                     }
@@ -393,7 +396,7 @@ namespace net.minecraft.src
                     playerEntity.itemInWorldManager.ActiveBlockOrUseItem(playerEntity, worldserver, itemstack
                         , i, j, k, l);
                 }
-                playerEntity.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet53BlockChange
+                playerEntity.netServerHandler.SendPacket(new net.minecraft.src.Packet53BlockChange
                     (i, j, k, worldserver));
                 if (l == 0)
                 {
@@ -419,7 +422,7 @@ namespace net.minecraft.src
                 {
                     i++;
                 }
-                playerEntity.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet53BlockChange
+                playerEntity.netServerHandler.SendPacket(new net.minecraft.src.Packet53BlockChange
                     (i, j, k, worldserver));
             }
             itemstack = playerEntity.inventory.GetCurrentItem();
@@ -696,7 +699,7 @@ namespace net.minecraft.src
                 if (net.minecraft.src.ItemStack.AreItemStacksEqual(packet102windowclick.itemStack
                     , itemstack))
                 {
-                    playerEntity.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet106Transaction
+                    playerEntity.netServerHandler.SendPacket(new net.minecraft.src.Packet106Transaction
                         (packet102windowclick.window_Id, packet102windowclick.action, true));
                     playerEntity.isChangingQuantityOnly = true;
                     playerEntity.currentCraftingInventory.UpdateCraftingMatrix();
@@ -706,7 +709,7 @@ namespace net.minecraft.src
                 else
                 {
                     field_10_k[playerEntity.currentCraftingInventory.windowId] = packet102windowclick.action;
-                    playerEntity.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet106Transaction
+                    playerEntity.netServerHandler.SendPacket(new net.minecraft.src.Packet106Transaction
                         (packet102windowclick.window_Id, packet102windowclick.action, false));
                     playerEntity.currentCraftingInventory.SetCanCraft(playerEntity, false);
                     List<ItemStack> arraylist = new List<ItemStack>();
@@ -749,7 +752,7 @@ namespace net.minecraft.src
                     if (!tileentitysign.GetEditable())
                     {
                         mcServer.LogWarning((new java.lang.StringBuilder()).Append("Player ").Append(playerEntity.username).Append(" just tried to change non-editable sign").ToString());
-                        this.SendPacket(new Packet130UpdateSign(packet130updatesign.xPosition, packet130updatesign.yPosition, packet130updatesign.zPosition, tileentitysign.signText)); // CRAFTBUKKIT
+                        this.SendPacket(new Packet130UpdateSign(packet130updatesign.xPosition, packet130updatesign.yPosition, packet130updatesign.zPosition, tileentitysign.Lines)); // CRAFTBUKKIT
                         return;
                     }
                 }
@@ -783,7 +786,7 @@ namespace net.minecraft.src
                     net.minecraft.src.TileEntitySign tileentitysign1 = (net.minecraft.src.TileEntitySign)tileentity;
                     for (int j1 = 0; j1 < 4; j1++)
                     {
-                        tileentitysign1.signText[j1] = packet130updatesign.signLines[j1];
+                        tileentitysign1.Lines[j1] = packet130updatesign.signLines[j1];
                     }
                     tileentitysign1.SetEditable(false);
                     tileentitysign1.OnInventoryChanged();

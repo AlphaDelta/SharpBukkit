@@ -128,7 +128,7 @@ namespace net.minecraft.src
 			{
 				net.minecraft.src.Block.blocksList[l].HarvestBlock(thisWorld, thisPlayer, i, j, k
 					, i1);
-				((net.minecraft.src.EntityPlayerMP)thisPlayer).playerNetServerHandler.SendPacket(
+				((net.minecraft.src.EntityPlayerMP)thisPlayer).netServerHandler.SendPacket(
 					new net.minecraft.src.Packet53BlockChange(i, j, k, thisWorld));
 			}
 			return flag;

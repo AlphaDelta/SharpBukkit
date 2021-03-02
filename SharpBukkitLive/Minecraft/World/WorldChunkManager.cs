@@ -23,7 +23,7 @@ namespace net.minecraft.src
 		public virtual net.minecraft.src.BiomeGenBase Func_4066_a(net.minecraft.src.ChunkCoordIntPair
 			 chunkcoordintpair)
 		{
-			return GetBiomeGenAt(chunkcoordintpair.chunkXPos << 4, chunkcoordintpair.chunkZPos
+			return GetBiomeGenAt(chunkcoordintpair.X << 4, chunkcoordintpair.Z
 				 << 4);
 		}
 
@@ -121,6 +121,13 @@ namespace net.minecraft.src
 			}
 			return abiomegenbase;
 		}
+
+		// CraftBukkit start
+		public double getHumidity(int x, int z)
+		{
+			return this.field_4254_f.Func_4101_a(this.humidity, (double)x, (double)z, 1, 1, 0.05000000074505806D, 0.05000000074505806D, 0.3333333333333333D)[0];
+		}
+		// CraftBukkit end
 
 		private net.minecraft.src.NoiseGeneratorOctaves2 field_4255_e;
 

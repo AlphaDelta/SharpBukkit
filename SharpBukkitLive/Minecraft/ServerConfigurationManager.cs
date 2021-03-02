@@ -107,7 +107,7 @@ namespace net.minecraft.src
 
         public virtual void PlayerLoggedOut(net.minecraft.src.EntityPlayerMP entityplayermp)
         {
-            if (entityplayermp.playerNetServerHandler.disconnected) return; // CRAFTBUKKIT - exploitsies fix
+            if (entityplayermp.netServerHandler.disconnected) return; // CRAFTBUKKIT - exploitsies fix
 
             playerNBTManagerObj.WritePlayerData(entityplayermp);
             mcServer.GetWorldManager(entityplayermp.dimension).RemovePlayerForLogoff(entityplayermp
@@ -149,7 +149,7 @@ namespace net.minecraft.src
                     )playerEntities[i];
                 if (entityplayermp.username.Equals(s, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    entityplayermp.playerNetServerHandler.KickPlayer("You logged in from another location");
+                    entityplayermp.netServerHandler.KickPlayer("You logged in from another location");
                 }
             }
             return new net.minecraft.src.EntityPlayerMP(mcServer, mcServer.GetWorldManager(0)
@@ -173,7 +173,7 @@ namespace net.minecraft.src
                 , new net.minecraft.src.ItemInWorldManager(mcServer.GetWorldManager(entityplayermp
                 .dimension)));
             entityplayermp1.entityId = entityplayermp.entityId;
-            entityplayermp1.playerNetServerHandler = entityplayermp.playerNetServerHandler;
+            entityplayermp1.netServerHandler = entityplayermp.netServerHandler;
             net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(entityplayermp
                 .dimension);
             if (chunkcoordinates != null)
@@ -190,7 +190,7 @@ namespace net.minecraft.src
                 }
                 else
                 {
-                    entityplayermp1.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet70Bed
+                    entityplayermp1.netServerHandler.SendPacket(new net.minecraft.src.Packet70Bed
                         (0));
                 }
             }
@@ -201,9 +201,9 @@ namespace net.minecraft.src
                 posY + 1.0D, entityplayermp1.posZ))
             {
             }
-            entityplayermp1.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet9Respawn
+            entityplayermp1.netServerHandler.SendPacket(new net.minecraft.src.Packet9Respawn
                 (unchecked((byte)entityplayermp1.dimension)));
-            entityplayermp1.playerNetServerHandler.TeleportTo(entityplayermp1.posX, entityplayermp1
+            entityplayermp1.netServerHandler.TeleportTo(entityplayermp1.posX, entityplayermp1
                 .posY, entityplayermp1.posZ, entityplayermp1.rotationYaw, entityplayermp1.rotationPitch
                 );
             Func_28170_a(entityplayermp1, worldserver);
@@ -232,7 +232,7 @@ namespace net.minecraft.src
             entityplayermp.dimension = i;
             net.minecraft.src.WorldServer worldserver1 = mcServer.GetWorldManager(entityplayermp
                 .dimension);
-            entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet9Respawn
+            entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet9Respawn
                 (unchecked((byte)entityplayermp.dimension)));
             worldserver.RemovePlayer(entityplayermp);
             entityplayermp.isDead = false;
@@ -268,12 +268,12 @@ namespace net.minecraft.src
                     , entityplayermp.rotationPitch);
                 worldserver1.UpdateEntityWithOptionalForce(entityplayermp, false);
                 worldserver1.chunkProviderServer.chunkLoadOverride = true;
-                (new net.minecraft.src.Teleporter()).SetExitLocation(worldserver1, entityplayermp
+                (new net.minecraft.src.PortalTravelAgent()).SetExitLocation(worldserver1, entityplayermp
                     );
                 worldserver1.chunkProviderServer.chunkLoadOverride = false;
             }
             Func_28172_a(entityplayermp);
-            entityplayermp.playerNetServerHandler.TeleportTo(entityplayermp.posX, entityplayermp
+            entityplayermp.netServerHandler.TeleportTo(entityplayermp.posX, entityplayermp
                 .posY, entityplayermp.posZ, entityplayermp.rotationYaw, entityplayermp.rotationPitch
                 );
             entityplayermp.SetWorldHandler(worldserver1);
@@ -300,7 +300,7 @@ namespace net.minecraft.src
             {
                 net.minecraft.src.EntityPlayerMP entityplayermp = (net.minecraft.src.EntityPlayerMP
                     )playerEntities[i];
-                entityplayermp.playerNetServerHandler.SendPacket(packet);
+                entityplayermp.netServerHandler.SendPacket(packet);
             }
         }
 
@@ -313,7 +313,7 @@ namespace net.minecraft.src
                     )playerEntities[j];
                 if (entityplayermp.dimension == i)
                 {
-                    entityplayermp.playerNetServerHandler.SendPacket(packet);
+                    entityplayermp.netServerHandler.SendPacket(packet);
                 }
             }
         }
@@ -590,7 +590,7 @@ namespace net.minecraft.src
             net.minecraft.src.EntityPlayerMP entityplayermp = GetPlayerEntity(s);
             if (entityplayermp != null)
             {
-                entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet3Chat(s1));
+                entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet3Chat(s1));
             }
         }
 
@@ -616,7 +616,7 @@ namespace net.minecraft.src
                 double deltaZ = pointZ - entityplayermp.posZ;
                 if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ < radius * radius)
                 {
-                    entityplayermp.playerNetServerHandler.SendPacket(packet);
+                    entityplayermp.netServerHandler.SendPacket(packet);
                 }
             }
         }
@@ -630,7 +630,7 @@ namespace net.minecraft.src
                     )playerEntities[i];
                 if (IsOp(entityplayermp.username))
                 {
-                    entityplayermp.playerNetServerHandler.SendPacket(packet3chat);
+                    entityplayermp.netServerHandler.SendPacket(packet3chat);
                 }
             }
         }
@@ -640,7 +640,7 @@ namespace net.minecraft.src
             net.minecraft.src.EntityPlayerMP entityplayermp = GetPlayerEntity(s);
             if (entityplayermp != null)
             {
-                entityplayermp.playerNetServerHandler.SendPacket(packet);
+                entityplayermp.netServerHandler.SendPacket(packet);
                 return true;
             }
             else
@@ -686,11 +686,11 @@ namespace net.minecraft.src
         public virtual void Func_28170_a(net.minecraft.src.EntityPlayerMP entityplayermp,
             net.minecraft.src.WorldServer worldserver)
         {
-            entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet4UpdateTime
+            entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet4UpdateTime
                 (worldserver.GetWorldTime()));
             if (worldserver.Func_27068_v())
             {
-                entityplayermp.playerNetServerHandler.SendPacket(new net.minecraft.src.Packet70Bed
+                entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet70Bed
                     (1));
             }
         }

@@ -573,7 +573,7 @@ namespace net.minecraft.src
             return true;
         }
 
-        public virtual bool Func_361_a()
+        public virtual bool UnloadChunks()
         {
             return false;
         }

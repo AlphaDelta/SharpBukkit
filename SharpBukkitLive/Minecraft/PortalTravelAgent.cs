@@ -5,9 +5,9 @@ using Sharpen;
 
 namespace net.minecraft.src
 {
-	public class Teleporter
+	public class PortalTravelAgent
 	{
-		public Teleporter()
+		public PortalTravelAgent()
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            Entity, MathHelper, World, Block, 

@@ -195,7 +195,7 @@ namespace net.minecraft.src
 			return true;
 		}
 
-		public virtual bool Func_361_a()
+		public virtual bool UnloadChunks()
 		{
 			for (int i = 0; i < 100; i++)
 			{
@@ -215,7 +215,7 @@ namespace net.minecraft.src
 			{
 				field_28066_d.Func_661_a();
 			}
-			return chunkGenerator.Func_361_a();
+			return chunkGenerator.UnloadChunks();
 		}
 
 		public virtual bool CanSave()

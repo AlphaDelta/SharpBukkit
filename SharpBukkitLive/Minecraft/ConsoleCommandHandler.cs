@@ -191,7 +191,7 @@ namespace net.minecraft.src
                                                             (s6);
                                                         if (entityplayermp != null)
                                                         {
-                                                            entityplayermp.playerNetServerHandler.KickPlayer("Banned by admin");
+                                                            entityplayermp.netServerHandler.KickPlayer("Banned by admin");
                                                         }
                                                     }
                                                     else
@@ -220,7 +220,7 @@ namespace net.minecraft.src
                                                                 }
                                                                 if (entityplayermp1 != null)
                                                                 {
-                                                                    entityplayermp1.playerNetServerHandler.KickPlayer("Kicked by admin");
+                                                                    entityplayermp1.netServerHandler.KickPlayer("Kicked by admin");
                                                                     SendNoticeToOps(s1, (new java.lang.StringBuilder()).Append("Kicking ").Append(entityplayermp1
                                                                         .username).ToString());
                                                                 }
@@ -263,7 +263,7 @@ namespace net.minecraft.src
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    entityplayermp2.playerNetServerHandler.TeleportTo(entityplayermp3.posX, entityplayermp3
+                                                                                    entityplayermp2.netServerHandler.TeleportTo(entityplayermp3.posX, entityplayermp3
                                                                                         .posY, entityplayermp3.posZ, entityplayermp3.rotationYaw, entityplayermp3.rotationPitch
                                                                                         );
                                                                                     SendNoticeToOps(s1, (new java.lang.StringBuilder()).Append("Teleporting ").Append

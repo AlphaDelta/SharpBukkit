@@ -439,8 +439,7 @@ namespace net.minecraft.src
         {
             net.minecraft.src.ChunkPosition chunkposition = new net.minecraft.src.ChunkPosition
                 (i, j, k);
-            net.minecraft.src.TileEntity tileentity = (net.minecraft.src.TileEntity)chunkTileEntityMap
-                [chunkposition];
+            net.minecraft.src.TileEntity tileentity = (net.minecraft.src.TileEntity)chunkTileEntityMap[chunkposition];
             if (tileentity == null)
             {
                 int l = GetBlockID(i, j, k);
@@ -731,7 +730,7 @@ namespace net.minecraft.src
 
         public readonly int zPosition;
 
-        public Dictionary<ChunkPosition, TileEntity> chunkTileEntityMap;
+        public NullSafeDictionary<ChunkPosition, TileEntity> chunkTileEntityMap;
 
         public List<Entity>[] entities;
 

@@ -18,10 +18,10 @@ namespace net.minecraft.src
 		public override void WriteToNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
 		{
 			base.WriteToNBT(nbttagcompound);
-			nbttagcompound.SetString("Text1", signText[0]);
-			nbttagcompound.SetString("Text2", signText[1]);
-			nbttagcompound.SetString("Text3", signText[2]);
-			nbttagcompound.SetString("Text4", signText[3]);
+			nbttagcompound.SetString("Text1", Lines[0]);
+			nbttagcompound.SetString("Text2", Lines[1]);
+			nbttagcompound.SetString("Text3", Lines[2]);
+			nbttagcompound.SetString("Text4", Lines[3]);
 		}
 
 		public override void ReadFromNBT(net.minecraft.src.NBTTagCompound nbttagcompound)
@@ -30,11 +30,11 @@ namespace net.minecraft.src
 			base.ReadFromNBT(nbttagcompound);
 			for (int i = 0; i < 4; i++)
 			{
-				signText[i] = nbttagcompound.GetString((new java.lang.StringBuilder()).Append("Text"
+				Lines[i] = nbttagcompound.GetString((new java.lang.StringBuilder()).Append("Text"
 					).Append(i + 1).ToString());
-				if (signText[i].Length > 15)
+				if (Lines[i].Length > 15)
 				{
-					signText[i] = signText[i].Substring(0, 15);
+					Lines[i] = Lines[i].Substring(0, 15);
 				}
 			}
 		}
@@ -44,7 +44,14 @@ namespace net.minecraft.src
 			string[] @as = new string[4];
 			for (int i = 0; i < 4; i++)
 			{
-				@as[i] = signText[i];
+				@as[i] = Lines[i];
+
+				// CRAFTBUKKIT start - limit sign text to 15 chars per line
+				if (this.Lines[i].Length > 15)
+				{
+					@as[i] = this.Lines[i].Substring(0, 15);
+				}
+				// CRAFTBUKKIT end
 			}
 			return new net.minecraft.src.Packet130UpdateSign(xCoord, yCoord, zCoord, @as);
 		}
@@ -59,8 +66,7 @@ namespace net.minecraft.src
 			isEditable = flag;
 		}
 
-		public string[] signText = new string[] { string.Empty, string.Empty, string.Empty
-			, string.Empty };
+		public string[] Lines = new string[] { string.Empty, string.Empty, string.Empty, string.Empty };
 
 		public int lineBeingEdited;
 

@@ -102,8 +102,8 @@ namespace net.minecraft.src
 
                 if (this is EntityPlayerMP)
                 {
-                    Logger.GetLogger().Warning($"Player {((EntityPlayerMP)this).playerNetServerHandler.GetUsername()} ({((EntityPlayerMP)this).playerNetServerHandler.netManager.GetRemoteAddress()}) was caught trying to crash the server with an invalid yaw");
-                    ((EntityPlayerMP)this).playerNetServerHandler.KickPlayer("Nope");
+                    Logger.GetLogger().Warning($"Player {((EntityPlayerMP)this).netServerHandler.GetUsername()} ({((EntityPlayerMP)this).netServerHandler.netManager.GetRemoteAddress()}) was caught trying to crash the server with an invalid yaw");
+                    ((EntityPlayerMP)this).netServerHandler.KickPlayer("Nope");
                 }
             }
             if (float.IsInfinity(pitch))
@@ -112,8 +112,8 @@ namespace net.minecraft.src
 
                 if (this is EntityPlayerMP)
                 {
-                    Logger.GetLogger().Warning($"Player {((EntityPlayerMP)this).playerNetServerHandler.GetUsername()} ({((EntityPlayerMP)this).playerNetServerHandler.netManager.GetRemoteAddress()}) was caught trying to crash the server with an invalid pitch");
-                    ((EntityPlayerMP)this).playerNetServerHandler.KickPlayer("Nope");
+                    Logger.GetLogger().Warning($"Player {((EntityPlayerMP)this).netServerHandler.GetUsername()} ({((EntityPlayerMP)this).netServerHandler.netManager.GetRemoteAddress()}) was caught trying to crash the server with an invalid pitch");
+                    ((EntityPlayerMP)this).netServerHandler.KickPlayer("Nope");
                 }
             }
             // CRAFTBUKKIT/SHARPBUKKIT end

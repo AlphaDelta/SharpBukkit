@@ -9,8 +9,8 @@ namespace net.minecraft.src
 	{
 		public ChunkCoordIntPair(int i, int j)
 		{
-			chunkXPos = i;
-			chunkZPos = j;
+			X = i;
+			Z = j;
 		}
 
 		public static int ChunkXZ2Int(int i, int j)
@@ -20,19 +20,19 @@ namespace net.minecraft.src
 
 		public override int GetHashCode()
 		{
-			return ChunkXZ2Int(chunkXPos, chunkZPos);
+			return ChunkXZ2Int(X, Z);
 		}
 
 		public override bool Equals(object obj)
 		{
 			net.minecraft.src.ChunkCoordIntPair chunkcoordintpair = (net.minecraft.src.ChunkCoordIntPair
 				)obj;
-			return chunkcoordintpair.chunkXPos == chunkXPos && chunkcoordintpair.chunkZPos ==
-				 chunkZPos;
+			return chunkcoordintpair.X == X && chunkcoordintpair.Z ==
+				 Z;
 		}
 
-		public readonly int chunkXPos;
+		public readonly int X;
 
-		public readonly int chunkZPos;
+		public readonly int Z;
 	}
 }
