@@ -11,35 +11,35 @@ namespace net.minecraft.src
         {
         }
 
-        public Packet61SoundEffect(int i, int blockX, int blockY, int blockZ, int blockShiftedIndex)
+        public Packet61SoundEffect(int soundType, int blockX, int blockY, int blockZ, int ExtraInfo)
         {
             // Referenced classes of package net.minecraft.src:
             //            Packet, NetHandler
-            field_28047_a = i;
+            SoundType = soundType;
             BlockX = blockX;
             BlockY = blockY;
             BlockZ = blockZ;
-            BlockShiftedIndex = blockShiftedIndex;
+            this.ExtraInfo = ExtraInfo;
         }
 
         /// <exception cref="System.IO.IOException"/>
         public override void ReadPacketData(java.io.DataInputStream datainputstream)
         {
-            field_28047_a = datainputstream.ReadInt();
+            SoundType = datainputstream.ReadInt();
             BlockX = datainputstream.ReadInt();
             BlockY = datainputstream.ReadByte();
             BlockZ = datainputstream.ReadInt();
-            BlockShiftedIndex = datainputstream.ReadInt();
+            ExtraInfo = datainputstream.ReadInt();
         }
 
         /// <exception cref="System.IO.IOException"/>
         public override void WritePacketData(java.io.DataOutputStream dataoutputstream)
         {
-            dataoutputstream.WriteInt(field_28047_a);
+            dataoutputstream.WriteInt(SoundType);
             dataoutputstream.WriteInt(BlockX);
             dataoutputstream.WriteByte(BlockY);
             dataoutputstream.WriteInt(BlockZ);
-            dataoutputstream.WriteInt(BlockShiftedIndex);
+            dataoutputstream.WriteInt(ExtraInfo);
         }
 
         public override void ProcessPacket(net.minecraft.src.NetHandler nethandler)
@@ -52,9 +52,9 @@ namespace net.minecraft.src
             return 20;
         }
 
-        public int field_28047_a;
+        public int SoundType;
 
-        public int BlockShiftedIndex;
+        public int ExtraInfo;
 
         public int BlockX;
 
