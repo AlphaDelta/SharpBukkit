@@ -58,7 +58,7 @@ namespace net.minecraft.src
             field_778_L = new List<Entity>();
             singleplayerWorld = false;
             worldFile = isavehandler;
-            field_28105_z = new net.minecraft.src.MapStorage(isavehandler);
+            WorldMaps = new net.minecraft.src.MapStorage(isavehandler);
             worldInfo = isavehandler.Func_22096_c();
             isNewWorld = worldInfo == null;
             if (worldprovider != null)
@@ -67,7 +67,7 @@ namespace net.minecraft.src
             }
             else
             {
-                //TODO: Multiworld
+                //TODO: Multiworld... maybe, it doesn't seem like this will ever be hit
                 if (worldInfo != null && worldInfo.GetDimension() == -1)
                 {
                     worldProvider = net.minecraft.src.WorldProvider.GetWorldProvider(-1);
@@ -152,7 +152,7 @@ namespace net.minecraft.src
         {
             CheckSessionLock();
             worldFile.Func_22095_a(worldInfo, playerEntities);
-            field_28105_z.Func_28176_a();
+            WorldMaps.Func_28176_a();
         }
 
         public virtual int GetBlockId(int x, int y, int z)
@@ -2743,18 +2743,18 @@ namespace net.minecraft.src
         public virtual void Func_28102_a(string s, net.minecraft.src.MapDataBase mapdatabase
             )
         {
-            field_28105_z.Func_28177_a(s, mapdatabase);
+            WorldMaps.Func_28177_a(s, mapdatabase);
         }
 
         public virtual net.minecraft.src.MapDataBase Func_28103_a(Type class1,
             string s)
         {
-            return field_28105_z.Func_28178_a(class1, s);
+            return WorldMaps.Func_28178_a(class1, s);
         }
 
         public virtual int Func_28104_b(string s)
         {
-            return field_28105_z.Func_28173_a(s);
+            return WorldMaps.Func_28173_a(s);
         }
 
         public virtual void SendSoundEffectToAllPlayersWithin64(int i, int j, int k, int l, int i1)
@@ -2838,7 +2838,7 @@ namespace net.minecraft.src
 
         private bool allPlayersSleeping;
 
-        public net.minecraft.src.MapStorage field_28105_z;
+        public net.minecraft.src.MapStorage WorldMaps;
 
         private List<AxisAlignedBB> field_9207_I;
 

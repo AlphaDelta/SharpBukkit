@@ -129,14 +129,20 @@ namespace net.minecraft.server
                         logger.Info("We will move this folder for you, but it will mean that you need to move it back should you wish to stop using Bukkit in the future.");
                         logger.Info("Attempting to move " + oldpath + " to " + newpath + "...");
 
-                        if (System.IO.File.Exists(newpath)) {
+                        if (System.IO.File.Exists(newpath))
+                        {
                             logger.Severe("A file or folder already exists at " + newpath + "!");
                             logger.Info("---- Migration of old nether folder failed ----");
-                        } else {
+                        }
+                        else
+                        {
                             try
                             {
                                 System.IO.Directory.CreateDirectory(newname);
                                 System.IO.Directory.Move(oldpath, newpath);
+
+                                logger.Info("Success! To restore the nether in the future, simply move " + newpath + " to " + oldpath);
+                                logger.Info("---- Migration of old nether folder complete ----");
                             }
                             catch (Exception e)
                             {
@@ -146,7 +152,7 @@ namespace net.minecraft.server
                         }
                     }
 
-                    world = new net.minecraft.src.WorldServerMulti(this, new net.minecraft.src.ServerNBTManager(".", newname, true), newname, i != 0 ? -1 : 0, seed, worlds[0]);
+                    world = new net.minecraft.src.SecondaryWorldServer(this, new net.minecraft.src.ServerNBTManager(".", newname, true), newname, i != 0 ? -1 : 0, seed, worlds[0]);
                 }
 
                 world.tracker = new EntityTracker(this, world);
@@ -312,7 +318,6 @@ namespace net.minecraft.server
                     }
                 }
             }
-            //TODO: Uncomment
 #if !DEBUG
 			catch (System.Exception throwable1)
 			{
