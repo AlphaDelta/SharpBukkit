@@ -76,7 +76,7 @@ namespace net.minecraft.src
 			return i;
 		}
 
-		public virtual bool GetBooleanProperty(string s, bool flag)
+		public virtual bool GetBoolean(string s, bool flag)
 		{
 			try
 			{

@@ -28,7 +28,7 @@ namespace net.minecraft.src
             {
                 PluginManager.ParseInvocation(servercommand.command, out string command, out string[] oargs);
 
-                bool isOP = servercommand.commandListener is net.minecraft.server.MinecraftServer || (servercommand.commandListener is net.minecraft.src.NetServerHandler && minecraftServer.configManager.IsOp(servercommand.commandListener.GetUsername()));
+                bool isOP = servercommand.commandListener is net.minecraft.server.MinecraftServer || (servercommand.commandListener is net.minecraft.src.NetServerHandler && minecraftServer.serverConfigurationManager.IsOp(servercommand.commandListener.GetUsername()));
                 bool isPlayer = servercommand.commandListener is net.minecraft.src.NetServerHandler;
                 IEnumerable<(ReflSharpBukkitCommand, string)> cmds =
                     PluginManager.Commands
@@ -84,7 +84,7 @@ namespace net.minecraft.src
             string s = servercommand.command;
             net.minecraft.src.ICommandListener icommandlistener = servercommand.commandListener;
             string s1 = icommandlistener.GetUsername();
-            net.minecraft.src.ServerConfigurationManager serverconfigurationmanager = minecraftServer.configManager;
+            net.minecraft.src.ServerConfigurationManager serverconfigurationmanager = minecraftServer.serverConfigurationManager;
             if (s.ToLower().StartsWith("help") || s.ToLower().StartsWith("?"))
             {
                 PrintHelp(icommandlistener);
@@ -109,11 +109,11 @@ namespace net.minecraft.src
                             SendNoticeToOps(s1, "Forcing save..");
                             if (serverconfigurationmanager != null)
                             {
-                                serverconfigurationmanager.SavePlayerStates();
+                                serverconfigurationmanager.SavePlayers();
                             }
-                            for (int i = 0; i < minecraftServer.worldMngr.Length; i++)
+                            for (int i = 0; i < minecraftServer.worlds.Count; i++)
                             {
-                                net.minecraft.src.WorldServer worldserver = minecraftServer.worldMngr[i];
+                                net.minecraft.src.WorldServer worldserver = minecraftServer.worlds[i];
                                 worldserver.SaveWorld(true, null);
                             }
                             SendNoticeToOps(s1, "Save complete.");
@@ -123,10 +123,10 @@ namespace net.minecraft.src
                             if (s.ToLower().StartsWith("save-off"))
                             {
                                 SendNoticeToOps(s1, "Disabling level saving..");
-                                for (int j = 0; j < minecraftServer.worldMngr.Length; j++)
+                                for (int j = 0; j < minecraftServer.worlds.Count; j++)
                                 {
-                                    net.minecraft.src.WorldServer worldserver1 = minecraftServer.worldMngr[j];
-                                    worldserver1.levelSaving = true;
+                                    net.minecraft.src.WorldServer worldserver1 = minecraftServer.worlds[j];
+                                    worldserver1.canSave = true;
                                 }
                             }
                             else
@@ -134,10 +134,10 @@ namespace net.minecraft.src
                                 if (s.ToLower().StartsWith("save-on"))
                                 {
                                     SendNoticeToOps(s1, "Enabling level saving..");
-                                    for (int k = 0; k < minecraftServer.worldMngr.Length; k++)
+                                    for (int k = 0; k < minecraftServer.worlds.Count; k++)
                                     {
-                                        net.minecraft.src.WorldServer worldserver2 = minecraftServer.worldMngr[k];
-                                        worldserver2.levelSaving = false;
+                                        net.minecraft.src.WorldServer worldserver2 = minecraftServer.worlds[k];
+                                        worldserver2.canSave = false;
                                     }
                                 }
                                 else
@@ -346,9 +346,9 @@ namespace net.minecraft.src
                                                                                 int i1 = System.Convert.ToInt32(as2[2]);
                                                                                 if (s10.Equals("add", System.StringComparison.OrdinalIgnoreCase))
                                                                                 {
-                                                                                    for (int k1 = 0; k1 < minecraftServer.worldMngr.Length; k1++)
+                                                                                    for (int k1 = 0; k1 < minecraftServer.worlds.Count; k1++)
                                                                                     {
-                                                                                        net.minecraft.src.WorldServer worldserver3 = minecraftServer.worldMngr[k1];
+                                                                                        net.minecraft.src.WorldServer worldserver3 = minecraftServer.worlds[k1];
                                                                                         worldserver3.Func_32005_b(worldserver3.GetWorldTime() + (long)i1);
                                                                                     }
                                                                                     SendNoticeToOps(s1, (new java.lang.StringBuilder()).Append("Added ").Append(i1).Append(" to time").ToString());
@@ -357,9 +357,9 @@ namespace net.minecraft.src
                                                                                 {
                                                                                     if (s10.Equals("set", System.StringComparison.OrdinalIgnoreCase))
                                                                                     {
-                                                                                        for (int l1 = 0; l1 < minecraftServer.worldMngr.Length; l1++)
+                                                                                        for (int l1 = 0; l1 < minecraftServer.worlds.Count; l1++)
                                                                                         {
-                                                                                            net.minecraft.src.WorldServer worldserver4 = minecraftServer.worldMngr[l1];
+                                                                                            net.minecraft.src.WorldServer worldserver4 = minecraftServer.worlds[l1];
                                                                                             worldserver4.Func_32005_b(i1);
                                                                                         }
                                                                                         SendNoticeToOps(s1, (new java.lang.StringBuilder()).Append("Set time to ").Append(i1).ToString());
@@ -450,20 +450,20 @@ namespace net.minecraft.src
             if ("on".Equals(s2))
             {
                 SendNoticeToOps(s, "Turned on white-listing");
-                minecraftServer.propertyManagerObj.SetProperty("white-list", true);
+                minecraftServer.propertyManager.SetProperty("white-list", true);
             }
             else
             {
                 if ("off".Equals(s2))
                 {
                     SendNoticeToOps(s, "Turned off white-listing");
-                    minecraftServer.propertyManagerObj.SetProperty("white-list", false);
+                    minecraftServer.propertyManager.SetProperty("white-list", false);
                 }
                 else
                 {
                     if ("list".Equals(s2))
                     {
-                        HashSet<string> set = minecraftServer.configManager.GetWhiteListedIPs();
+                        HashSet<string> set = minecraftServer.serverConfigurationManager.GetWhiteListedIPs();
                         string s5 = string.Empty;
                         for (System.Collections.IEnumerator iterator = set.GetEnumerator(); iterator.MoveNext
                             ();)
@@ -479,7 +479,7 @@ namespace net.minecraft.src
                         if ("add".Equals(s2) && @as.Length == 3)
                         {
                             string s3 = @as[2].ToLower();
-                            minecraftServer.configManager.AddToWhiteList(s3);
+                            minecraftServer.serverConfigurationManager.AddToWhiteList(s3);
                             SendNoticeToOps(s, (new java.lang.StringBuilder()).Append("Added ").Append(s3).Append
                                 (" to white-list").ToString());
                         }
@@ -488,7 +488,7 @@ namespace net.minecraft.src
                             if ("remove".Equals(s2) && @as.Length == 3)
                             {
                                 string s4 = @as[2].ToLower();
-                                minecraftServer.configManager.RemoveFromWhiteList(s4);
+                                minecraftServer.serverConfigurationManager.RemoveFromWhiteList(s4);
                                 SendNoticeToOps(s, (new java.lang.StringBuilder()).Append("Removed ").Append(s4).
                                     Append(" from white-list").ToString());
                             }
@@ -496,7 +496,7 @@ namespace net.minecraft.src
                             {
                                 if ("reload".Equals(s2))
                                 {
-                                    minecraftServer.configManager.ReloadWhiteList();
+                                    minecraftServer.serverConfigurationManager.ReloadWhiteList();
                                     SendNoticeToOps(s, "Reloaded white-list from file");
                                 }
                             }
@@ -549,7 +549,7 @@ namespace net.minecraft.src
         {
             string s2 = (new java.lang.StringBuilder()).Append(s).Append(": ").Append(s1).ToString
                 ();
-            minecraftServer.configManager.SendChatMessageToAllOps((new java.lang.StringBuilder()).Append("§7(").Append(s2).Append(")").ToString());
+            minecraftServer.serverConfigurationManager.SendChatMessageToAllOps((new java.lang.StringBuilder()).Append("§7(").Append(s2).Append(")").ToString());
             minecraftLogger.Info(s2);
             //Console.WriteLine(s2);
         }

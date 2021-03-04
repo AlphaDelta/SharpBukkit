@@ -45,7 +45,7 @@ namespace net.minecraft.src
 
         public virtual void MarkBlockNeedsUpdate(int i, int j, int k)
         {
-            mcServer.configManager.MarkBlockNeedsUpdate(i, j, k, field_28134_b.worldProvider.worldType);
+            mcServer.serverConfigurationManager.MarkBlockNeedsUpdate(i, j, k, field_28134_b.worldProvider.worldType);
         }
 
         public virtual void PlayRecord(string s, int i, int j, int k)
@@ -54,12 +54,12 @@ namespace net.minecraft.src
 
         public virtual void DoNothingWithTileEntity(int i, int j, int k, net.minecraft.src.TileEntity tileentity)
         {
-            mcServer.configManager.SentTileEntityToPlayer(i, j, k, tileentity);
+            mcServer.serverConfigurationManager.SentTileEntityToPlayer(i, j, k, tileentity);
         }
 
         public virtual void SendSoundEffectToAllPlayersWithin64(net.minecraft.src.EntityPlayer entityplayer, int i, int pointX, int pointY, int pointZ, int i1)
         {
-            mcServer.configManager.SendPacketToPlayersAroundPoint(entityplayer, pointX, pointY, pointZ, 64D, field_28134_b.worldProvider.worldType, new net.minecraft.src.Packet61SoundEffect(i, pointX, pointY, pointZ, i1));
+            mcServer.serverConfigurationManager.SendPacketToPlayersAroundPoint(entityplayer, pointX, pointY, pointZ, 64D, field_28134_b.worldProvider.worldType, new net.minecraft.src.Packet61SoundEffect(i, pointX, pointY, pointZ, i1));
         }
 
         private net.minecraft.server.MinecraftServer mcServer;

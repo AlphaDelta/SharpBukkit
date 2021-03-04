@@ -59,9 +59,9 @@ namespace SharpBukkitLive
         [SharpBukkitCommand("Prints the temperature and humidity where you're currently standing", "temp", PlayerOnly = true)]
         public void GetTemperature()
         {
-            PlayerEntity.worldObj.GetWorldChunkManager().LoadBlockGeneratorData((int)PlayerEntity.posX, (int)PlayerEntity.posZ, 1, 1);
-            Respond($"{FormattingCodes.Yellow}Temperature{FormattingCodes.Reset}: {PlayerEntity.worldObj.GetWorldChunkManager().temperature[0]:0.00}");
-            Respond($"{FormattingCodes.Cyan}Humidity{FormattingCodes.Reset}: {PlayerEntity.worldObj.GetWorldChunkManager().humidity[0]:0.00}");
+            Player.Entity.worldObj.GetWorldChunkManager().LoadBlockGeneratorData((int)Player.Entity.posX, (int)Player.Entity.posZ, 1, 1);
+            Respond($"{FormattingCodes.Yellow}Temperature{FormattingCodes.Reset}: {Player.Entity.worldObj.GetWorldChunkManager().temperature[0]:0.00}");
+            Respond($"{FormattingCodes.Cyan}Humidity{FormattingCodes.Reset}: {Player.Entity.worldObj.GetWorldChunkManager().humidity[0]:0.00}");
         }
 
         [SharpBukkitCommand("Pings a player with a sound and a message")]

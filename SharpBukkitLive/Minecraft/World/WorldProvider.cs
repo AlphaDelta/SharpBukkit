@@ -12,9 +12,9 @@ namespace net.minecraft.src
 			// Referenced classes of package net.minecraft.src:
 			//            WorldChunkManager, ChunkProviderGenerate, World, Block, 
 			//            WorldProviderHell, WorldProviderSurface, WorldProviderSky, IChunkProvider
-			field_6167_c = false;
+			sleepDisallowed = false;
 			isHellWorld = false;
-			field_4306_c = false;
+			worldHasSky = false;
 			lightBrightnessTable = new float[16];
 			worldType = 0;
 			field_6164_h = new float[4];
@@ -44,7 +44,7 @@ namespace net.minecraft.src
 
 		public virtual net.minecraft.src.IChunkProvider GetChunkProvider()
 		{
-			return new net.minecraft.src.ChunkProviderGenerate(worldObj, worldObj.GetRandomSeed());
+			return new net.minecraft.src.ChunkProviderGenerate(worldObj, worldObj.GetSeed());
 		}
 
 		public virtual bool CanCoordinateBeSpawn(int i, int j)
@@ -77,17 +77,17 @@ namespace net.minecraft.src
 			return true;
 		}
 
-		public static net.minecraft.src.WorldProvider Func_4091_a(int i)
+		public static net.minecraft.src.WorldProvider GetWorldProvider(int dimension)
 		{
-			if (i == -1)
+			if (dimension == -1)
 			{
 				return new net.minecraft.src.WorldProviderHell();
 			}
-			if (i == 0)
+			if (dimension == 0)
 			{
 				return new net.minecraft.src.WorldProviderSurface();
 			}
-			if (i == 1)
+			if (dimension == 1)
 			{
 				return new net.minecraft.src.WorldProviderSky();
 			}
@@ -101,11 +101,11 @@ namespace net.minecraft.src
 
 		public net.minecraft.src.WorldChunkManager worldChunkMgr;
 
-		public bool field_6167_c;
+		public bool sleepDisallowed;
 
 		public bool isHellWorld;
 
-		public bool field_4306_c;
+		public bool worldHasSky;
 
 		public float[] lightBrightnessTable;
 

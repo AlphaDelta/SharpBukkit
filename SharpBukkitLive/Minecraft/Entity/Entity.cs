@@ -679,7 +679,7 @@ namespace net.minecraft.src
             if (world == null)
             {
                 this.SetEntityDead();
-                world = Entrypoint.minecraftserver.worldMngr[0]; //TODO: Is this correct?
+                world = Entrypoint.minecraftserver.worlds[0]; //TODO: Is this correct?
             }
             // CRAFTBUKKIT end
 

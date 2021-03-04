@@ -28,7 +28,7 @@ namespace net.minecraft.src
 			if (nbttagcompound.HasKey("Player"))
 			{
 				field_22195_h = nbttagcompound.GetCompoundTag("Player");
-				field_22194_i = field_22195_h.GetInteger("Dimension");
+				dimension = field_22195_h.GetInteger("Dimension");
 			}
 		}
 
@@ -48,7 +48,7 @@ namespace net.minecraft.src
 			lastTimePlayed = worldinfo.lastTimePlayed;
 			sizeOnDisk = worldinfo.sizeOnDisk;
 			field_22195_h = worldinfo.field_22195_h;
-			field_22194_i = worldinfo.field_22194_i;
+			dimension = worldinfo.dimension;
 			levelName = worldinfo.levelName;
 			saveVersion = worldinfo.saveVersion;
 			rainTime = worldinfo.rainTime;
@@ -106,7 +106,7 @@ namespace net.minecraft.src
 			}
 		}
 
-		public virtual long GetRandomSeed()
+		public virtual long GetSeed()
 		{
 			return randomSeed;
 		}
@@ -138,7 +138,7 @@ namespace net.minecraft.src
 
 		public virtual int GetDimension()
 		{
-			return field_22194_i;
+			return dimension;
 		}
 
 		public virtual void SetWorldTime(long l)
@@ -229,7 +229,7 @@ namespace net.minecraft.src
 
 		private net.minecraft.src.NBTTagCompound field_22195_h;
 
-		private int field_22194_i;
+		private int dimension;
 
 		private string levelName;
 

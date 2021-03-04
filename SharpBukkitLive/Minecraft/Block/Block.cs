@@ -77,7 +77,7 @@ namespace net.minecraft.src
         public static readonly Block TNT = (new BlockTNT(46, 8)).SetHardness(0.0F).SetStepSound(soundGrassFootstep).SetBlockName("tnt");
         public static readonly Block BOOKSHELF = (new BlockBookshelf(47, 35)).SetHardness(1.5F).SetStepSound(soundWoodFootstep).SetBlockName("bookshelf");
         public static readonly Block MOSSY_COBBLESTONE = (new Block(48, 36, Material.rock)).SetHardness(2.0F).SetResistance(10F).SetStepSound(soundStoneFootstep).SetBlockName("stoneMoss");
-        public static readonly Block OBSISIAN = (new BlockObsidian(49, 37)).SetHardness(10F).SetResistance(2000F).SetStepSound(soundStoneFootstep).SetBlockName("obsidian");
+        public static readonly Block OBSIDIAN = (new BlockObsidian(49, 37)).SetHardness(10F).SetResistance(2000F).SetStepSound(soundStoneFootstep).SetBlockName("obsidian");
         public static readonly Block TORCH = (new BlockTorch(50, 80)).SetHardness(0.0F).SetLightValue(0.9375F).SetStepSound(soundWoodFootstep).SetBlockName("torch").SetRequiresSelfNotify();
         public static readonly BlockFire FIRE = (BlockFire)(new BlockFire(51, 31)).SetHardness(0.0F).SetLightValue(1.0F).SetStepSound(soundWoodFootstep).SetBlockName("fire").DisableStats().SetRequiresSelfNotify();
         public static readonly Block MOB_SPAWNER = (new BlockMobSpawner(52, 65)).SetHardness(5F).SetStepSound(soundMetalFootstep).SetBlockName("mobSpawner").DisableStats();
@@ -97,7 +97,7 @@ namespace net.minecraft.src
         public static readonly Block RAILS = (new BlockRail(66, 128, false)).SetHardness(0.7F).SetStepSound(soundMetalFootstep).SetBlockName("rail").SetRequiresSelfNotify();
         public static readonly Block COBBLESTONE_STAIRS = (new BlockStairs(67, COBBLESTONE)).SetBlockName("stairsStone").SetRequiresSelfNotify();
         public static readonly Block WALL_SIGN = (new BlockSign(68, Sharpen.Runtime.GetClassForType(typeof(TileEntitySign)), false)).SetHardness(1.0F).SetStepSound(soundWoodFootstep).SetBlockName("sign").DisableStats().SetRequiresSelfNotify();
-        public static readonly Block LEVEL = (new BlockLever(69, 96)).SetHardness(0.5F).SetStepSound(soundWoodFootstep).SetBlockName("lever").SetRequiresSelfNotify();
+        public static readonly Block LEVER = (new BlockLever(69, 96)).SetHardness(0.5F).SetStepSound(soundWoodFootstep).SetBlockName("lever").SetRequiresSelfNotify();
         public static readonly Block STONE_PLATE = (new BlockPressurePlate(70, STONE.blockIndexInTexture, EnumMobType.mobs, Material.rock)).SetHardness(0.5F).SetStepSound(soundStoneFootstep).SetBlockName("pressurePlate").SetRequiresSelfNotify();
         public static readonly Block IRON_DOOR_BLOCK = (new BlockDoor(71, Material.iron)).SetHardness(5F).SetStepSound(soundMetalFootstep).SetBlockName("doorIron").DisableStats().SetRequiresSelfNotify();
         public static readonly Block WOOD_PLATE = (new BlockPressurePlate(72, WOOD.blockIndexInTexture, EnumMobType.everything, Material.wood)).SetHardness(0.5F).SetStepSound(soundWoodFootstep).SetBlockName("pressurePlate").SetRequiresSelfNotify();

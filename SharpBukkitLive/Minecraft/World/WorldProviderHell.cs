@@ -18,9 +18,9 @@ namespace net.minecraft.src
 		{
 			worldChunkMgr = new net.minecraft.src.WorldChunkManagerHell(net.minecraft.src.BiomeGenBase
 				.hell, 1.0D, 0.0D);
-			field_6167_c = true;
+			sleepDisallowed = true;
 			isHellWorld = true;
-			field_4306_c = true;
+			worldHasSky = true;
 			worldType = -1;
 		}
 
@@ -36,7 +36,7 @@ namespace net.minecraft.src
 
 		public override net.minecraft.src.IChunkProvider GetChunkProvider()
 		{
-			return new net.minecraft.src.ChunkProviderHell(worldObj, worldObj.GetRandomSeed()
+			return new net.minecraft.src.ChunkProviderHell(worldObj, worldObj.GetSeed()
 				);
 		}
 

@@ -105,29 +105,29 @@ namespace net.minecraft.src
 
         public virtual void DoLogin(net.minecraft.src.Packet1Login packet1login)
         {
-            net.minecraft.src.EntityPlayerMP entityplayermp = mcServer.configManager.Login(this, packet1login.username);
+            net.minecraft.src.EntityPlayerMP entityplayermp = mcServer.serverConfigurationManager.Login(this, packet1login.username);
             if (entityplayermp != null)
             {
-                mcServer.configManager.ReadPlayerDataFromFile(entityplayermp);
-                entityplayermp.SetWorldHandler(mcServer.GetWorldManager(entityplayermp.dimension));
+                mcServer.serverConfigurationManager.ReadPlayerDataFromFile(entityplayermp);
+                entityplayermp.SetWorldHandler(mcServer.GetWorldServer(entityplayermp.dimension));
 
                 //TODO: Cleanup all java.lang.StringBuilder instances
                 //logger.Info((new java.lang.StringBuilder()).Append(GetUserAndIPString()).Append(" logged in with entity id ").Append(entityplayermp.entityId).Append(" at (").Append(entityplayermp.posX).Append(", ").Append(entityplayermp.posY).Append(", ").Append(entityplayermp.posZ).Append(")").ToString());
                 logger.Info($"{GetUserAndIPString()} logged in with entity id {entityplayermp.entityId} at ({entityplayermp.posX}, {entityplayermp.posY}, {entityplayermp.posZ})");
 
-                net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(entityplayermp.dimension);
+                net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(entityplayermp.dimension);
                 net.minecraft.src.ChunkCoordinates chunkcoordinates = worldserver.GetSpawnPoint();
                 net.minecraft.src.NetServerHandler netserverhandler = new net.minecraft.src.NetServerHandler(mcServer, netManager, entityplayermp);
 
-                netserverhandler.SendPacket(new net.minecraft.src.Packet1Login(string.Empty, entityplayermp.entityId, worldserver.GetRandomSeed(), unchecked((byte)worldserver.worldProvider.worldType)));
+                netserverhandler.SendPacket(new net.minecraft.src.Packet1Login(string.Empty, entityplayermp.entityId, worldserver.GetSeed(), unchecked((byte)worldserver.worldProvider.worldType)));
                 netserverhandler.SendPacket(new net.minecraft.src.Packet6SpawnPosition(chunkcoordinates.posX, chunkcoordinates.posY, chunkcoordinates.posZ));
 
-                mcServer.configManager.Func_28170_a(entityplayermp, worldserver);
+                mcServer.serverConfigurationManager.Func_28170_a(entityplayermp, worldserver);
 
                 //TODO: Defer login message to hook
                 //mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat((new java.lang.StringBuilder()).Append("\xf7e").Append(entityplayermp.username).Append(" joined the game.").ToString()));
-                mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat($"§e{entityplayermp.username} joined the game."));
-                mcServer.configManager.PlayerLoggedIn(entityplayermp);
+                mcServer.serverConfigurationManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat($"§e{entityplayermp.username} joined the game."));
+                mcServer.serverConfigurationManager.PlayerLoggedIn(entityplayermp);
 
                 netserverhandler.TeleportTo(entityplayermp.posX, entityplayermp.posY, entityplayermp.posZ, entityplayermp.rotationYaw, entityplayermp.rotationPitch);
                 mcServer.networkServer.AddPlayer(netserverhandler);

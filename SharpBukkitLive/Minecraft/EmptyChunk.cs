@@ -145,7 +145,7 @@ namespace net.minecraft.src
 
         public override SharpBukkitLive.SharpBukkit.SharpRandom Func_334_a(long l)
         {
-            return new SharpBukkitLive.SharpBukkit.SharpRandom(worldObj.GetRandomSeed() + (long)(xPosition * xPosition
+            return new SharpBukkitLive.SharpBukkit.SharpRandom(worldObj.GetSeed() + (long)(xPosition * xPosition
                  * 0x4c1906) + (long)(xPosition * 0x5ac0db)
                 + (long)(zPosition * zPosition) * unchecked((long)(0x4307a7L)) + (long)(zPosition
                  * 0x5f24f) ^ l);

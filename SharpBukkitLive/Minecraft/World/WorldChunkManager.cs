@@ -15,9 +15,9 @@ namespace net.minecraft.src
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            NoiseGeneratorOctaves2, World, ChunkCoordIntPair, BiomeGenBase
-			field_4255_e = new net.minecraft.src.NoiseGeneratorOctaves2(new SharpBukkitLive.SharpBukkit.SharpRandom(world.GetRandomSeed() * 9871L), 4);
-			field_4254_f = new net.minecraft.src.NoiseGeneratorOctaves2(new SharpBukkitLive.SharpBukkit.SharpRandom(world.GetRandomSeed() * 39811L), 4);
-			field_4253_g = new net.minecraft.src.NoiseGeneratorOctaves2(new SharpBukkitLive.SharpBukkit.SharpRandom(world.GetRandomSeed() * unchecked((long)(0x84a59L))), 2);
+			field_4255_e = new net.minecraft.src.NoiseGeneratorOctaves2(new SharpBukkitLive.SharpBukkit.SharpRandom(world.GetSeed() * 9871L), 4);
+			field_4254_f = new net.minecraft.src.NoiseGeneratorOctaves2(new SharpBukkitLive.SharpBukkit.SharpRandom(world.GetSeed() * 39811L), 4);
+			field_4253_g = new net.minecraft.src.NoiseGeneratorOctaves2(new SharpBukkitLive.SharpBukkit.SharpRandom(world.GetSeed() * unchecked((long)(0x84a59L))), 2);
 		}
 
 		public virtual net.minecraft.src.BiomeGenBase Func_4066_a(net.minecraft.src.ChunkCoordIntPair

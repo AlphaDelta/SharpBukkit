@@ -599,7 +599,7 @@ namespace net.minecraft.src
                 {
                     return net.minecraft.src.EnumStatus.OTHER_PROBLEM;
                 }
-                if (worldObj.worldProvider.field_6167_c)
+                if (worldObj.worldProvider.sleepDisallowed)
                 {
                     return net.minecraft.src.EnumStatus.NOT_POSSIBLE_HERE;
                 }

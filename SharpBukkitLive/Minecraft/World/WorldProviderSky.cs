@@ -23,7 +23,7 @@ namespace net.minecraft.src
 
 		public override net.minecraft.src.IChunkProvider GetChunkProvider()
 		{
-			return new net.minecraft.src.ChunkProviderSky(worldObj, worldObj.GetRandomSeed());
+			return new net.minecraft.src.ChunkProviderSky(worldObj, worldObj.GetSeed());
 		}
 
 		public override float CalculateCelestialAngle(long l, float f)

@@ -75,7 +75,7 @@ namespace net.minecraft.src
                     {
                         i = j1;
                     }
-                    if (worldObj.worldProvider.field_4306_c)
+                    if (worldObj.worldProvider.worldHasSky)
                     {
                         continue;
                     }
@@ -244,7 +244,7 @@ namespace net.minecraft.src
                 net.minecraft.src.Block.blocksList[k1].OnBlockRemoval(worldObj, l1, j, i2);
             }
             data.SetNibble(i, j, k, i1);
-            if (!worldObj.worldProvider.field_4306_c)
+            if (!worldObj.worldProvider.worldHasSky)
             {
                 if (net.minecraft.src.Block.lightOpacity[byte0] != 0)
                 {
@@ -692,7 +692,7 @@ namespace net.minecraft.src
 
         public virtual SharpBukkitLive.SharpBukkit.SharpRandom Func_334_a(long l)
         {
-            return new SharpBukkitLive.SharpBukkit.SharpRandom((worldObj.GetRandomSeed() + (long)(xPosition * xPosition
+            return new SharpBukkitLive.SharpBukkit.SharpRandom((worldObj.GetSeed() + (long)(xPosition * xPosition
                  * 0x4c1906) + (long)(xPosition * 0x5ac0db)
                 + (long)(zPosition * zPosition) * unchecked((long)(0x4307a7L)) + (long)(zPosition
                  * 0x5f24f) ^ l));

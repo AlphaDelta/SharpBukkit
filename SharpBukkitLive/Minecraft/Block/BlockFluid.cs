@@ -287,7 +287,7 @@ namespace net.minecraft.src
 					int l = world.GetBlockMetadata(i, j, k);
 					if (l == 0)
 					{
-						world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.OBSISIAN.ID);
+						world.SetBlockWithNotify(i, j, k, net.minecraft.src.Block.OBSIDIAN.ID);
 					}
 					else
 					{

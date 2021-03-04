@@ -33,11 +33,11 @@ namespace net.minecraft.src
             ipBanFile = minecraftserver.GetFile("banned-ips.txt");
             opFile = minecraftserver.GetFile("ops.txt");
             whitelistPlayersFile = minecraftserver.GetFile("white-list.txt");
-            int i = minecraftserver.propertyManagerObj.GetIntProperty("view-distance", 10);
+            int i = minecraftserver.propertyManager.GetIntProperty("view-distance", 10);
             playerManagerObj[0] = new net.minecraft.src.PlayerManager(minecraftserver, 0, i);
             playerManagerObj[1] = new net.minecraft.src.PlayerManager(minecraftserver, -1, i);
-            maxPlayers = minecraftserver.propertyManagerObj.GetIntProperty("max-players", 20);
-            whiteListEnforced = minecraftserver.propertyManagerObj.GetBooleanProperty("white-list"
+            maxPlayers = minecraftserver.propertyManager.GetIntProperty("max-players", 20);
+            whiteListEnforced = minecraftserver.propertyManager.GetBoolean("white-list"
                 , false);
             ReadBannedPlayers();
             LoadBannedList();
@@ -60,7 +60,7 @@ namespace net.minecraft.src
             playerManagerObj[0].RemovePlayer(entityplayermp);
             playerManagerObj[1].RemovePlayer(entityplayermp);
             GetPlayerManager(entityplayermp.dimension).AddPlayer(entityplayermp);
-            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(entityplayermp
+            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(entityplayermp
                 .dimension);
             worldserver.chunkProviderServer.LoadChunk((int)entityplayermp.posX >> 4, (int)entityplayermp
                 .posZ >> 4);
@@ -87,7 +87,7 @@ namespace net.minecraft.src
             playerEntities.Add(entityplayermp);
             SharpBukkitPlayers[entityplayermp.username.ToLower()] = new SharpBukkitPlayer(entityplayermp); //SHARP
 
-            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(entityplayermp
+            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(entityplayermp
                 .dimension);
             worldserver.chunkProviderServer.LoadChunk((int)entityplayermp.posX >> 4, (int)entityplayermp
                 .posZ >> 4);
@@ -110,7 +110,7 @@ namespace net.minecraft.src
             if (entityplayermp.netServerHandler.disconnected) return; // CRAFTBUKKIT - exploitsies fix
 
             playerNBTManagerObj.WritePlayerData(entityplayermp);
-            mcServer.GetWorldManager(entityplayermp.dimension).RemovePlayerForLogoff(entityplayermp
+            mcServer.GetWorldServer(entityplayermp.dimension).RemovePlayerForLogoff(entityplayermp
                 );
             playerEntities.Remove(entityplayermp);
             SharpBukkitPlayers.Remove(entityplayermp.username.ToLower()); //SHARP
@@ -152,8 +152,8 @@ namespace net.minecraft.src
                     entityplayermp.netServerHandler.KickPlayer("You logged in from another location");
                 }
             }
-            return new net.minecraft.src.EntityPlayerMP(mcServer, mcServer.GetWorldManager(0)
-                , s, new net.minecraft.src.ItemInWorldManager(mcServer.GetWorldManager(0)));
+            return new net.minecraft.src.EntityPlayerMP(mcServer, mcServer.GetWorldServer(0)
+                , s, new net.minecraft.src.ItemInWorldManager(mcServer.GetWorldServer(0)));
         }
 
         public virtual net.minecraft.src.EntityPlayerMP RecreatePlayerEntity(net.minecraft.src.EntityPlayerMP
@@ -164,22 +164,22 @@ namespace net.minecraft.src
             mcServer.GetEntityTracker(entityplayermp.dimension).UntrackEntity(entityplayermp);
             GetPlayerManager(entityplayermp.dimension).RemovePlayer(entityplayermp);
             playerEntities.Remove(entityplayermp);
-            mcServer.GetWorldManager(entityplayermp.dimension).RemovePlayer(entityplayermp);
+            mcServer.GetWorldServer(entityplayermp.dimension).RemovePlayer(entityplayermp);
             net.minecraft.src.ChunkCoordinates chunkcoordinates = entityplayermp.GetSpawnChunk
                 ();
             entityplayermp.dimension = i;
             net.minecraft.src.EntityPlayerMP entityplayermp1 = new net.minecraft.src.EntityPlayerMP
-                (mcServer, mcServer.GetWorldManager(entityplayermp.dimension), entityplayermp.username
-                , new net.minecraft.src.ItemInWorldManager(mcServer.GetWorldManager(entityplayermp
+                (mcServer, mcServer.GetWorldServer(entityplayermp.dimension), entityplayermp.username
+                , new net.minecraft.src.ItemInWorldManager(mcServer.GetWorldServer(entityplayermp
                 .dimension)));
             entityplayermp1.entityId = entityplayermp.entityId;
             entityplayermp1.netServerHandler = entityplayermp.netServerHandler;
-            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(entityplayermp
+            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(entityplayermp
                 .dimension);
             if (chunkcoordinates != null)
             {
                 net.minecraft.src.ChunkCoordinates chunkcoordinates1 = net.minecraft.src.EntityPlayer
-                    .Func_25051_a(mcServer.GetWorldManager(entityplayermp.dimension), chunkcoordinates
+                    .Func_25051_a(mcServer.GetWorldServer(entityplayermp.dimension), chunkcoordinates
                     );
                 if (chunkcoordinates1 != null)
                 {
@@ -218,7 +218,7 @@ namespace net.minecraft.src
         public virtual void SendPlayerToOtherDimension(net.minecraft.src.EntityPlayerMP entityplayermp
             )
         {
-            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(entityplayermp
+            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(entityplayermp
                 .dimension);
             int i = 0;
             if (entityplayermp.dimension == -1)
@@ -230,7 +230,7 @@ namespace net.minecraft.src
                 i = -1;
             }
             entityplayermp.dimension = i;
-            net.minecraft.src.WorldServer worldserver1 = mcServer.GetWorldManager(entityplayermp
+            net.minecraft.src.WorldServer worldserver1 = mcServer.GetWorldServer(entityplayermp
                 .dimension);
             entityplayermp.netServerHandler.SendPacket(new net.minecraft.src.Packet9Respawn
                 (unchecked((byte)entityplayermp.dimension)));
@@ -649,7 +649,7 @@ namespace net.minecraft.src
             }
         }
 
-        public virtual void SavePlayerStates()
+        public virtual void SavePlayers()
         {
             for (int i = 0; i < playerEntities.Count; i++)
             {

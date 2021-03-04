@@ -36,7 +36,7 @@ namespace net.minecraft.src
 
         public virtual net.minecraft.src.WorldServer GetMinecraftServer()
         {
-            return mcServer.GetWorldManager(field_28110_e);
+            return mcServer.GetWorldServer(field_28110_e);
         }
 
         public virtual void UpdatePlayerInstances()

@@ -264,7 +264,7 @@ namespace net.minecraft.src
 		public override void OnBlockAdded(net.minecraft.src.World world, int i, int j, int
 			 k)
 		{
-			if (world.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.OBSISIAN.ID && 
+			if (world.GetBlockId(i, j - 1, k) == net.minecraft.src.Block.OBSIDIAN.ID && 
 				net.minecraft.src.Block.PORTAL.TryToCreatePortal(world, i, j, k))
 			{
 				return;

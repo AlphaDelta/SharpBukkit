@@ -316,10 +316,10 @@ namespace net.minecraft.src
             int l = j * 16;
             net.minecraft.src.BiomeGenBase biomegenbase = field_28079_p.GetWorldChunkManager(
                 ).GetBiomeGenAt(k + 16, l + 16);
-            field_28085_j.SetSeed(field_28079_p.GetRandomSeed());
+            field_28085_j.SetSeed(field_28079_p.GetSeed());
             long l1 = (field_28085_j.NextLong() / 2L) * 2L + 1L;
             long l2 = (field_28085_j.NextLong() / 2L) * 2L + 1L;
-            field_28085_j.SetSeed((long)i * l1 + (long)j * l2 ^ field_28079_p.GetRandomSeed()
+            field_28085_j.SetSeed((long)i * l1 + (long)j * l2 ^ field_28079_p.GetSeed()
                 );
             double d = 0.25D;
             if (field_28085_j.NextInt(4) == 0)

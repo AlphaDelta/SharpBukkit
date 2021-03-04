@@ -15,15 +15,17 @@ namespace SharpBukkitLive.SharpBukkit.Command
         public ReflSharpBukkitCommand CurrentCommand { get; internal set; }
 
 
-        public bool IsUserOP => User is net.minecraft.server.MinecraftServer || User is NetServerHandler && Server.configManager.IsOp(User.GetUsername());
+        public bool IsUserOP => User is net.minecraft.server.MinecraftServer || User is NetServerHandler && Server.serverConfigurationManager.IsOp(User.GetUsername());
         public bool IsUserPlayer => User is NetServerHandler;
 
-        public ServerConfigurationManager ConfigManager => Server.configManager;
+        public ServerConfigurationManager ConfigManager => Server.serverConfigurationManager;
 
-        public NetServerHandler Player => User is NetServerHandler ?
-            (NetServerHandler)User
-            : null;
-        public EntityPlayer PlayerEntity => Player?.playerEntity;
+        //public NetServerHandler Player => User is NetServerHandler ?
+        //    (NetServerHandler)User
+        //    : null;
+        //public EntityPlayer PlayerEntity => Player?.playerEntity;
+
+        public SharpBukkitPlayer Player => User is NetServerHandler && ConfigManager.SharpBukkitPlayers.ContainsKey(User.GetUsername().ToLower()) ? ConfigManager.SharpBukkitPlayers[User.GetUsername().ToLower()] : null;
 
         public Logger Logger => Logger.GetLogger();
 

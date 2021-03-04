@@ -366,10 +366,10 @@ namespace net.minecraft.src
             int l = j * 16;
             net.minecraft.src.BiomeGenBase biomegenbase = worldObj.GetWorldChunkManager().GetBiomeGenAt
                 (k + 16, l + 16);
-            rand.SetSeed(worldObj.GetRandomSeed());
+            rand.SetSeed(worldObj.GetSeed());
             long l1 = (rand.NextLong() / 2L) * 2L + 1L;
             long l2 = (rand.NextLong() / 2L) * 2L + 1L;
-            rand.SetSeed((long)i * l1 + (long)j * l2 ^ worldObj.GetRandomSeed());
+            rand.SetSeed((long)i * l1 + (long)j * l2 ^ worldObj.GetSeed());
             double d = 0.25D;
             if (rand.Next(4) == 0)
             {

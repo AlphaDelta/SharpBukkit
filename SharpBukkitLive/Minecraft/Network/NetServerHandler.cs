@@ -64,10 +64,10 @@ namespace net.minecraft.src
             playerEntity.Func_30002_A();
             SendPacket(new net.minecraft.src.Packet255KickDisconnect(s));
             netManager.ServerShutdown();
-            mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat((
+            mcServer.serverConfigurationManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat((
                 new java.lang.StringBuilder()).Append("§e").Append(playerEntity.username).Append
                 (" left the game.").ToString()));
-            mcServer.configManager.PlayerLoggedOut(playerEntity);
+            mcServer.serverConfigurationManager.PlayerLoggedOut(playerEntity);
             disconnected = true;
         }
 
@@ -86,7 +86,7 @@ namespace net.minecraft.src
         public override void HandleFlying(net.minecraft.src.Packet10Flying packet10flying
             )
         {
-            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(playerEntity
+            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(playerEntity
                 .dimension);
             field_22003_h = true;
             if (!hasMoved)
@@ -135,7 +135,7 @@ namespace net.minecraft.src
                     {
                         playerEntity.ridingEntity.UpdateRiderPosition();
                     }
-                    mcServer.configManager.Func_613_b(playerEntity);
+                    mcServer.serverConfigurationManager.Func_613_b(playerEntity);
                     lastPosX = playerEntity.posX;
                     lastPosY = playerEntity.posY;
                     lastPosZ = playerEntity.posZ;
@@ -261,7 +261,7 @@ namespace net.minecraft.src
                     playerInAirTime = 0;
                 }
                 playerEntity.onGround = packet10flying.onGround;
-                mcServer.configManager.Func_613_b(playerEntity);
+                mcServer.serverConfigurationManager.Func_613_b(playerEntity);
                 playerEntity.HandleFalling(playerEntity.posY - d1, packet10flying.onGround);
             }
         }
@@ -281,15 +281,15 @@ namespace net.minecraft.src
         {
             if (playerEntity.isDead) return; // CRAFTBUKKIT
 
-            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(playerEntity
+            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(playerEntity
                 .dimension);
             if (packet14blockdig.status == 4)
             {
                 playerEntity.DropCurrentItem();
                 return;
             }
-            bool flag = worldserver.field_819_z = worldserver.worldProvider.worldType != 0 ||
-                 mcServer.configManager.IsOp(playerEntity.username);
+            bool flag = worldserver.weirdIsOpCache = worldserver.worldProvider.worldType != 0 ||
+                 mcServer.serverConfigurationManager.IsOp(playerEntity.username);
             bool flag1 = false;
             if (packet14blockdig.status == 0)
             {
@@ -359,16 +359,16 @@ namespace net.minecraft.src
                     }
                 }
             }
-            worldserver.field_819_z = false;
+            worldserver.weirdIsOpCache = false;
         }
 
         public override void HandlePlace(net.minecraft.src.Packet15Place packet15place)
         {
-            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(playerEntity
+            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(playerEntity
                 .dimension);
             net.minecraft.src.ItemStack itemstack = playerEntity.inventory.GetCurrentItem();
-            bool flag = worldserver.field_819_z = worldserver.worldProvider.worldType != 0 ||
-                 mcServer.configManager.IsOp(playerEntity.username);
+            bool flag = worldserver.weirdIsOpCache = worldserver.worldProvider.worldType != 0 ||
+                 mcServer.serverConfigurationManager.IsOp(playerEntity.username);
             if (packet15place.direction == 255)
             {
                 if (itemstack == null)
@@ -444,15 +444,15 @@ namespace net.minecraft.src
                 SendPacket(new net.minecraft.src.Packet103SetSlot(playerEntity.currentCraftingInventory
                     .windowId, slot.id, playerEntity.inventory.GetCurrentItem()));
             }
-            worldserver.field_819_z = false;
+            worldserver.weirdIsOpCache = false;
         }
 
         public override void HandleErrorMessage(string s, object[] aobj)
         {
             //TODO: Hook leave message
             logger.Info((new java.lang.StringBuilder()).Append(playerEntity.username).Append(" lost connection: ").Append(s).ToString());
-            mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat((new java.lang.StringBuilder()).Append("§e").Append(playerEntity.username).Append(" left the game.").ToString()));
-            mcServer.configManager.PlayerLoggedOut(playerEntity);
+            mcServer.serverConfigurationManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat((new java.lang.StringBuilder()).Append("§e").Append(playerEntity.username).Append(" left the game.").ToString()));
+            mcServer.serverConfigurationManager.PlayerLoggedOut(playerEntity);
             disconnected = true;
         }
 
@@ -511,7 +511,7 @@ namespace net.minecraft.src
                 s = (new java.lang.StringBuilder()).Append("<").Append(playerEntity.username).Append
                     ("> ").Append(s).ToString();
                 logger.Info(s);
-                mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat(s
+                mcServer.serverConfigurationManager.SendPacketToAllPlayers(new net.minecraft.src.Packet3Chat(s
                     ));
             }
         }
@@ -632,7 +632,7 @@ namespace net.minecraft.src
         {
             if (this.playerEntity.isDead) return; // CRAFTBUKKIT
 
-            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(playerEntity.dimension);
+            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(playerEntity.dimension);
             net.minecraft.src.Entity entity = worldserver.Func_6158_a(packet7useentity.targetEntity);
             ItemStack itemInHand = this.playerEntity.inventory.GetCurrentItem(); // CRAFTBUKKIT
             if (entity != null && playerEntity.CanEntityBeSeen(entity) && playerEntity.GetDistanceSqToEntity(entity) < 36D)
@@ -675,7 +675,7 @@ namespace net.minecraft.src
         {
             if (playerEntity.health <= 0)
             {
-                playerEntity = mcServer.configManager.RecreatePlayerEntity(playerEntity, 0);
+                playerEntity = mcServer.serverConfigurationManager.RecreatePlayerEntity(playerEntity, 0);
             }
         }
 
@@ -742,7 +742,7 @@ namespace net.minecraft.src
         {
             if (this.playerEntity.isDead) return; // CRAFTBUKKIT
 
-            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(playerEntity.dimension);
+            net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(playerEntity.dimension);
             if (worldserver.BlockExists(packet130updatesign.xPosition, packet130updatesign.yPosition, packet130updatesign.zPosition))
             {
                 net.minecraft.src.TileEntity tileentity = worldserver.GetBlockTileEntity(packet130updatesign.xPosition, packet130updatesign.yPosition, packet130updatesign.zPosition);

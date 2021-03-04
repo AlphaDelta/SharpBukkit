@@ -22,7 +22,7 @@ namespace net.minecraft.src
         //            RegionFileCache, RegionFile
         public override net.minecraft.src.ISaveHandler Func_22105_a(string s, bool flag)
         {
-            return new net.minecraft.src.SaveOldDir(field_22106_a, s, flag);
+            return new net.minecraft.src.ServerNBTManager(field_22106_a, s, flag);
         }
 
         public override bool IsOldSaveType(string s)

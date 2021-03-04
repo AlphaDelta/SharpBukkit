@@ -8,9 +8,8 @@ namespace net.minecraft.src
 {
 	public class WorldServer : net.minecraft.src.World
 	{
-		public WorldServer(net.minecraft.server.MinecraftServer minecraftserver, net.minecraft.src.ISaveHandler
-			 isavehandler, string s, int i, long l)
-			: base(isavehandler, s, l, net.minecraft.src.WorldProvider.Func_4091_a(i))
+		public WorldServer(net.minecraft.server.MinecraftServer minecraftserver, net.minecraft.src.ISaveHandler isavehandler, string s, int dimension, long seed)
+			: base(isavehandler, s, seed, net.minecraft.src.WorldProvider.GetWorldProvider(dimension))
 		{
 			// Referenced classes of package net.minecraft.src:
 			//            World, WorldProvider, MCHash, EntityAnimal, 
@@ -19,10 +18,13 @@ namespace net.minecraft.src
 			//            ServerConfigurationManager, Packet71Weather, Packet38EntityStatus, EntityTracker, 
 			//            Explosion, Packet60Explosion, Packet54PlayNoteBlock, Packet70Bed, 
 			//            IChunkProvider
-			field_819_z = false;
+			weirdIsOpCache = false;
 			field_20912_E = new net.minecraft.src.MCHash();
 			mcServer = minecraftserver;
+
+			this.Dimension = dimension; // CRAFTBUKKIT
 		}
+		public readonly int Dimension; // CRAFTBUKKIT
 
 		public override void UpdateEntityWithOptionalForce(net.minecraft.src.Entity entity
 			, bool flag)
@@ -78,7 +80,7 @@ namespace net.minecraft.src
 			{
 				i1 = l;
 			}
-			return i1 > 16 || mcServer.configManager.IsOp(entityplayer.username);
+			return i1 > 16 || mcServer.serverConfigurationManager.IsOp(entityplayer.username);
 		}
 
 		protected internal override void ObtainEntitySkin(net.minecraft.src.Entity entity
@@ -104,7 +106,7 @@ namespace net.minecraft.src
 		{
 			if (base.AddLightningBolt(entity))
 			{
-				mcServer.configManager.SendPacketToPlayersAroundPoint(entity.posX, entity.posY, entity
+				mcServer.serverConfigurationManager.SendPacketToPlayersAroundPoint(entity.posX, entity.posY, entity
 					.posZ, 512D, worldProvider.worldType, new net.minecraft.src.Packet71Weather(entity
 					));
 				return true;
@@ -132,7 +134,7 @@ namespace net.minecraft.src
 			explosion.isFlaming = flag;
 			explosion.DoExplosion();
 			explosion.DoEffects(false);
-			mcServer.configManager.SendPacketToPlayersAroundPoint(d, d1, d2, 64D, worldProvider
+			mcServer.serverConfigurationManager.SendPacketToPlayersAroundPoint(d, d1, d2, 64D, worldProvider
 				.worldType, new net.minecraft.src.Packet60Explosion(d, d1, d2, f, explosion.destroyedBlockPositions
 				));
 			return explosion;
@@ -141,11 +143,11 @@ namespace net.minecraft.src
 		public override void PlayNoteAt(int i, int j, int k, int l, int i1)
 		{
 			base.PlayNoteAt(i, j, k, l, i1);
-			mcServer.configManager.SendPacketToPlayersAroundPoint(i, j, k, 64D, worldProvider
+			mcServer.serverConfigurationManager.SendPacketToPlayersAroundPoint(i, j, k, 64D, worldProvider
 				.worldType, new net.minecraft.src.Packet54PlayNoteBlock(i, j, k, l, i1));
 		}
 
-		public virtual void Func_30006_w()
+		public virtual void SaveLevel()
 		{
 			worldFile.Func_22093_e();
 		}
@@ -158,12 +160,12 @@ namespace net.minecraft.src
 			{
 				if (flag)
 				{
-					mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet70Bed(2
+					mcServer.serverConfigurationManager.SendPacketToAllPlayers(new net.minecraft.src.Packet70Bed(2
 						));
 				}
 				else
 				{
-					mcServer.configManager.SendPacketToAllPlayers(new net.minecraft.src.Packet70Bed(1
+					mcServer.serverConfigurationManager.SendPacketToAllPlayers(new net.minecraft.src.Packet70Bed(1
 						));
 				}
 			}
@@ -171,9 +173,9 @@ namespace net.minecraft.src
 
 		public net.minecraft.src.ChunkProviderServer chunkProviderServer;
 
-		public bool field_819_z;
+		public bool weirdIsOpCache;
 
-		public bool levelSaving;
+		public bool canSave;
 
 		private net.minecraft.server.MinecraftServer mcServer;
 

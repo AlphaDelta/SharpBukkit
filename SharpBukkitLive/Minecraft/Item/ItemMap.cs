@@ -59,7 +59,7 @@ namespace net.minecraft.src
 			int i1 = net.minecraft.src.MathHelper.Floor_double(entity.posZ - (double)k) / i +
 				 c1 / 2;
 			int j1 = 128 / i;
-			if (world.worldProvider.field_4306_c)
+			if (world.worldProvider.worldHasSky)
 			{
 				j1 /= 2;
 			}
@@ -93,7 +93,7 @@ namespace net.minecraft.src
 					int k4 = j3 & 0xf;
 					int l4 = 0;
 					double d1 = 0.0D;
-					if (world.worldProvider.field_4306_c)
+					if (world.worldProvider.worldHasSky)
 					{
 						int i5 = i3 + j3 * 0x389bf;
 						i5 = i5 * i5 * 0x1dd6751 + i5 * 11;

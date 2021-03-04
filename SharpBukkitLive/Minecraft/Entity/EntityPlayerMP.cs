@@ -36,7 +36,7 @@ namespace net.minecraft.src
             int i = chunkcoordinates.posX;
             int j = chunkcoordinates.posZ;
             int k = chunkcoordinates.posY;
-            if (!world.worldProvider.field_4306_c)
+            if (!world.worldProvider.worldHasSky)
             {
                 i += rand.Next(20) - 10;
                 k = world.FindTopSolidBlock(i, j);
@@ -176,7 +176,7 @@ namespace net.minecraft.src
                     }
                     if (flag1)
                     {
-                        net.minecraft.src.WorldServer worldserver = mcServer.GetWorldManager(dimension);
+                        net.minecraft.src.WorldServer worldserver = mcServer.GetWorldServer(dimension);
                         chunkCoordIntPairQueue.Remove(chunkcoordintpair);
                         netServerHandler.SendPacket(new net.minecraft.src.Packet51MapChunk(chunkcoordintpair
                             .X * 16, 0, chunkcoordintpair.Z * 16, 16, 128, 16, worldserver));
@@ -192,7 +192,7 @@ namespace net.minecraft.src
             }
             if (inPortal)
             {
-                if (mcServer.propertyManagerObj.GetBooleanProperty("allow-nether", true))
+                if (mcServer.propertyManager.GetBoolean("allow-nether", true))
                 {
                     if (currentCraftingInventory != personalCraftingInventory)
                     {
@@ -209,7 +209,7 @@ namespace net.minecraft.src
                         {
                             timeInPortal = 1.0F;
                             timeUntilPortal = 10;
-                            mcServer.configManager.SendPlayerToOtherDimension(this);
+                            mcServer.serverConfigurationManager.SendPlayerToOtherDimension(this);
                         }
                     }
                     inPortal = false;

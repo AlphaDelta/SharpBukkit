@@ -26,12 +26,16 @@ namespace SharpBukkitLive.SharpBukkit
 				//t.Start();
 				minecraftserver.Run();
 			}
+#if !DEBUG
 			catch (System.Exception exception)
 			{
 				logger.Severe("Failed to start the minecraft server");
 				logger.Log(exception.ToString());
 				//logger.Log(java.util.logging.Level.SEVERE, "Failed to start the minecraft server", exception);
 			}
+#else
+			finally { }
+#endif
 		}
 	}
 }

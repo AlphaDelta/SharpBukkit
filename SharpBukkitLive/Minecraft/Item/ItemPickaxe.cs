@@ -17,7 +17,7 @@ namespace net.minecraft.src
 		//            ItemTool, Block, EnumToolMaterial, Material
 		public override bool CanHarvestBlock(net.minecraft.src.Block block)
 		{
-			if (block == net.minecraft.src.Block.OBSISIAN)
+			if (block == net.minecraft.src.Block.OBSIDIAN)
 			{
 				return toolMaterial.GetHarvestLevel() == 3;
 			}

@@ -25,7 +25,7 @@ namespace net.minecraft.src
             return worldProvider.worldChunkMgr;
         }
 
-        public World(net.minecraft.src.ISaveHandler isavehandler, string s, long l, net.minecraft.src.WorldProvider
+        public World(net.minecraft.src.ISaveHandler isavehandler, string s, long seed, net.minecraft.src.WorldProvider
              worldprovider)
         {
             scheduledUpdatesAreImmediate = false;
@@ -67,19 +67,20 @@ namespace net.minecraft.src
             }
             else
             {
+                //TODO: Multiworld
                 if (worldInfo != null && worldInfo.GetDimension() == -1)
                 {
-                    worldProvider = net.minecraft.src.WorldProvider.Func_4091_a(-1);
+                    worldProvider = net.minecraft.src.WorldProvider.GetWorldProvider(-1);
                 }
                 else
                 {
-                    worldProvider = net.minecraft.src.WorldProvider.Func_4091_a(0);
+                    worldProvider = net.minecraft.src.WorldProvider.GetWorldProvider(0);
                 }
             }
             bool flag = false;
             if (worldInfo == null)
             {
-                worldInfo = new net.minecraft.src.WorldInfo(l, s);
+                worldInfo = new net.minecraft.src.WorldInfo(seed, s);
                 flag = true;
             }
             else
@@ -578,7 +579,7 @@ namespace net.minecraft.src
         public virtual void NeighborLightPropagationChanged(net.minecraft.src.EnumSkyBlock
              enumskyblock, int i, int j, int k, int l)
         {
-            if (worldProvider.field_4306_c && enumskyblock == net.minecraft.src.EnumSkyBlock.
+            if (worldProvider.worldHasSky && enumskyblock == net.minecraft.src.EnumSkyBlock.
                 Sky)
             {
                 return;
@@ -1846,7 +1847,7 @@ namespace net.minecraft.src
         public virtual void Func_484_a(net.minecraft.src.EnumSkyBlock enumskyblock, int i
             , int j, int k, int l, int i1, int j1, bool flag)
         {
-            if (worldProvider.field_4306_c && enumskyblock == net.minecraft.src.EnumSkyBlock.
+            if (worldProvider.worldHasSky && enumskyblock == net.minecraft.src.EnumSkyBlock.
                 Sky)
             {
                 return;
@@ -1912,7 +1913,7 @@ namespace net.minecraft.src
             }
         }
 
-        public virtual void SetAllowedSpawnTypes(bool flag, bool flag1)
+        public virtual void SetSpawnFlags(bool flag, bool flag1)
         {
             spawnHostileMobs = flag;
             spawnPeacefulMobs = flag1;
@@ -1938,7 +1939,7 @@ namespace net.minecraft.src
 
             // CRAFTBUKKIT start - Only call spawner if we have players online and the world allows for mobs or animals
             //TODO: Entrypoint usage
-            if ((this.spawnHostileMobs || this.spawnPeacefulMobs) && (this is WorldServer && SharpBukkitLive.SharpBukkit.Entrypoint.minecraftserver.configManager.playerEntities.Count > 0))
+            if ((this.spawnHostileMobs || this.spawnPeacefulMobs) && (this is WorldServer && SharpBukkitLive.SharpBukkit.Entrypoint.minecraftserver.serverConfigurationManager.playerEntities.Count > 0))
                 net.minecraft.src.SpawnerAnimals.PerformSpawning(this, spawnHostileMobs, spawnPeacefulMobs);
             // CRAFTBUKKIT end
 
@@ -1976,7 +1977,7 @@ namespace net.minecraft.src
 
         protected internal virtual void UpdateWeather()
         {
-            if (worldProvider.field_4306_c)
+            if (worldProvider.worldHasSky)
             {
                 return;
             }
@@ -2577,9 +2578,9 @@ namespace net.minecraft.src
             SetWorldTime(l);
         }
 
-        public virtual long GetRandomSeed()
+        public virtual long GetSeed()
         {
-            return worldInfo.GetRandomSeed();
+            return worldInfo.GetSeed();
         }
 
         public virtual long GetWorldTime()

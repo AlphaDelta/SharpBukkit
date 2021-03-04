@@ -54,13 +54,13 @@ namespace net.minecraft.src
 		{
 			int l = 0;
 			int i1 = 0;
-			if (world.GetBlockId(i - 1, j, k) == net.minecraft.src.Block.OBSISIAN.ID || 
-				world.GetBlockId(i + 1, j, k) == net.minecraft.src.Block.OBSISIAN.ID)
+			if (world.GetBlockId(i - 1, j, k) == net.minecraft.src.Block.OBSIDIAN.ID || 
+				world.GetBlockId(i + 1, j, k) == net.minecraft.src.Block.OBSIDIAN.ID)
 			{
 				l = 1;
 			}
-			if (world.GetBlockId(i, j, k - 1) == net.minecraft.src.Block.OBSISIAN.ID || 
-				world.GetBlockId(i, j, k + 1) == net.minecraft.src.Block.OBSISIAN.ID)
+			if (world.GetBlockId(i, j, k - 1) == net.minecraft.src.Block.OBSIDIAN.ID || 
+				world.GetBlockId(i, j, k + 1) == net.minecraft.src.Block.OBSIDIAN.ID)
 			{
 				i1 = 1;
 			}
@@ -85,7 +85,7 @@ namespace net.minecraft.src
 					int j2 = world.GetBlockId(i + l * j1, j + l1, k + i1 * j1);
 					if (flag)
 					{
-						if (j2 != net.minecraft.src.Block.OBSISIAN.ID)
+						if (j2 != net.minecraft.src.Block.OBSIDIAN.ID)
 						{
 							return false;
 						}
@@ -125,7 +125,7 @@ namespace net.minecraft.src
 			for (k1 = j; world.GetBlockId(i, k1 - 1, k) == ID; k1--)
 			{
 			}
-			if (world.GetBlockId(i, k1 - 1, k) != net.minecraft.src.Block.OBSISIAN.ID)
+			if (world.GetBlockId(i, k1 - 1, k) != net.minecraft.src.Block.OBSIDIAN.ID)
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
 				return;
@@ -134,7 +134,7 @@ namespace net.minecraft.src
 			for (l1 = 1; l1 < 4 && world.GetBlockId(i, k1 + l1, k) == ID; l1++)
 			{
 			}
-			if (l1 != 3 || world.GetBlockId(i, k1 + l1, k) != net.minecraft.src.Block.OBSISIAN
+			if (l1 != 3 || world.GetBlockId(i, k1 + l1, k) != net.minecraft.src.Block.OBSIDIAN
 				.ID)
 			{
 				world.SetBlockWithNotify(i, j, k, 0);
@@ -149,9 +149,9 @@ namespace net.minecraft.src
 				world.SetBlockWithNotify(i, j, k, 0);
 				return;
 			}
-			if ((world.GetBlockId(i + i1, j, k + j1) != net.minecraft.src.Block.OBSISIAN.ID
+			if ((world.GetBlockId(i + i1, j, k + j1) != net.minecraft.src.Block.OBSIDIAN.ID
 				 || world.GetBlockId(i - i1, j, k - j1) != ID) && (world.GetBlockId(i - i1, 
-				j, k - j1) != net.minecraft.src.Block.OBSISIAN.ID || world.GetBlockId(i + i1
+				j, k - j1) != net.minecraft.src.Block.OBSIDIAN.ID || world.GetBlockId(i + i1
 				, j, k + j1) != ID))
 			{
 				world.SetBlockWithNotify(i, j, k, 0);

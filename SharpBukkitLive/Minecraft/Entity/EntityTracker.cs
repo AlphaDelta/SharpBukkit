@@ -21,7 +21,7 @@ namespace net.minecraft.src
             trackedEntityHashTable = new net.minecraft.src.MCHash();
             mcServer = minecraftserver;
             world = i;
-            maxTrackingDistanceThreshold = minecraftserver.configManager.GetMaxTrackingDistance();
+            maxTrackingDistanceThreshold = minecraftserver.serverConfigurationManager.GetMaxTrackingDistance();
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)] // CRAFTBUKKIT

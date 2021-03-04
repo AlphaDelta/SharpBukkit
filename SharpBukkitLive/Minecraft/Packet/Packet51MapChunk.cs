@@ -11,8 +11,15 @@ using System.IO.Compression;
 
 namespace net.minecraft.src
 {
+
     public class Packet51MapChunk : net.minecraft.src.Packet, IDisposable
     {
+        // CRAFTBUKKIT consts
+        const int CHUNK_SIZE = 16 * 128 * 16 * 5 / 2;
+        const int REDUCED_DEFLATE_THRESHOLD = CHUNK_SIZE / 4;
+        const int DEFLATE_LEVEL_CHUNKS = 6;
+        const int DEFLATE_LEVEL_PARTS = 1;
+
         public Packet51MapChunk()
         {
             // Referenced classes of package net.minecraft.src:
@@ -43,11 +50,11 @@ namespace net.minecraft.src
             //	deflater.End();
             //}
 
-            using (Compressor compressor = new LibDeflate.ZlibCompressor(6))
+            using (Compressor compressor = new LibDeflate.ZlibCompressor(abyte0.Length < REDUCED_DEFLATE_THRESHOLD ? DEFLATE_LEVEL_PARTS : DEFLATE_LEVEL_CHUNKS))
             {
 
-                chunk = compressor.Compress(abyte0);
-                if (chunk == null) throw new System.Exception($"Chunk data was too small to effectively compress??? (Size: {abyte0.Length})");
+                chunk = compressor.Compress(abyte0, true);
+                if (chunk == null) throw new System.Exception($"Chunk data was too small to effectively compress or some other error occurred??? (Size: {abyte0.Length})");
 
                 chunkSize = chunk.Length;
                 //ms.CopyTo(ds);

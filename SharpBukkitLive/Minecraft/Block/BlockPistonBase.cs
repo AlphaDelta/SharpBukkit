@@ -369,7 +369,7 @@ namespace net.minecraft.src
 		private static bool CanPushBlock(int i, net.minecraft.src.World world, int j, int
 			 k, int l, bool flag)
 		{
-			if (i == net.minecraft.src.Block.OBSISIAN.ID)
+			if (i == net.minecraft.src.Block.OBSIDIAN.ID)
 			{
 				return false;
 			}

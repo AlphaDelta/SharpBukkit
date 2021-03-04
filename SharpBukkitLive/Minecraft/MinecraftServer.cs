@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace net.minecraft.server
         {
             serverRunning = true;
             serverStopped = false;
-            deathTime = 0;
+            ticks = 0;
             field_9010_p = new List<IUpdatePlayerListBox>();
             commands = ArrayList.Synchronized(new System.Collections.ArrayList());
             //entityTracker = new net.minecraft.src.EntityTracker[2];
@@ -39,18 +40,18 @@ namespace net.minecraft.server
 
             /* Load properties */
             logger.Info("Loading properties");
-            propertyManagerObj = new net.minecraft.src.PropertyManager("server.properties");
-            string s = propertyManagerObj.GetStringProperty("server-ip", string.Empty);
-            onlineMode = propertyManagerObj.GetBooleanProperty("online-mode", true);
-            spawnPeacefulMobs = propertyManagerObj.GetBooleanProperty("spawn-animals", true);
-            pvpOn = propertyManagerObj.GetBooleanProperty("pvp", true);
-            allowFlight = propertyManagerObj.GetBooleanProperty("allow-flight", false);
+            propertyManager = new net.minecraft.src.PropertyManager("server.properties");
+            string s = propertyManager.GetStringProperty("server-ip", string.Empty);
+            onlineMode = propertyManager.GetBoolean("online-mode", true);
+            spawnPeacefulMobs = propertyManager.GetBoolean("spawn-animals", true);
+            pvpOn = propertyManager.GetBoolean("pvp", true);
+            allowFlight = propertyManager.GetBoolean("allow-flight", false);
             IPAddress inetaddress = null;
             if (s.Length > 0)
             {
                 inetaddress = IPAddress.Parse(s);
             }
-            int i = propertyManagerObj.GetIntProperty("server-port", 25565);
+            int i = propertyManager.GetIntProperty("server-port", 25565);
             logger.Info((new java.lang.StringBuilder()).Append("Starting Minecraft server on "
                 ).Append(s.Length != 0 ? s : "*").Append(":").Append(i).ToString());
             try
@@ -72,12 +73,12 @@ namespace net.minecraft.server
                 logger.Warning("While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.");
                 logger.Warning("To change this, set \"online-mode\" to \"true\" in the server.settings file.");
             }
-            configManager = new net.minecraft.src.ServerConfigurationManager(this);
+            serverConfigurationManager = new net.minecraft.src.ServerConfigurationManager(this);
             //entityTracker[0] = new net.minecraft.src.EntityTracker(this, 0);
             //entityTracker[1] = new net.minecraft.src.EntityTracker(this, -1);
             DateTime l = DateTime.Now;
-            string worldName = propertyManagerObj.GetStringProperty("level-name", "world");
-            string s2 = propertyManagerObj.GetStringProperty("level-seed", string.Empty);
+            string worldName = propertyManager.GetStringProperty("level-name", "world");
+            string s2 = propertyManager.GetStringProperty("level-seed", string.Empty);
             long worldSeed = (new SharpRandom()).NextLong();
             if (s2.Length > 0)
             {
@@ -106,35 +107,71 @@ namespace net.minecraft.server
                 isaveformat.ConverMapToMCRegion(name, new net.minecraft.src.ConvertProgressUpdater(this));
             }
 
-            worldMngr = new net.minecraft.src.WorldServer[2];
-            net.minecraft.src.SaveOldDir saveolddir = new net.minecraft.src.SaveOldDir(".", name, true);
-            for (int i = 0; i < worldMngr.Length; i++)
+            // CRAFTBUKKIT/SHARP start -- TODO Multiworld bukkit shit
+            /* Initialize dimensions 0 and -1 (surface and nether) */
+            worlds = new List<WorldServer>();// new net.minecraft.src.WorldServer[2];
+            //net.minecraft.src.ServerNBTManager saveolddir = new net.minecraft.src.ServerNBTManager(".", name, true);
+            for (int i = 0; i < (this.propertyManager.GetBoolean("allow-nether", true) ? 2 : 1); i++)
             {
+                string newname = i == 0 ? name : $"{name}_nether";
+                WorldServer world;
                 if (i == 0)
-                    worldMngr[i] = new net.minecraft.src.WorldServer(this, saveolddir, name, i != 0 ? -1 : 0, seed);
+                    world = new net.minecraft.src.WorldServer(this, new net.minecraft.src.ServerNBTManager(".", newname, true), newname, i != 0 ? -1 : 0, seed);
                 else
-                    worldMngr[i] = new net.minecraft.src.WorldServerMulti(this, saveolddir, name, i != 0 ? -1 : 0, seed, worldMngr[0]);
+                {
+                    string newpath = System.IO.Path.Combine(newname, "DIM-1");
+                    string oldpath = System.IO.Path.Combine(name, "DIM-1");
 
-                worldMngr[i].tracker = new EntityTracker(this, worldMngr[i]); // CRAFTBUKKIT
-                worldMngr[i].AddWorldAccess(new net.minecraft.src.WorldManager(this, worldMngr[i]));
-                worldMngr[i].difficultySetting = propertyManagerObj.GetBooleanProperty("spawn-monsters", true) ? 1 : 0;
-                worldMngr[i].SetAllowedSpawnTypes(propertyManagerObj.GetBooleanProperty("spawn-monsters", true), spawnPeacefulMobs);
+                    if (System.IO.Directory.Exists(oldpath) && !System.IO.Directory.Exists(newpath))
+                    {
+                        logger.Info("---- Migration of old nether folder required ----");
+                        logger.Info("Unfortunately due to the way that Minecraft implemented multiworld support in 1.6, Bukkit requires that you move your nether folder to a new location in order to operate correctly.");
+                        logger.Info("We will move this folder for you, but it will mean that you need to move it back should you wish to stop using Bukkit in the future.");
+                        logger.Info("Attempting to move " + oldpath + " to " + newpath + "...");
 
-                configManager.SetPlayerManager(worldMngr);
+                        if (System.IO.File.Exists(newpath)) {
+                            logger.Severe("A file or folder already exists at " + newpath + "!");
+                            logger.Info("---- Migration of old nether folder failed ----");
+                        } else {
+                            try
+                            {
+                                System.IO.Directory.CreateDirectory(newname);
+                                System.IO.Directory.Move(oldpath, newpath);
+                            }
+                            catch (Exception e)
+                            {
+                                logger.Severe("An exception of type " + e.GetType().Name + " occurred!");
+                                logger.Info("---- Migration of old nether folder failed ----");
+                            }
+                        }
+                    }
+
+                    world = new net.minecraft.src.WorldServerMulti(this, new net.minecraft.src.ServerNBTManager(".", newname, true), newname, i != 0 ? -1 : 0, seed, worlds[0]);
+                }
+
+                world.tracker = new EntityTracker(this, world);
+                world.AddWorldAccess(new net.minecraft.src.WorldManager(this, world));
+                world.difficultySetting = propertyManager.GetBoolean("spawn-monsters", true) ? 1 : 0;
+                world.SetSpawnFlags(propertyManager.GetBoolean("spawn-monsters", true), spawnPeacefulMobs);
+                worlds.Add(world);
+
+                serverConfigurationManager.SetPlayerManager(worlds.ToArray());
             }
+            // CRAFTBUKKIT/SHARP end
 
             short c = 196;// '\304';
             long timeStart = Sharpen.Runtime.CurrentTimeMillis();
-            for (int i = 0; i < worldMngr.Length; i++)
+            for (int i = 0; i < worlds.Count; i++)
             {
-                logger.Info((new java.lang.StringBuilder()).Append("Preparing start region for level ").Append(i).ToString());
-
-                if (i != 0 && !propertyManagerObj.GetBooleanProperty("allow-nether", true))
-                    continue;
+                //if (i != 0 && !propertyManagerObj.GetBooleanProperty("allow-nether", true))
+                //    continue;
 
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
-                net.minecraft.src.WorldServer worldserver = worldMngr[i];
+                net.minecraft.src.WorldServer worldserver = worlds[i];
+
+                logger.Info($"Preparing start region for level {i} (Seed: {worldserver.GetSeed()})");
+
                 net.minecraft.src.ChunkCoordinates chunkcoordinates = worldserver.GetSpawnPoint();
                 for (int k = -c; k <= c && serverRunning; k += 16)
                 {
@@ -178,32 +215,38 @@ namespace net.minecraft.server
             percentDone = 0;
         }
 
-        private void SaveServerWorld(net.minecraft.src.WorldServer worldserver)
+        private void SaveChunks()
         {
             logger.Info("Saving chunks");
-            //for (int i = 0; i < worldMngr.Length; i++)
-            //{
-            //    net.minecraft.src.WorldServer worldserver = worldMngr[i];
+
+            // CRAFTBUKKIT/SHARP start
+            foreach (WorldServer worldserver in worlds)
+            {
                 worldserver.SaveWorld(true, null);
-                worldserver.Func_30006_w();
-            //}
+                worldserver.SaveLevel();
+            }
+
+            WorldServer ws = worlds.FirstOrDefault();
+            if (!ws.canSave)
+                serverConfigurationManager.SavePlayers();
+            // CRAFTBUKKIT/SHARP end
         }
 
         private void StopServer()
         {
             logger.Info("Stopping server");
-            if (configManager != null)
+
+            if (serverConfigurationManager != null)
             {
-                configManager.SavePlayerStates();
+                serverConfigurationManager.SavePlayers();
             }
-            for (int i = 0; i < worldMngr.Length; i++)
-            {
-                net.minecraft.src.WorldServer worldserver = worldMngr[i];
-                if (worldserver != null)
-                {
-                    SaveServerWorld(worldserver);
-                }
-            }
+
+            // CRAFTBUKKIT start
+            WorldServer ws = worlds.FirstOrDefault();
+
+            if (ws != null)
+                SaveChunks();
+            // CRAFTBUKKIT end
         }
 
         public virtual void InitiateShutdown()
@@ -236,7 +279,7 @@ namespace net.minecraft.server
                         }
                         timeDeltaTick += timeDelta;
                         timePrev = timeNow;
-                        if (worldMngr[0].IsAllPlayersFullyAsleep())
+                        if (worlds[0].IsAllPlayersFullyAsleep())
                         {
                             DoTick();
                             timeDeltaTick = 0L;
@@ -331,18 +374,17 @@ namespace net.minecraft.server
             }
             net.minecraft.src.AxisAlignedBB.ClearBoundingBoxPool();
             net.minecraft.src.Vec3D.Initialize();
-            deathTime++;
-            for (int j = 0; j < worldMngr.Length; j++)
+            ticks++;
+            for (int j = 0; j < worlds.Count; j++)
             {
-                if (j != 0 && !propertyManagerObj.GetBooleanProperty("allow-nether", true))
+                //if (j != 0 && !propertyManagerObj.GetBooleanProperty("allow-nether", true))
+                //{
+                //    continue;
+                //}
+                net.minecraft.src.WorldServer worldserver = worlds[j];
+                if (ticks % 20 == 0)
                 {
-                    continue;
-                }
-                net.minecraft.src.WorldServer worldserver = worldMngr[j];
-                if (deathTime % 20 == 0)
-                {
-                    configManager.SendPacketToAllPlayersInDimension(new net.minecraft.src.Packet4UpdateTime
-                        (worldserver.GetWorldTime()), worldserver.worldProvider.worldType);
+                    serverConfigurationManager.SendPacketToAllPlayersInDimension(new net.minecraft.src.Packet4UpdateTime(worldserver.GetWorldTime()), worldserver.worldProvider.worldType);
                 }
                 worldserver.Tick();
                 while (worldserver.DoLighting())
@@ -351,10 +393,10 @@ namespace net.minecraft.server
                 worldserver.CleanUp();
             }
             networkServer.HandleNetworkListenThread();
-            configManager.OnTick();
+            serverConfigurationManager.OnTick();
 
             // CRAFTBUKKIT
-            foreach (WorldServer w in worldMngr)
+            foreach (WorldServer w in worlds)
                 w.tracker.UpdateTrackedEntities();
             //for (int k = 0; k < entityTracker.Length; k++)
             //{
@@ -444,29 +486,20 @@ namespace net.minecraft.server
             return "CONSOLE";
         }
 
-        public virtual net.minecraft.src.WorldServer GetWorldManager(int i)
+        public virtual net.minecraft.src.WorldServer GetWorldServer(int dimension)
         {
-            if (i == -1)
-            {
-                return worldMngr[1];
-            }
-            else
-            {
-                return worldMngr[0];
-            }
+            // CRAFTBUKKIT start
+            foreach (WorldServer ws in worlds)
+                if (ws.Dimension == dimension)
+                    return ws;
+
+            return worlds.FirstOrDefault();
+            // CRAFTBUKKIT end
         }
 
-        public virtual net.minecraft.src.EntityTracker GetEntityTracker(int i)
+        public virtual net.minecraft.src.EntityTracker GetEntityTracker(int dimension)
         {
-            return worldMngr[i].tracker; // CRAFTBUKKIT
-            //if (i == -1)
-            //{
-            //    return entityTracker[1];
-            //}
-            //else
-            //{
-            //    return entityTracker[0];
-            //}
+            return GetWorldServer(dimension).tracker; // CRAFTBUKKIT
         }
 
         public static bool IsServerRunning(net.minecraft.server.MinecraftServer minecraftserver
@@ -482,11 +515,11 @@ namespace net.minecraft.server
 
         public net.minecraft.src.NetworkListenThread networkServer;
 
-        public net.minecraft.src.PropertyManager propertyManagerObj;
+        public net.minecraft.src.PropertyManager propertyManager;
 
-        public net.minecraft.src.WorldServer[] worldMngr;
+        public List<WorldServer> worlds;
 
-        public net.minecraft.src.ServerConfigurationManager configManager;
+        public net.minecraft.src.ServerConfigurationManager serverConfigurationManager;
 
         private net.minecraft.src.ConsoleCommandHandler commandHandler;
 
@@ -494,7 +527,7 @@ namespace net.minecraft.server
 
         public bool serverStopped;
 
-        internal int deathTime;
+        internal int ticks;
 
         public string currentTask;
 

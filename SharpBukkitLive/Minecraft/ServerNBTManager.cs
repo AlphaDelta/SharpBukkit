@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace net.minecraft.src
 {
-	public class SaveOldDir : net.minecraft.src.PlayerNBTManager
+	public class ServerNBTManager : net.minecraft.src.PlayerNBTManager
 	{
-		public SaveOldDir(string file, string s, bool flag)
+		public ServerNBTManager(string file, string s, bool flag)
 			: base(file, s, flag)
 		{
 		}

@@ -72,7 +72,7 @@ namespace net.minecraft.src
             AddRecipe(new ItemStack(Block.COBBLESTONE_STAIRS, 4), new object[] { "#  ", "## ", "###", '#', Block.COBBLESTONE });
             AddRecipe(new ItemStack(Item.PAINTING, 1), new object[] { "###", "#X#", "###", '#', Item.STICK, 'X', Block.WOOL });
             AddRecipe(new ItemStack(Item.GOLDEN_APPLE, 1), new object[] { "###", "#X#", "###", '#', Block.GOLD_BLOCK, 'X', Item.APPLE });
-            AddRecipe(new ItemStack(Block.LEVEL, 1), new object[] { "X", "#", '#', Block.COBBLESTONE, 'X', Item.STICK });
+            AddRecipe(new ItemStack(Block.LEVER, 1), new object[] { "X", "#", '#', Block.COBBLESTONE, 'X', Item.STICK });
             AddRecipe(new ItemStack(Block.REDSTONE_TORCH_ON, 1), new object[] { "X", "#", '#', Item.STICK, 'X', Item.REDSTONE });
             AddRecipe(new ItemStack(Item.DIODE, 1), new object[] { "#X#", "III", '#', Block.REDSTONE_TORCH_ON, 'X', Item.REDSTONE, 'I', Block.STONE });
             AddRecipe(new ItemStack(Item.WATCH, 1), new object[] { " # ", "#X#", " # ", '#', Item.GOLD_INGOT, 'X', Item.REDSTONE });

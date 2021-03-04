@@ -219,7 +219,7 @@ namespace net.minecraft.src
 
         public virtual bool UnloadChunks()
         {
-            if (!world.levelSaving)
+            if (!world.canSave)
             {
                 for (int i = 0; i < 100; i++)
                 {
@@ -251,7 +251,7 @@ namespace net.minecraft.src
 
         public virtual bool CanSave()
         {
-            return !world.levelSaving;
+            return !world.canSave;
         }
 
         private HashSet<int> field_725_a;
